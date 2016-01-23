@@ -48,9 +48,9 @@
             }
 		
             if (strpos(realpath("."), "/test/") == true){
-		$form_action = "./index.php";
+		$form_action = "./top.php";
             }else{
-		$form_action = "https://www.tenrusu.jp/newOwner_2/index.php";
+		$form_action = "./top.php";
             }
 	
         include("login.html");
