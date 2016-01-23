@@ -1,7 +1,7 @@
 <?
 	require("./lib/check.php");
         require("./lib/common.php");
-	require("./lib/ReloGlofunc.php");
+	require("./lib/Glofunc.php");
 	require("./lib/Respfunc.php");
 	
 	$result = 0;
@@ -35,9 +35,9 @@
 	if ($result == 0){
             //管理者判定
             if($dspUserInfo[1] == "管理者"){
-                include("top.html");
+              include("./admin/top.php");  
             }else{
-              include("./admin/top.php");
+              include("top.html");
             }
 	}else{
             if ($_POST["ActionType"] != "TgRSPInf"){
