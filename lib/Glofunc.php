@@ -80,29 +80,6 @@ Function SelectKaHi($nKaHiCode) {
 	}
 
 }
-
-//******************************************************************************/
-//*	関数名	：SelectApoCode
-//*	引数	：	$nApoCode			in
-//*
-//*	説明	：
-//******************************************************************************/
-Function SelectApoCode($nApoCode) {
-
-	switch($nApoCode) {
-		case "1":
-			return "自宅";
-			break;
-		case "2":
-			return "勤務先";
-			break;
-		case "4":
-			return "携帯";
-			break;
-	}
-
-}
-
 //******************************************************************************
 //*	関数名	：GetFieldData
 //*	引数	：	$recData			in
