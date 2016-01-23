@@ -1,5 +1,6 @@
 <?
 	require("./lib/check.php");
+        require("./lib/common.php");
 	require("./lib/ReloGlofunc.php");
 	require("./lib/Respfunc.php");
 	
@@ -13,9 +14,9 @@
 	$Type = "";
 
         
-	/*if (!ckStr($_POST["KEYWORD1"],10,1) or ereg("[^0-9\-]",$_POST["KEYWORD1"])){
+	/*if (!ckStr($_POST["KEYWORD1"],40,1) or ereg("[^0-9\-]",$_POST["KEYWORD1"])){
             $result = 1;
-	}elseif (!ckStr($_POST["KEYWORD2"],8,1)){
+	}elseif (!ckStr($_POST["KEYWORD2"],20,1)){
             $result = 1;
 	}else{*/
             $ActType = $_POST["ActionType"];
