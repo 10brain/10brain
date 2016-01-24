@@ -1,0 +1,199 @@
+body,input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+#menu{
+  width: 1277px;
+  height: 82px;
+  background-color: #F6E8D2;
+}
+
+
+
+.search{
+  text-align: center;
+}
+
+.search img{
+  position: fixed;
+  top: auto;
+}
+
+.search input[type="text"]{
+  border: 0;
+  border-bottom: 1px solid black;
+  height: 45px;
+  width: 400px;
+  padding-left: 60px;
+  padding-right: 10px;
+  font-size: 1.6em;
+}
+
+.search input[type="button"]{
+  height: 45px;
+  width: 100px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.sample{
+  text-align: center;
+  margin: 10px;
+}
+
+.sample input[type=radio] {
+    display: inline-block;
+
+}
+.sample input[type=radio] + label{
+    position: relative;
+
+    display: inline-block;
+    margin-right: 12px;
+
+    font-size: 14px;
+    line-height: 30px;
+
+    cursor: pointer;
+}
+
+@media (min-width: 1px) {
+    .sample input[type=radio]{
+        display: none;
+        margin: 0;
+    }
+    .sample input[type=radio] + label{
+        padding: 0 0 0 24px;
+    }
+    .sample input[type=radio] + label::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin-top: -9px;
+
+        background: #FFF;
+    }
+    .sample input[type=radio] + label::before {
+        border: 2px solid #ccc;
+        border-radius: 30px;
+    }
+
+    .sample input[type=radio]:checked + label::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+    }
+    .sample input[type=radio]:checked + label::after {
+        left: 5px;
+
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+
+        background: #E71063;
+        border-radius: 8px;
+    }
+
+
+    /* either */
+    .sample .either {
+        position: relative;
+
+        display: inline-block;
+        width: 120px;
+        overflow: hidden;
+        border: 2px solid #ccc;
+    }
+    .sample .either input[type=radio] + label {
+        position: static;
+
+        float: left;
+        display: block;
+        width: 50%;
+        margin-right: 0;
+        padding: 0;
+        overflow: hidden;
+
+        text-align: center;
+    }
+    .sample .either  input[type=radio] + label::before {
+        /*content: attr(data-label);*/
+
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+
+        display: block;
+        width: 50%;
+        height: auto;
+        margin-top: 0;
+
+        text-align: center;
+
+        color: transparent;
+        background: transparent;
+        border: 0 none;
+        border-radius: 0;
+    }
+    .sample .either input[type=radio] + label:last-child::before {
+        left: 50%;
+        right: 0;
+
+    }
+    .sample .either input[type=radio]:checked + label::before {
+        color: #fff;
+    }
+
+    .sample .either input[type=radio] + label::after {
+        border-radius: 0;
+    }
+    .sample .either input[type=radio]:first-child + label::after {
+        content: none;
+    }
+    .sample .either input[type=radio] + label + input[type=radio] + label::after {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 2px;
+
+        background-color: rgba(255,255,255,0.1);
+        border: 2px solid black;
+
+
+        -webkit-transition: all 200ms;
+        transition: all 200ms;
+    }
+
+    .sample .either input[type=radio]:checked + label + input[type=radio] + label::after {
+        left: 0;
+        right: 50%;
+    }
+    .sample .either input[type=radio] + label + input[type=radio]:checked + label::after {
+        left: 50%;
+        right: 0;
+    }
+
+}
