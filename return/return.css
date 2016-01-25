@@ -1,0 +1,44 @@
+body,input,h1{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+#menu{
+  width: 1277px;
+  height: 82px;
+  background-color: #F6E8D2;
+}
+
+#footer{
+  width: 1277px;
+  height: 18px;
+  background-color: #F6E8D2;
+  position: fixed;
+  bottom: 0px;
+}
+
+table{
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.title{
+  height: 20px;
+  margin: 0 auto;
+}
+
+.title h1,hr{
+  float: left;
+}
+
+
+
+.title hr{
+  border-width: 1px 0px 0px 0px;
+  border-style: double;
+  border-color: black;
+  height: 1px;
+  width: 200px;
+
+}
