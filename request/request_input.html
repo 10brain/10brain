@@ -6,11 +6,33 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>リクエスト</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="request.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="menu"></div>
+
+        <div class="content">
+          <div class="title">
+
+            <h1>本のリクエスト</h1>
+
+          </div>
+          <div class="form">
+            <form action="request.php" method="post">
+              <span>タイトル</span><br>
+              <input type="text" name="" maxlength="80"><br>
+              <span>リンク</span><br>
+              <input type="text" name="" maxlength="80"><br>
+              <span>備考</span><br>
+              <textarea type="text" name="" maxlength="127"></textarea><br>
+              <input type="button" value="確認">
+            </form>
+          </div>
+        </div>
+
+        <div id="footer"></div>
     </body>
 </html>
