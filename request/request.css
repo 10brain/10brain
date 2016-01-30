@@ -37,18 +37,18 @@ body{
 .form{
   width: 400px;
   height: 420px;
-  margin: 50px auto 50px auto;
+  margin: 0 auto;
   padding: 20px 20px;
 }
 
 .content{
   width: 75%;
-  height: 550px;
-  margin: 20px auto 50px auto;
+  height: 480px;
+  margin: 10px auto 10px auto;
   color: black;
   background-color: white;
   border: 1px solid black;
-  padding: 20px 20px;
+  padding: 15px 15px;
 }
 
 .content input[type="text"]{
