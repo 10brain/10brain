@@ -37,7 +37,15 @@ body,h1{
   padding: 20px 20px;
 }
 
-
+.content{
+  width: 75%;
+  height: 550px;
+  margin: 20px auto 50px auto;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px 20px;
+}
 
 .content input[type="text"]{
   border: 0;
