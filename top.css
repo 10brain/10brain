@@ -56,7 +56,7 @@ body{
   *zoom: 1;
 }
 
-.center li a{
+.center li{
   display: block;
   margin: 0 20px;
 }
