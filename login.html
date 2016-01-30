@@ -6,11 +6,29 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>ログイン | 10brain</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>テストログイン画面</div>
+        <form name="" method="POST" action="./top.php">
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+		<tr>
+                    <th>ID</th>
+                    <td><input type="text" name="KEYWORD1" /></td>
+		<tr>
+		<tr>
+                    <th>pw</th>
+                    <td><input type="text" name="KEYWORD2" /></td>
+		</tr>
+		<tr>
+                    <td colspan="2"><div class="err_msg"><?=$aaaa;?><br/></div></td>
+		</tr>
+		<tr>
+                <th></th>
+		<td width="50"><input type="submit" value="検　索" />
+                </td>
+        </form>
     </body>
 </html>
