@@ -1,6 +1,6 @@
 <?php
 require('./lib/user_func.php');
-
+$result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
@@ -11,7 +11,7 @@ $Key2 = $_POST["KEYWORD2"];  //パスワード
 
 //DB問い合わせ
 //全レコードを表示する処理
-$result = UserModel::GETLogin($ActType, $Key1, $Key2, $dspUserLogin);
+$result = GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
 //画面表示
     if($dspUserInfo[1] == "管理者"){
         include("./admin/top.php");  
@@ -20,4 +20,5 @@ $result = UserModel::GETLogin($ActType, $Key1, $Key2, $dspUserLogin);
     }
 	
 ?>
+
 

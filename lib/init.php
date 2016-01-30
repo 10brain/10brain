@@ -23,6 +23,7 @@ class DBModel{
         $this->db_connect();        
     }
     
+    
     //DB接続
     private function db_connect(){
         try{
@@ -32,7 +33,9 @@ class DBModel{
         } catch (Exception $Exception) {
             die('エラー文:' .$Exception->getMessage());
         }
+        $pdo = null;
     }
+    
 }
 
 ?>
