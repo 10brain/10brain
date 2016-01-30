@@ -1,5 +1,6 @@
 <?php
 require('./lib/user_func.php');
+
 $result = 0;
 $ActType = "";
 $Key1 ="";

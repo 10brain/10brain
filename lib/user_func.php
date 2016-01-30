@@ -6,7 +6,7 @@ require 'init.php';
 // 20160119@ito
 //
 //*****************************************************************************/
-class UserModel{
+//class UserModel{
     function GETLogin($ActType, $Key1, $Key2, &$dspUserInfo){
         //初期値設定
         $result = 0;
@@ -25,7 +25,7 @@ class UserModel{
         if(is_null($Key1) == True){
             $strSQL = $strSQL. " Where ID IS NULL";
         }else{
-            $strSQL = $strSQL. " Where ID = :Key1";            
+            $strSQL = $strSQL. " Where ID = :Key1 ";            
         }
         echo $Key1.'確認';
         
@@ -33,17 +33,18 @@ class UserModel{
         if(is_null($Key2) == True){
             $strSQL = $strSQL. " And PW IS NULL";
         }else{
-            $strSQL = $strSQL. " And PW = :Key1";            
+            $strSQL = $strSQL. " And PW = :Key2 ";            
         }
-        echo $Key2.'確認';
-        echo $strSQL;
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
-           $stmh = $class->pdo($strSQL);
-           $stmh->bindValue(':Key1', $Key1, PDO::PARAM_STR);
-           $stmh->bindValue(':Key2', $Key2, PDO::PARAM_STR);
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
+           $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
+            echo $Key2.'確認';
+            echo $strSQL;
+
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
@@ -78,7 +79,7 @@ class UserModel{
         //return $dspUserInfo;
         return $result;
     }
-}
+//}
 
 
 ?>
