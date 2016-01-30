@@ -1,0 +1,63 @@
+body,input,textarea{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+}
+
+body{
+  background-size: cover;
+}
+
+#menu{
+  width: 1277px;
+  height: 82px;
+  background-color: #F6E8D2;
+}
+
+#footer{
+  width: 1277px;
+  height: 18px;
+  background-color: #F6E8D2;
+  position: fixed;
+  bottom: 0px;
+}
+
+.content{
+  width: 75%;
+  height: 100%;
+  margin: 10px auto 10px auto;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 15px 15px;
+}
+
+.content input[type="text"]{
+  border: 0;
+  border: 1px solid black;
+  height: 20px;
+  width: 85%;
+  font-size: 1.0em;
+  margin-bottom: 5px;
+}
+
+.content textarea{
+  border: 0;
+  border: 1px solid black;
+  height: 30px;
+  width: 90%;
+  font-size: 1.0em;
+  margin-bottom: 10px;
+}
+
+.content input[type="button"]{
+  height: 45px;
+  width: 100px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 10px;
+}
