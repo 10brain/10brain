@@ -4,6 +4,10 @@ body,input,span,form{
   font-size: 16px;
 }
 
+body{
+  background-size: cover;
+}
+
 #menu{
   width: 1277px;
   height: 82px;
