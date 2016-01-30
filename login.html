@@ -6,11 +6,32 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>ログイン | 10brain</title>
         <meta charset="UTF-8">
+        <title>ログイン | 10brain</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="login.css">
     </head>
+
     <body>
+      <div id="layer">
+
+          <div id="login">
+            <img src="img/3.png" alt="アイコン">
+            <form name="" method="POST" action="./top.php">
+            <!--<form action="top.php" method="post">-->
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="text" name="KEYWORD1" size="30" placeholder="ID" maxlength="30">
+              <br>
+              <input type="password" name="KEYWORD2" size="30" placeholder="パスワード" maxlength="30">
+              <br>
+              <div class="err_msg"><?=$aaaa;?><br/></div>
+              <input type="submit" value="ログイン">
+            </form>
+          </div>
+
+
+      </div>
+<!--=======
         <div>テストログイン画面</div>
         <form name="" method="POST" action="./top.php">
             <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -30,5 +51,7 @@ and open the template in the editor.
 		<td width="50"><input type="submit" value="検　索" />
                 </td>
         </form>
-    </body>
+>>>>>>> origin/ITO
+    </body>-->
+
 </html>

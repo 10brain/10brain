@@ -6,11 +6,36 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>検索</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="search.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="menu"></div>
+
+        <div id="content">
+          <br>
+          <form action="search.php" method="post">
+            <div class="search">
+              <img src="../img/c.png">
+              <input type="text" name="" maxlength="80">
+              <input type="button" value="SEARCH">
+            </div>
+
+            <div class="sample">
+              <div class="either">
+                <input type="radio" name="dummy" id="dummy_1" value="1" checked="checked" />
+                <label for="dummy_1"><img src="../img/a.png"></label>
+                <input type="radio" name="dummy" id="dummy_0" value="0" />
+                <label for="dummy_0"><img src="../img/b.png"></label>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div id="footer"></div>
+
     </body>
 </html>
