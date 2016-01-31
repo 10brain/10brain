@@ -84,7 +84,7 @@ function ckStr(&$str,$max,$blank){
 //	$decimal	小数チェック（0:許可 1:不許可）
 /////////////////////////////////////////////////
 function ckNum(&$num,$min,$max,$blank,$decimal){
- $ret = false;
+ $result = false;
  
  //全角英数→半角英数変換
  $num = mb_convert_kana($num,"a","UTF-8");
@@ -93,7 +93,7 @@ function ckNum(&$num,$min,$max,$blank,$decimal){
  if($num == ""){
   //空欄許可チェック
   if($blank == 0){
-   $ret = true;
+   $result = true;
   }
  }
  else{
@@ -102,18 +102,18 @@ function ckNum(&$num,$min,$max,$blank,$decimal){
    if($decimal == 0){
     //マッチ判定（小数許可）
     if(ereg("[^0-9\.]",$num) == false){
-     $ret = true;
+     $result = true;
     }
    }
    else{
     //マッチ判定（小数不許可）
     if(ereg("[^0-9]",$num) == false){
-     $ret = true;
+     $result = true;
     }
    }
   }
  }
- return $ret;
+ return $result;
 }
 
 /////////////////////////////////////////////////
@@ -201,14 +201,4 @@ function cvWeb($str){
  return $str;
 }
 
-/////////////////////////////////////////////////
-//MSSQL出力変換
-/////////////////////////////////////////////////
-function cvSql($str){
- $str = ereg_replace("'", "''", $str);        // '    → ''
- $str = ereg_replace(";", ":", $str);         // ;    → :
- $str = ereg_replace("--", "__", $str);       // --   → __
- $str = ereg_replace("<br>","\r\n",$str);     // \r\n → <br>
- 
- return $str;
-}
+
