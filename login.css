@@ -1,13 +1,21 @@
 body{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 16pt;
+  font-size: 12pt;
+  color: white;
   background-image: url(img/2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  background-color: white;
+}
+
+input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12pt;
+  color: white;
 }
 
 
@@ -19,4 +27,30 @@ body{
 
 #login{
   text-align: center;
+}
+
+#login input[type="text"],input[type="password"]{
+  border: 0;
+  border: 1px solid white;
+  height: 25px;
+  width: 30%;
+  font-size: 1.0em;
+  margin-bottom: 25px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px 5px;
+}
+
+
+
+#login input[type="submit"]{
+  border: 0;
+  height: 35px;
+  width: 15%;
+  padding: 5px 15px;
+  font-size: 1.0em;
+  color: rgba(0, 0, 0, 0.6);;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid white;
+  margin: 0 auto;
 }
