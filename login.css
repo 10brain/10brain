@@ -1,22 +1,76 @@
 body{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 16pt;
+  font-size: 12pt;
+  color: white;
   background-image: url(img/2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  background-color: white;
+}
+
+input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 10pt;
+  color: white;
+  letter-spacing: 2px;
 }
 
 
 #layer{
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.3);
   background-size: cover;
   height: 100vh;
 }
 
 #login{
   text-align: center;
+}
+
+#login input[type="text"],input[type="password"]{
+  border: 0;
+  border: 1px solid white;
+  height: 25px;
+  width: 30%;
+  font-size: 0.8em;
+  margin-bottom: 25px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px 5px;
+}
+
+
+
+#login input[type="submit"]{
+  border: 0;
+  height: 35px;
+  width: 15%;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.6);;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid white;
+  margin: 0 auto;
+}
+
+#login input[type="text"]::-webkit-input-placeholder {
+  color: white;
+}
+#login input[type="password"]::-webkit-input-placeholder {
+  color: white;
+}
+#login input[type="text"]::-moz-placeholder {
+  color: white; opacity: 1;
+}
+#login input[type="password"]::-moz-placeholder {
+  color: white; opacity: 1;
+}
+#login input[type="text"]:-ms-input-placeholder {
+  color: white;
+}
+#login input[type="password"]:-ms-input-placeholder {
+  color: white;
 }

@@ -4,6 +4,10 @@ body,h1{
   font-size: 14px;
 }
 
+body{
+  background-size: cover;
+}
+
 #menu{
   width: 1277px;
   height: 82px;
@@ -39,5 +43,14 @@ table td{
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: normal;
+}
 
+.content{
+  width: 85%;
+  height: 480px;
+  margin: 10px auto 10px auto;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 15px 15px;
 }

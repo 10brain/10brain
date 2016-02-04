@@ -6,11 +6,41 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>管理者ホーム</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="badd.css">
     </head>
     <body>
-        <div>TODO write content</div>
+      <div id="menu"></div>
+
+      <div class="content">
+        <div class="form">
+          <form action="badd.php" method="post"　enctype="multipart/form-data">
+            <span>タイトル</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>ジャンル</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>出版社</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>著者</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>紹介文</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>出版年</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>amazonリンク</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>備考</span><br>
+            <textarea type="text" name="" maxlength="127"></textarea><br>
+            <span>画像ファイル</span><br>
+            <input type="file" name="pic"><br>
+            <input type="button" value="確認">
+            </form>
+          </form>
+        </div>
+      </div>
+
+      <div id="footer"></div>
     </body>
 </html>
