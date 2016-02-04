@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+
+        <group>
+            <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/top.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/return/return.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/top.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/login.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_confirm.html</file>
+        </group>
+
     </open-files>
 </project-private>
