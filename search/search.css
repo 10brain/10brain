@@ -31,6 +31,7 @@ body{
 .search img{
   position: fixed;
   top: auto;
+  margin-top: 10px;
 }
 
 .search input[type="text"]{
@@ -43,7 +44,7 @@ body{
   font-size: 1.6em;
 }
 
-.search input[type="button"]{
+.search input[type="submit"]{
   height: 45px;
   width: 100px;
   padding: 6px 8px;
