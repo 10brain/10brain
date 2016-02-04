@@ -4,6 +4,14 @@ body,h1{
   font-size: 14px;
 }
 
+
+
+
+
+
+
+
+
 body{
   background-size: cover;
 }
@@ -34,7 +42,8 @@ table td{
 }
 
 .title{
-  height: 20px;
+  height: 25px;
+  width: 100%;
   margin: 15px auto;
 }
 
@@ -43,6 +52,23 @@ table td{
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: normal;
+}
+
+
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.title img{
+  margin: 5px 30px;
 }
 
 .content{
