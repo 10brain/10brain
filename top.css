@@ -5,8 +5,6 @@ body{
   background-size: cover;
 }
 
-
-
 .header{
   background-color: #ABD695;
   height: 12px;
@@ -14,7 +12,8 @@ body{
 
 .menu{
   background-color: #F6E8D2;
-
+  height: 60px;
+  width: 100%;
 }
 
 .menu:after{
@@ -25,25 +24,17 @@ body{
 
 .left{
   float: left;
-  margin-left: 20px;
-
 }
 
 .left img{
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
 }
 
 .center{
-
-  height:70px;
-  float: left;
-  margin-left: 220px;
-}
-
-.center li{
-  float: left;
-  list-style: none;
+  height:40px;
+  width: 450px;
+  margin: 0 auto;
 }
 
 .center ul:after{
@@ -53,18 +44,32 @@ body{
 }
 
 .center ul{
-  *zoom: 1;
+  /zoom: 1;
+  margin: 0;
+  height:35px;
+  width: 450px;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  padding-top: 5px;
 }
 
 .center li{
-  display: block;
+  display: inline-block;
   margin: 0 20px;
+  list-style: none;
 }
 
 .right{
   float: right;
-  margin-right: 20px;
   color: #B4B2AF;
+}
+
+.right ul{
+  height: 20px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
 }
 
 .right li {
@@ -118,4 +123,8 @@ body{
 
 .contSlider li a{
   display: block;
+}
+
+.request{
+  margin-top: 3px;
 }

@@ -22,12 +22,22 @@ and open the template in the editor.
  ?>
 
         <div id="menu">
-          <div class="header"></div>
+          <div class="header">
+          </div>
+
 
           <div class="menu">
+            <div class="right">
+              <ul>
+                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
+                <li><a href="#">ログアウト</a></li>
+              </ul>
+            </div>
+
             <div class="left">
               <img src="img/3.png" alt="アイコン">
             </div>
+
             <div class="center">
                 <ul>
                 <li><form action="<?=$home;?>" method="post">
@@ -48,40 +58,37 @@ and open the template in the editor.
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/b.png" alt="返却" />
+                    <input type="image" src="img/c.png" alt="返却" />
                     </form>
                 </li>
                 <li><form action="<?=$search;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/c.png" alt="検索">
+                    <input type="image" src="img/d.png" alt="検索">
                     </form>
                 </li>
                 <li><form action="<?=$request;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/d.png" alt="リクエスト">
+                    <input type="image" src="img/e.png" alt="リクエスト" class="request">
                     </form>
                 </li>
                 <li><form action="<?=$mypage;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/e.png" alt="マイページ">
+                    <input type="image" src="img/f.png" alt="マイページ">
                     </form>
                 </li>
 
               </ul>
             </div>
-            <div class="right">
-              <ul>
-                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
-                <li><a href="#">ログアウト</a></li>
-              </ul>
-            </div>
-        </div>
+
+
+          </div>
+
 
         </div>
 
