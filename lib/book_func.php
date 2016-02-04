@@ -9,7 +9,7 @@ require 'init.php';
 class BookModel{
 
     /*********書籍一覧SQL*******************************************************/
-    function GETBookList($ActType, $Key21, $Key22, $Key23, &$dspBookList){
+    function GETBookList($ActType, $Key21, $Key22, &$dspBookList){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -20,7 +20,26 @@ class BookModel{
         }else{
             $strSQL = "Select * From Book";
         }
-        echo 'アクションタイプ確認ok';
+        echo $Key21;
+        
+        //テキストエリアに値が入っていたら
+
+   if ($Key21) {
+            foreach ($Key21 as $keyword) {
+                // プレースホルダのLIKE部分を用意
+                $holders[] = "((title LIKE $keyword ESCAPE '!') OR (genre LIKE $keyword ESCAPE '!'))";
+                // LIKE検索のために「%キーワード%」の形式にする
+                $values[] = $values[] = '%' . preg_replace('/(?=[!_%])/', '!', $keyword) . '%';
+            }
+            // or条件で結合する
+            if($Key22=="1"){
+            $strSQL = $strSQL. ' WHERE (' . implode(' OR ', $holders) . ')';
+            }else{
+            // 実行
+            $strSQL = $strSQL. ' WHERE (' . implode(' AND ', $holders) . ')';
+            }
+  
+   }
         
         //入力フォームに値が入っているか確認
         /*
@@ -34,7 +53,8 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-            echo $Key2.'確認';
+            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+ 
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -52,13 +72,16 @@ class BookModel{
                echo $count;
            }else{
                 //表示データ収集
+               $i=0;
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
-                   $dspBookList[0] = $array['BookNum'];//書籍番号
-                   $dspBookList[1] = $array['title'];//書籍タイトル
-                   $dspBookList[2] = $array['remarks'];//出版社
-                   $dspBookList[3] = $array['genre'];//ジャンル
-                   $dspBookList[4] = $array['stock'];//在庫数
+                   $dspBookList[$i][0] = $array['BookNum'];//書籍番号
+                   $dspBookList[$i][1] = $array['title'];//書籍タイトル
+                   $dspBookList[$i][2] = $array['remarks'];//出版社
+                   $dspBookList[$i][3] = $array['genre'];//ジャンル
+                   $dspBookList[$i][4] = $array['stok'];//在庫数
+                $i=$i+1;
                 }
+                //print_r($dspBookList);
            }
            
         } catch (Exception $Exception) {}
@@ -82,17 +105,18 @@ class BookModel{
         
         //書籍番号確認        
         if(is_null($Key20) == True){
-            $strSQL = $strSQL. " And BookNum IS NULL";
+            $strSQL = $strSQL. " Where BookNum IS NULL";
         }else{
-            $strSQL = $strSQL. " And BookNum = :Key20 ";            
+            $strSQL = $strSQL. " Where BookNum = :Key20";            
         }
-
+echo $result;
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key20', $Key20, PDO::PARAM_INT);
+           echo $strSQL;
+            $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
 
             echo $strSQL;
            $stmh->execute();//実行
@@ -117,7 +141,7 @@ class BookModel{
                }else{
                    //表示データ収集
                    $dspBookDet[0] = $array['title'];//書籍タイトル
-                   $dspBookDet[1] = $array['jenre'];//ジャンル
+                   $dspBookDet[1] = $array['genre'];//ジャンル
                    $dspBookDet[2] = $array['pub'];//出版社
                    $dspBookDet[3] = $array['writer'];//著者
                    $dspBookDet[4] = $array['intro'];//紹介文
@@ -126,7 +150,7 @@ class BookModel{
                    $dspBookDet[7] = $array['remarks'];//備考
                    $dspBookDet[8] = $array['cover'];//表紙名
                }
-
+                print_r($dspBookDet);
            }
            
         } catch (Exception $Exception) {}

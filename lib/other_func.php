@@ -126,6 +126,7 @@ class otherModel{
                    $dspBorrowUList[5] = $array['Num'];//社員番号
 
                 }
+                print_r($dspBorrowUList);
            }
            
         } catch (Exception $Exception) {}
