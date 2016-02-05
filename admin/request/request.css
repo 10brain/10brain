@@ -34,6 +34,38 @@ body{
   padding-left: 30px;
 }
 
+.old a:link{
+  color: #333333;
+}
+
+.old a:visited{
+  color: #333333;
+}
+
+.old a:hover{
+  color: #75876a;
+}
+
+.old a:active{
+  color: #333333;
+}
+
+.now a:link{
+  color: #333333;
+}
+
+.now a:visited{
+  color: #333333;
+}
+
+.now a:hover{
+  color: #75876a;
+}
+
+.now a:active{
+  color: #333333;
+}
+
 table{
   border-collapse: collapse;
   margin: 0 auto;
