@@ -6,11 +6,32 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>マイページ | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="user.css">
     </head>
     <body>
-        <div>TODO write content</div>
+      <div id="menu"></div>
+
+      <div class="content">
+
+        <div class="title">
+
+          <h1>マイページ</h1>
+
+        </div>
+
+        <div class="button">
+          <form action="../return/return.php" method="post" class="return">
+            <input type="button" value="貸出履歴">
+          </form>
+          <form action="user_pass.php" method="post" class="pass">
+            <input type="button" value="パスワード変更">
+          </form>
+        </div>
+      </div>
+
+      <div id="footer"></div>
     </body>
 </html>
