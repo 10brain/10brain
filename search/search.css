@@ -22,6 +22,16 @@ body{
   bottom: 0px;
 }
 
+#content ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+#content li{
+  display: inline-block;
+  list-style: none;
+}
 
 
 .search{
@@ -32,6 +42,10 @@ body{
   position: fixed;
   top: auto;
   margin-top: 10px;
+}
+
+.either1 img{
+  padding-top: 5px;
 }
 
 .search input[type="text"]{
@@ -54,6 +68,26 @@ body{
   border: 1px solid black;
 }
 
+
+table{
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+table td{
+  text-align: center;
+  padding: 2px;
+  letter-spacing: 2px;
+}
+
+
+
+
+
+
+
+
+/*ANDOR*/
 .sample{
   text-align: center;
   margin: 10px;
@@ -99,7 +133,7 @@ body{
         background: #FFF;
     }
     .sample input[type=radio] + label::before {
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 30px;
     }
 
@@ -127,11 +161,11 @@ body{
     /* either */
     .sample .either {
         position: relative;
-
+        height: 46px;
         display: inline-block;
-        width: 120px;
+        width: 150px;
         overflow: hidden;
-        border: 2px solid black;
+        border: 1px solid black;
     }
     .sample .either input[type=radio] + label {
         position: static;
@@ -142,11 +176,11 @@ body{
         margin-right: 0;
         padding: 0;
         overflow: hidden;
-
+        padding-top: 7px;
         text-align: center;
     }
     .sample .either  input[type=radio] + label::before {
-        /*content: attr(data-label);*/
+        content: attr(data-label);
 
         top: 0;
         bottom: 0;
@@ -164,7 +198,7 @@ body{
         border: 0 none;
         border-radius: 0;
     }
-    .sample .either input[type=radio] + label:last-child::before {
+    .sample .either input[type=radio] + label/*:last-child*/::before {
         left: 50%;
         right: 0;
 
@@ -176,7 +210,7 @@ body{
     .sample .either input[type=radio] + label::after {
         border-radius: 0;
     }
-    .sample .either input[type=radio]:first-child + label::after {
+    .sample .either input[type=radio]/*:first-child*/ + label::after {
         content: none;
     }
     .sample .either input[type=radio] + label + input[type=radio] + label::after {
@@ -193,7 +227,7 @@ body{
         margin: 2px;
 
         background-color: rgba(255,255,255,0.1);
-        border: 2px solid black;
+        border: 1px solid black;
 
 
         -webkit-transition: all 200ms;
@@ -205,6 +239,166 @@ body{
         right: 50%;
     }
     .sample .either input[type=radio] + label + input[type=radio]:checked + label::after {
+        left: 50%;
+        right: 0;
+    }
+
+}
+
+
+/*imglist*/
+.sample1{
+  text-align: center;
+  margin: 10px;
+}
+
+.sample1 input[type=radio] {
+    display: inline-block;
+
+}
+.sample1 input[type=radio] + label{
+    position: relative;
+
+    display: inline-block;
+    margin-right: 12px;
+
+    font-size: 14px;
+    line-height: 30px;
+
+    cursor: pointer;
+}
+
+@media (min-width: 1px) {
+    .sample1 input[type=radio]{
+        display: none;
+        margin: 0;
+    }
+    .sample1 input[type=radio] + label{
+        padding: 0 0 0 24px;
+    }
+    .sample1 input[type=radio] + label::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin-top: -9px;
+
+        background: #FFF;
+    }
+    .sample1 input[type=radio] + label::before {
+        border: 1px solid black;
+        border-radius: 30px;
+    }
+
+    .sample1 input[type=radio]:checked + label::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+    }
+    .sample1 input[type=radio]:checked + label::after {
+        left: 5px;
+
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+
+        background: #E71063;
+        border-radius: 8px;
+    }
+
+
+    /* either */
+    .sample1 .either1 {
+        position: relative;
+
+        display: inline-block;
+        width: 120px;
+
+        overflow: hidden;
+        border: 1px solid black;
+    }
+    .sample1 .either1 input[type=radio] + label {
+        position: static;
+
+        float: left;
+        display: block;
+        width: 50%;
+        margin-right: 0;
+        padding: 0;
+        overflow: hidden;
+
+        text-align: center;
+    }
+    .sample1 .either1  input[type=radio] + label::before {
+        content: attr(data-label);
+
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+
+        display: block;
+        width: 50%;
+        height: auto;
+        margin-top: 0;
+
+        text-align: center;
+
+        color: transparent;
+        background: transparent;
+        border: 0 none;
+        border-radius: 0;
+    }
+    .sample1 .either1 input[type=radio] + label:last-child::before {
+        left: 50%;
+        right: 0;
+
+    }
+    .sample1 .either1 input[type=radio]:checked + label::before {
+        color: #fff;
+    }
+
+    .sample1 .either1 input[type=radio] + label::after {
+        border-radius: 0;
+    }
+    .sample1 .either1 input[type=radio]:first-child + label::after {
+        content: none;
+    }
+    .sample1 .either1 input[type=radio] + label + input[type=radio] + label::after {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 2px;
+
+        background-color: rgba(255,255,255,0.1);
+        border: 1px solid black;
+
+
+        -webkit-transition: all 200ms;
+        transition: all 200ms;
+    }
+
+    .sample1 .either1 input[type=radio]:checked + label + input[type=radio] + label::after {
+        left: 0;
+        right: 50%;
+    }
+    .sample1 .either1 input[type=radio] + label + input[type=radio]:checked + label::after {
         left: 50%;
         right: 0;
     }
