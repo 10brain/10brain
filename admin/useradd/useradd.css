@@ -1,0 +1,102 @@
+body,input,h1{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+}
+
+body{
+  background-size: cover;
+}
+
+#menu{
+  width: 1277px;
+  height: 82px;
+  background-color: #F6E8D2;
+}
+
+#footer{
+  width: 1277px;
+  height: 18px;
+  background-color: #F6E8D2;
+  position: fixed;
+  bottom: 0px;
+}
+
+.content{
+  width: 75%;
+  height: 100%;
+  margin: 10px auto 10px auto;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 15px 15px;
+}
+
+
+
+.content input[type="text"]{
+  border: 0;
+  border: 1px solid black;
+  height: 25px;
+  width: 35%;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+
+
+.content input[type="button"]{
+  height: 30px;
+  width: 150px;
+  padding: 3px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.title{
+  height: 25px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.title img{
+  margin: 5px 30px;
+}
+
+.form{
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+.content ul{
+  text-align: center;
+  padding: 0;
+  margin-bottom: 40px;
+}

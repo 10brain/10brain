@@ -6,11 +6,47 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>ユーザー情報登録</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="useradd.css">
     </head>
     <body>
-        <div>TODO write content</div>
+      <div id="menu"></div>
+
+      <div class="content">
+
+        <div class="title">
+          <ul>
+            <li>
+              <img src="../../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの登録</h1>
+            </li>
+            <li>
+              <img src="../../img/4.png">
+            </li>
+          </ul>
+        </div>
+
+        <div class="form">
+          <form action="useradd.php" method="post">
+            <span>ユーザー名</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>ユーザーID</span><br>
+            <input type="text" name="" maxlength="80"><br>
+            <span>パスワード</span><br>
+            <input type="text" name="" maxlength="80"><br>
+        </div>
+            <ul>
+              <input type="button" value="確認">
+            </ul>
+            </form>
+          </form>
+
+      </div>
+
+      <div id="footer"></div>
     </body>
 </html>
