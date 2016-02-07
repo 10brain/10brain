@@ -6,11 +6,86 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>リクエスト編集</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="request_edit.css">
     </head>
     <body>
-        <div>TODO write content</div>
+      <div id="menu"></div>
+
+      <div class="content">
+        <div class="edit">
+            <span>タイトル：</span>
+            <br>
+            <span>ユーザー：</span>
+            <br>
+            <span>登録日：</span>
+            <br>
+
+            <form action="request.php" method="post">
+              <ul>
+                <li>
+                  <div class="sample">
+                    <div class="either">
+                      <input type="radio" name="KEYWORD22" id="batsu" value="2" checked="checked" />
+                      <label for="batsu">却下</label>
+                      <input type="radio" name="KEYWORD22" id="sankaku" value="1" />
+                      <label for="sankaku">未承認</label>
+                      <input type="radio" name="KEYWORD22" id="maru" value="0" />
+                      <label for="maru">承認済</label>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <input type="button" value="確認">
+                </li>
+              </ul>
+            </form>
+            <br>
+
+            <form action="request.php" method="post">
+              <ul>
+                <li>
+                  <div class="sample">
+                    <div class="either">
+                      <input type="radio" name="KEYWORD22" id="buy" value="1" checked="checked" />
+                      <label for="buy">未購入</label>
+                      <input type="radio" name="KEYWORD22" id="bought" value="0" />
+                      <label for="bought">購入済</label>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <input type="button" value="確認">
+                </li>
+              </ul>
+            </form>
+            <br>
+              <ul>
+                <li>
+                  <form action="request.php" method="post">
+                    <input type="button" value="削除">
+                  </form>
+
+                </li>
+                <li>
+                  <div class="add">
+                    <form action="request.php" method="post">
+                      <input type="button" value="書籍情報登録へ">
+                    </form>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                  <form action="request.php" method="post">
+                    <input type="button" value="戻る">
+                  </form>
+              </ul>  
+
+        </div>
+      </div>
+
+      <div id="footer"></div>
     </body>
 </html>
