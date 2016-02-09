@@ -23,7 +23,7 @@ class BookModel{
         echo $Key21;
         
         //テキストエリアに値が入っていたら
-
+   /*
    if ($Key21) {
             foreach ($Key21 as $keyword) {
                 // プレースホルダのLIKE部分を用意
@@ -53,7 +53,7 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
  
             echo $strSQL;
 
