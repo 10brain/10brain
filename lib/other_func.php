@@ -135,7 +135,7 @@ class otherModel{
     }
 
     /*********リクエスト一覧SQL***************************************************/
-    function GETRequest($ActType, $Key1, $Key40, &$dspRequest){
+    function GETRequest($ActType, $Key1, &$dspRequest){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -144,14 +144,14 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        if($Key1=='admin@10baton'){
+        if(!is_null($Key1)){
             $strSQL = "Select * From Request";
         }else{
             $result = 2;
             return $result;    
         }
         echo 'アクションタイプ確認ok';
-        
+        /*
         //社員番号確認
         if(is_null($Key3) == True){
             $strSQL = $strSQL. " Where Num IS NULL";
@@ -159,7 +159,7 @@ class otherModel{
             $strSQL = $strSQL. " Where Num = :Key3";            
         }
         echo $Key1.'確認';
-
+        */
        
         
         //SQL実行
@@ -167,10 +167,10 @@ class otherModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key3', $Key3, PDO::PARAM_INT);
+           //$stmh->bindParam(':Key3', $Key3, PDO::PARAM_INT);
 
-            echo $Key2.'確認';
-            echo $strSQL;
+            //echo $Key2.'確認';
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
@@ -188,11 +188,12 @@ class otherModel{
            }else{
                 //表示データ収集
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
-                   $dspUserBorrow[0] = $array['BNum'];//貸出番号
-                   $dspUserBorrow[1] = $array['BDate'];//貸出日
-                   $dspUserBorrow[2] = $array['RePlan'];//返却予定日
-                   $dspUserBorrow[3] = $array['ReDate'];//返却日
-                   $dspUserBorrow[4] = $array['BookNum'];//書籍番号
+                   $dspRequest[i][0] = $array['ReqNum'];//リクエスト番号
+                   $dspRequest[i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
+                   $dspRequest[i][2] = $array['ReqDate'];//リクエスト登録日
+                   $dspRequest[i][3] = $array['app'];//承認び
+                   $dspRequest[i][4] = $array['pur'];//購入
+                   $dspRequest[i][5] = $array['Num'];//リクエスト者社員番号
                 }
            }
            

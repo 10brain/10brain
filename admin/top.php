@@ -9,7 +9,7 @@ $Key2 ="";
 
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
-if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
+if (!ckStr($_POST["KEYWORD1"],30,1) or !preg_match("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
     $result = 1;
 }elseif (!ckStr($_POST["KEYWORD2"],30,1)){
     $result = 1;

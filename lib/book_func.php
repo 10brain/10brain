@@ -211,6 +211,112 @@ echo $result;
         return $result;
     }
 
+     /**************貸出用書籍検索SQL*************************************************/
+
+    function GETBorrowSearch($ActType, $Key1, $Key51, $Key52, &$dspTest){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        
+        if(is_null($Key51)){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From Book Where BookNum=:Key51 And title=:Key52";
+        }
+        echo 'アクションタイプ確認ok';
+        
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
+           $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
+
+            echo $Key2.'確認';
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspTest[$i][0] = $array['BookNum'];//書籍番号
+                   $dspTest[$i][1] = $array['title'];//書籍タイトル
+                $i=$i+1;
+                }
+                //print_r($dspBookList);
+           }
+
+           
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
+
+    /**************貸出登録SQL*************************************************/
+    
+    function GETBorrowAdd($ActType, $Key1, $Key51, $Key52, $Key53){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        if(!is_null($Key51)){
+            $strSQL = "INSERT INTO Borrow(`BNum`, `BDate`, `RePlan`, `BookNum`, `Num`)";
+            $strSQL = $strSQL. " VALUES(Null, now(), :Key53, :Key51, :Key1)";
+        }
+        echo 'アクションタイプ確認ok';
+        
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key53', $Key53, PDO::PARAM_STR);
+           $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
+           $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
+
+            echo $Key2.'確認';
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+
+           
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
+    
+
+        
+
 
 
 }

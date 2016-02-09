@@ -15,39 +15,50 @@ and open the template in the editor.
 $url = "./borrow_confirm.html";
 ?>
   <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <?=$io->get_all_params();?>
+
        <!--書籍番号-->
+
+
         <dl>
         <dt>書籍番号<span class="attention">＊必須項目</span></dt>
-        <dd><input name="bookN" id="bookN" size="10" maxlength="10" type="text" /><br><div class="error"><?=$b_booknError;?></div></dd>
+        <dd><input name="bookNum" id="bookNum" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('bookNum');?>" /><div class="error"><?=$io->get_error("bookNum_error"); ?></div></dd></dd>
         </dl>
 
         <!--タイトル-->
         <dl>
         <dt>タイトル<span class="attention">＊必須項目</span></dt>
-        <dd><input name="title" id="title" size="20" maxlength="40" type="text" /><br><div class="error"><?=$b_titleError;?></div></dd>
+        <dd><input name="title" id="title" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?></div></dd>
         </dl>
         
         <!--返却予定日-->
         <dl>
         <dt>返却予定日<span class="attention">＊必須項目</span></dt>
-        <dd><input name="plan" id="plan" size="20" maxlength="10" type="text" /><br><div class="error"><?=$b_planError?></div></dd>
-        </dl>
+        <dd><input name="plan" id="plan" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('plan');?>" /><div class="error"><?=$io->get_error("plan_error"); ?></div></dd>        </dl>
         
         <input type="hidden" name="ActionType" value="TgRSPInf">
 
         <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
         <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <br><p style="margin-bottom:20px;"><input type="image" alt="入力した内容を確認する" /></p>
+
   </form>
-        <br><p style="margin-bottom:20px;"><input type="image" src="" alt="入力した内容を確認する" /></p>
-
-
+         <?
+         $i=0;
+         while(!is_null($dspTest[$i][0])){
+            $dspTest[$i][0];
+            $dspTest[$i][1];
+         $i=$i+1;
+         }
+         ?>
         <div class="confirm">
            <form name="input" action="<?=URL_ACTION;?>" method="post">
+  
             <?=$io->get_all_params();?>
 
             <dl>
             <dt>書籍番号</dt>
-            <dd><?=$io->get_param_html_br("bid") ?></dd>
+            <dd><?=$io->get_param_html_br("bookNum") ?></dd>
             </dl>
 
             <dl>
@@ -58,7 +69,11 @@ $url = "./borrow_confirm.html";
             <dt>書籍返却予定日</dt>
             <dd><?=$io->get_param_html_br("plan") ?></dd>
             </dl>
-           </form>S
+            
+           <br><p style="margin-bottom:20px;"><input type="image" alt="送信する" /></p>
+
+
+           </form>
 
             
         </div>
