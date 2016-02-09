@@ -57,7 +57,7 @@ class UserModel{
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
-               $result = 0;
+               $result = 1;
                echo $count;
            }else{
                //データ取得
