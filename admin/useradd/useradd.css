@@ -1,4 +1,4 @@
-body,input,textarea{
+body,input,h1{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 12px;
@@ -37,29 +37,66 @@ body{
 .content input[type="text"]{
   border: 0;
   border: 1px solid black;
-  height: 20px;
-  width: 85%;
-  font-size: 1.0em;
-  margin-bottom: 5px;
+  height: 25px;
+  width: 35%;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  letter-spacing: 2px;
 }
 
-.content textarea{
-  border: 0;
-  border: 1px solid black;
-  height: 30px;
-  width: 90%;
-  font-size: 1.0em;
-  margin-bottom: 10px;
-}
+
 
 .content input[type="button"]{
-  height: 45px;
-  width: 100px;
-  padding: 6px 8px;
+  height: 30px;
+  width: 150px;
+  padding: 3px 8px;
   font-size: 1.0em;
   color: black;
   background-color: white;
   border: 1px solid black;
   margin: 0 auto;
   margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.title{
+  height: 25px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.title img{
+  margin: 5px 30px;
+}
+
+.form{
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+.content ul{
+  text-align: center;
+  padding: 0;
+  margin-bottom: 40px;
 }

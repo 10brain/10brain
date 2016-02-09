@@ -22,6 +22,50 @@ body{
   bottom: 0px;
 }
 
+.old a{
+  float: right;
+  padding-top: 5px;
+  padding-right: 30px;
+}
+
+.now a{
+  float: left;
+  padding-top: 5px;
+  padding-left: 30px;
+}
+
+.old a:link{
+  color: #333333;
+}
+
+.old a:visited{
+  color: #333333;
+}
+
+.old a:hover{
+  color: #75876a;
+}
+
+.old a:active{
+  color: #333333;
+}
+
+.now a:link{
+  color: #333333;
+}
+
+.now a:visited{
+  color: #333333;
+}
+
+.now a:hover{
+  color: #75876a;
+}
+
+.now a:active{
+  color: #333333;
+}
+
 table{
   border-collapse: collapse;
   margin: 0 auto;
@@ -66,7 +110,7 @@ table td{
 .content{
   width: 85%;
   height: 480px;
-  margin: 10px auto 10px auto;
+  margin: 30px auto 10px auto;
   color: black;
   background-color: white;
   border: 1px solid black;

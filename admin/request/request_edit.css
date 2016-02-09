@@ -1,4 +1,4 @@
-body,h1{
+body,input{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
@@ -22,51 +22,44 @@ body{
   bottom: 0px;
 }
 
-table{
-  border-collapse: collapse;
-  margin: 0 auto;
+.edit input[type="button"]{
+  height: 45px;
+  width: 100px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
 }
 
-table td{
-  text-align: center;
-  padding: 2px;
-  letter-spacing: 2px;
-}
-
-.title{
-  height: 25px;
-  width: 100%;
-  margin: 15px auto;
-}
-
-.title h1{
-  text-align: center;
-  letter-spacing: 2px;
-  font-size: 18px;
-  font-weight: normal;
+.add input[type="button"]{
+  height: 45px;
+  width: 180px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
 }
 
 
 
-.title ul{
+.edit ul{
   /zoom:1;
   padding: 0;
   text-align: center;
 }
 
-.title li{
+.edit li{
   display: inline-block;
   list-style: none;
-}
-
-.title img{
-  margin: 5px 30px;
+  margin: 0 30px;
 }
 
 .content{
   width: 85%;
-  height: 480px;
-  margin: 10px auto 10px auto;
+  height: 100%;
+  margin: 30px auto 10px auto;
   color: black;
   background-color: white;
   border: 1px solid black;

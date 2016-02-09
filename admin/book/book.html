@@ -6,11 +6,49 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>書籍情報</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="book.css">
     </head>
     <body>
-        <div>TODO write content</div>
+      <div id="menu"></div>
+
+      <div class="content">
+        <div class="form">
+            <span>タイトル：</span>
+            <br>
+            <span>ジャンル：</span>
+            <br>
+            <span>出版社：</span>
+            <br>
+            <span>著者：</span>
+            <br>
+            <span>紹介文：</span>
+            <br>
+            <span>出版年：</span>
+            <br>
+            <span>amazonリンク：</span>
+            <br>
+            <span>備考：</span>
+            <br>
+            <span>画像ファイル：</span>
+            <br>
+            <ul>
+              <li>
+                <form action="search.php" method="post"　enctype="multipart/form-data">
+                  <input type="button" value="戻る">
+                </form>
+              </li>
+              <li>
+                <form action="badd.php" method="post"　enctype="multipart/form-data">
+                  <input type="button" value="編集">
+                </form>
+              </li>
+            </ul>
+        </div>
+      </div>
+
+      <div id="footer"></div>
     </body>
 </html>

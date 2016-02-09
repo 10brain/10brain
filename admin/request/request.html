@@ -6,45 +6,38 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>リクエスト一覧</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="request.css">
     </head>
     <body>
-        <div>TODO write content</div>
-<? if(is_null($dspRequest[0])){?>
-<p>現在表示するリクエストデータはありません。</p>
+        <div id="menu"></div>
+        <div class="old">
+          <a href="requestOld.html">過去のリクエスト一覧→</a>
+        </div>
+        <div class="content">
 
-<?
-}else{
-    $i = 0;
-    while(!is_null($dspRequest[$i][0])){
-?>
+          <div class="title">
+            <ul>
+              <li>
+                <img src="../../img/4.png">
+              </li>
+              <li>
+                <h1>リクエスト一覧</h1>
+              </li>
+              <li>
+                <img src="../../img/4.png">
+              </li>
+            </ul>
+          </div>
 
-		<tr>
-                    <td><?=$dspRequest[$i][0];?></td>
-                    <td><?=$dspRequest[$i][1];?></td>
-                    <td><?=$dspRequest[$i][2];?></td>
-                    <td><?=$dspRequest[$i][3];?></td>
-                    <td><?=$dspRequest[$i][4];?></td>
-<!--
-                    <td><form method="post" action="../book/book.php">
-                        <input type="hidden" name="ActionType" value="TgRSPInf">
-                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
-                        <input type="submit" value="詳細画面" />-->
-                        </form>
-                    </td>
-                </tr>
-<?
-    $i=$i+1;
-    }
-?>
-           </table>
-<?
-    }
-?>
+          <table border="1" width="95%">
+            <tr><td width="10%">ユーザー</td><td width="15%">タイトル</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">承認</td><td width="10%">購入</td><td width="10%">編集ボタン</td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
 
+        <div id="footer"></div>
     </body>
 </html>

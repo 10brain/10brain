@@ -6,11 +6,86 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>書籍一覧</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../../search/search.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="menu"></div>
+
+        <div id="content">
+          <br>
+          <form action="search.php" method="post">
+            <div class="search">
+              <img src="../../img/d.png">
+              <!--入力フォーム-->
+              <input type="text" name="KEYWORD21" maxlength="80">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="submit" value="SEARCH">
+            </div>
+
+            <div class="sample">
+              <div class="either">
+                <input type="radio" name="KEYWORD22" id="dummy_1" value="1" checked="checked" />
+                <label for="dummy_1">AND</label>
+                <input type="radio" name="KEYWORD22" id="dummy_0" value="0" />
+                <label for="dummy_0">OR</label>
+              </div>
+            </div>
+          </form>
+
+            <!--DB内容表示-->
+            <!--contents START -->
+<?if(is_null($dspBookList[0])){?>
+<p>該当する本がありません。</p>
+<?
+}else{
+?>
+           <table border="1" cellspacing="1">
+		<tr>
+                    <th>タイトル</th>
+                    <th>出版社</th>
+                    <th>ジャンル</th>
+                    <th>在庫数</th>
+                    <th width="100px">詳細画面</th>
+                </tr>
+<?
+    $i = 0;
+    while(!is_null($dspBookList[$i][0])){
+?>
+
+		<tr>
+                    <td><?=$dspBookList[$i][1];?></td>
+                    <td><?$dspBookList[$i][2];?></td>
+                    <td><?$dspBookList[$i][3];?></td>
+                    <?if(is_null($dspBookList[$i][4]) or $dspBookList[$i][4]==0){?>
+                        <p>貸出中</p>
+                    <?}else{?>
+                        <td><?=$dspBookList[$i][4];?></td>
+                    <?}?>
+                    <td><form method="post" action="book.php">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+                        <input type="submit" value="詳細画面" />
+                        </form>
+                    </td>
+                </tr>
+<?
+    $i=$i+1;
+    }
+?>
+           </table>
+<?
+}
+?>
+        </div>
+
+        <div id="footer"></div>
+
     </body>
 </html>
