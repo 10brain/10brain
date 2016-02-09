@@ -69,6 +69,7 @@ class UserModel{
                    //表示データ収集
                    $dspUserInfo[0] = $array['Num'];//社員番号
                    $dspUserInfo[1] = $array['Name'];//名前
+                   $dspUserInfo[2] = $array['PW'];//パスワード
                    
                    echo $dspUserInfo[0];
                    echo $dspUserInfo[1];
@@ -252,7 +253,7 @@ class UserModel{
 
 
     /*********ユーザーパスワード変更QL*************************************************/
-    function GETUserPassEdit($ActType, $Key1, $Key2, $Key14){
+    function GETUserPassEdit($ActType, $Key1, $Key2, $newpass){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -261,7 +262,7 @@ class UserModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "UPDATE User SET PW = :Key14";
+            $strSQL = "UPDATE User SET PW = :newpass";
         }
         echo 'アクションタイプ確認ok';
         
@@ -287,7 +288,7 @@ class UserModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
            $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
-           $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
+           $stmh->bindParam(':newpass', $newpass, PDO::PARAM_STR);
 
             echo $Key2.'確認';
             echo $strSQL;
