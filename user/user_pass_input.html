@@ -12,6 +12,9 @@ and open the template in the editor.
       <link rel="stylesheet" type="text/css" href="user.css">
     </head>
     <body>
+<?
+$pass='user_pass_edit.php';
+?>
       <div id="menu"></div>
 
       <div id="content">
@@ -21,7 +24,7 @@ and open the template in the editor.
 
         </div>
         <div class="password">
-          <form action="user_pass_edit.php" method="post">
+            <form action="<?=$pass;?>" method="post">
             <span>現在のパスワード</span><br>
             <input type="password" name="pass" maxlength="80"><br>
             <p><?=$nowPass_error;?></p>

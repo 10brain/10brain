@@ -345,6 +345,26 @@
 			}
 			return $ret;
 		}
+                /****************************************************************************
+		 *文字列の書式チェックを行う(半角英数字)
+		 * 引数：$value  ：評価する値
+		 * 　　：$require：必須フラグ(真なら値必須)
+		 * 　　：$max    ：最大バイト数(0なら上限無し)
+		 * 　　：$min    ：最小バイト数
+		 * 　　：$enc_chk：文字エンコード(チェック時形式)
+		 * 　　：$enc_sou：文字エンコード(ソースファイル)
+		 * 戻値：        ：正規の値ならば真を、問題があれば偽を返す
+		 ****************************************************************************/
+		function isDW_SW($value = "", $require = false, $max = 0, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8")
+		{
+			$ret = true;
+			if (!$this->isMatch($value, $require, "/^(".VALIDATION_SW_LLETTER."|".ALIDATION_SW_DIGIT.")+$/", $max, $min, $enc_chk, $enc_sou))
+			{
+				$ret = false;
+			}
+			return $ret;
+		}
+
 	}
 
 

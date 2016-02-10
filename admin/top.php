@@ -1,6 +1,7 @@
 <?php
-require './lib/user_func.php';
-require './lib/check.php';
+
+require '../../lib/user_func.php';
+require '../../lib/check.php';
 
 $result = 0;
 $ActType = "";

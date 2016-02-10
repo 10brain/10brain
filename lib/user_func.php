@@ -223,7 +223,7 @@ class UserModel{
             return $result;
         }else{
             
-            $strSQL = "INSERT INTO User(`Num`, `ID`, `PW`, `Name`) VALUES (NULL, :Key10, '9999', :Key11)";
+            $strSQL = "INSERT INTO User(`Num`, `ID`, `PW`, `Name`) VALUES (NULL, :Key10.'@10baton.com', '9999', :Key11)";
         }
         echo 'アクションタイプ確認ok';
         

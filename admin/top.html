@@ -13,12 +13,19 @@ and open the template in the editor.
     </head>
     <body>
 <?php
- $home = 'top.php';
+ $home = './top.php';
  $borrow = './borrow/borrow.php';
  $return = './return/return.php';
  $search = './search/search.php';
  $request = './request/request.php';
  $mypage = './user/user.php';
+ 
+ $bookadd='./admin/book_add/badd.php';
+ $bookedit='./admin/book/book.php';//暫定リンク
+ $booklist='./admin/book/search.php';
+ $request='./admin/request/request.php';
+ $useradd='./admin/useradd/useradd.php';
+ $useredit='./admin/user_search/user_search.php';
  ?>
 
         <div id="menu">
@@ -29,65 +36,6 @@ and open the template in the editor.
               <img src="./img/3.png" alt="アイコン">
             </div>
             <div class="center">
-                <ul>
-                <li><form action="<?=$home;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="./img/a.png" alt="ホーム" />
-                    </form>
-                </li>
-                <li><form action="<?=$borrow;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="./img/b.png" alt="貸出" />
-                    </form>
-                </li>
-                <li><form action="<?=$return;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="../img/b.png" alt="返却" />
-                    </form>
-                </li>
-                <li><form action="<?=$search;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="./img/c.png" alt="検索">
-                    </form>
-                </li>
-                <li><form action="<?=$request;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="./img/d.png" alt="リクエスト">
-                    </form>
-                </li>
-                <li><form action="<?=$mypage;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="./img/e.png" alt="マイページ">
-                    </form>
-                </li>
-
-              </ul>
-            </div>
-            <div class="right">
-              <ul>
-                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
-                <li><a href="#">ログアウト</a></li>
-              </ul>
-            </div>
-        </div>
-
-        </div>
-
-        <div id="content">
-          <!-- @itoテストメニュー-->
-                      <div class="center">
                 <ul>
                 <li><form action="<?=$request;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -129,6 +77,65 @@ and open the template in the editor.
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                     <input type="image" src="./img/e.png" alt="マイページ">
+                    </form>
+                </li>
+
+              </ul>
+            </div>
+            <div class="right">
+              <ul>
+                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
+                <li><a href="#">ログアウト</a></li>
+              </ul>
+            </div>
+        </div>
+
+        </div>
+
+        <div id="content">
+          <!-- @itoテストメニュー-->
+                      <div class="center">
+                <ul>
+                <li><form action="<?=$bookadd;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="本を追加" />
+                    </form>
+                </li>
+                <li><form action="<?=$bookedit;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="本を編集" />
+                    </form>
+                </li>
+                <li><form action="<?=$booklist;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="本の一覧" />
+                    </form>
+                </li>
+                <li><form action="<?=$request;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="リクエスト一覧">
+                    </form>
+                </li>
+                <li><form action="<?=$useradd;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="ユーザーを追加">
+                    </form>
+                </li>
+                <li><form action="<?=$useredit;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="image" src="" alt="ユーザーを編集">
                     </form>
                 </li>
 

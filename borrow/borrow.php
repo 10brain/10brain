@@ -138,9 +138,10 @@ define("HTML_CODE", "UTF-8");
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                            $io->set_parameter($Key51, "BookNum");
-                            $io->set_parameter($Key52, "title");
-                            $io->set_parameter($Key53, "plan");
+                            $vali = new Validation();
+                            $Key51=$io->set_parameter("BookNum");
+                            $Key52=$io->set_parameter("title");
+                            $Key53=$io->set_parameter("plan");
                             //データベース更新
                             $obj=new BookModel();
                             $result = $obj->GETGETBorrowAdd($ActType, $Key1, $Key51, $Key52, $Key53);
