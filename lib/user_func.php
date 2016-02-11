@@ -208,7 +208,7 @@ class UserModel{
     }
 
     /*********ユーザー登録SQL*************************************************/
-    function GETUserAdd($ActType, $Key1, $Key10, $Key11){
+    function GETUserAdd($ActType, $Key1, $Key51, $Key52){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -223,18 +223,19 @@ class UserModel{
             return $result;
         }else{
             
-            $strSQL = "INSERT INTO User(`Num`, `ID`, `PW`, `Name`) VALUES (NULL, :Key10.'@10baton.com', '9999', :Key11)";
+            $strSQL = "INSERT INTO User(ID, Name) VALUES (:Key52, :Key51)";
         }
         echo 'アクションタイプ確認ok';
         
         //SQL実行
         try {
+            $Key52 = $Key52.'@10baton.com';
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key10', $Key10, PDO::PARAM_STR);
-           $stmh->bindParam(':Key11', $Key11, PDO::PARAM_STR);
-            echo $Key2.'確認';
+           $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
+           $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
+
             echo $strSQL;
 
            $stmh->execute();//実行

@@ -1,6 +1,6 @@
 <?php
 /******************************************************************************/
-// ユーザー追加
+// ユーザー登録
 // 20160210@ito
 //
 //
@@ -36,18 +36,18 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-    define("HTML_CODE", "UTF-8");
+define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "useradd_input.html");
     define("TEMP_INPUT",   "useradd_input.html");
     define("TEMP_ERROR",   "useradd_input.html");
-    define("TEMP_CONFIRM", "useradd_conf.html");
+    define("TEMP_CONFIRM", "useradd_confirm.html");
     define("TEMP_BLOCK",   "../../login.html");
 
     //登録後のページ遷移指定
-    define("HTML_SUCCESS", "../../top.html");
-    define("HTML_FAILURE", "../../top.html");
+    define("HTML_SUCCESS", "useradd_suc.php");
+    define("HTML_FAILURE", "useradd_fal.html");
 
     // url系情報の指定
     // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
@@ -71,7 +71,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     if($io->is_not_falsification()){
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-                    $decision = true;
+                    $decision = 'false';
 
                     // csvファイルの作成 -----------------------------------------------------
                     // 通し番号とユニークなファイル名を取得
@@ -137,20 +137,25 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     */
 
                     // 完了画面 --------------------------------------------------------------
-                    if($decision){
+                    if($decision=='true'){
                             $vali = new Validation();
                             $Key51=$io->get_param_sql("Name");
                             $Key52=$io->get_param_sql("ID");
-                            $Key53=$io->get_param_sql("PW");
                             //データベース更新
                             $obj=new UserModel();
-                            $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52, $Key53);
-                            include '../top.html';
+                            $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
+                            
+                            if($result==0){
+                                include(HTML_SUCCESS); 
+                            }else{
+                                include(HTML_SUCCESS);
+                            }
+
                     }else{
     //				pg_query($conID, "rollback");
                             // 失敗画面
                             //処理どうし→登録に失敗
-                            include '../../login.html';
+                            include(HTML_FAILURE);
                     }
             }else{
                     // リファラ制限画面
@@ -162,29 +167,22 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
                     $vali = new Validation();
 
-                     
                         // 名前
                         $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("Name"), true, 20, 0, "UTF-8")){
-                                $io->set_error("bookNum_error", "未入力、または内容に誤りが有ります");
+                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
+                                $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
                         }
 
                         //ID
                         $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("ID"), true, 20, 0, "UTF-8")){
+                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
                                 $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
                         }
 
-                        // PW
-                        $io->set_parameter("PW", mb_convert_kana($io->get_param("PW"), "KV", INNER_CODE));
-                        if(!$vali->isDW_SW($io->get_param("plan"), true, 40, 0, "UTF-8")){
-                                $io->set_error("PW_error", "未入力、または内容に誤りが有ります");
-                        }
-                     
 
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-
+                           $decision='true';
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
