@@ -46,8 +46,8 @@ define("HTML_CODE", "UTF-8");
     define("TEMP_BLOCK",   "../../login.html");
 
     //登録後のページ遷移指定
-    define("HTML_SUCCESS", "useradd_suc.php");
-    define("HTML_FAILURE", "useradd_fal.html");
+    define("HTML_SUCCESS", "./useradd_suc.html");
+    define("HTML_FAILURE", "./useradd_fal.html");
 
     // url系情報の指定
     // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
@@ -71,8 +71,7 @@ define("HTML_CODE", "UTF-8");
     if($io->is_not_falsification()){
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-                    $decision = 'false';
-
+                    $decision=true;
                     // csvファイルの作成 -----------------------------------------------------
                     // 通し番号とユニークなファイル名を取得
             /*	$fp = fopen(CSV_PATH.CSV_COUNT, "r+");
@@ -137,19 +136,24 @@ define("HTML_CODE", "UTF-8");
                     */
 
                     // 完了画面 --------------------------------------------------------------
-                    if($decision=='true'){
+                    if($decision){
                             $vali = new Validation();
                             $Key51=$io->get_param_sql("Name");
                             $Key52=$io->get_param_sql("ID");
                             //データベース更新
                             $obj=new UserModel();
+                            //ID確認
                             $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
-                            
-                            if($result==0){
-                                include(HTML_SUCCESS); 
+                            if($result == 3){
+                                 $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
+                                include(TEMP_INPUT);
+                            }elseif($result == 0){
+                                    include(HTML_SUCCESS); 
                             }else{
-                                include(HTML_SUCCESS);
+                                $db_error ='システムエラーです。開発者に連絡してください。';
+                                include(TEMP_INPUT);
                             }
+                            
 
                     }else{
     //				pg_query($conID, "rollback");
@@ -182,7 +186,7 @@ define("HTML_CODE", "UTF-8");
 
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-                           $decision='true';
+                           $decision=true;
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);

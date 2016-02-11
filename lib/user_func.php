@@ -202,8 +202,10 @@ class UserModel{
 
            }
            
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        } catch (Exception $Exception) {
+            $result = 2;
+        }
+
         return $result;
     }
 
@@ -239,16 +241,20 @@ class UserModel{
             echo $strSQL;
 
            $stmh->execute();//実行
+
            if(!$stmh){
                //システムエラー
-               $result=2;
+               $result=3;
            }
-           echo 'DB接続ok';
            echo $result;
+           echo 'DB接続ok';
+           
 
            
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        } catch (Exception $Exception) {
+            $result=3;
+        }
+        
         return $result;
     }
 

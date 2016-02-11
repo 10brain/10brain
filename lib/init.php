@@ -25,7 +25,7 @@ class DBModel{
         try{
             $this->pdo = new PDO(DSN, DBuser, DBpass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            //$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (Exception $Exception) {
             die('エラー文:' .$Exception->getMessage());
         }
