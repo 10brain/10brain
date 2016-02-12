@@ -464,8 +464,10 @@ echo $result;
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Borrow";
+            $strSQL = "Select * From";
         }
+        
+            $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum";
         echo 'アクションタイプ確認ok';
         
         //ID確認
@@ -507,6 +509,7 @@ echo $result;
                    $dspBorrowUList[$i][3] = $array['ReDate'];//返却日
                    $dspBorrowUList[$i][4] = $array['BookNum'];//書籍番号
                    $dspBorrowUList[$i][5] = $array['Num'];//社員番号
+                   $dspBorrowUList[$i][5] = $array['title'];//書籍タイトル
                    $i=$i+1;
                 }
                 print_r($dspBorrowUList[0]);
