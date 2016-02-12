@@ -25,50 +25,55 @@ $Key2 ="";
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
     $result = 1;
-}elseif (!ckStr($_POST["KEYWORD2"],30,1)){
-    $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+
+}
+//貸出冊数確認
+$obj=new BookModel();
+//入力された情報の確認
+$result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
+
+
+if(count($dspBorrowUList[0])<=3){
+    include 'borrow_not.html';
+}else{
+
+        // 内部文字コード
+        define("INNER_CODE", "UTF-8");
+        define("HTML_CODE", "UTF-8");
+
+        // テンプレート系ファイルの指定
+        define("TEMP_AGREE",   "borrow_input.html");
+        define("TEMP_INPUT",   "borrow_input.html");
+        define("TEMP_ERROR",   "borrow_input.html");
+        define("TEMP_CONFIRM", "borrow_confirm.html");
+        define("TEMP_BLOCK",   "../login.html");
+
+        //登録後のページ遷移指定
+        define("HTML_SUCCESS", "./borrow_suc.html");
+        define("HTML_FAILURE", "./borrow_fal.html");
+
+        // url系情報の指定
+        // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
+        // SALESFORCE     非ブランクなら、確認画面からのリンク先をこの値に変更する。ブランクなら、内部の登録処理へ進む。
+        define("MY_NAME",        basename($_SERVER["SCRIPT_NAME"]));
+        define("MY_PATH",        dirname($_SERVER["SCRIPT_NAME"])."/");
+        define("URL_ACTION",     "http://".$_SERVER["SERVER_NAME"].MY_PATH.MY_NAME);
+        define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
+        define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
+        define("CHECK_REFERER",  ""); //
+
+        // 入出力インスタンスの生成
+        $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
+        $io->set_parameters($_POST);
 
 
 
-    // 内部文字コード
-    define("INNER_CODE", "UTF-8");
-define("HTML_CODE", "UTF-8");
 
-    // テンプレート系ファイルの指定
-    define("TEMP_AGREE",   "borrow_input.html");
-    define("TEMP_INPUT",   "borrow_input.html");
-    define("TEMP_ERROR",   "borrow_input.html");
-    define("TEMP_CONFIRM", "borrow_confirm.html");
-    define("TEMP_BLOCK",   "../login.html");
-
-    //登録後のページ遷移指定
-    define("HTML_SUCCESS", "./borrow_suc.html");
-    define("HTML_FAILURE", "./borrow_fal.html");
-
-    // url系情報の指定
-    // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
-    // SALESFORCE     非ブランクなら、確認画面からのリンク先をこの値に変更する。ブランクなら、内部の登録処理へ進む。
-    define("MY_NAME",        basename($_SERVER["SCRIPT_NAME"]));
-    define("MY_PATH",        dirname($_SERVER["SCRIPT_NAME"])."/");
-    define("URL_ACTION",     "http://".$_SERVER["SERVER_NAME"].MY_PATH.MY_NAME);
-    define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
-    define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
-    define("CHECK_REFERER",  ""); //
-
-
-
-    // 入出力インスタンスの生成
-    $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
-    $io->set_parameters($_POST);
-
-
-
-
-    if($io->is_not_falsification()){
+        if($io->is_not_falsification()){
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $decision=true;
@@ -144,7 +149,7 @@ define("HTML_CODE", "UTF-8");
                             //データベース更新
                             $obj=new BookModel();
                             //入力された情報の確認
-                            $result = $obj->GETBorrowSearch($ActType, $Key1, $Key40, $Key41, $dspTest);
+                            $result = $obj->GETBorrowSearch($ActType, $Key40, $Key41, $dspTest);
                             if($result == 6){
                                  $db_error ='入力された情報に該当する書籍情報はありませんでした。';
                                 include(TEMP_INPUT);
@@ -155,12 +160,12 @@ define("HTML_CODE", "UTF-8");
                                 //データベース更新
                                $obj=new BookModel();
                                 //ID確認
-                                $result = $obj->GETBorrowAdd($ActType, $Key1, $Key40, $Key41, $Key42);
+                                $result = $obj->GETBorrowAdd($ActType, $Key0, $Key40, $Key41, $Key42);
                                 if($result==0){
                                     //データベース更新
                                    $obj=new BookModel();
                                     //ID確認
-                                    $result = $obj->GETStock($ActType, $Key1, $Key40, $Key41);
+                                    $result = $obj->GETStock($ActType, $Key0, $Key40, $Key41);
                                     if($result==0){
                                       include(HTML_SUCCESS); 
                                     }else{
@@ -185,7 +190,7 @@ define("HTML_CODE", "UTF-8");
                     include(TEMP_BLOCK);
             }
 
-    }else if($io->get_param("step_from") == "input"){
+       }else if($io->get_param("step_from") == "input"){
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
                     $vali = new Validation();
