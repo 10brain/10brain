@@ -11,24 +11,20 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-<?php
-$url = "./borrow_confirm.html";
-?>
-  <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+
         <?=$io->get_all_params();?>
+        <!--タイトル-->
+        <dl>
+        <dt>ISBN<span class="attention">＊必須項目</span></dt>
+        <dd><input name="isbn" id="isbn" size="20" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><div class="error"><?=$io->get_error("isbn_error"); ?></div></dd>
+        </dl>
 
        <!--書籍番号-->
-
-
         <dl>
         <dt>書籍番号<span class="attention">＊必須項目</span></dt>
         <dd><input name="bookNum" id="bookNum" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('bookNum');?>" /><div class="error"><?=$io->get_error("bookNum_error"); ?></div></dd></dd>
-        </dl>
-
-        <!--タイトル-->
-        <dl>
-        <dt>タイトル<span class="attention">＊必須項目</span></dt>
-        <dd><input name="title" id="title" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?></div></dd>
         </dl>
         
         <!--返却予定日-->
@@ -43,39 +39,6 @@ $url = "./borrow_confirm.html";
         <br><p style="margin-bottom:20px;"><input type="image" alt="入力した内容を確認する" /></p>
 
   </form>
-         <?
-         $i=0;
-         while(!is_null($dspTest[$i][0])){
-            $dspTest[$i][0];
-            $dspTest[$i][1];
-         $i=$i+1;
-         }
-         ?>
-        <div class="confirm">
-           <form name="input" action="<?=URL_ACTION;?>" method="post">
-  
-            <?=$io->get_all_params();?>
-
-            <dl>
-            <dt>書籍番号</dt>
-            <dd><?=$io->get_param_html_br("bookNum") ?></dd>
-            </dl>
-
-            <dl>
-            <dt>書籍タイトル</dt>
-            <dd><?=$io->get_param_html_br("title") ?></dd>
-            </dl>
-            <dl>
-            <dt>書籍返却予定日</dt>
-            <dd><?=$io->get_param_html_br("plan") ?></dd>
-            </dl>
-            
-           <br><p style="margin-bottom:20px;"><input type="image" alt="送信する" /></p>
-
-
-           </form>
-
-            
-        </div>
+         <?=$db_error;?>
     </body>
 </html>

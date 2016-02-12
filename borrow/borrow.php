@@ -1,12 +1,12 @@
 <?php
 /******************************************************************************/
-// 貸出登録画面処理
-// 20160201@ito
+// 貸出登録
+// 20160210@ito
 //
 //
 //
 /******************************************************************************/
-require '../lib/user_func.php';
+require '../lib/book_func.php';
 require '../lib/check.php';
 
 // ライブラリファイルの読み込み
@@ -42,12 +42,12 @@ define("HTML_CODE", "UTF-8");
     define("TEMP_AGREE",   "borrow_input.html");
     define("TEMP_INPUT",   "borrow_input.html");
     define("TEMP_ERROR",   "borrow_input.html");
-    define("TEMP_CONFIRM", "borrow_input.html");
+    define("TEMP_CONFIRM", "borrow_confirm.html");
     define("TEMP_BLOCK",   "../login.html");
 
     //登録後のページ遷移指定
-    define("HTML_SUCCESS", "../top.php");
-    define("HTML_FAILURE", "../top.html");
+    define("HTML_SUCCESS", "./borrow_suc.html");
+    define("HTML_FAILURE", "./borrow_fal.html");
 
     // url系情報の指定
     // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
@@ -71,8 +71,7 @@ define("HTML_CODE", "UTF-8");
     if($io->is_not_falsification()){
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-                    $decision = true;
-
+                    $decision=true;
                     // csvファイルの作成 -----------------------------------------------------
                     // 通し番号とユニークなファイル名を取得
             /*	$fp = fopen(CSV_PATH.CSV_COUNT, "r+");
@@ -139,18 +138,47 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key51=$io->set_parameter("BookNum");
-                            $Key52=$io->set_parameter("title");
-                            $Key53=$io->set_parameter("plan");
+                            $Key40=$io->get_param_sql("isbn");
+                            $Key41=$io->get_param_sql("bookNum");
+                            $Key42=$io->get_param_sql("plan");
                             //データベース更新
                             $obj=new BookModel();
-                            $result = $obj->GETGETBorrowAdd($ActType, $Key1, $Key51, $Key52, $Key53);
-                            include '../top.php';
+                            //入力された情報の確認
+                            $result = $obj->GETBorrowSearch($ActType, $Key1, $Key40, $Key41, $dspTest);
+                            if($result == 6){
+                                 $db_error ='入力された情報に該当する書籍情報はありませんでした。';
+                                include(TEMP_INPUT);
+                            }elseif($result==9){
+                                 $db_error ='既に在庫が無い為、貸出すことができません。';
+                                include(TEMP_INPUT);  
+                            }elseif($result == 0){
+                                //データベース更新
+                               $obj=new BookModel();
+                                //ID確認
+                                $result = $obj->GETBorrowAdd($ActType, $Key1, $Key40, $Key41, $Key42);
+                                if($result==0){
+                                    //データベース更新
+                                   $obj=new BookModel();
+                                    //ID確認
+                                    $result = $obj->GETStock($ActType, $Key1, $Key40, $Key41);
+                                    if($result==0){
+                                      include(HTML_SUCCESS); 
+                                    }else{
+                                      include(HTML_FAILURE);
+                                    }
+                                }
+                            }else{
+                                $db_error ='システムエラーです。開発者に連絡してください。';
+                                include(TEMP_INPUT);
+                            }
+                            
+                            
+
                     }else{
     //				pg_query($conID, "rollback");
                             // 失敗画面
                             //処理どうし→登録に失敗
-                            include '../login.html';
+                            include(HTML_FAILURE);
                     }
             }else{
                     // リファラ制限画面
@@ -161,34 +189,29 @@ define("HTML_CODE", "UTF-8");
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
                     $vali = new Validation();
-                    $obj=new BookModel();
-                    $result = $obj->GETBorrowSearch($ActType, $Key1, $Key51, $Key52, $dspTest);
 
-                     if ($result == 0){
-                        // 書籍番号
+                        //isbn
+                        $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("isbn"), true, 14, 0, "UTF-8")){
+                                $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
+                        }
+
+                        //書籍番号
                         $io->set_parameter("bookNum", mb_convert_kana($io->get_param("bookNum"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("bookNum"), true, 10, 0, "UTF-8")){
+                        if(!$vali->isString($io->get_param("bookNum"), true, 14, 0, "UTF-8")){
                                 $io->set_error("bookNum_error", "未入力、または内容に誤りが有ります");
                         }
 
-                        //書籍タイトル
-                        $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("title"), true, 40, 0, "UTF-8")){
-                                $io->set_error("title_error", "未入力、または内容に誤りが有ります");
-                        }
-
-                        // ＊申込み確認 (agree_0)
+                        //返却予定
                         $io->set_parameter("plan", mb_convert_kana($io->get_param("plan"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("plan"), true, 40, 0, "UTF-8")){
+                        if(!$vali->isString($io->get_param("plan"), true, 8, 0, "UTF-8")){
                                 $io->set_error("plan_error", "未入力、または内容に誤りが有ります");
                         }
-                     }else{
-                         $dberror = "指定された書籍番号及び書籍タイトルは登録されていません。";
-                     }
+
 
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-
+                           $decision=true;
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
