@@ -44,8 +44,17 @@ and open the template in the editor.
                 <td><?=$dspBorrowUList[$i][6];?></td><!--書籍タイトル-->
                 <td><?=$dspBorrowUList[$i][1];?></td><!--貸出日-->
                 <td><?=$dspBorrowUList[$i][2];?></td><!--返却日予定日-->
+                <?if(is_null($dspBorrowUList[$i][3])){?>
+                <td>
+                    <form action="<?=$return;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="submit" value="返却" /></td><!--返却日-->
+                    </form>
+                <?}else{?>
                 <td><?=$dspBorrowUList[$i][3];?></td><!--返却日-->
-
+                <?}?>
             </tr>
 <?
     $i=$i+1;

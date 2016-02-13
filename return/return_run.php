@@ -16,19 +16,19 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
-    $Key0 = $_POST["KEYWORD0"];  //ID
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
-    $Key21 = $_POST["KEYWORD21"];  //フリーワード
-    $Key22 = $_POST["KEYWORD22"];  //and or
-    //DB問い合わせ
+
+    //貸出一覧確認
     $obj=new BookModel();
-    $result = $obj->GETBookList($ActType, $Key21, $Key22, $dspBookList);
+    //入力された情報の確認
+    $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
 
 
 //画面表示
 if ($result == 0){
-    include("search.html");
+    include("return_input.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
@@ -38,7 +38,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
     
-include("login.html");
+include("../login.html");
 }
 
 }    

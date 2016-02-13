@@ -345,7 +345,7 @@ echo $result;
     }
     
 
-     /**************在庫数調整SQL*************************************************/
+     /**************貸出在庫数調整SQL*************************************************/
     function GETStock($ActType, $Key0, $Key40, $Key41){
         //初期値設定
         $result = 0;
@@ -502,6 +502,7 @@ echo $result;
                echo $count;
            }else{
                 //表示データ収集
+               $i=0;
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
                    $dspBorrowUList[$i][0] = $array['BNum'];//貸出番号
                    $dspBorrowUList[$i][1] = $array['BDate'];//貸出日
@@ -509,18 +510,66 @@ echo $result;
                    $dspBorrowUList[$i][3] = $array['ReDate'];//返却日
                    $dspBorrowUList[$i][4] = $array['BookNum'];//書籍番号
                    $dspBorrowUList[$i][5] = $array['Num'];//社員番号
-                   $dspBorrowUList[$i][5] = $array['title'];//書籍タイトル
+                   $dspBorrowUList[$i][6] = $array['title'];//書籍タイトル
                    $i=$i+1;
                 }
                 print_r($dspBorrowUList[0]);
                 print_r($dspBorrowUList);
            }
            
-        } catch (Exception $Exception) {}
+        } catch (Exception $Exception) {
+            $result=4;
+        }
         //return $dspUserInfo;
         return $result;
     }
 
+     /**************返却在庫数調整SQL*************************************************/
+    function GETStockAdd($ActType, $Key0, $Key40, $Key41){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        //貸出登録
+        //在庫処理sql
+
+            $strSQL = "Update Book SET stock=";
+            $strSQL =  $strSQL. " CASE WHEN stock IS NULL OR stock <= 0 THEN 0 ELSE stock - 1 END";
+            $strSQL =  $strSQL. " Where ISBN = :Key40 And BookNum = :Key41";
+
+        
+        echo '在庫数処理開始';
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
+           $stmh->bindParam(':Key41', $Key41, PDO::PARAM_STR);
+
+
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+
+           
+        } catch (Exception $Exception) {
+            $result=5;
+        }
+
+        //return $dspUserInfo;
+        return $result;
+    }
 
 
 
