@@ -57,7 +57,7 @@ class UserModel{
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
-               $result = 0;
+               $result = 1;
                echo $count;
            }else{
                //データ取得
@@ -69,6 +69,7 @@ class UserModel{
                    //表示データ収集
                    $dspUserInfo[0] = $array['Num'];//社員番号
                    $dspUserInfo[1] = $array['Name'];//名前
+                   $dspUserInfo[2] = $array['PW'];//パスワード
                    
                    echo $dspUserInfo[0];
                    echo $dspUserInfo[1];
@@ -201,13 +202,15 @@ class UserModel{
 
            }
            
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        } catch (Exception $Exception) {
+            $result = 2;
+        }
+
         return $result;
     }
 
     /*********ユーザー登録SQL*************************************************/
-    function GETUserAdd($ActType, $Key1, $Key10, $Key11){
+    function GETUserAdd($ActType, $Key1, $Key51, $Key52){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -222,37 +225,42 @@ class UserModel{
             return $result;
         }else{
             
-            $strSQL = "INSERT INTO User(`Num`, `ID`, `PW`, `Name`) VALUES (NULL, :Key10, '9999', :Key11)";
+            $strSQL = "INSERT INTO User(ID, Name) VALUES (:Key52, :Key51)";
         }
         echo 'アクションタイプ確認ok';
         
         //SQL実行
         try {
+            $Key52 = $Key52.'@10baton.com';
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key10', $Key10, PDO::PARAM_STR);
-           $stmh->bindParam(':Key11', $Key11, PDO::PARAM_STR);
-            echo $Key2.'確認';
+           $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
+           $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
+
             echo $strSQL;
 
            $stmh->execute();//実行
+
            if(!$stmh){
                //システムエラー
-               $result=2;
+               $result=3;
            }
-           echo 'DB接続ok';
            echo $result;
+           echo 'DB接続ok';
+           
 
            
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        } catch (Exception $Exception) {
+            $result=3;
+        }
+        
         return $result;
     }
 
 
     /*********ユーザーパスワード変更QL*************************************************/
-    function GETUserPassEdit($ActType, $Key1, $Key2, $Key14){
+    function GETUserPassEdit($ActType, $Key1, $Key2, $newpass){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -261,7 +269,7 @@ class UserModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "UPDATE User SET PW = :Key14";
+            $strSQL = "UPDATE User SET PW = :newpass";
         }
         echo 'アクションタイプ確認ok';
         
@@ -287,7 +295,7 @@ class UserModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
            $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
-           $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
+           $stmh->bindParam(':newpass', $newpass, PDO::PARAM_STR);
 
             echo $Key2.'確認';
             echo $strSQL;

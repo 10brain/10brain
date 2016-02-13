@@ -11,6 +11,34 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+
+        <?=$io->get_all_params();?>
+        <!--タイトル-->
+        <dl>
+        <dt>ISBN<span class="attention">＊必須項目</span></dt>
+        <dd><input name="isbn" id="isbn" size="20" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><div class="error"><?=$io->get_error("isbn_error"); ?></div></dd>
+        </dl>
+
+       <!--書籍番号-->
+        <dl>
+        <dt>書籍番号<span class="attention">＊必須項目</span></dt>
+        <dd><input name="bookNum" id="bookNum" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('bookNum');?>" /><div class="error"><?=$io->get_error("bookNum_error"); ?></div></dd></dd>
+        </dl>
+        
+        <!--返却予定日-->
+        <dl>
+        <dt>返却予定日<span class="attention">＊必須項目</span></dt>
+        <dd><input name="plan" id="plan" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('plan');?>" /><div class="error"><?=$io->get_error("plan_error"); ?></div></dd>        </dl>
+        
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <br><p style="margin-bottom:20px;"><input type="image" alt="入力した内容を確認する" /></p>
+
+  </form>
+         <?=$db_error;?>
     </body>
 </html>

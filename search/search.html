@@ -61,33 +61,21 @@ and open the template in the editor.
 ?>
 <!--↓追記部分-->
 <table border="1" width="80%">
-  <tr><td width="10%"></td><td width="40%">タイトル</td><td width="25%">出版社</td><td width="15%">カテゴリ</td><td width="10%">貸出状況</td></tr>
-  <tr><td></td><td></td><td></td><td></td><td></td></tr>
-</table>
+  <tr>
+      <td width="10%"></td>
+      <td width="40%">タイトル</td>
+      <td width="25%">出版社</td>
+      <td width="15%">カテゴリ</td>
+      <td width="10%">貸出状況</td></tr>
+
 <!--↑追記部分-->
 
-           <table border="1" cellspacing="1">
-		<tr>
-                    <th>タイトル</th>
-                    <th>出版社</th>
-                    <th>ジャンル</th>
-                    <th>在庫数</th>
-                    <th width="100px">詳細画面</th>
-                </tr>
 <?
     $i = 0;
     while(!is_null($dspBookList[$i][0])){
 ?>
 
 		<tr>
-                    <td><?=$dspBookList[$i][1];?></td>
-                    <td><?$dspBookList[$i][2];?></td>
-                    <td><?$dspBookList[$i][3];?></td>
-                    <?if(is_null($dspBookList[$i][4]) or $dspBookList[$i][4]==0){?>
-                        <p>貸出中</p>
-                    <?}else{?>
-                        <td><?=$dspBookList[$i][4];?></td>
-                    <?}?>
                     <td><form method="post" action="../book/book.php">
                         <input type="hidden" name="ActionType" value="TgRSPInf">
                         <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
@@ -96,12 +84,21 @@ and open the template in the editor.
                         <input type="submit" value="詳細画面" />
                         </form>
                     </td>
+
+                    <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
+                    <td><?$dspBookList[$i][2];?></td><!--出版社-->
+                    <td><?$dspBookList[$i][3];?></td><!--カテゴリ-->
+                    <?if(is_null($dspBookList[$i][4]) or $dspBookList[$i][4]==0){?>
+                        <p>貸出中</p>
+                    <?}else{?>
+                        <td>在庫有</td>
+                    <?}?>
                 </tr>
 <?
     $i=$i+1;
     }
 ?>
-           </table>
+</table>
 <?
 }
 ?>

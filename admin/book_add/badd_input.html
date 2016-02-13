@@ -16,23 +16,29 @@ and open the template in the editor.
 
       <div class="content">
         <div class="form">
-          <form action="badd.php" method="post"　enctype="multipart/form-data">
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+
+        <?=$io->get_all_params();?>
+            <span>ISBN</span><br>
+            <input name="isbn" id="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
             <span>タイトル</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="title" id="title" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
             <span>ジャンル</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="genre" id="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><div class="error"><?=$io->get_error("genre_error"); ?><br>
             <span>出版社</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="pub" id="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><div class="error"><?=$io->get_error("pub_error"); ?><br>
             <span>著者</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="writer" id="writer" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('writer');?>" /><div class="error"><?=$io->get_error("writer_error"); ?><br>
             <span>紹介文</span><br>
-            <input type="text" name="" maxlength="80"><br>
+               <textarea rows="2" cols="60" wrap="SOFT" name="intro" /><?=$io->get_param_html("intro") ?></textarea><br><div class="error"><?=$io->get_error("intro_error"); ?><br>
             <span>出版年</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="year" id="year" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('year');?>" /><div class="error"><?=$io->get_error("year_error"); ?><br>
             <span>amazonリンク</span><br>
-            <input type="text" name="" maxlength="80"><br>
+            <input name="amazon" id="amazon" size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" /><div class="error"><?=$io->get_error("amazon_error"); ?><br>
             <span>備考</span><br>
-            <textarea type="text" name="" maxlength="127"></textarea><br>
+              <textarea rows="2" cols="60" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea><br><div class="error"><?=$io->get_error("remarks_error"); ?><br>
+
             <span>画像ファイル</span><br>
             <input type="file" name="pic"><br>
             <input type="button" value="確認">

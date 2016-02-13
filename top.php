@@ -26,7 +26,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 //画面表示
 if ($result == 0){
-    include("top.html");
+    //管理者か一般ユーザーか判定
+    if($dspUserInfo[1]=='管理者'){
+        include("./admin/top.html");
+    }else{
+        include("top.html");
+    }
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
