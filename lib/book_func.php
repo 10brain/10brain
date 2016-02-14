@@ -670,7 +670,7 @@ echo $result;
         //在庫処理sql
 
             $strSQL = "Update Book SET stock=";
-            $strSQL =  $strSQL. " CASE WHEN stock =0 or stock<2 THEN 1 ELSE stock +1 END";
+            $strSQL =  $strSQL. " CASE WHEN stock<2 THEN 1 ELSE stock +1 END";
         
         //書籍番号確認
         if(is_null($Key20) == True){

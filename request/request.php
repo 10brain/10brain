@@ -190,7 +190,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 			}
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-                           $decision=true;
+                           
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
