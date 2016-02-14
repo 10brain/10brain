@@ -116,15 +116,18 @@ class UserModel{
                $result = 0;
                echo $count;
            }else{
-                //表示データ収集
-                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
                    $dspUserList[0] = $array['Num'];//社員番号
                    $dspUserList[1] = $array['Name'];//名前
                    $dspUserList[2] = $array['Num'];//社員番号
                    $dspUserList[3] = $array['Num'];//社員番号
                    
-                   echo $dspUserInfo[0][0];
-                   echo $dspUserInfo[1][1];
+
                }
 
            }

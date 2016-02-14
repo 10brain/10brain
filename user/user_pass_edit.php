@@ -73,6 +73,7 @@ if ($result == 0){
     $result = $obj->GETUserPassEdit($ActType, $Key1, $Key2, $newpass);
     if($result == 0){
             $passedit = "../index.php";
+            $Key2=$newpass;
             include("user_pass_conf.html");
     }elseif($RetCode == 1){
             include("user_pass_input.html");

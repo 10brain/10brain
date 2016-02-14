@@ -524,8 +524,139 @@ echo $result;
         return $result;
     }
 
+    /*********貸出履歴詳細SQL*********************************************/
+    function GETBorrowU($ActType, $Key0, $Key40, &$dspBorrowU){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From";
+        }
+        
+            $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum";
+        echo 'アクションタイプ確認ok';
+        
+        //ID確認
+        if(is_null($Key0) == True){
+            $strSQL = $strSQL. " Where Num IS NULL";
+        }else{
+            $strSQL = $strSQL. " Where Num = :Key0 ";            
+        }
+        
+        //貸出番号確認
+        if(is_null($Key40) == True){
+            $strSQL = $strSQL. " And BNum IS NULL";
+        }else{
+            $strSQL = $strSQL. " And BNum = :Key40 ";            
+        }
+        echo $Key1.'確認';
+       
+        
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
+           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   $dspBorrowU[0] = $array['BookNum'];//書籍番号
+                   $dspBorrowU[1] = $array['title'];//タイトル
+                   $dspBorrowU[2] = $array['BDate'];//貸出び
+                   $dspBorrowU[3] = $array['RePlan'];//返却日
+                   $dspBorrowU[4] = $array['BNum'];//貸出番号
+               }
+
+           }
+           
+        } catch (Exception $Exception) {
+            $result=4;
+        }
+        //return $dspUserInfo;
+        return $result;
+    }
+
+    /*********返却処理SQL*********************************************/
+    function GETReturnU($ActType, $Key0, $Key40){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+          $strSQL = "Update Borrow SET ReDate='" .Date('Ymd') ."'";          
+        }
+        echo 'アクションタイプ確認ok';
+
+        //貸出番号確認
+        if(is_null($Key40) == True){
+            $strSQL = $strSQL. " Where BNum IS NULL";
+        }else{
+            $strSQL =  $strSQL. " Where BNum = :Key40";  
+        }
+        
+        //社員番号確認
+        if(is_null($Key0) == True){
+            $strSQL = $strSQL. " And Num IS NULL";
+        }else{
+            $strSQL = $strSQL. " And Num = :Key0 ";            
+        }
+        echo $Key1.'確認';
+       
+        
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
+           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           
+        } catch (Exception $Exception) {
+            $result=4;
+        }
+        //return $dspUserInfo;
+        return $result;
+    }
+
      /**************返却在庫数調整SQL*************************************************/
-    function GETStockAdd($ActType, $Key0, $Key40, $Key41){
+    function GETStockAdd($ActType, $Key20){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -538,9 +669,14 @@ echo $result;
         //在庫処理sql
 
             $strSQL = "Update Book SET stock=";
-            $strSQL =  $strSQL. " CASE WHEN stock IS NULL OR stock <= 0 THEN 0 ELSE stock - 1 END";
-            $strSQL =  $strSQL. " Where ISBN = :Key40 And BookNum = :Key41";
-
+            $strSQL =  $strSQL. " CASE WHEN stock =0 or stock<2 THEN 1 ELSE stock +1 END";
+        
+        //書籍番号確認
+        if(is_null($Key20) == True){
+            $strSQL = $strSQL. " And BookNum IS NULL";
+        }else{
+            $strSQL = $strSQL. " And BookNum = :Key20 ";            
+        }
         
         echo '在庫数処理開始';
         //SQL実行
@@ -548,8 +684,7 @@ echo $result;
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-           $stmh->bindParam(':Key41', $Key41, PDO::PARAM_STR);
+           $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
 
 
             echo $strSQL;
