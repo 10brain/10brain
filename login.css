@@ -23,7 +23,7 @@ input{
 #layer{
   background-color: rgba(255,255,255,0.3);
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 }
 
 #login{

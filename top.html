@@ -25,21 +25,15 @@ and open the template in the editor.
           <div class="header">
           </div>
 
-
           <div class="menu">
-            <div class="right">
-              <ul>
-                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
-                <li><a href="#">ログアウト</a></li>
-              </ul>
-            </div>
+
 
             <div class="left">
               <img src="img/3.png" alt="アイコン">
             </div>
 
             <div class="center">
-                <ul>
+              <ul>
                 <li><form action="<?=$home;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
@@ -87,13 +81,17 @@ and open the template in the editor.
                     <input type="image" src="img/f.png" alt="マイページ">
                     </form>
                 </li>
-
               </ul>
             </div>
 
+            <div class="right">
+              <ul>
+                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
+                <li><a href="#">ログアウト</a></li>
+              </ul>
+            </div>
 
           </div>
-
 
         </div>
 
@@ -102,7 +100,7 @@ and open the template in the editor.
             <ul>
               <li><a href="#"><img src=""></a></li>
             </ul>
-          </div>
+          </div>  
           <div class="clear"></div>
         </div>
 

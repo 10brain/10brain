@@ -13,26 +13,37 @@ body{
 .menu{
   background-color: #F6E8D2;
   height: 60px;
+  min-height: 60px;
   width: 100%;
+  overflow: hidden;
 }
 
 .menu:after{
   content: "";
   display: block;
   clear: both;
+  overflow: hidden;
 }
+
+
 
 .left{
   float: left;
+  overflow: hidden;
+  position: fixed;
+  left: 0px;
 }
 
 .left img{
   width: 30px;
   height: 30px;
+  min-width: 10px;
+  min-height: 10px;
 }
 
 .center{
-  height:40px;
+  height:50px;
+  min-height: 40px;
   width: 450px;
   margin: 0 auto;
 }
@@ -47,11 +58,14 @@ body{
   /zoom: 1;
   margin: 0;
   height:35px;
+  min-height: 35px;
   width: 450px;
+  min-width: 450px;
   text-align: center;
   overflow: hidden;
   padding: 0;
-  padding-top: 5px;
+  padding-top: 15px;
+  position: absolute;
 }
 
 .center li{
@@ -61,20 +75,32 @@ body{
 }
 
 .right{
-  float: right;
+  float: left;
+  position: fixed;
+  right: 0px;
+  top: 12px;
   color: #B4B2AF;
+  height: 20px;
+  width: 200px;
+  min-width: 0px;
+  min-height: 0px;
+  overflow: hidden;
 }
 
 .right ul{
-  height: 20px;
-  width: 200px;
   margin: 0;
   padding: 0;
+  height: 20px;
+  width: 200px;
+  min-width: 0px;
+  min-height: 0px;
+  overflow: hidden;
 }
 
 .right li {
   float: left;
   list-style: none;
+
 }
 
 .right li a{
