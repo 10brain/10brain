@@ -145,7 +145,7 @@ define("HTML_CODE", "UTF-8");
                             //ID確認
                             $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
                             if($result == 3){
-                                 $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
+                                $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
                                 include(TEMP_INPUT);
                             }elseif($result == 0){
                                     include(HTML_SUCCESS); 

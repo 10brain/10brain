@@ -151,7 +151,7 @@ class otherModel{
 
     
     /**************リクエスト登録SQL*************************************************/
-    function GETRequestAdd($ActType, $Key1, $Key41, $Key42, $Key43, $Key44){
+    function GETRequestAdd($ActType, $Key61, $Key62, $Key63){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -160,8 +160,8 @@ class otherModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Request(`ReqNum`, `Reqtitle`, `Reqamaz`, `ReqRem`, `ReqDate`) VALUES";
-            $strSQL = $strSQL. " (NULL, :Key41, :Key42, :Key43, :Key44)";
+            $strSQL = "INSERT INTO Request(Reqtitle, Reqamaz, ReqRem, ReqDate) VALUES";
+            $strSQL = $strSQL. " (:Key61, :Key62, :Key63, '" .Date('Ymd') ."')";
         }
         echo 'アクションタイプ確認ok';
         
@@ -170,12 +170,10 @@ class otherModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key41', $Key41, PDO::PARAM_STR);
-           $stmh->bindParam(':Key42', $Key42, PDO::PARAM_STR);
-           $stmh->bindParam(':Key43', $Key43, PDO::PARAM_STR);
-           $stmh->bindParam(':Key44', $Key44, PDO::PARAM_INT);
+           $stmh->bindParam(':Key61', $Key61, PDO::PARAM_STR);
+           $stmh->bindParam(':Key62', $Key62, PDO::PARAM_STR);
+           $stmh->bindParam(':Key63', $Key63, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -187,7 +185,9 @@ class otherModel{
            echo $result;
 
            
-        } catch (Exception $Exception) {}
+        } catch (Exception $Exception) {
+            $result = 3;
+        }
         //return $dspUserInfo;
         return $result;
     }

@@ -476,6 +476,7 @@ echo $result;
         }else{
             $strSQL = $strSQL. " Where Num = :Key0 ";            
         }
+        $strSQL = $strSQL. " Order By BDate DESC";
         echo $Key1.'確認';
        
         
@@ -551,10 +552,10 @@ echo $result;
         if(is_null($Key40) == True){
             $strSQL = $strSQL. " And BNum IS NULL";
         }else{
-            $strSQL = $strSQL. " And BNum = :Key40 ";            
+            $strSQL = $strSQL. " And BNum = :Key40";            
         }
         echo $Key1.'確認';
-       
+
         
         //SQL実行
         try {

@@ -12,18 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_not.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/top.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/return/return_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/lib/init.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/return/return_run.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/request/request_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/request/request_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/request/request_suc.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/request/request_fal.html</file>
         </group>
     </open-files>
 </project-private>
