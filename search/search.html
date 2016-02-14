@@ -51,7 +51,7 @@ and open the template in the editor.
           </li>
         </ul>
           </form>
-
+<div class="table">
             <!--DB内容表示-->
             <!--contents START -->
 <?if(is_null($dspBookList[0])){?>
@@ -81,7 +81,7 @@ and open the template in the editor.
                         <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                         <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
-                        <input type="submit" value="詳細画面" />
+                        <input type="submit" value="詳細" />
                         </form>
                     </td>
 
@@ -102,6 +102,7 @@ and open the template in the editor.
 <?
 }
 ?>
+</div>
         </div>
 
         <div id="footer"></div>
