@@ -13,13 +13,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_confirm.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/request/request_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/user/user_pass_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/request/request_confirm.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/request/request_suc.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/request/request_fal.html</file>
         </group>
     </open-files>
 </project-private>

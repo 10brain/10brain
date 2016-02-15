@@ -22,10 +22,11 @@ class BookModel{
         }
         echo $Key21;
         
-        //テキストエリアに値が入っていたら
-   /*
+
+   
    if ($Key21) {
-            foreach ($Key21 as $keyword) {
+       //$strSQL = $strSQL." Where title like :Key21";
+            /*foreach ($Key21 as $keyword) {
                 // プレースホルダのLIKE部分を用意
                 $holders[] = "((title LIKE $keyword ESCAPE '!') OR (genre LIKE $keyword ESCAPE '!'))";
                 // LIKE検索のために「%キーワード%」の形式にする
@@ -37,7 +38,7 @@ class BookModel{
             }else{
             // 実行
             $strSQL = $strSQL. ' WHERE (' . implode(' AND ', $holders) . ')';
-            }
+            }*/
   
    }
         
@@ -90,8 +91,73 @@ class BookModel{
         return $result;
     }
     
+    /*********管理者書籍検索SQL*************************************************/
+    function GETAdminBook($ActType, $Key21, &$dspAdminBook){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From Book";
+        }
+        echo 'アクションタイプ確認ok';
+        
+        //書籍番号確認        
+        if($Key21){
+            $strSQL = $strSQL. ' WHERE title Like :Key21';            
+        }
+        $Key21 = "%$Key21%";
+echo $Key21;
+echo $result;
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+
+ 
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+          echo $strSQL;
+           echo 'DB接続ok';
+           echo $result;
+           
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   //表示データ収集
+                   $dspAdminBook[$i][0] = $array['BookNum'];//書籍番号
+                   $dspAdminBook[$i][1] = $array['title'];//書籍タイトル
+                   $dspAdminBook[$i][2] = $array['genre'];//ジャンル
+                   $dspAdminBook[$i][3] = $array['pub'];//出版社
+                   $dspAdminBook[$i][4] = $array['stock'];//在庫数
+                   $dspAdminBook[$i][5] = $array['cover'];//表紙名
+                   $dspAdminBook[$i][6] = $array['ISBN'];//ISBN
+                  $i=$i+1;
+               }
+         
+           }
+           
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
+    
     /*********書籍詳細SQL*************************************************/
-    function GETBookDetail($ActType, $Key20,  $Key21, &$dspBookDet){
+    function GETBookDetail($ActType, $Key20, $Key21, &$dspBookDet){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -127,7 +193,6 @@ echo $result;
             $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
             $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
 
-            echo $strSQL;
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
@@ -160,7 +225,7 @@ echo $result;
                    $dspBookDet[8] = $array['cover'];//表紙名
                    $dspBookDet[9] = $array['ISBN'];//表紙名
                }
-                print_r($dspBookDet);
+               
            }
            
         } catch (Exception $Exception) {}

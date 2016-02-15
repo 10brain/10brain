@@ -86,8 +86,8 @@ and open the template in the editor.
                     </td>
 
                     <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
-                    <td><?$dspBookList[$i][2];?></td><!--出版社-->
-                    <td><?$dspBookList[$i][3];?></td><!--カテゴリ-->
+                    <td><?=$dspBookList[$i][2];?></td><!--出版社-->
+                    <td><?=$dspBookList[$i][3];?></td><!--カテゴリ-->
                     <?if($dspBookList[$i][4]==0){?>
                         <td>貸出中</td>
                     <?}else{?>
