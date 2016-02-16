@@ -12,14 +12,7 @@ and open the template in the editor.
       <link rel="stylesheet" type="text/css" href="useradd.css">
     </head>
     <body>
-<?
-$useradd='useradd.php';
-?>
-      <div id="menu"></div>
-
-      <div class="content">
-
-        <div class="title">
+          <div class="title">
           <ul>
             <li>
               <img src="../../img/4.png">
@@ -33,31 +26,39 @@ $useradd='useradd.php';
           </ul>
         </div>
 
-        <div class="form">
         <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
 
 
-            <span>ユーザー名</span><br>
-            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><div class="error"><?=$io->get_error("Name_error"); ?><br>
-            <span>ユーザーID</span><br>
-            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<div class="error"><?=$io->get_error("ID_error"); ?><br>
-            <!--<span>パスワード</span><br>
-            <input name="PW" id="PW" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('PW');?>" /><div class="error"><?=$io->get_error("PW_error"); ?><br>-->
-        </div>
-          <ul>
-            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <span>ISBN</span><br>
+            <input name="isbn" id="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
+            <span>タイトル</span><br>
+            <input name="title" id="title" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
+            <span>ジャンル</span><br>
+            <input name="genre" id="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><div class="error"><?=$io->get_error("genre_error"); ?><br>
+            <span>出版社</span><br>
+            <input name="pub" id="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><div class="error"><?=$io->get_error("pub_error"); ?><br>
+            <span>著者</span><br>
+            <input name="writer" id="writer" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('writer');?>" /><div class="error"><?=$io->get_error("writer_error"); ?><br>
+            <span>紹介文</span><br>
+               <textarea rows="2" cols="60" wrap="SOFT" name="intro" /><?=$io->get_param_html("intro") ?></textarea><br><div class="error"><?=$io->get_error("intro_error"); ?><br>
+            <span>出版年</span><br>
+            <input name="year" id="year" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('year');?>" /><div class="error"><?=$io->get_error("year_error"); ?><br>
+            <span>amazonリンク</span><br>
+            <input name="amazon" id="amazon" size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" /><div class="error"><?=$io->get_error("amazon_error"); ?><br>
+            <span>備考</span><br>
+              <textarea rows="2" cols="60" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea><br><div class="error"><?=$io->get_error("remarks_error"); ?><br>
 
-            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-            <input type="image" value="確認">
-          </ul>
+            <span>画像ファイル</span><br>
+            <input type="file" name="pic"><br>
+            <input type="button" value="確認">
+            </form>
           </form>
-            <?=$dbid_error;?><br>
-            <?=$db_error;?>
-
+        </div>
       </div>
+
+
 
       <div id="footer"></div>
     </body>

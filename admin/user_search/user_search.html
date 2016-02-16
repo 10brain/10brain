@@ -6,11 +6,86 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>ユーザー一覧</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../../search/search.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="menu"></div>
+
+        <div id="content">
+          <br>
+          <form action="user_search.php" method="post">
+            <div class="search">
+              <img src="../../img/d.png">
+              <!--入力フォーム-->
+              <input type="text" name="KEYWORD11" maxlength="80">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="submit" value="SEARCH">
+            </div>
+
+          </form>
+<?
+$user_edit = './useredit.php';
+$user_det = '../user/user.php';
+?>
+            <!--DB内容表示-->
+            <!--contents START -->
+<?if(is_null($dspAdminUser[0])){?>
+<p>該当する本がありません。</p>
+<?
+}else{
+?>
+           <table border="1" cellspacing="1">
+		<tr>
+                    <th>編集</th>
+                    <th>社員番号</th>
+                    <th>ID</th>
+                    <th>社員名</th>
+                    <th>詳細</th>
+                </tr>
+<?
+    $i = 0;
+    while(!is_null($dspAdminUser[$i][0])){
+?>
+
+		<tr>
+                    <td><form method="post" action="<?=$user_edit;?>">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD12" value="<?=$dspAdminUser[$i][0];?>">
+                        <input type="hidden" name="KEYWORD13" value="<?=$dspAdminUser[$i][1];?>">
+                        <input type="submit" value="編集" />
+                        </form>
+                    </td>
+                    <td><?=$dspAdminUser[$i][0];?></td>
+                    <td><?=$dspAdminUser[$i][1];?></td>
+                    <td><?=$dspAdminUser[$i][2];?></td>
+                    <td><form method="post" action="<?=$user_det;?>">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD12" value="<?=$dspAdminUser[$i][0];?>">
+                        <input type="hidden" name="KEYWORD13" value="<?=$dspAdminUser[$i][1];?>">
+                        <input type="submit" value="詳細画面" />
+                        </form>
+                    </td>
+                </tr>
+<?
+    $i=$i+1;
+    }
+?>
+           </table>
+<?
+}
+?>
+        </div>
+
+        <div id="footer"></div>
+
     </body>
 </html>

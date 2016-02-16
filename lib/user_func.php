@@ -82,63 +82,9 @@ class UserModel{
         return $result;
     }
     
-    /*********ユーザー一覧情報SQL*************************************************/
-    function GETUserList($ActType, &$dspUserList){
-        //初期値設定
-        $result = 0;
-        /**SQL発行**/
-        //アクションタイプ確認
-        if($ActType != 'TgRSPInf'){
-            $result = 2;
-            return $result;
-        }else{
-            $strSQL = "Select * From User";
-        }
-        echo 'アクションタイプ確認ok';
-        
-        //SQL実行
-        try {
-           //クラス呼び出し
-           $class=new DBModel();
-           $stmh = $class->pdo->prepare($strSQL);
-            echo $strSQL;
-           $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-           
-           $count=$stmh->rowCount();//実行結果の行数をカウント
-           if($count == 0){
-               //データなし
-               $result = 0;
-               echo $count;
-           }else{
-               //データ取得
-               $array = $stmh->fetch(PDO::FETCH_ASSOC);
-               if($array == false){
-                   //システムエラー
-                   $result = 2;
-               }else{
-                   $dspUserList[0] = $array['Num'];//社員番号
-                   $dspUserList[1] = $array['Name'];//名前
-                   $dspUserList[2] = $array['Num'];//社員番号
-                   $dspUserList[3] = $array['Num'];//社員番号
-                   
-
-               }
-
-           }
-           
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
-        return $result;
-    }
 
     /*********ユーザ詳細SQL*******************************************************/
-    function GETUserDetail($ActType, $Key12, &$dspUserDet){
+    function GETUserDetail($ActType, $Key12, $Key13, &$dspUserDet){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -153,24 +99,25 @@ class UserModel{
         
         //社員番号確認
         if(is_null($Key12) == True){
-            $strSQL = $strSQL. " Where ID IS NULL";
+            $strSQL = $strSQL. " Where Num IS NULL";
         }else{
-            $strSQL = $strSQL. " Where ID = :Key12 ";            
+            $strSQL = $strSQL. " Where Num = :Key12";            
         }
-        echo $Key1.'確認';
+        //ID
+        if(is_null($Key13) == True){
+            $strSQL = $strSQL. " And ID IS NULL";
+        }else{
+            $strSQL = $strSQL. " And ID = :Key13 ";            
+        }
+
         
-        //PW確認        
-        if(is_null($Key2) == True){
-            $strSQL = $strSQL. " And PW IS NULL";
-        }else{
-            $strSQL = $strSQL. " And PW = :Key2 ";            
-        }
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_INT);
+           $stmh->bindParam(':Key13', $Key13, PDO::PARAM_STR);
   
             echo $Key2.'確認';
             echo $strSQL;
@@ -363,6 +310,70 @@ class UserModel{
         //return $dspUserInfo;
         return $result;
     }
+    
+    /*********管理者ユーザー検索SQL*************************************************/
+    function GETAdminUser($ActType, $Key1, $Key11, &$dspAdminUser){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($Key1 != 'admin@10baton.com'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From User";
+        }
+        echo 'アクションタイプ確認ok';
+        
+        //書籍番号確認        
+        if($Key11){
+            $strSQL = $strSQL. ' WHERE Name Like :Key11';            
+        }
+        $Key11 = "%$Key11%";
+echo $Key11;
+echo $result;
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key11', $Key11, PDO::PARAM_STR);
+
+ 
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+          echo $strSQL;
+           echo 'DB接続ok';
+           echo $result;
+           
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   //表示データ収集
+                   $dspAdminUser[$i][0] = $array['Num'];//社員番号
+                   $dspAdminUser[$i][1] = $array['ID'];//ID
+                   $dspAdminUser[$i][2] = $array['Name'];//出版社
+                  $i=$i+1;
+               }
+         
+           }
+           
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
+    
+
+
 
 }
 
