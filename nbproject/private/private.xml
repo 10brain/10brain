@@ -18,14 +18,20 @@
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/user/user_pass_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/search.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/search.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/book/book.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/bookedit_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/bookedit.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user_search/user_search.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/top.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/request/request_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/book.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/user_func.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/book.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user_search/user_search.html</file>
         </group>
     </open-files>
 </project-private>

@@ -1,5 +1,5 @@
 <?php
-require '../../lib/user_func.php';
+require '../../lib/other_func.php';
 require '../../lib/check.php';
 
 $result = 0;
@@ -19,16 +19,14 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
     //DB問い合わせ
-    $obj=new userModel();
-    $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
+    $obj = new otherModel();
+    $result = $obj->GETRequest($ActType, $Key1, $dspRequest);
     
 }
 
 //画面表示
 if ($result == 0){
-        $request = 'request_edit.php';
-        $request_pur= 'request_pur.php';
-        $request_old = 'requestOld.php';
+        $request_edit='request_edit.php';
         include("request.html");
 
 }else{

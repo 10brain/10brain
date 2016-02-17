@@ -146,7 +146,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             //データベース更新
                             $obj=new otherModel();
                             //link確認
-                            $result = $obj->GETRequestAdd($ActType, $Key61, $Key62, $Key63);
+                            $result = $obj->GETRequestAdd($ActType, $Key0, $Key61, $Key62, $Key63);
                             if($result == 0){
                                 include(HTML_SUCCESS); 
                             }else{
