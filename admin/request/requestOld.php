@@ -20,7 +20,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     //DB問い合わせ
     $obj = new otherModel();
-    $result = $obj->GETOldRequest($ActType, $Key1, $$dspOldRequest);
+    $result = $obj->GETOldRequest($ActType, $Key1, $dspOldRequest);
     
 }
 

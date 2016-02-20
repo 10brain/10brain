@@ -25,6 +25,7 @@ class otherModel{
             $result = 2;
             return $result;    
         }
+        $strSQL = $strSQL." Where app IS NULL AND pur IS NULL";
         echo 'アクションタイプ確認ok';
         /* 
         //社員番号確認
@@ -103,7 +104,7 @@ class otherModel{
             $result = 2;
             return $result;    
         }
-        $strSQL = $strSQL." Where app IS NOT NULL AND pur IS NOT NUll";
+        $strSQL = $strSQL." Where app IS NOT NULL AND pur IS NOT NULL";
         echo 'アクションタイプ確認ok';
         /* 
         //社員番号確認
@@ -313,9 +314,9 @@ class otherModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
            if($Key45=='true'){
-               $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);
+               $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);
            }else{
-                $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);                     
+                $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);                     
            }
            
             echo $Key2.'確認';

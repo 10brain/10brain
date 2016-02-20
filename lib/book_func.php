@@ -235,7 +235,7 @@ echo $result;
 
     
     /**************書籍登録SQL*************************************************/
-    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32){
+    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33, $Key34, $Key35){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -249,8 +249,8 @@ echo $result;
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Book(ISBN, title, amazon, remarks, pub, writer, intro, year, genre, cover, stock, date) VALUES";
-            $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, :Key33, :Key34, Key35)";
+            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, cover, coverTyp, coverRaw, coverThu, date) VALUES";
+            $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, :Key33, :Key34, :Key35, '" .Date('Ymd') ."')";
         }
         echo 'アクションタイプ確認ok';
         
@@ -283,11 +283,71 @@ echo $result;
            echo $result;
 
            
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        } catch (Exception $Exception) {
+            $result='4';
+        }
+
         return $result;
     }
+    /**************書籍表紙登録SQL*************************************************/
+    /*function GETBookCoverAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33, $Key34, $Key35){
+                // INSERT処理
+        try{
+                $stmt = $pdo->prepare('INSERT INTO image(name,type,raw_data,thumb_data,date) VALUES(?,?,?,?,?)');
+                $stmt->execute([
+                    $_FILES['upfile']['name'],
+                    $info[2],
+                    file_get_contents($_FILES['upfile']['tmp_name']),
+                    ob_get_clean(), // バッファからデータを取得してクリア
+                    (new DateTime('now', new DateTimeZone('Asia/Tokyo')))->format('Y-m-d H:i:s'),
+                ]);
 
+                $msgs[] = ['green', 'ファイルは正常にアップロードされました'];
+
+            } catch (RuntimeException $e) {
+
+                while (ob_get_level()) {
+                    ob_end_clean(); // バッファをクリア
+                }
+                http_response_code($e instanceof PDOException ? 500 : $e->getCode());
+                $msgs[] = ['red', $e->getMessage()];
+
+            }
+
+        /* ID指定があったとき *
+        } elseif (isset($_GET['id'])) {
+
+            try {
+
+                $stmt = $pdo->prepare('SELECT type, raw_data FROM image WHERE id = ? LIMIT 1');
+                $stmt->bindValue(1, $_GET['id'], PDO::PARAM_INT);
+                $stmt->execute();
+                if (!$row = $stmt->fetch()) {
+                    throw new RuntimeException('該当する画像は存在しません', 404);
+                }
+                header('X-Content-Type-Options: nosniff');
+                header('Content-Type: ' . image_type_to_mime_type($row['type']));
+                echo $row['raw_data'];
+                exit;
+
+            } catch  (Exception $Exception){
+
+                http_response_code($e instanceof PDOException ? 500 : $e->getCode());
+                $msgs[] = ['red', $e->getMessage()];
+
+            }
+
+        }
+
+        // サムネイル一覧取得
+        $rows = $pdo->query('SELECT id,name,type,thumb_data,date FROM image ORDER BY date DESC')->fetchAll();
+
+    } catch (PDOException $e) {
+
+        http_response_code(500);
+        $msgs[] = ['red', $e->getMessage()];
+
+    }*/
      /**************貸出用書籍検索SQL*************************************************/
 
     function GETBorrowSearch($ActType, $Key40, $Key41, &$dspTest){
