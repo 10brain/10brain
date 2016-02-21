@@ -31,6 +31,9 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $file = $_FILES['upfile'];
+    $tmp_name = $file['tmp_name']; // 一時ファイルのパス
+
 
 
 
@@ -71,7 +74,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     if($io->is_not_falsification()){
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-                    $decision=false;
+                    $decision=true;
                     // csvファイルの作成 -----------------------------------------------------
                     // 通し番号とユニークなファイル名を取得
             /*	$fp = fopen(CSV_PATH.CSV_COUNT, "r+");
@@ -217,67 +220,50 @@ include(HTML_SUCCESS);
 			$io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
 			if(!$vali->isString($io->get_param("remarks"), TRUE, 400, "UTF-8"))
 			{
-				$io->set_error("remarks", "内容に誤りが有ります");
+				$io->set_error("remarks_error", "内容に誤りが有ります");
 			}
 
 
                         //画像ファイルアップロード確認
                        if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
-                            // バッファリングを開始
-                            ob_start();
-
-                            try {
-                            // $_FILES['upfile']['error'] の値を確認
                             switch ($_FILES['upfile']['error']) {
                                 case UPLOAD_ERR_OK: // OK
                                     break;
+
                                 case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
                                 case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
-                                    $io->set_error("cover_error", 'ファイルサイズが大きすぎます');
+                                    $io->set_error("cover_error", "ファイルサイズが超過しています");
                                 default:
-                                    $io->set_error("cover_error", 'その他のエラーが発生しました');
-                                }
+                                    $io->set_error("cover_error", "エラーが発生しました");
+                            }
                             // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので
-                            // MIMEタイプを自前でチェックする
-                            if (!$info = @getimagesize($_FILES['upfile']['tmp_name'])) {
-                                $io->set_error("cover_error", '有効な画像ファイルを設定してください');
-                            }
-                            if (!in_array($info[2], [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
-                                $io->set_error("cover_error", '未対応の画像形式です');
-                            }
-                            
-                            // サムネイルをバッファに出力
-                            $create = str_replace('/', 'createfrom', $info['mime']);
-                            $output = str_replace('/', '', $info['mime']);
-                            if ($info[0] >= $info[1]) {
-                                $dst_w = 120;
-                                $dst_h = ceil(120 * $info[1] / max($info[0], 1));
-                            } else {
-                                $dst_w = ceil(120 * $info[0] / max($info[1], 1));
-                                $dst_h = 120;
-                            }
-                            if (!$src = @$create($_FILES['upfile']['tmp_name'])) {
-                                $io->set_error("cover_error", '画像リソースが生成できませんでした');
-                            }
-                            $dst = imagecreatetruecolor($dst_w, $dst_h);
-                            imagecopyresampled($dst, $src, 0, 0, 0, 0, $dst_w, $dst_h, $info[0], $info[1]);
-                            $output($dst);
-                            imagedestroy($src);
-                            imagedestroy($dst);
-                            
-                            } catch (RuntimeException $e) {
-                                while (ob_get_level()) {
-                                    ob_end_clean(); // バッファをクリア
-                                }
-                                http_response_code($e instanceof PDOException ? 500 : $e->getCode());
-                                $msgs[] = ['red', $e->getMessage()];
+                           // MIMEタイプを自前でチェックする
+                           if (!$info = @getimagesize($_FILES['upfile']['tmp_name'])) {
+                               $io->set_error("cover_error", "有効なファイルタイプではありません");
+                           }
+                           if (!in_array($info[2], [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
+                               $io->set_error("cover_error", "有効なファイル形式ではありません");
+                           }
+                           
+                            if(is_uploaded_file($_FILES['upfile']['tmp_name'])){
+                                    //一字ファイルを保存ファイルにコピーできたか
+                                    if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
+                                      chmod("tmp_cover/" . $_FILES["upfile"]["name"], 0644);
+                                        //正常
+                                      
+                                    }else{
+                                        //
+                                        echo "error while saving.";
+                                    }
 
-                            }
+                                }
+
+                           
                         }
                             
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-                           $decision=true;
+                           
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);

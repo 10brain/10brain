@@ -15,18 +15,46 @@ and open the template in the editor.
         <?=$io->get_all_params();?>
         <?=$decision;?>
             <dl>
-            <dt>名前</dt>
-            <dd><?=$io->get_param_html_br("Name");?></dd>
+            <dt>ISBN</dt>
+            <dd><?=$io->get_param_html_br("isbn");?></dd>
+            </dl>
+            <dl>
+            <dt>タイトル</dt>
+            <dd><?=$io->get_param_html_br("title");?></dd>
+            </dl>
+            <dl>
+            <dt>ジャンル</dt>
+            <dd><?=$io->get_param_html_br("genre");?></dd>
+            </dl>
+            <dl>
+            <dt>出版社</dt>
+            <dd><?=$io->get_param_html_br("pub");?></dd>
+            </dl>
+            <dl>
+            <dt>著者</dt>
+            <dd><?=$io->get_param_html_br("writer");?></dd>
+            </dl>
+            <dl>
+            <dt>紹介文</dt>
+            <dd><?=$io->get_param_html_br("intro");?></dd>
+            </dl>
+            <dl>
+            <dt>出版年</dt>
+            <dd><?=$io->get_param_html_br("year");?></dd>
+            </dl>
+            <dl>
+            <dt>amazonリンク</dt>
+            <dd><?=$io->get_param_html_br("amazon");?></dd>
+            </dl>
+            <dl>
+            <dt>備考</dt>
+            <dd><?=$io->get_param_html_br("remarks");?></dd>
+            </dl>
+            <dl>
+            <dt>画像</dt>
+            <dd><?=print_r($file);?></dd>
             </dl>
 
-            <dl>
-            <dt>ID</dt>
-            <dd><?=$io->get_param_html_br("ID");?></dd>
-            </dl>
-            <dl>
-            <dt>PW</dt>
-            <dd><?=$io->get_param_html_br("PW");?></dd>
-            </dl>
                     <input type="hidden" name="ActionType" value="TgRSPInf">
 
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

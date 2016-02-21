@@ -30,10 +30,10 @@ $(function() {
 
       <div class="content">
         <div class="form">
-                <?=$io->get_all_params();?>
+ <?=$io->get_all_params();?>      
         <form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">
-
-            <input type="hidden" name="step_from" value="input" />
+       
+        <input type="hidden" name="step_from" value="input" />
 
 
             <span>ISBN</span><br>
@@ -52,7 +52,6 @@ $(function() {
             <input name="year"  size="10" maxlength="4" type="text" value="<?=$io->get_param_html('year');?>" /><div class="error"><?=$io->get_error("year_error");?></div><br>
             <span>amazonリンク</span><br>
             <input name="amazon"  size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" /><div class="error"><?=$io->get_error("amazon_error");?></div><br>
-
             <span>備考</span><br>
               <textarea rows="2" cols="60" wrap="SOFT" name="remarks"/><?=$io->get_param_html("remarks") ?></textarea><br><div class="error"><?=$io->get_error("remarks_error");?></div><br>
 
@@ -60,8 +59,10 @@ $(function() {
             <ul>
              <li>
                 <label>
-          <input type="file" name="upfile" multiple="multiple" /><br />
-               </label>
+     
+          <input type="file" name="upfile" multiple="multiple" /><br /><div class="error"><?=$io->get_error("cover_error");?></div><br>
+             <div class="error"><?=$io->get_error("cover_error");?></div>              
+                </label>
              </li>  
             </ul>
             <input type="submit" value="確認">
