@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>書籍追加確認</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -51,8 +51,8 @@ and open the template in the editor.
             <dd><?=$io->get_param_html_br("remarks");?></dd>
             </dl>
             <dl>
-            <dt>画像</dt>
-            <dd><?=print_r($file);?></dd>
+            <dt>画像</dt><?=print_r($file);?>
+            <dd><img src="./tmp_cover/<?=$_FILES['upfile']['name'];?>"></dd>
             </dl>
 
                     <input type="hidden" name="ActionType" value="TgRSPInf">

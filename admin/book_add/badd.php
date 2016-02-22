@@ -157,7 +157,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                                 include(TEMP_INPUT);
                             }
                             */
-include(HTML_SUCCESS);
+                            include(HTML_SUCCESS);
                     }else{
     //				pg_query($conID, "rollback");
                             // 失敗画面
