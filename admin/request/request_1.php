@@ -20,14 +20,14 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     //DB問い合わせ
     $obj = new otherModel();
-    $result = $obj->GETOldRequest($ActType, $Key1, $dspOldRequest);
+    $result = $obj->GETRequest($ActType, $Key1, $dspRequest);
     
 }
 
 //画面表示
 if ($result == 0){
         $request_edit='request_edit.php';
-        include("requestOld.html");
+        include("request.html");
 
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

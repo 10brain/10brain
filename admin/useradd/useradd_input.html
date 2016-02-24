@@ -34,10 +34,11 @@ $useradd='useradd.php';
         </div>
 
         <div class="form">
+        <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
 
-        <?=$io->get_all_params();?>
+
             <span>ユーザー名</span><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><div class="error"><?=$io->get_error("Name_error"); ?><br>
             <span>ユーザーID</span><br>

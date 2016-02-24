@@ -27,25 +27,21 @@ and open the template in the editor.
               <input type="submit" value="SEARCH">
             </div>
 
-            <div class="sample">
-              <div class="either">
-                <input type="radio" name="KEYWORD22" id="dummy_1" value="1" checked="checked" />
-                <label for="dummy_1">AND</label>
-                <input type="radio" name="KEYWORD22" id="dummy_0" value="0" />
-                <label for="dummy_0">OR</label>
-              </div>
-            </div>
           </form>
-
+<?
+$book_edit = './bookedit.php';
+$book_det = './book.php';
+?>
             <!--DB内容表示-->
             <!--contents START -->
-<?if(is_null($dspBookList[0])){?>
+<?if(is_null($dspAdminBook[0])){?>
 <p>該当する本がありません。</p>
 <?
 }else{
 ?>
            <table border="1" cellspacing="1">
 		<tr>
+                    <th>編集</th>
                     <th>タイトル</th>
                     <th>出版社</th>
                     <th>ジャンル</th>
@@ -54,23 +50,33 @@ and open the template in the editor.
                 </tr>
 <?
     $i = 0;
-    while(!is_null($dspBookList[$i][0])){
+    while(!is_null($dspAdminBook[$i][0])){
 ?>
 
 		<tr>
-                    <td><?=$dspBookList[$i][1];?></td>
-                    <td><?$dspBookList[$i][2];?></td>
-                    <td><?$dspBookList[$i][3];?></td>
-                    <?if(is_null($dspBookList[$i][4]) or $dspBookList[$i][4]==0){?>
-                        <p>貸出中</p>
-                    <?}else{?>
-                        <td><?=$dspBookList[$i][4];?></td>
-                    <?}?>
-                    <td><form method="post" action="book.php">
+                    <td><form method="post" action="<?=$book_edit;?>">
                         <input type="hidden" name="ActionType" value="TgRSPInf">
                         <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                         <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+                        <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
+                        <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
+                        <input type="submit" value="編集" />
+                        </form>
+                    </td>
+                    <td><?=$dspAdminBook[$i][1];?></td>
+                    <td><?=$dspAdminBook[$i][3];?></td>
+                    <td><?=$dspAdminBook[$i][2];?></td>
+                    <?if($dspAdminBook[$i][4]==0){?>
+                    <td>貸出中</td>
+                    <?}else{?>
+                    <td>在庫有</td>
+                    <?}?>
+                    <td><form method="post" action="<?=$book_det;?>">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
+                        <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
                         <input type="submit" value="詳細画面" />
                         </form>
                     </td>

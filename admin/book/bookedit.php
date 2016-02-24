@@ -1,12 +1,12 @@
 <?php
 /******************************************************************************/
-// ユーザー登録
+// 書籍編集
 // 20160210@ito
 //
 //
 //
 /******************************************************************************/
-require '../../lib/user_func.php';
+require '../../lib/book_func.php';
 require '../../lib/check.php';
 
 // ライブラリファイルの読み込み
@@ -31,7 +31,10 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key20 = $_POST["KEYWORD20"];  //パスワード
+    $Key21 = $_POST["KEYWORD21"];  //パスワード
 
+    //$result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
 
 
     // 内部文字コード
@@ -39,15 +42,15 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
-    define("TEMP_AGREE",   "useradd_input.html");
-    define("TEMP_INPUT",   "useradd_input.html");
-    define("TEMP_ERROR",   "useradd_input.html");
-    define("TEMP_CONFIRM", "useradd_confirm.html");
+    define("TEMP_AGREE",   "bookedit_input.html");
+    define("TEMP_INPUT",   "bookedit_input.html");
+    define("TEMP_ERROR",   "bookedit_input.html");
+    define("TEMP_CONFIRM", "bookedit_confirm.html");
     define("TEMP_BLOCK",   "../../login.html");
 
     //登録後のページ遷移指定
-    define("HTML_SUCCESS", "./useradd_suc.html");
-    define("HTML_FAILURE", "./useradd_fal.html");
+    define("HTML_SUCCESS", "./bookedit_suc.html");
+    define("HTML_FAILURE", "./bookedit_fal.html");
 
     // url系情報の指定
     // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
@@ -138,7 +141,7 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key51=$io->get_param_sql("Name");
+                            $Key21=$io->get_param_sql("Name");
                             $Key52=$io->get_param_sql("ID");
                             //データベース更新
                             $obj=new UserModel();

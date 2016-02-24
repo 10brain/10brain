@@ -31,12 +31,15 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $file = $_FILES['upfile'];
+    $tmp_name = $file['tmp_name']; // 一時ファイルのパス
+
 
 
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-define("HTML_CODE", "UTF-8");
+    define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "badd_input.html");
@@ -111,12 +114,12 @@ define("HTML_CODE", "UTF-8");
                     if($io->get_param("radio1") == "5")
                     {
                             $io->set_parameter("csv_radio1", "1");
-                            $io->set_parameter("csv_description", $radio1->get_checked_text_main(false)."　".$io->get_param("description"));
+                            $io->set_parameter("csv_remarks", $radio1->get_checked_text_main(false)."　".$io->get_param("remarks"));
                     }
                     else
                     {
                             $io->set_parameter("csv_radio1", $io->get_param("radio1"));
-                            $io->set_parameter("csv_description", $io->get_param("description"));
+                            $io->set_parameter("csv_remarks", $io->get_param("remarks"));
                     }
                     $io->set_parameter("csv_radio3s", $radio3->get_checked_text_sub(false));
                     $io->set_parameter("csv_zip", preg_replace("/\-/", "", $io->get_param("zip")));
@@ -138,7 +141,7 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key51=$io->get_param_sql("Name");
+                            /*$Key51=$io->get_param_sql("Name");
                             $Key52=$io->get_param_sql("ID");
                             //データベース更新
                             $obj=new UserModel();
@@ -153,8 +156,8 @@ define("HTML_CODE", "UTF-8");
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
-                            
-
+                            */
+                            include(HTML_SUCCESS);
                     }else{
     //				pg_query($conID, "rollback");
                             // 失敗画面
@@ -171,22 +174,96 @@ define("HTML_CODE", "UTF-8");
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
                     $vali = new Validation();
 
-                        // 名前
-                        $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
-                                $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
+                        // ISBN
+                        $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
+                        if(!$vali->isISBN($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
+                                $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
                         }
 
-                        //ID
-                        $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
-                                $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
+                        //title
+                        $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("title"), TRUE, 255, 0, "UTF-8")){
+                        $io->set_error("title_error", "未入力、または内容に誤りが有ります");
                         }
+                        
+                        //genre
+                        $io->set_parameter("genre", mb_convert_kana($io->get_param("genre"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("genre"), TRUE, 10, 0, "UTF-8")){
+                        $io->set_error("genre_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //pub
+                        $io->set_parameter("pub", mb_convert_kana($io->get_param("pub"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("pub"), TRUE, 30, "UTF-8")){
+                        $io->set_error("pub_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //writer
+                        $io->set_parameter("writer", mb_convert_kana($io->get_param("writer"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("writer"), TRUE, 40, "UTF-8")){
+                        $io->set_error("writer_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //intro
+                        $io->set_parameter("intro", mb_convert_kana($io->get_param("intro"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("intro"), TRUE, 255, "UTF-8")){
+                        $io->set_error("intro_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //year
+                        $io->set_parameter("year", mb_convert_kana($io->get_param("year"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("year"), TRUE, 4, "UTF-8")){
+                        $io->set_error("year_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //amazon
+                        $io->set_parameter("amazon", mb_convert_kana($io->get_param("amazon"), "KV", INNER_CODE));
+                        if(!$vali->isURL($io->get_param("amazon"), TRUE, 255, 0, "UTF-8")){
+                        $io->set_error("amazon_error", "未入力、または内容に誤りが有ります");
+                        }
+                        //remarks
+			$io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
+			if(!$vali->isString($io->get_param("remarks"), TRUE, 400, "UTF-8"))
+			{
+				$io->set_error("remarks_error", "内容に誤りが有ります");
+			}
 
 
+                        //画像ファイルアップロード確認
+                       if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+                            switch ($_FILES['upfile']['error']) {
+                                case UPLOAD_ERR_OK: // OK
+                                    break;
+
+                                case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
+                                case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
+                                    $io->set_error("cover_error", "ファイルサイズが超過しています");
+                                default:
+                                    $io->set_error("cover_error", "エラーが発生しました");
+                            }
+                            // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので
+                           // MIMEタイプを自前でチェックする
+                           if (!$info = @getimagesize($_FILES['upfile']['tmp_name'])) {
+                               $io->set_error("cover_error", "有効なファイルタイプではありません");
+                           }
+                           if (!in_array($info[2], [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
+                               $io->set_error("cover_error", "有効なファイル形式ではありません");
+                           }
+                           
+                            if(is_uploaded_file($_FILES['upfile']['tmp_name'])){
+                                    //一字ファイルを保存ファイルにコピーできたか
+                                    if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
+                                      chmod("tmp_cover/" . $_FILES["upfile"]["name"], 0644);
+                                        //正常
+                                      
+                                    }else{
+                                        //
+                                        echo "error while saving.";
+                                    }
+
+                                }
+
+                           
+                        }
+                            
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-                           $decision=true;
+                           
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
@@ -214,8 +291,7 @@ define("HTML_CODE", "UTF-8");
             if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){	
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
-
-
+		
                     include(TEMP_AGREE);
             }else{
                     // リファラ制限画面

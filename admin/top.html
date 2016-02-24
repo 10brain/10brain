@@ -21,7 +21,7 @@ and open the template in the editor.
  $mypage = './user/user.php';
  
  $bookadd='./admin/book_add/badd.php';
- $bookedit='./admin/book/book.php';//暫定リンク
+ $bookedit='./admin/book/search.php';//暫定リンク
  $booklist='./admin/book/search.php';
  $request='./admin/request/request.php';
  $useradd='./admin/useradd/useradd.php';
@@ -140,6 +140,7 @@ and open the template in the editor.
                 </li>
                 <li><form action="<?=$useredit;?>" method="post">
                     <input type="hidden" name="ActionType" value="TgRSPInf">
+
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                     <input type="image" src="" alt="ユーザーを編集">

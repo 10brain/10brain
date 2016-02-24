@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>ユーザー情報登録</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="useradd.css">
+    </head>
+    <body>
+          <div class="title">
+          <ul>
+            <li>
+              <img src="../../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの登録</h1>
+            </li>
+            <li>
+              <img src="../../img/4.png">
+            </li>
+          </ul>
+        </div>
+
+        <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+
+
+            <span>ISBN</span><br>
+            <input name="isbn" id="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
+            <span>タイトル</span><br>
+            <input name="title" id="title" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('title');?>" /><div class="error"><?=$io->get_error("title_error"); ?><br>
+            <span>ジャンル</span><br>
+            <input name="genre" id="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><div class="error"><?=$io->get_error("genre_error"); ?><br>
+            <span>出版社</span><br>
+            <input name="pub" id="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><div class="error"><?=$io->get_error("pub_error"); ?><br>
+            <span>著者</span><br>
+            <input name="writer" id="writer" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('writer');?>" /><div class="error"><?=$io->get_error("writer_error"); ?><br>
+            <span>紹介文</span><br>
+               <textarea rows="2" cols="60" wrap="SOFT" name="intro" /><?=$io->get_param_html("intro") ?></textarea><br><div class="error"><?=$io->get_error("intro_error"); ?><br>
+            <span>出版年</span><br>
+            <input name="year" id="year" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('year');?>" /><div class="error"><?=$io->get_error("year_error"); ?><br>
+            <span>amazonリンク</span><br>
+            <input name="amazon" id="amazon" size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" /><div class="error"><?=$io->get_error("amazon_error"); ?><br>
+            <span>備考</span><br>
+              <textarea rows="2" cols="60" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea><br><div class="error"><?=$io->get_error("remarks_error"); ?><br>
+
+            <span>画像ファイル</span><br>
+            <input type="file" name="pic"><br>
+            <input type="button" value="確認">
+            </form>
+          </form>
+        </div>
+      </div>
+
+
+
+      <div id="footer"></div>
+    </body>
+</html>

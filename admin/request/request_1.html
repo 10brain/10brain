@@ -7,14 +7,14 @@ and open the template in the editor.
 <html>
     <head>
       <meta charset="UTF-8">
-      <title>過去のリクエスト一覧</title>
+      <title>リクエスト一覧</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="request.css">
     </head>
     <body>
         <div id="menu"></div>
         <div class="old">
-          <a href="requestOld.html">？？</a>
+          <a href="requestOld.html">過去のリクエスト一覧→</a>
         </div>
         <div class="content">
 
@@ -32,8 +32,8 @@ and open the template in the editor.
             </ul>
           </div>
 
-<?if(is_null($dspOldRequest[0])){?>
-<p>過去のリクエストはありません。</p>
+<?if(!isset($dspRequest[0])){?>
+<p>現在処理できるリクエストはありません。</p>
 <?
 }else{
 ?>
@@ -42,20 +42,20 @@ and open the template in the editor.
             <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">承認</td><td width="10%">購入</td><td width="10%">編集ボタン</td></tr>
 <?
     $i = 0;
-    while(!is_null($dspOldRequest[$i][0])){
+    while(!is_null($dspRequest[$i][0])){
 ?>
             <tr>
-                <td><?=$dspOldRequest[$i][1];?></td>
-                <td><?=$dspOldRequest[$i][8];?></td>
-                <td><a href="<?=$dspOldRequest[$i][6];?>" target="_blank">⤴️</a></td>
-                <td><?=$dspOldRequest[$i][7];?></td>
-                <td><?=$dspOldRequest[$i][2];?></td>
-                <?if($dspOldRequest[$i][3]==0){?>
+                <td><?=$dspRequest[$i][1];?></td>
+                <td><?=$dspRequest[$i][8];?></td>
+                <td><a href="<?=$dspRequest[$i][2];?>" target="_blank">⤴️</a></td>
+                <td><?=$dspRequest[$i][7];?></td>
+                <td><?=$dspRequest[$i][2];?></td>
+                <?if($dspRequest[$i][3]==0){?>
                     <td>未承認</td>
                 <?}else{?>
                     <td>承認</td>
                  <?}?>
-                <?if($dspOldRequest[$i][4]==0){?>
+                <?if($dspRequest[$i][4]==0){?>
                     <td>未購入</td>
                 <?}else{?>
                     <td>購入済</td>
@@ -65,8 +65,8 @@ and open the template in the editor.
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="hidden" name="KEYWORD60" value="<?=$dspOldRequest[$i][0];?>">
-                    <input type="hidden" name="KEYWORD61" value="<?=$dspOldRequest[$i][5];?>">
+                    <input type="hidden" name="KEYWORD60" value="<?=$dspRequest[$i][0];?>">
+                    <input type="hidden" name="KEYWORD61" value="<?=$dspRequest[$i][5];?>">
                     <input type="submit" value="編集" />
                     </form>
                 </td>

@@ -16,23 +16,25 @@ and open the template in the editor.
 
       <div class="content">
         <div class="form">
-            <span>タイトル：</span>
+            <span>ISBN：<?=$dspBookDet[9];?></span>
             <br>
-            <span>ジャンル：</span>
+            <span>タイトル：<?=$dspBookDet[0];?></span>
             <br>
-            <span>出版社：</span>
+            <span>ジャンル：<?=$dspBookDet[1];?></span>
             <br>
-            <span>著者：</span>
+            <span>出版社：<?=$dspBookDet[2];?></span>
             <br>
-            <span>紹介文：</span>
+            <span>著者：<?=$dspBookDet[3];?></span>
             <br>
-            <span>出版年：</span>
+            <span>紹介文：<?=$dspBookDet[4];?></span>
             <br>
-            <span>amazonリンク：</span>
+            <span>出版年：<?=$dspBookDet[5];?></span>
             <br>
-            <span>備考：</span>
+            <span>amazonリンク：<?=$dspBookDet[6];?></span>
             <br>
-            <span>画像ファイル：</span>
+            <span>備考：<?=$dspBookDet[7];?></span>
+            <br>
+            <span>画像ファイル：<?=$dspBookDet[8];?></span>
             <br>
             <ul>
               <li>
@@ -41,7 +43,14 @@ and open the template in the editor.
                 </form>
               </li>
               <li>
-                <form action="badd.php" method="post"　enctype="multipart/form-data">
+                <form method="post" action="<?=$book_edit;?>">
+                <input type="hidden" name="ActionType" value="TgRSPInf">
+                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
+                <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
+                <input type="submit" value="編集" />
+
                   <input type="button" value="編集">
                 </form>
               </li>

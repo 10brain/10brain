@@ -1,5 +1,5 @@
 <?php
-require '../../lib/other_func.php';
+require '../../lib/user_func.php';
 require '../../lib/check.php';
 
 $result = 0;
@@ -9,7 +9,7 @@ $Key2 ="";
 
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
-if (!ckStr($_POST["KEYWORD1"],30,1) or !preg_match("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
+if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
     $result = 1;
 }elseif (!ckStr($_POST["KEYWORD2"],30,1)){
     $result = 1;
@@ -19,19 +19,18 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or !preg_match("^[a-zA-Z0-9]+$",$_POST["KEYW
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
     //DB問い合わせ
-    $obj=new otherModel();
-    $result = $obj->GETRequest($ActType, $Key1, $dspRequest);
+    $obj=new userModel();
+    $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
     
 }
 
 //画面表示
 if ($result == 0){
-    //管理者か一般ユーザーか判定
-    if($Key1=='admin@10baton.com'){
+        $request = 'request_edit.php';
+        $request_pur= 'request_pur.php';
+        $request_old = 'requestOld.php';
         include("request.html");
-    }else{
-        include("../../top.html");
-    }
+
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";

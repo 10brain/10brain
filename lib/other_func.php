@@ -20,13 +20,14 @@ class otherModel{
             return $result;
         }
         if(!is_null($Key1)){
-            $strSQL = "Select * From Request";
+            $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
         }else{
             $result = 2;
             return $result;    
         }
+        $strSQL = $strSQL." Where app IS NULL AND pur IS NULL";
         echo 'アクションタイプ確認ok';
-        /*
+        /* 
         //社員番号確認
         if(is_null($Key3) == True){
             $strSQL = $strSQL. " Where Num IS NULL";
@@ -54,31 +55,120 @@ class otherModel{
            }
            echo 'DB接続ok';
            echo $result;
-           
+           echo $strSQL;
            $count=$stmh->rowCount();//実行結果の行数をカウント
+           echo $count;
            if($count == 0){
                //データなし
                $result = 0;
                echo $count;
            }else{
                 //表示データ収集
+               $i=0;
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
-                   $dspRequest[i][0] = $array['ReqNum'];//リクエスト番号
-                   $dspRequest[i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
-                   $dspRequest[i][2] = $array['ReqDate'];//リクエスト登録日
-                   $dspRequest[i][3] = $array['app'];//承認び
-                   $dspRequest[i][4] = $array['pur'];//購入
-                   $dspRequest[i][5] = $array['Num'];//リクエスト者社員番号
+                   $dspRequest[$i][0] = $array['ReqNum'];//リクエスト番号
+                   $dspRequest[$i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
+                   $dspRequest[$i][2] = $array['ReqDate'];//リクエスト登録日
+                   $dspRequest[$i][3] = $array['app'];//承認
+                   $dspRequest[$i][4] = $array['pur'];//購入
+                   $dspRequest[$i][5] = $array['Num'];//リクエスト者社員番号
+                   $dspRequest[$i][6] = $array['ReqAmaz'];//リクエストリンク
+                   $dspRequest[$i][7] = $array['ReqRem'];//リクエスト備考
+                   $dspRequest[$i][8] = $array['Name'];//社員名
+                  $i=$i+1;
                 }
+                print_r($dspRequest);
            }
            
-        } catch (Exception $Exception) {}
+        } catch (Exception $Exception) {
+            $result = 3;
+        }
+        //return $dspUserInfo;
+        return $result;
+    }
+    
+        /*********過去リクエスト一覧SQL***************************************************/
+    function GETOldRequest($ActType, $Key1, &$dspOldRequest){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        if(!is_null($Key1)){
+            $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
+            
+        }else{
+            $result = 2;
+            return $result;    
+        }
+        $strSQL = $strSQL." Where app IS NOT NULL AND pur IS NOT NULL";
+        echo 'アクションタイプ確認ok';
+        /* 
+        //社員番号確認
+        if(is_null($Key3) == True){
+            $strSQL = $strSQL. " Where Num IS NULL";
+        }else{
+            $strSQL = $strSQL. " Where Num = :Key3";            
+        }
+        echo $Key1.'確認';
+        */
+       
+        
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           //$stmh->bindParam(':Key3', $Key3, PDO::PARAM_INT);
+
+            //echo $Key2.'確認';
+            //echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           echo $strSQL;
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           echo $count;
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspOldRequest[$i][0] = $array['ReqNum'];//リクエスト番号
+                   $dspOldRequest[$i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
+                   $dspOldRequest[$i][2] = $array['ReqDate'];//リクエスト登録日
+                   $dspOldRequest[$i][3] = $array['app'];//承認
+                   $dspOldRequest[$i][4] = $array['pur'];//購入
+                   $dspOldRequest[$i][5] = $array['Num'];//リクエスト者社員番号
+                   $dspOldRequest[$i][6] = $array['ReqAmaz'];//リクエストリンク
+                   $dspOldRequest[$i][7] = $array['ReqRem'];//リクエスト備考
+                   $dspOldRequest[$i][8] = $array['Name'];//社員名
+                  $i=$i+1;
+                }
+                print_r($dspOldRequest);
+           }
+           
+        } catch (Exception $Exception) {
+            $result = 3;
+        }
         //return $dspUserInfo;
         return $result;
     }
 
+
     /*********リクエスト詳細SQL*************************************************/
-    function GETRequestDetail($ActType, $Key1, $Key40, &$dspRequestDet){
+    function GETRequestDetail($ActType, $Key1, $Key40, &$dspOldRequestDet){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -151,7 +241,7 @@ class otherModel{
 
     
     /**************リクエスト登録SQL*************************************************/
-    function GETRequestAdd($ActType, $Key1, $Key41, $Key42, $Key43, $Key44){
+    function GETRequestAdd($ActType, $Key0, $Key61, $Key62, $Key63){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -160,8 +250,8 @@ class otherModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Request(`ReqNum`, `Reqtitle`, `Reqamaz`, `ReqRem`, `ReqDate`) VALUES";
-            $strSQL = $strSQL. " (NULL, :Key41, :Key42, :Key43, :Key44)";
+            $strSQL = "INSERT INTO Request(Reqtitle, Reqamaz, ReqRem, ReqDate, Num) VALUES";
+            $strSQL = $strSQL. " (:Key61, :Key62, :Key63, '" .Date('Ymd') ."', :Key0)";
         }
         echo 'アクションタイプ確認ok';
         
@@ -170,12 +260,11 @@ class otherModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key41', $Key41, PDO::PARAM_STR);
-           $stmh->bindParam(':Key42', $Key42, PDO::PARAM_STR);
-           $stmh->bindParam(':Key43', $Key43, PDO::PARAM_STR);
-           $stmh->bindParam(':Key44', $Key44, PDO::PARAM_INT);
+           $stmh->bindParam(':Key61', $Key61, PDO::PARAM_STR);
+           $stmh->bindParam(':Key62', $Key62, PDO::PARAM_STR);
+           $stmh->bindParam(':Key63', $Key63, PDO::PARAM_STR);
+           $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -187,7 +276,9 @@ class otherModel{
            echo $result;
 
            
-        } catch (Exception $Exception) {}
+        } catch (Exception $Exception) {
+            $result = 3;
+        }
         //return $dspUserInfo;
         return $result;
     }
@@ -223,9 +314,9 @@ class otherModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
            if($Key45=='true'){
-               $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);
+               $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);
            }else{
-                $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);                     
+                $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);                     
            }
            
             echo $Key2.'確認';
