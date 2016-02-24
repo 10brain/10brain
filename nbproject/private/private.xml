@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>admin/book_add/badd_input.html</url>
-            <bookmark id="1">
-                <name/>
-                <line>18</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group/>
-=======
-        <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/return/return.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/return/return_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_not.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/top.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/lib/init.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/return/return_run.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_confirm.html</file>
-        </group>
->>>>>>> master
     </open-files>
 </project-private>
