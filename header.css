@@ -83,7 +83,7 @@ body{
 
 .right{
   float: left;
-  position: fixed;
+  position: relative;
   right: 0px;
   top: 12px;
   color: #323232;
