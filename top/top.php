@@ -1,6 +1,6 @@
 <?php
-require './lib/user_func.php';
-require './lib/check.php';
+require '../lib/user_func.php';
+require '../lib/check.php';
 
 $result = 0;
 $ActType = "";
@@ -21,14 +21,14 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
+
 }
 
 //画面表示
 if ($result == 0){
     //管理者か一般ユーザーか判定
     if($dspUserInfo[1]=='管理者'){
-        include("./admin/top.html");
+        include("../admin/top.html");
     }else{
         include("top.html");
     }
@@ -40,11 +40,9 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
-include("login.html");
+
+include("../login.html");
 }
-    
-	
+
+
 ?>
-
-
