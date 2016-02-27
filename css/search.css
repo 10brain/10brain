@@ -1,3 +1,5 @@
+@import url("./header.css");
+
 body,input{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
@@ -6,13 +8,10 @@ body,input{
 
 body{
   background-size: cover;
-}
-
-#menu{
-  width: 1277px;
-  height: 82px;
   background-color: #F6E8D2;
 }
+
+
 
 #footer{
   width: 1277px;
