@@ -12,9 +12,12 @@ body{
 
 
 #content{
-  position: fixed;
-  top: auto;
-  height: 480px;
+  width: 95%;
+  height: 73%;
+  background-color: #FEFBF5;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .contSlider li {
