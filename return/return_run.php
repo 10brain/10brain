@@ -20,7 +20,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key40 = $_POST["KEYWORD40"];  //貸出番号
     $Key20 = $_POST["KEYWORD20"];  //書籍番号
-
+$Name = $_POST["KEYWORD3"];  //名前
     $obj=new BookModel();
     //borrow返却処理
     $result = $obj->GETReturnU($ActType, $Key0, $Key40);

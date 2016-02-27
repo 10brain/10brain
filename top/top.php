@@ -21,7 +21,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-
+    $Name = $dspUserInfo[1];
+    $Num = $dspUserInfo[0];
 }
 
 //画面表示
@@ -30,7 +31,7 @@ if ($result == 0){
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top.html");
     }else{
-        include("top.html");
+        include("./top.html");
     }
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
