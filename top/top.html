@@ -20,6 +20,7 @@ and open the template in the editor.
        $request = '../request/request.php';
        $mypage = '../user/user.php';
       ?>
+      
       <?php include('../header/header.html');?>
 
       <div id="content">
@@ -32,128 +33,7 @@ and open the template in the editor.
         <div class="clear"></div>
       </div>
 
-
-
-      <div id="footer">
-        &copy; 2016 10BATON Inc.
-      </div>
+      <?php include('../footer/footer.html');?>
 
     </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!--
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>ホーム</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="top.css">
-    </head>
-    <body>
-<?php
- $home = 'top.php';
- $borrow = './borrow/borrow.php';
- $return = './return/return.php';
- $search = './search/search.php';
- $request = './request/request.php';
- $mypage = './user/user.php';
-?>
-
-        <div id="menu">
-          <div class="header">
-          </div>
-
-          <div class="menu">
-
-
-            <div class="left">
-              <img src="img/3.png" alt="アイコン">
-            </div>
-
-            <div class="center">
-              <ul>
-                <li><form action="<?=$home;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/a.png" alt="ホーム" />
-                    </form>
-                </li>
-                <li><form action="<?=$borrow;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-
-                    <input type="image" src="img/b.png" alt="貸出" />
-                    </form>
-                </li>
-                <li><form action="<?=$return;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/c.png" alt="返却" />
-                    </form>
-                </li>
-                <li><form action="<?=$search;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/d.png" alt="検索">
-                    </form>
-                </li>
-                <li><form action="<?=$request;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/e.png" alt="リクエスト" class="request">
-                    </form>
-                </li>
-                <li><form action="<?=$mypage;?>" method="post">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD0" value="<?=$dspUserInfo[0];?>">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="image" src="img/f.png" alt="マイページ">
-                    </form>
-                </li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <ul>
-                <li>ようこそ、<?=$dspUserInfo[1];?>さん。</li>
-                <li><a href="#">ログアウト</a></li>
-              </ul>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div id="content">
-          <div class="contSlider">
-            <ul>
-              <li><a href="#"><img src=""></a></li>
-            </ul>
-          </div>
-          <div class="clear"></div>
-        </div>
-
-
-
-        <div id="footer">
-          &copy; 2016 10BATON Inc.
-        </div>
-
-    </body>
-</html>
--->

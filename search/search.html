@@ -29,27 +29,26 @@ and open the template in the editor.
 <!--sampleとsample1のnameはそれぞれ違う名前にすること-->
           <ul>
             <li>
-            <div class="sample">
-              <div class="either">
-                <input type="radio" name="KEYWORD22" id="AND" value="1" checked="checked" />
-                <label for="AND">AND</label>
-                <input type="radio" name="KEYWORD22" id="OR" value="0" />
-                <label for="OR">OR</label>
+              <div class="sample">
+                <div class="either">
+                  <input type="radio" name="KEYWORD22" id="AND" value="1" checked="checked" />
+                  <label for="AND">AND</label>
+                  <input type="radio" name="KEYWORD22" id="OR" value="0" />
+                  <label for="OR">OR</label>
+                </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="sample1">
-              <div class="either1">
-                <input type="radio" name="KEYWORD23" id="img" value="1" checked="checked" />
-                <label for="img"><img src="../img/a.png"></label>
-                <input type="radio" name="KEYWORD23" id="list" value="0" />
-                <label for="list"><img src="../img/b.png"></label>
+            </li>
+            <li>
+              <div class="sample1">
+                <div class="either1">
+                  <input type="radio" name="KEYWORD23" id="img" value="1" checked="checked" />
+                  <label for="img"><img src="../img/a.png"></label>
+                  <input type="radio" name="KEYWORD23" id="list" value="0" />
+                  <label for="list"><img src="../img/b.png"></label>
+                </div>
               </div>
-            </div>
-
-          </li>
-        </ul>
+            </li>
+          </ul>
           </form>
 <div class="table">
             <!--DB内容表示-->
@@ -59,7 +58,7 @@ and open the template in the editor.
 <?
 }else{
 ?>
-<!--↓追記部分-->
+
 <table border="1" width="80%">
   <tr>
       <td width="10%"></td>
@@ -68,7 +67,7 @@ and open the template in the editor.
       <td width="15%">カテゴリ</td>
       <td width="10%">貸出状況</td></tr>
 
-<!--↑追記部分-->
+
 
 <?
     $i = 0;
@@ -105,7 +104,7 @@ and open the template in the editor.
 </div>
         </div>
 
-        <div id="footer"></div>
+        <?php include('../footer/footer.html');?>
 
     </body>
 </html>
