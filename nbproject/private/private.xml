@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
+=======
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>admin/book_add/badd_input.html</url>
@@ -21,5 +26,6 @@
             <file>file:/Applications/MAMP/htdocs/10brain/lib/book_func.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm.html</file>
         </group>
+>>>>>>> 48987f394bef4fcbd8f4cc80def275600db0d52c
     </open-files>
 </project-private>

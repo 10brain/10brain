@@ -1,0 +1,17 @@
+body{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+}
+
+
+#footer{
+  position: relative;
+  bottom: 0px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  letter-spacing: 1.5px;
+  font-weight: bolder;
+}

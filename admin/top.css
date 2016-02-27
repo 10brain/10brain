@@ -109,3 +109,30 @@ body{
   top: auto;
   height: 480px;
 }
+
+
+.link{
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+
+}
+
+.link a{
+  color: black;
+  background-color: white;
+  display: block;
+  text-align: center;
+  margin: 65px auto 65px auto;
+
+}
+
+.hover:hover .link{
+  color: white;
+  background-color: black;
+}
+
+.hover:hover .link a{
+  color: white;
+  background-color: black;
+}

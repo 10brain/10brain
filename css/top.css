@@ -1,0 +1,32 @@
+@import url("./header.css");
+
+body{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+  background-size: cover;
+  background-color: #F6E8D2;
+}
+
+
+
+
+#content{
+  position: fixed;
+  top: auto;
+  height: 480px;
+}
+
+.contSlider li {
+  float: left;
+  list-style: none;
+  margin: 10px 30px;
+}
+
+.contSlider li a{
+  display: block;
+}
+
+.request{
+  margin-top: 3px;
+}
