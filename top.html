@@ -12,6 +12,52 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="top.css">
     </head>
     <body>
+
+      <?php
+       $home = 'top.php';
+       $borrow = './borrow/borrow.php';
+       $return = './return/return.php';
+       $search = './search/search.php';
+       $request = './request/request.php';
+       $mypage = './user/user.php';
+      ?>
+
+      <?php include('header.html');?>
+
+      <div id="content">
+
+        <div class="contSlider">
+          <ul>
+            <li><a href="#"><img src=""></a></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+
+
+      <div id="footer">
+        &copy; 2016 10BATON Inc.
+      </div>
+
+    </body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!--
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ホーム</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="top.css">
+    </head>
+    <body>
 <?php
  $home = 'top.php';
  $borrow = './borrow/borrow.php';
@@ -100,7 +146,7 @@ and open the template in the editor.
             <ul>
               <li><a href="#"><img src=""></a></li>
             </ul>
-          </div>  
+          </div>
           <div class="clear"></div>
         </div>
 
@@ -112,3 +158,4 @@ and open the template in the editor.
 
     </body>
 </html>
+-->
