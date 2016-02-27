@@ -51,26 +51,20 @@ body{
   position: relative;
   left: 0px;
   top: 12px;
-  max-width: 160px;
-  min-width: 80px;
+  max-width: 12%;
   overflow: hidden;
   padding-top: 20px;
   padding-left: 30px;
-
 }
 
-/*.left img{
-  margin-top: 25px;
-  margin-left: 30px;
-  overflow: hidden;
-}*/
+
 
 .center{
-  height:50px;
+  height:40px;
   min-height: 40px;
   width: 450px;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 20px;
   position: relative;
   top: 12px;
 }
@@ -91,7 +85,6 @@ body{
   text-align: center;
   overflow: hidden;
   padding: 0;
-  padding-top: 10px;
   position: absolute;
 }
 
@@ -117,7 +110,7 @@ body{
 .right ul{
   margin: 0;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 3px;
   height: 30px;
   width: 300px;
 }
