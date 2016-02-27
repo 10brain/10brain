@@ -6,6 +6,9 @@ body{
 
 .header{
   height: 12px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .header img{
@@ -84,7 +87,7 @@ body{
 .right{
   float: left;
   position: fixed;
-  right: 0px;
+  right: 0;
   top: 12px;
   color: #323232;
   font-weight: bolder;
