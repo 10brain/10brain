@@ -19,6 +19,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Name = $_POST["KEYWORD3"];  //名前
     $Key21 = $_POST["KEYWORD21"];  //フリーワード
     $Key22 = $_POST["KEYWORD22"];  //and or
     //DB問い合わせ

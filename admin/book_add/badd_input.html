@@ -58,11 +58,11 @@ $(function() {
             <span>画像ファイル</span><br>
             <ul>
              <li>
-                <label>
-           <INPUT type="hidden" name="MAX_FILE_SIZE" value="500000">
-          <input type="file" name="upfile" multiple="multiple" /><br /><div class="error"><?=$io->get_error("cover_error");?></div><br>
+            <label>
+                <INPUT type="hidden" name="MAX_FILE_SIZE" value="500000">
+                <input type="file" name="upfile" multiple="multiple" /><br /><div class="error"><?=$io->get_error("cover_error");?></div><br>
              <div class="error"><?=$io->get_error("cover_error");?></div>              
-                </label>
+            </label>
              </li>  
             </ul>
             <input type="submit" value="確認">

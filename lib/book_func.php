@@ -81,6 +81,7 @@ class BookModel{
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
                    $dspBookList[$i][4] = $array['stok'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
+                   $dspBookList[$i][6] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -144,7 +145,7 @@ echo $result;
                    $dspAdminBook[$i][2] = $array['genre'];//ジャンル
                    $dspAdminBook[$i][3] = $array['pub'];//出版社
                    $dspAdminBook[$i][4] = $array['stock'];//在庫数
-                   $dspAdminBook[$i][5] = $array['cover'];//表紙名
+                   $dspAdminBook[$i][5] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];
                    $dspAdminBook[$i][6] = $array['ISBN'];//ISBN
                   $i=$i+1;
                }
@@ -222,7 +223,7 @@ echo $result;
                    $dspBookDet[5] = $array['year'];//出版年
                    $dspBookDet[6] = $array['amazon'];//リンク
                    $dspBookDet[7] = $array['remarks'];//備考
-                   $dspBookDet[8] = $array['cover'];//表紙名
+                   $dspBookDet[8] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];//表紙名
                    $dspBookDet[9] = $array['ISBN'];//表紙名
                }
                
@@ -244,12 +245,14 @@ echo $result;
             $result = 2;
             return $result;
         }
-        
+        echo 'カバー名前'.$Key33;
+        echo 'カバーMIME'.$Key34;
+        echo 'カバーサイズ'.$Key35;
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, cover, coverTyp, coverRaw, coverThu, date) VALUES";
+            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, coverName, coverTyp, coverRaw, date) VALUES";
             $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, :Key33, :Key34, :Key35, '" .Date('Ymd') ."')";
         }
         echo 'アクションタイプ確認ok';
@@ -268,10 +271,11 @@ echo $result;
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
-           $stmh->bindParam(':Key32', $Key33, PDO::PARAM_STR);
-           $stmh->bindParam(':Key32', $Key34, PDO::PARAM_STR);
-           $stmh->bindParam(':Key32', $Key35, PDO::PARAM_STR);
-            echo $Key2.'確認';
+           $stmh->bindParam(':Key33', $Key33, PDO::PARAM_STR);
+           $stmh->bindParam(':Key34', $Key34, PDO::PARAM_STR);
+           $stmh->bindParam(':Key35', $Key35, PDO::PARAM_STR);
+
+            //echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行

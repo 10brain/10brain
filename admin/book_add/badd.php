@@ -31,9 +31,15 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
-    $file = $_FILES['upfile'];
-    $tmp_name = $file['tmp_name']; // 一時ファイルのパス
-
+    //$cover = $_FILES['upfile'];
+    $Key33 = $_FILES['upfile']['name'];
+    $Key34 = $_FILES['upfile']['tmp_name'];
+    $Key35 = $_FILES['upfile']['size'];
+    
+    //$cover = file_put_contents($cover);
+    //$cover = mysql_real_escape_string($cover);
+    
+    echo $Key33;
 
 
 
@@ -140,24 +146,34 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                            $vali = new Validation();
-                            /*$Key51=$io->get_param_sql("Name");
-                            $Key52=$io->get_param_sql("ID");
+                        $vali = new Validation();
+                        $Key24=$io->get_param_sql("isbn");
+                        $Key25=$io->get_param_sql("title");
+                        $Key26=$io->get_param_sql("genre");
+                        $Key27=$io->get_param_sql("pub");
+                        $Key28=$io->get_param_sql("writer");
+                        $Key29=$io->get_param_sql("intro");
+                        $Key30=$io->get_param_sql("year");
+                        $Key31=$io->get_param_sql("amazon");
+                        $Key32=$io->get_param_sql("remarks");
+
+                        $Key34 = file_get_contents($_FILES['upfile']['tmp_name']);
+
+
+
                             //データベース更新
-                            $obj=new UserModel();
+                            $obj = new BookModel();
                             //ID確認
-                            $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
-                            if($result == 3){
-                                 $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
-                                include(TEMP_INPUT);
-                            }elseif($result == 0){
+                            $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33, $Key34, $Key35);
+
+                            if($result == 0){
                                     include(HTML_SUCCESS); 
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
-                            */
-                            include(HTML_SUCCESS);
+                            
+
                     }else{
     //				pg_query($conID, "rollback");
                             // 失敗画面
@@ -220,7 +236,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 			$io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
 			if(!$vali->isString($io->get_param("remarks"), TRUE, 400, "UTF-8"))
 			{
-				$io->set_error("remarks_error", "内容に誤りが有ります");
+			$io->set_error("remarks_error", "内容に誤りが有ります");
 			}
 
 
