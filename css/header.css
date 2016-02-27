@@ -4,6 +4,13 @@ body{
   font-size: 12px;
 }
 
+#menu{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .header{
   height: 12px;
   position: fixed;
@@ -23,7 +30,7 @@ body{
 
 .menu{
   background-color: #FFFFFF;
-  height: 100px;
+  height: 80px;
   min-height: 60px;
   width: 100%;
   overflow: hidden;
@@ -47,7 +54,7 @@ body{
   max-width: 160px;
   min-width: 80px;
   overflow: hidden;
-  padding-top: 25px;
+  padding-top: 20px;
   padding-left: 30px;
 
 }

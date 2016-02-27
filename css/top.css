@@ -6,18 +6,21 @@ body{
   font-size: 12px;
   background-size: cover;
   background-color: #F6E8D2;
+  width: 100%;
 }
 
 
 
 
 #content{
-  width: 95%;
-  height: 73%;
-  background-color: #FEFBF5;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 5px;
+  width: 95%;
+  height: 80%;
+  background-color: #FEFBF5;
+  position: relative;;
+  top: 60px;
 }
 
 .contSlider li {
