@@ -1,0 +1,69 @@
+body{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  height: 87%;
+  min-width: 70%;
+  min-height: 89%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 50px;
+}
+
+.page{
+  border: 1px solid black;
+  width: 90%;
+  height: 93%;
+  float: left;
+  margin-top: 5px;
+}
+
+.next{
+  float: left;
+  margin-left: 10px;
+  width: 7%;
+  max-width: 31px;
+  min-width: 5px;
+  height: 15%;
+  max-height: 41px;
+  min-height: 7px;
+}
+
+.next img{
+  width: 100%;
+  height: 100%;
+}
+
+.prev{
+  float: left;
+  margin-right: 10px;
+  width: 7%;
+  max-width: 31px;
+  min-width: 5px;
+  height: 15%;
+  max-height: 41px;
+  min-height: 7px;
+}
+
+.prev img{
+  width: 100%;
+}
+
+.page input[type="submit"]{
+  height: 45px;
+  width: 100px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin: 0 auto;
+}

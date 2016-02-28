@@ -13,7 +13,7 @@
 		<meta name="keywords" content="javascript, jquery, plugin, css3, flip, page, 3d, booklet, book, perspective" />
 		<meta name="author" content="Codrops" />
 		<!--<link rel="shortcut icon" href="../favicon.ico">-->
-    <link rel="stylesheet" type="text/css" href="book.css">
+    <link rel="stylesheet" type="text/css" href="../css/book.css">
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
 		<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 		<!-- custom demo style -->
@@ -23,21 +23,31 @@
 
 	</head>
 	<body>
-    <div id="menu"></div>
-
+    <?=include('../header/header.html');?>
+		<div id="content">
 		<div class="container">
 			<div class="bb-custom-wrapper">
 
 				<div id="bb-bookblock" class="bb-bookblock">
 					<div class="bb-item">
 						<div class="bb-custom-firstpage">
-              <p>1ページ目</p>
+<!--1ページ目-->
+							<?=$dspBookDet[8];?>
 						</div>
 						<div class="bb-custom-side">
-							<p>２ページ目</p>
-                                                        <table>
+<!--2ページ目-->
+								<div class="page">
+									<span>タイトル：<?=$dspBookDet[0];?></span>
+									<span>出版社：<?=$dspBookDet[2];?></span>
+									<span>著者：<?=$dspBookDet[3];?></span>
+									<span>ジャンル：<?=$dspBookDet[1];?></span>
+								</div>
+								<div class="next">
+									<a id="bb-nav-next" href="#"><img src="../img/next.png"></a>
+								</div>
+                                                        <!--<table>
                                                             <tr>
-                                                            <td><?=$dspBookDet[0];?></td> 
+                                                            <td><?=$dspBookDet[0];?></td>
                                                             <td><?=$dspBookDet[1];?></td>
                                                             <td><?=$dspBookDet[2];?></td>
                                                             <td><?=$dspBookDet[3];?></td>
@@ -45,15 +55,34 @@
                                                             <td><?=$dspBookDet[5];?></td>
                                                             <td><?=$dspBookDet[6];?></td>
                                                             </tr>
-                                                        </table>
+                                                        </table>-->
 						</div>
 					</div>
 					<div class="bb-item">
 						<div class="bb-custom-side">
-							<p>３ページ目</p>
+<!--3ページ目-->
+								<div class="prev">
+									<a id="bb-nav-prev" href="#"><img src="../img/prev.png"></a>
+								</div>
+								<div class="page">
+									<span>紹介文：<?=$dspBookDet[4];?></span>
+								</div>
 						</div>
 						<div class="bb-custom-side">
-							<p>４ページ目</p>
+<!--4ページ目-->
+								<div class="page">
+									<span>書籍番号：<?=$Key20;?></span>
+									<span>タイトル：<?=$dspBookDet[0];?></span>
+									返却予定日
+									<span>返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。</span>
+									<form action="<?=$book;?>" method="post">
+										<input type="hidden" name="ActionType" value="TgRSPInf">
+										<input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+										<input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+										<input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+										<input type="submit" value="確認" /></td>
+									</form>
+								</div>
 						</div>
 					</div>
 					<!--<div class="bb-item">
@@ -82,12 +111,12 @@
 					</div>-->
 				</div>
 
-				<nav>
+				<!--<nav>
 					<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
 					<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
 					<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
 					<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
-				</nav>
+				</nav>-->
 
 			</div>
 
@@ -179,7 +208,8 @@
 				Page.init();
 		</script>
 
-    <div id="footer"></div>
+    <?php include('../footer/footer.html');?>
 
+	</div>
 	</body>
 </html>
