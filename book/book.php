@@ -18,15 +18,21 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key20 = $_POST["KEYWORD20"];//書籍番号
+    $Key21 = $_POST["KEYWORD21"];//ISBN
     echo $Key1;
         echo $Key2;
             echo $Key20;
     //DB問い合わせ
     $obj=new BookModel();
-    $result = $obj->GETBookDetail($ActType, $Key20, $dspBookDet);
-    
+    $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
 //画面表示
 if ($result == 0){
+   header('X-Content-Type-Options: nosniff');
+   header("Content-Type: image/jpeg");
+    $base64 = base64_encode($dspBookDet[8]);
+    $mime = 'image/jpg';
+    return 'data:'.$mime.';base64,'.$base64;
+
     include("book.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

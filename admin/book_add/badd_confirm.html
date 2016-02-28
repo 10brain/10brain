@@ -9,10 +9,25 @@ and open the template in the editor.
         <title>書籍追加確認</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery.upload.js"></script>
+<script>
+$(function() {
+    // jQuery Upload Thumbs 
+    $('form input:file').uploadThumbs({
+        position : 0,      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                           // any: arbitrarily jquery selector
+        imgbreak : true    // append <br> after thumbnail images
+    });
+});
+</script>
+
     </head>
     <body>
-        <form name="input" action="<?=URL_ACTION;?>" method="post">
-        <?=$io->get_all_params();?>
+       
+        <form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">
+        <?=$io->get_all_params();?> 
         <?=$decision;?>
             <dl>
             <dt>ISBN</dt>
@@ -51,8 +66,16 @@ and open the template in the editor.
             <dd><?=$io->get_param_html_br("remarks");?></dd>
             </dl>
             <dl>
-            <dt>画像</dt><?=$Key34;?>
-            <dd><img src="./tmp_cover/<?=$Key33;?>"></dd>
+            <span>画像ファイル</span><br>
+            <ul>
+             <li>
+            <label>
+                <INPUT type="hidden" name="MAX_FILE_SIZE" value="600000">
+                <input type="file" name="upfile" multiple="multiple"/><br /><div class="error"><?=$io->get_error("cover_error");?></div><br>
+             <div class="error"><?=$io->get_error("cover_error");?></div>              
+            </label>
+             </li>  
+            </ul>
             </dl>
 
             <input type="hidden" name="ActionType" value="TgRSPInf">
