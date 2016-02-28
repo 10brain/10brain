@@ -184,7 +184,7 @@ echo $result;
         }else{
             $strSQL = $strSQL. " And ISBN = :Key21";            
         }
-echo $result;
+        echo $result;
         //SQL実行
         try {
            //クラス呼び出し
@@ -236,7 +236,7 @@ echo $result;
 
     
     /**************書籍登録SQL*************************************************/
-    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33, $Key34, $Key35){
+    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -245,15 +245,13 @@ echo $result;
             $result = 2;
             return $result;
         }
-        echo 'カバー名前'.$Key33;
-        echo 'カバーMIME'.$Key34;
-        echo 'カバーサイズ'.$Key35;
+
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, coverName, coverTyp, coverRaw, date) VALUES";
-            $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, :Key33, :Key34, :Key35, '" .Date('Ymd') ."')";
+            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, cover, date) VALUES";
+            $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, :Key33, '" .Date('Ymd') ."')";
         }
         echo 'アクションタイプ確認ok';
         
@@ -271,9 +269,8 @@ echo $result;
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
-           $stmh->bindParam(':Key33', $Key33, PDO::PARAM_STR);
-           $stmh->bindParam(':Key34', $Key34, PDO::PARAM_STR);
-           $stmh->bindParam(':Key35', $Key35, PDO::PARAM_STR);
+           $stmh->bindValue(':Key33', $Key33, PDO::PARAM_STR);
+
 
             //echo $Key2.'確認';
             echo $strSQL;
