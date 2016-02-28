@@ -27,8 +27,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
 //画面表示
 if ($result == 0){
-   header('X-Content-Type-Options: nosniff');
-   header("Content-Type: image/jpeg");
+   //header('X-Content-Type-Options: nosniff');
+   //sheader("Content-Type: image/jpeg");
     $base64 = base64_encode($dspBookDet[8]);
     $mime = 'image/jpg';
     return 'data:'.$mime.';base64,'.$base64;
