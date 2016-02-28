@@ -31,10 +31,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
-    //echo $cover;
 
-    //$cover = ($cover);
-    //$cover = ($cover);
 
  
     //画像ファイルアップロード確認

@@ -145,7 +145,7 @@ echo $result;
                    $dspAdminBook[$i][2] = $array['genre'];//ジャンル
                    $dspAdminBook[$i][3] = $array['pub'];//出版社
                    $dspAdminBook[$i][4] = $array['stock'];//在庫数
-                   $dspAdminBook[$i][5] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];
+                   $dspAdminBook[$i][5] = $array['cover'];
                    $dspAdminBook[$i][6] = $array['ISBN'];//ISBN
                   $i=$i+1;
                }
