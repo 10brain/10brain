@@ -69,10 +69,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             }
 
     }*/
-    if(isset($_FILES['upfile']['tmp_name'])){
-        $Key33 = $_FILES['upfile']['tmp_name'];
-        $Key33 = file_get_contents($Key33);
-     }
+
      
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -179,7 +176,11 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                         
-
+                        if(isset($_FILES['upfile']['tmp_name'])){
+                            $Key331 = $_FILES['upfile']['tmp_name'];
+                            $Key33 = file_get_contents($Key331);
+                         }
+                         
                         $vali = new Validation();
                         $Key24=$io->get_param_sql("isbn");
                         $Key25=$io->get_param_sql("title");
@@ -191,12 +192,6 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                         $Key31=$io->get_param_sql("amazon");
                         $Key32=$io->get_param_sql("remarks");
                         
-                        
-                        
-                        
-
-
-
                         //データベース更新
                         $obj = new BookModel();
                         //ID確認
