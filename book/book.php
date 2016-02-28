@@ -24,7 +24,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookDetail($ActType, $Key20, $dspBookDet);
-
+    
 //画面表示
 if ($result == 0){
     include("book.html");
@@ -36,12 +36,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("login.html");
 }
 }
-    
-	
+
+
 ?>
-
-

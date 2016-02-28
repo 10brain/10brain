@@ -14,6 +14,7 @@ and open the template in the editor.
     <body>
         <?=include('../header/header.html');?>
 
+
         <div id="content">
           <br>
           <form action="search.php" method="post">
@@ -42,7 +43,7 @@ and open the template in the editor.
               <div class="sample1">
                 <div class="either1">
                   <input type="radio" name="KEYWORD23" id="img" value="1" checked="checked" />
-                  <label for="img"><img src="../img/a.png"></label>
+                  <label for="img"><img src="../img/imagelist.png"></label>
                   <input type="radio" name="KEYWORD23" id="list" value="0" />
                   <label for="list"><img src="../img/b.png"></label>
                 </div>
@@ -61,8 +62,8 @@ and open the template in the editor.
 
 <table border="1" width="80%">
   <tr>
-      <td width="10%"></td>
-      <td width="40%">タイトル</td>
+      <td width="5%"></td>
+      <td width="45%">タイトル</td>
       <td width="25%">出版社</td>
       <td width="15%">カテゴリ</td>
       <td width="10%">貸出状況</td></tr>
@@ -102,9 +103,14 @@ and open the template in the editor.
 }
 ?>
 </div>
+
+          <?php include('../footer/footer.html');?>
+
         </div>
 
-        <?php include('../footer/footer.html');?>
+
+
+
 
     </body>
 </html>
