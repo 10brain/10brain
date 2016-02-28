@@ -25,9 +25,9 @@ $(function() {
 
     </head>
     <body>
-       
+         <?=$io->get_all_params();?>       
         <form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">
-        <?=$io->get_all_params();?> 
+
         <?=$decision;?>
             <dl>
             <dt>ISBN</dt>
@@ -76,7 +76,7 @@ $(function() {
             </label>
              </li>  
             </ul>
-            </dl>
+            
 
             <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

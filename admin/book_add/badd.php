@@ -35,7 +35,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
  
     //画像ファイルアップロード確認
-   if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+   /*if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
         switch ($_FILES['upfile']['error']) {
             case UPLOAD_ERR_OK: // OK
                 break;
@@ -68,11 +68,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
             }
 
-    }
-    $Key33 = $_FILES['upfile']['tmp_name'];
-    $Key33 = file_get_contents($Key33);
-
-
+    }*/
+    if(isset($_FILES['upfile']['tmp_name'])){
+        $Key33 = $_FILES['upfile']['tmp_name'];
+        $Key33 = file_get_contents($Key33);
+     }
+     
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
     define("HTML_CODE", "UTF-8");
@@ -109,9 +110,9 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 
     if($io->is_not_falsification()){
-            // 登録処理 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-                    $decision=true;
+        // 登録処理 ================================================================
+        if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
+                $decision=true;
                     // csvファイルの作成 -----------------------------------------------------
                     // 通し番号とユニークなファイル名を取得
             /*	$fp = fopen(CSV_PATH.CSV_COUNT, "r+");
