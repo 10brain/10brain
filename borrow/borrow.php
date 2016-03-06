@@ -29,7 +29,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
-
+    $Key0 = $_POST['KEYWORD0'];
+    $Key3 = $_POST['KEYWORD3'];
 
 //貸出冊数確認
 $obj=new BookModel();

@@ -32,6 +32,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key0 = $_POST["KEYWORD0"];  
     $Key1 = $_POST["KEYWORD1"];  //link
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
     $decision = $_POST["decision"];  //パスワード
 
 

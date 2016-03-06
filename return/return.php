@@ -20,7 +20,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
-    $Name = $_POST["KEYWORD3"];  //名前
+    $Key3 = $_POST["KEYWORD3"];  //名前
 
     //貸出一覧確認
     $obj=new BookModel();
