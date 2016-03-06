@@ -21,8 +21,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    $Name = $dspUserInfo[1];
-    $Num = $dspUserInfo[0];
+    $Key4 = $dspUserInfo[1];
+    $Key0 = $dspUserInfo[0];
 }
 
 //画面表示

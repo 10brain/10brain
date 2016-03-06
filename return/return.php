@@ -4,6 +4,7 @@ require '../lib/check.php';
 
 $result = 0;
 $ActType = "";
+$Key0 ="";
 $Key1 ="";
 $Key2 ="";
 $Key21 = "";
