@@ -79,7 +79,7 @@ class BookModel{
                    $dspBookList[$i][1] = $array['title'];//書籍タイトル
                    $dspBookList[$i][2] = $array['remarks'];//出版社
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
-                   $dspBookList[$i][4] = $array['stok'];//在庫数
+                   $dspBookList[$i][4] = $array['stock'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
                    $dspBookList[$i][6] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];
                 $i=$i+1;

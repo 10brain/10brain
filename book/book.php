@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Name ="";
 
 
 //IDとパスワードチェック
@@ -17,6 +18,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Name = $_POST["KEYWORD3"];  //名前
     $Key20 = $_POST["KEYWORD20"];//書籍番号
     $Key21 = $_POST["KEYWORD21"];//ISBN
     echo $Key1;
