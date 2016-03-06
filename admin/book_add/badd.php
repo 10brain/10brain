@@ -32,45 +32,23 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
-
- 
-    //画像ファイルアップロード確認
-   /*if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
-        switch ($_FILES['upfile']['error']) {
-            case UPLOAD_ERR_OK: // OK
-                break;
-
-            case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
-            case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
-                $io->set_error("cover_error", "ファイルサイズが超過しています");
-            default:
-                $io->set_error("cover_error", "エラーが発生しました");
+    if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+        if(is_uploaded_file($_FILES["upfile"]["tmp_name"])){
+            if(move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
+                chmod("tmp_cover/" .$_FILES["upfile"]["name"], 0644);
+                echo $_FILES["upfile"]["name"] . "をアップロードしました。";
+                $Key33 = $_FILES['upfile']['name'];
+                $Key34 = $_FILES['upfile']['type'];
+                $Key35 = "./tmp_cover/".$_FILES['upfile']['name'];
+                $Key35 = file_get_contents($Key35);
+              }else{
+                echo "ファイルをアップロードできません。";
+              }
+        }else{
+           echo "ファイルが選択されていません。";
         }
-        // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので
-       // MIMEタイプを自前でチェックする
-       if (!$info = @getimagesize($_FILES['upfile']['tmp_name'])) {
-           $io->set_error("cover_error", "有効なファイルタイプではありません");
-       }
-       if (!in_array($info[2], [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
-           $io->set_error("cover_error", "有効なファイル形式ではありません");
-       }
+    }
 
-        if(is_uploaded_file($_FILES['upfile']['tmp_name'])){
-                //一字ファイルを保存ファイルにコピーできたか
-                if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
-                  chmod("tmp_cover/" . $_FILES["upfile"]["name"], 0644);
-                    //正常
-
-                }else{
-                    //
-                    echo "error while saving.";
-                }
-
-            }
-
-    }*/
-
-     
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
     define("HTML_CODE", "UTF-8");
@@ -101,9 +79,6 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
-
-
-
 
 
     if($io->is_not_falsification()){
@@ -175,13 +150,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                        
-                        if(isset($_FILES['upfile']['tmp_name'])){
-                            $Key331 = $_FILES['upfile']['tmp_name'];
-                            $Key33 = file_get_contents($Key331);
-                         }
-                         
                         $vali = new Validation();
+                         
                         $Key24=$io->get_param_sql("isbn");
                         $Key25=$io->get_param_sql("title");
                         $Key26=$io->get_param_sql("genre");
@@ -191,14 +161,22 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                         $Key30=$io->get_param_sql("year");
                         $Key31=$io->get_param_sql("amazon");
                         $Key32=$io->get_param_sql("remarks");
-                        
-                        //データベース更新
+
+
+                 //データベース更新
                         $obj = new BookModel();
                         //ID確認
-                        $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33);
+                        $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32);
 
                         if($result == 0){
-                                include(HTML_SUCCESS); 
+                            $obj = new BookModel();
+                            //ID確認
+                            $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32);
+                            if($result==0){
+                                include(HTML_SUCCESS);
+                            }else{
+                                include(TEMP_INPUT);
+                            }  
                         }else{
                             $db_error ='システムエラーです。開発者に連絡してください。';
                             include(TEMP_INPUT);

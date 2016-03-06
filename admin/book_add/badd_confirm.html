@@ -26,6 +26,7 @@ $(function() {
     </head>
     <body>
         <!--<form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">-->
+        <form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">
 
         <?=$io->get_all_params();?>  
         <?=$decision;?>
@@ -65,12 +66,13 @@ $(function() {
             <dt>備考</dt>
             <dd><?=$io->get_param_html_br("remarks");?></dd>
             </dl>
+            
             <dl>
             <span>画像ファイル</span><br>
             <ul>
              <li>
             <label>
-                <INPUT type="hidden" name="MAX_FILE_SIZE" value="600000">
+                <input type="hidden" name="MAX_FILE_SIZE" value="600000">
                 <input type="file" name="upfile" multiple="multiple"/><br /><div class="error"><?=$io->get_error("cover_error");?></div><br>
              <div class="error"><?=$io->get_error("cover_error");?></div>              
             </label>
@@ -84,5 +86,6 @@ $(function() {
 
             
            <br><input type="image" alt="送信する" />
+        </form>
     </body>
 </html>
