@@ -15,15 +15,16 @@ and open the template in the editor.
         <?=include('../header/header.html');?>
 
         <div id="content">
+        <div class="contents">
           <div class="title">
             <ul>
-              <li>
+              <li class="image">
                 <img src="../img/4.png">
               </li>
               <li>
                 <h1>貸出履歴</h1>
               </li>
-              <li>
+              <li class="image">
                 <img src="../img/4.png">
               </li>
             </ul>
@@ -34,9 +35,9 @@ and open the template in the editor.
 <?
 }else{
 ?>
-          
-          <table border="1" width="95%">
-            <tr><td width="40%">タイトル</td><td width="20%">貸出日</td><td width="20%">返却予定日</td><td width="20%">返却日</td></tr>
+
+          <table border="1" width="90%">
+            <tr><td width="55%">タイトル</td><td width="15%">貸出日</td><td width="15%">返却予定日</td><td width="15%">返却日</td></tr>
 <?
     $i = 0;
     while(!is_null($dspBorrowUList[$i][0])){
@@ -52,6 +53,7 @@ and open the template in the editor.
                     <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                     <!--貸出番号-->
                     <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowUList[$i][0];?>">
                     <input type="submit" value="返却" /></td><!--返却日-->
@@ -69,7 +71,7 @@ and open the template in the editor.
 }
 ?>
 
-
+        </div>
         <?php include('../footer/footer.html');?>
         </div>
     </body>
