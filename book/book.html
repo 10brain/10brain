@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 
-
-
-
 <html lang="en" class="no-js demo-4">
 	<head>
 		<meta charset="UTF-8" />
@@ -20,6 +17,17 @@
 		<!-- custom demo style -->
 		<link rel="stylesheet" type="text/css" href="css/demo4.css" />
 		<script src="js/modernizr.custom.js"></script>
+		<!--calender-->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	  <script src="js/jquery.js"></script>
+	  <script src="js/jquery-ui.js"></script>
+	  <script>
+		jQuery(function($){
+		  $(function() {
+		    $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+14D" });
+		  });
+		});
+	  </script>
 
 
 	</head>
@@ -38,25 +46,17 @@
 						<div class="bb-custom-side">
 <!--2ページ目-->
 								<div class="page">
-									<span>タイトル：<?=$dspBookDet[0];?></span>
-									<span>出版社：<?=$dspBookDet[2];?></span>
-									<span>著者：<?=$dspBookDet[3];?></span>
-									<span>ジャンル：<?=$dspBookDet[1];?></span>
+									<div class="title">タイトル：<?=$dspBookDet[0];?></div>
+									<div class="other">
+										出版社：<?=$dspBookDet[2];?><br>
+										著者：<?=$dspBookDet[3];?><br>
+										ジャンル：<?=$dspBookDet[1];?>
+									</div>
 								</div>
 								<div class="next">
 									<a id="bb-nav-next" href="#"><img src="../img/next.png"></a>
 								</div>
-                                                        <!--<table>
-                                                            <tr>
-                                                            <td><?=$dspBookDet[0];?></td>
-                                                            <td><?=$dspBookDet[1];?></td>
-                                                            <td><?=$dspBookDet[2];?></td>
-                                                            <td><?=$dspBookDet[3];?></td>
-                                                            <td><?=$dspBookDet[4];?></td>
-                                                            <td><?=$dspBookDet[5];?></td>
-                                                            <td><?=$dspBookDet[6];?></td>
-                                                            </tr>
-                                                        </table>-->
+
 						</div>
 					</div>
 					<div class="bb-item">
@@ -66,17 +66,22 @@
 									<a id="bb-nav-prev" href="#"><img src="../img/prev.png"></a>
 								</div>
 								<div class="page">
-									<span>紹介文：<?=$dspBookDet[4];?></span>
+									<div class="other">紹介文：<?=$dspBookDet[4];?></div>
 								</div>
 						</div>
 						<div class="bb-custom-side">
 <!--4ページ目-->
+
+
 								<div class="page">
-									<span>書籍番号：<?=$Key20;?></span>
-									<span>タイトル：<?=$dspBookDet[0];?></span>
-									返却予定日
-									<span>返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。</span>
+									<div class="other">書籍番号：<?=$Key20;?></div>
+									<div class="title">タイトル：<?=$dspBookDet[0];?></div>
 									<form action="<?=$book;?>" method="post">
+									<div class="returndate">
+										<span>返却予定日</span><input type="text" id="datepicker"><span>←</span><br>
+									</div>
+									<div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。<br></div>
+
 										<input type="hidden" name="ActionType" value="TgRSPInf">
 										<input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
 										<input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
@@ -86,38 +91,10 @@
 								</div>
 						</div>
 					</div>
-					<!--<div class="bb-item">
-						<div class="bb-custom-side">
-							<p>Croissant pudding gingerbread gummi bears marshmallow halvah. Wafer donut croissant. Cookie muffin jelly beans pie croissant croissant candy canes jelly marshmallow.</p>
-						</div>
-						<div class="bb-custom-side">
-							<p>Wafer donut caramels chocolate caramels sweet roll. Gummi bears powder candy chocolate cake gummi bears icing wafer cupcake. Brownie cotton candy pastry chocolate wypas.</p>
-						</div>
-					</div>
-					<div class="bb-item">
-						<div class="bb-custom-side">
-							<p>Marzipan dragée candy canes chocolate cake. Soufflé faworki jelly gingerbread cupcake. Powder gummies applicake.</p>
-						</div>
-						<div class="bb-custom-side">
-							<p>Cotton candy caramels tootsie roll soufflé powder lemon drops carrot cake danish. Cotton candy candy canes fruitcake muffin gingerbread. Jujubes soufflé gingerbread donut donut.</p>
-						</div>
-					</div>
-					<div class="bb-item">
-						<div class="bb-custom-side">
-							<p>Jujubes fruitcake tiramisu liquorice chocolate cake. Carrot cake faworki donut soufflé oat cake tootsie roll. Fruitcake fruitcake cake sweet pie jelly beans. Chocolate cake candy jujubes oat cake toffee croissant muffin.</p>
-						</div>
-						<div class="bb-custom-side">
-							<p>Chocolate bar tiramisu marzipan. Croissant soufflé croissant lollipop liquorice dragée chupa chups carrot cake. Liquorice lollipop halvah toffee lollipop.</p>
-						</div>
-					</div>-->
+
 				</div>
 
-				<!--<nav>
-					<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
-					<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
-					<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
-					<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
-				</nav>-->
+
 
 			</div>
 

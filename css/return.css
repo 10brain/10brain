@@ -4,22 +4,15 @@ body,h1{
   font-size: 14px;
 }
 
-body{
-  background-size: cover;
-}
-
-#menu{
-  width: 1277px;
-  height: 82px;
-  background-color: #F6E8D2;
-}
-
-#footer{
-  width: 1277px;
-  height: 18px;
-  background-color: #F6E8D2;
-  position: fixed;
-  bottom: 0px;
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  min-width: 70%;
+  min-height: 84%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 35px;
 }
 
 table{

@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Name ="";
 $Key21 = "";
 $Key22 = "";
 
@@ -38,12 +39,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("login.html");
 }
 
-}    
-	
+}
+
 ?>
-
-
