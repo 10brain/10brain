@@ -9,11 +9,12 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>貸出履歴</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="return.css">
+      <link rel="stylesheet" type="text/css" href="../css/return.css">
     </head>
     <body>
-        <div id="menu"></div>
-        <div class="content">
+        <?=include('../header/header.html');?>
+
+        <div id="content">
           <div class="title">
             <ul>
               <li>
@@ -27,13 +28,13 @@ and open the template in the editor.
               </li>
             </ul>
           </div>
-            
+
 <?if(is_null($dspBorrowUList[0])){?>
     <p>該当する本がありません。</p>
 <?
 }else{
 ?>
-            <?=$error;?>
+          
           <table border="1" width="95%">
             <tr><td width="40%">タイトル</td><td width="20%">貸出日</td><td width="20%">返却予定日</td><td width="20%">返却日</td></tr>
 <?
@@ -62,13 +63,14 @@ and open the template in the editor.
 <?
     $i=$i+1;
     }
-?>  
+?>
           </table>
 <?
 }
 ?>
-        </div>
 
-        <div id="footer"></div>
+
+        <?php include('../footer/footer.html');?>
+        </div>
     </body>
 </html>
