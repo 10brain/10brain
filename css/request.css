@@ -8,6 +8,7 @@ body,h1,input{
   position: absolute;
   top: 80px;
   width: 100%;
+
   min-width: 70%;
   min-height: 84%;
   margin: 0 auto;
