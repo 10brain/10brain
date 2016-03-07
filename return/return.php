@@ -30,7 +30,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 //画面表示
 if ($result == 0){
-    $return='./return_conf.php';
+
     include("return_input.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

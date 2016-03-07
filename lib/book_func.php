@@ -251,7 +251,7 @@ echo $result;
             return $result;
         }else{
             $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, date) VALUES";
-            $strSQL = $strSQL. " (:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, '" .Date('Ymd') ."')";
+            $strSQL = $strSQL. "(:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, '" .Date('Ymd') ."')";
         }
         echo 'アクションタイプ確認ok';
 
@@ -306,7 +306,7 @@ echo $result;
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO cover(ISBN,coverName,coverMime,coverTyp) VALUES";
+            $strSQL = "INSERT INTO cover(ISBN, coverName, coverMime, coverTyp) VALUES";
             $strSQL = $strSQL. "(:Key24, :Key33, :Key34, :Key35)";
         }
         echo 'アクションタイプ確認ok';

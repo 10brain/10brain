@@ -25,10 +25,10 @@ $(function() {
 
     </head>
     <body>
-        <!--<form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">-->
-        <form name="input" action="<?=URL_ACTION;?>" method="post" enctype="multipart/form-data">
-
-        <?=$io->get_all_params();?>  
+        <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post">
+        <input type="hidden" name="step_from" value="conf" />
+    
         <?=$decision;?>
             <dl>
             <dt>ISBN</dt>
@@ -83,9 +83,17 @@ $(function() {
             <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD60" value='<?=$io->get_param_html_br("isbn");?>'>
+            <input type="hidden" name="KEYWORD61" value='<?=$io->get_param_html_br("title");?>'>
+            <input type="hidden" name="KEYWORD62" value='<?=$io->get_param_html_br("genre");?>'>
+            <input type="hidden" name="KEYWORD63" value='<?=$io->get_param_html_br("pub");?>'>
+            <input type="hidden" name="KEYWORD64" value='<?=$io->get_param_html_br("writer");?>'>
+            <input type="hidden" name="KEYWORD65" value='<?=$io->get_param_html_br("intro");?>'>
+            <input type="hidden" name="KEYWORD66" value='<?=$io->get_param_html_br("year");?>'>
+            <input type="hidden" name="KEYWORD67" value='<?=$io->get_param_html_br("amazon");?>'>
+            <input type="hidden" name="KEYWORD68" value='<?=$io->get_param_html_br("remarks");?>'>
 
-            
-           <br><input type="image" alt="送信する" />
+           <br><input type="submit" alt="送信する" />
         </form>
     </body>
 </html>
