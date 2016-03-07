@@ -8,6 +8,7 @@ body,h1,input{
   position: absolute;
   top: 80px;
   width: 100%;
+
   min-width: 70%;
   min-height: 84%;
   margin: 0 auto;
@@ -18,46 +19,14 @@ body,h1,input{
 
 .contents{
   width: 80%;
-  min-height: 90%;
+
+  height: 566px;
+
 	position: relative;
 	background-color: white;
 	margin: 0 auto;
 	margin-top: 20px;
 	border: 1px solid black;
-}
-
-table{
-  border-collapse: collapse;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  background-color: white;
-  font-size: 10px;
-}
-
-table tr{
-  height: 30px;
-}
-
-table td{
-  text-align: center;
-  padding: 2px;
-  letter-spacing: 2px;
-}
-
-form{
-  margin: 0;
-}
-
-table input[type="submit"]{
-  height: 25px;
-  width: 70px;
-  padding: 3px 3px;
-  font-size: 1.1em;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  letter-spacing: 3px;
-  margin: 2px 5px;
 }
 
 .title{
@@ -96,36 +65,41 @@ table input[type="submit"]{
   width: 100%;
 }
 
-
-/*confirm*/
-
-.confirm{
+.form{
   width: 60%;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
-.confirm ul{
-  /zoom:1;
-  padding: 0;
-  text-align: left;
+.form form{
+  width: 100%;
+}
+
+.form input[type="text"]{
+  height: 35px;
+  width: 375px;
+  padding: 6px 8px;
+  font-size: 1.3em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  margin: 0;
   margin-bottom: 30px;
 }
 
-.confirm li{
-  display: inline-block;
-  list-style: none;
-  font-size: 14px;
-  margin-bottom: 5px;
+.form textarea{
+  height: 100px;
+  width: 450px;
+  padding: 6px 8px;
+  font-size: 1.3em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
-.confirm form{
-  text-align: center;
-  width: 100%;
-  margin: 15px auto;
-}
-
-.confirm input[type="submit"]{
+.submit input[type="submit"]{
   height: 40px;
   width: 175px;
   padding: 6px 8px;
@@ -134,4 +108,10 @@ table input[type="submit"]{
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
+}
+
+.submit{
+  width: 100%;
+  margin-top: 80px;
+  text-align: center;
 }

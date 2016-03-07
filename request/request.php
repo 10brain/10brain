@@ -29,7 +29,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
-    $Key0 = $_POST["KEYWORD0"];  
+    $Key0 = $_POST["KEYWORD0"];
     $Key1 = $_POST["KEYWORD1"];  //link
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //パスワード
@@ -149,12 +149,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             //link確認
                             $result = $obj->GETRequestAdd($ActType, $Key0, $Key61, $Key62, $Key63);
                             if($result == 0){
-                                include(HTML_SUCCESS); 
+                                include(HTML_SUCCESS);
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
-                            
+
 
                     }else{
     //				pg_query($conlink, "rollback");
@@ -169,7 +169,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else if($io->get_param("step_from") == "input"){
             // 確認処理 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
 
                         // 書籍タイトル
@@ -191,7 +191,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 			}
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");
-                           
+
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
@@ -207,7 +207,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else if($io->get_param("step_from") == "agree"){
             // 入力画面 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     include(TEMP_INPUT);
             }else{
                     // リファラ制限画面
@@ -216,7 +216,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else{
             // 同意画面 ================================================================
-            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){	
+            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
 
@@ -230,6 +230,3 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }
 
 ?>
-
-
-

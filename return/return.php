@@ -7,6 +7,7 @@ $ActType = "";
 $Key0 ="";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 $Key21 = "";
 $Key22 = "";
 
@@ -31,7 +32,9 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 //画面表示
 if ($result == 0){
 
+
     include("return_input.html");
+
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
@@ -40,12 +43,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("../login.html");
 }
 
-}    
-	
+}
+
 ?>
-
-
