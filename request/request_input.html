@@ -35,18 +35,15 @@ and open the template in the editor.
                 <form name="input" action="<?=URL_ACTION;?>" method="post" >
                   <input type="hidden" name="step_from" value="input">
 
-                  <span>タイトル</span><?=$io->get_error("title_error"); ?><br>
-                  <!--<input name="title" id="title" size="10" maxlength="80" type="text" value=""><br>-->
+                  <span>タイトル</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
                   <input name="title" id="title" size="10" maxlength="80" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
-                  <span>リンク</span><?=$io->get_error("link_error"); ?><br>
-                  <!--<input name="link" id="link" size="10" maxlength="255" type="text" value=""><br>-->
+                  <span>リンク</span><div class="error"><?=$io->get_error("link_error"); ?></div><br>
                   <input name="link" id="link" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('link');?>" /><br>
 
-                  <span>備考</span><?=$io->get_error("remarks_error"); ?><br>
-                  <!--<textarea rows="1" cols="10" wrap="SOFT" name="remarks"></textarea><br>-->
+                  <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
                   <textarea rows="1" cols="10" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea><br>
-               <br>
+
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

@@ -31,10 +31,10 @@ and open the template in the editor.
           </div>
           <div class="confirm">
             <ul>
-                <li>書籍番号：<?=$dspBorrowU[0];?></li>
-                <li>タイトル：<?=$dspBorrowU[1];?></li>
-                <li>貸出日：<?=$dspBorrowU[2];?></li>
-                <li>返却日：<?=date('Y-m-d');?></li>
+                <li>書籍番号：<?=$dspBorrowU[0];?></li><br>
+                <li>タイトル：<?=$dspBorrowU[1];?></li><br>
+                <li>貸出日：<?=$dspBorrowU[2];?></li><br>
+                <li>返却日：<?=date('Y-m-d');?></li><br>
             </ul>
 
               <form action="<?=$return;?>" method="post">
@@ -48,17 +48,14 @@ and open the template in the editor.
                 <input type="submit" value="返却">
               </form>
 
-              <form action="<?=$return;?>" method="post">
-                <input type="hidden" name="ActionType" value="TgRSPInf">
-                <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowU[4];?>">
-                <input type="hidden" name="KEYWORD20" value="<?=$dspBorrowU[0];?>">
-                <input type="submit" value="戻る">
+              <form>
+                <div class="submit">
+                  <input type="button" onClick='history.back();' value="戻る">
+                </div>
               </form>
             </div>
+            <?var_dump($Key3);?>
+            <?var_dump($Key1);?>
 
           </div>
           <?php include('../footer/footer.html');?>

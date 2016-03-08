@@ -1,14 +1,13 @@
-body,h1,input{
+body,h1,input,span,textarea{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #content{
   position: absolute;
   top: 80px;
   width: 100%;
-
   min-width: 70%;
   min-height: 84%;
   margin: 0 auto;
@@ -19,9 +18,7 @@ body,h1,input{
 
 .contents{
   width: 80%;
-
   height: 566px;
-
 	position: relative;
 	background-color: white;
 	margin: 0 auto;
@@ -68,7 +65,7 @@ body,h1,input{
 .form{
   width: 60%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .form form{
@@ -76,32 +73,43 @@ body,h1,input{
 }
 
 .form input[type="text"]{
-  height: 35px;
+  height: 30px;
   width: 375px;
   padding: 6px 8px;
-  font-size: 1.3em;
+  font-size: 16px;
   color: black;
   background-color: white;
   border: 1px solid #808080;
   margin: 0;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .form textarea{
-  height: 100px;
-  width: 450px;
+  height: 120px;
+  width: 425px;
   padding: 6px 8px;
-  font-size: 1.3em;
+  font-size: 16px;
   color: black;
   background-color: white;
   border: 1px solid #808080;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .submit input[type="submit"]{
   height: 40px;
-  width: 175px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+}
+
+.submit input[type="button"]{
+  height: 40px;
+  width: 200px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
@@ -111,7 +119,18 @@ body,h1,input{
 }
 
 .submit{
+  margin-top: 30px;
   width: 100%;
-  margin-top: 80px;
   text-align: center;
+}
+
+.error{
+  color: red;
+  display: inline;
+  padding-left: 20px;
+}
+
+.confirm{
+  margin: 5px auto 30px auto;
+  font-size: 16px;
 }
