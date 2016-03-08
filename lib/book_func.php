@@ -401,6 +401,57 @@ echo $result;
 
     }*/
      /**************貸出用書籍検索SQL*************************************************/
+    function GETBookNum($Key10, &$dspBooknum){
+        $strSQL = "Select stock From Book Where BookNum=:Key10";
+        
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key10', $Key10, PDO::PARAM_STR);
+           
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   $dspBooknum[0] = $array['stock'];
+
+               }
+
+           }
+
+
+        } catch (Exception $Exception) {
+
+        }
+        //return $dspUserInfo;
+        return $result;
+
+        
+        
+    }
+    
+     /**************貸出用書籍検索SQL*************************************************/
 
     function GETBorrowSearch($ActType, $Key40, $Key41, &$dspTest){
         //初期値設定

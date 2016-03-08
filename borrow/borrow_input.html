@@ -26,6 +26,11 @@ and open the template in the editor.
         <dt>書籍番号<span class="attention">＊必須項目</span></dt>
         <dd><input name="bookNum" id="bookNum" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('bookNum');?>" /><div class="error"><?=$io->get_error("bookNum_error"); ?></div></dd></dd>
         </dl>
+       <!--<form name='bnum_conf' action='borrow_bnum.php' method='post'>
+           <input type="hidden" name="KEYWORD10" value="<?=$io->get_param_html('bookNum');?>">
+           <input type="submit" value="在庫確認"/>
+       </form>-->
+
 
         <!--返却予定日-->
         <dl>

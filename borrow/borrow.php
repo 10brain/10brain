@@ -29,16 +29,27 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key0 = $_POST['KEYWORD0'];
+    $Key2 = $_POST['KEYWORD2'];
     $Key3 = $_POST['KEYWORD3'];
-
+/*
+    if(isset($_POST['KEYWORD10'])){
+        $Key10 = $_POST['KEYWORD10'];
+        $obj=new BookModel();
+        //入力された情報の確認
+        $result = $obj->GETBorrowSearch($Key10, $dspBooknum);
+        if($dspBooknum[0] = 0){
+            $zaiko = '在庫がありません';
+        }else{
+            $zaiko = '在庫有';
+        }
+    }*/
 //貸出冊数確認
 $obj=new BookModel();
 //入力された情報の確認
 $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
+    
 
-
-    if(count($dspBorrowUList[0])<=3){
+    if(array_count_values(is_null($dspBorrowUList[3])<=3)){
         include 'borrow_not.html';
     }else{
 
