@@ -19,27 +19,29 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
-    //DB問い合わせ
-    $obj=new UserModel();
-    $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
+//貸出冊数確認
+$obj=new BookModel();
+//入力された情報の確認
+$result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
     
-}
 
-//画面表示
-if ($result == 0){
-    include("user.html");
-}else{
-    if ($_POST["ActionType"] != "TgRSPInf"){
-        $error = "";
-    }elseif ($result == 1){
-	$error = "入力内容に誤りがあります。再度入力してください。";
+    if(array_count_values(is_null($dspBorrowUList[3])<=3)){
+        include 'borrow_not.html';
+    }elseif($result == 0){
+        include("user.html");
+
     }else{
-	$error = "ただいまサーバーが込み合っております。";
+        if ($_POST["ActionType"] != "TgRSPInf"){
+        $error = "";
+        }elseif ($result == 1){
+            $error = "入力内容に誤りがあります。再度入力してください。";
+        }else{
+            $error = "ただいまサーバーが込み合っております。";
+        }
+    
+    include("../login.html");
     }
-    
-include("../login.html");
-}
-    
+}    
 	
 ?>
 

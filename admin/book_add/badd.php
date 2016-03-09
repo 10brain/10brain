@@ -114,24 +114,26 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                    if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
-                        if(is_uploaded_file($_FILES["upfile"]["tmp_name"])){
-                            if(move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
-                                chmod("tmp_cover/" .$_FILES["upfile"]["name"], 0644);
-                                echo $_FILES["upfile"]["name"] . "をアップロードしました。";
-                                $Key33 = $_FILES['upfile']['name'];
-                                $Key34 = $_FILES['upfile']['type'];
-                                $Key35 = "./tmp_cover/".$_FILES['upfile']['name'];
-                                $Key35 = file_get_contents($Key35);
+                        if(isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+                            if(is_uploaded_file($_FILES["upfile"]["tmp_name"])){
+                                if(move_uploaded_file($_FILES["upfile"]["tmp_name"], "tmp_cover/" . $_FILES["upfile"]["name"])) {
+                                    chmod("tmp_cover/" .$_FILES["upfile"]["name"], 0644);
+                                    echo $_FILES["upfile"]["name"] . "をアップロードしました。";
+                                    $Key33 = $_FILES['upfile']['name'];
+                                    $Key34 = $_FILES['upfile']['type'];
+                                    $Key35 = "./tmp_cover/".$_FILES['upfile']['name'];
+                                    $Key35 = file_get_contents($Key35);
 
-                              }else{
-                                echo "ファイルをアップロードできません。";
-                              }
-                        }else{
-                           echo "ファイルが選択されていません。";
+                                  }else{
+                                    echo "ファイルをアップロードできません。";
+                                  }
+                            }else{
+                               echo "ファイルが選択されていません。";
+                            }
                         }
-                    }
-
+                                echo 'kore'.$Key33;
+                                echo 'de'.$Key34;
+                                echo 'do'.$Key35;
                         $vali = new Validation();
                         
                         $Key24 = $_POST['KEYWORD60'];
