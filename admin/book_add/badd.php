@@ -9,6 +9,8 @@
 require '../../lib/book_func.php';
 require '../../lib/check.php';
 
+
+
 // ライブラリファイルの読み込み
 $lib_path = "../../lib/";
 
@@ -134,7 +136,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                                 echo 'kore'.$Key33;
                                 echo 'de'.$Key34;
                                 echo 'do'.$Key35;
-                        $vali = new Validation();
+                        //$vali = new Validation();
                         
                         $Key24 = $_POST['KEYWORD60'];
                         $Key25 = $_POST['KEYWORD61'];

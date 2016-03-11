@@ -15,12 +15,6 @@ and open the template in the editor.
         <input type="hidden" name="step_from" value="input" />
         
         <?=$io->get_all_params();?>
-        <!--タイトル-->
-        <dl>
-        <dt>ISBN<span class="attention">＊必須項目</span></dt>
-        <dd><input name="isbn" id="isbn" size="20" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><div class="error"><?=$io->get_error("isbn_error"); ?></div></dd>
-        </dl>
-
        <!--書籍番号-->
         <dl>
         <dt>書籍番号<span class="attention">＊必須項目</span></dt>

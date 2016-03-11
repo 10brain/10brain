@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="<?=$borrow_bn_conf;?>" method="post" >
+
+       <!--書籍番号-->
+        <dl>
+        <dt>書籍番号<span class="attention">＊必須項目</span></dt>
+        <dd><input name="KEYWORD40" size="10" maxlength="10" type="text" /><br>
+            <div class="error"><?=$booknum_error;?></div>
+        </dd>
+        </dl>
+
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <br><p style="margin-bottom:20px;"><input type="submit" alt="在庫を確認" /></p>
+
+  </form>
+         <?=$db_error;?>
+    </body>
+</html>
