@@ -42,14 +42,14 @@ and open the template in the editor.
                   <input name="link" id="link" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('link');?>" /><br>
 
                   <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
-                  <textarea rows="1" cols="10" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea><br>
-               <br>
+                  <textarea rows="1" cols="10" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea>
+
                     <input type="hidden" name="ActionType" value="TgRSPInf">
                     <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                     <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                     <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                     <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                    <div class="submit">
+                    <div class="check">
                       <input type="submit" value="確認">
                     </div>
                 </form>
