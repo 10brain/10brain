@@ -9,22 +9,31 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>マイページ | 10brain</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="user.css">
+      <link rel="stylesheet" type="text/css" href="css/user.css">
     </head>
     <body>
 <?
     $pass_edit='./user_pass.php';
     $return='../return/return.php';
 ?>
-      <div id="menu"></div>
+      <?=include('../header/header.html');?>
 
-      <div class="content">
-
+      <div id="content">
+      <div class="contents">
         <div class="title">
-
-          <h1>マイページ</h1>
-
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>貸出履歴</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
         </div>
+
 
         <div class="button">
             <form action="<?=$return;?>" method="post" class="return">
@@ -33,19 +42,22 @@ and open the template in the editor.
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="image" src="" alt="貸出履歴" class="request">
-          </form>
-          <form action="<?=$pass_edit;?>" method="post" class="pass">
+                <input type="button" src="" alt="貸出履歴" class="request">
+            </form>
+            <form action="<?=$pass_edit;?>" method="post" class="pass">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
                 <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                <input type="image" src="" alt="パス変更" class="request">
-            
-          </form>
-        </div>
-      </div>
+                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                <input type="button" src="" alt="パス変更" class="request">
 
-      <div id="footer"></div>
+            </form>
+        </div>
+
+
+      </div>
+      <?php include('../footer/footer.html');?>
+      </div>
     </body>
 </html>

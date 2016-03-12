@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
@@ -18,12 +19,13 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
 
 //貸出冊数確認
 $obj=new BookModel();
 //入力された情報の確認
 $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
-    
+
 
     if(array_count_values(is_null($dspBorrowUList[3])<=3)){
         include 'borrow_not.html';
@@ -38,11 +40,9 @@ $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
         }else{
             $error = "ただいまサーバーが込み合っております。";
         }
-    
+
     include("../login.html");
     }
-}    
-	
+}
+
 ?>
-
-
