@@ -31,10 +31,11 @@ and open the template in the editor.
           </div>
           <div class="confirm">
             <ul>
-                <li>書籍番号：<?=$dspBorrowU[0];?></li>
-                <li>タイトル：<?=$dspBorrowU[1];?></li>
-                <li>貸出日：<?=$dspBorrowU[2];?></li>
-                <li>返却日：<?=date('Y-m-d');?></li>
+              <li>書籍番号：<?=$dspBorrowU[0];?></li><br>
+              <li>タイトル：<?=$dspBorrowU[1];?></li><br>
+              <li>貸出日：<?=$dspBorrowU[2];?></li><br>
+              <li>返却日：<?=date('Y-m-d');?></li><br>
+
             </ul>
 
               <form action="<?=$return_run;?>" method="post">
@@ -48,15 +49,11 @@ and open the template in the editor.
                 <input type="submit" value="返却">
               </form>
 
-              <form action="<?=$return;?>" method="post">
-                <input type="hidden" name="ActionType" value="TgRSPInf">
-                <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowU[4];?>">
-                <input type="hidden" name="KEYWORD20" value="<?=$dspBorrowU[0];?>">
-                <input type="submit" value="戻る">
+              <form>
+                <div class="submit">
+                  <input type="button" onClick='history.back();' value="戻る">
+                </div>
+
               </form>
             </div>
 
@@ -65,46 +62,3 @@ and open the template in the editor.
         </div>
     </body>
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!--<html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="wilih=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>貸出履歴</div>
-        <dl>
-            <dt>書籍番号</dt>
-            <dd><?=$dspBorrowU[0];?></dd>
-            <dt>タイトル</dt>
-            <dd><?=$dspBorrowU[1];?></dd>
-            <dt>貸出日</dt>
-            <dd><?=$dspBorrowU[2];?></dd>
-            <dt>返却予定日</dt>
-            <dd><?=date('Y-m-d');?></dd>
-        </dl>
-            <form action="<?=$return_run;?>" method="post">
-            <input type="hidden" name="ActionType" value="TgRSPInf">
-            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-            <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowU[4];?>">
-            <input type="hidden" name="KEYWORD20" value="<?=$dspBorrowU[0];?>">
-            <input type="image" value="返却">
-          </form>
-
-
-
-
-    </body>
-</html>
--->
