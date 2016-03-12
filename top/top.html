@@ -4,25 +4,150 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="ja">
     <head>
         <meta charset="UTF-8">
         <title>ホーム</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/top.css">
+        <script src="jquery-2.1.3.min.js"></script>
     </head>
     <body>
-      
+
       <?php include('../header/header.html');?>
 
       <div id="content">
 
-        <div class="contSlider">
-          <ul>
-            <li><a href="#"><img src=""></a></li>
-          </ul>
+
+        <div id="container">
+
+          <div class="title">
+            <ul>
+              <li class="image">
+                <img src="../img/4.png">
+              </li>
+              <li>
+                <h1>新着図書</h1>
+              </li>
+              <li class="image">
+                <img src="../img/4.png">
+              </li>
+            </ul>
+          </div>
+
+        <div class="slider">
+         <div class="slideSet">
+          <div class="slide">
+          <div class="section">
+          <img src="../images/pic1.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic2.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic3.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic4.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic5.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic6.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic7.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic8.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic9.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic10.png" height="141" width="100" alt>
+          </div>
+          </div>
+          <div class="slide">
+          <div class="section">
+          <img src="../images/pic1.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic2.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic3.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic4.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic5.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic6.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic7.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic8.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic9.png" height="141" width="100" alt>
+          </div>
+          <div class="section">
+          <img src="../images/pic10.png" height="141" width="100" alt>
+          </div></div>
+          <div class="slide">side3</div>
+          <div class="slide">side4</div>
+          <div class="slide">side5</div>
+         </div>
         </div>
-        <div class="clear"></div>
+        <button class="slider-prev"><img src="../images/prev.png" ></button>
+        <button class="slider-next"><img src="../images/next.png" ></button>
+        </div>
+        <script>
+        (function(){
+        var slideWidth = $('.slide').outerWidth(); // .slideの幅を取得して代入
+        var slideNum = $('.slide').length; // .slideの数を取得して代入
+        var slideSetWidth = slideWidth * slideNum; //.slideの幅×数で求めた値を代入
+        $('.slideSet').css('width', slideSetWidth); //.slideSetのスタイルシートにwidth: slideSerWidthを指定
+
+        var slideCurrent = 0;
+
+        //アニメーションを実行する独自関数
+        var sliding = function(){
+        	//slideCurrentが0以下だったら
+        	if( slideCurrent < 0 ){
+        		slideCurrent = slideNum -1;
+
+        	//slideCurrentがslideNumを超えたら
+        	}else if( slideCurrent > slideNum -1){ //slideCurrent >=
+        	   slideCurrent = 0;
+        	}
+
+        	$('.slideSet').stop().animate({
+        		left: slideCurrent * -slideWidth
+        	});
+        }
+
+        //前へボタンが押されたとき
+        $('.slider-prev').click(function(){
+        	slideCurrent--;
+        	sliding();
+        });
+
+        //次へボタンが押されたとき
+        $('.slider-next').click(function(){
+        	slideCurrent++;
+        	sliding();
+        });
+        }());
+        </script>
+
+
       </div>
 
       <?php include('../footer/footer.html');?>
