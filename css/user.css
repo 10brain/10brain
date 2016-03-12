@@ -1,0 +1,64 @@
+body,h1,input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  min-width: 70%;
+  min-height: 84%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 35px;
+  background-size: cover;
+}
+
+.contents{
+  width: 80%;
+  height: 566px;
+  min-height: 90%;
+	position: relative;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 20px;
+	border: 1px solid black;
+}
+
+.title{
+  height: 25px;
+  width: 100%;
+  margin: 15px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.image{
+  display: inline-block;
+  list-style: none;
+  width: 20%;
+  min-width: 10px;
+  padding: 5px 30px;
+}
+
+.image img{
+  width: 100%;
+}
