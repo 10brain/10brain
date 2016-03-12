@@ -1,5 +1,5 @@
 <?php
-require '../lib/user_func.php';
+require '../lib/book_func.php';
 require '../lib/check.php';
 
 $result = 0;
@@ -23,15 +23,19 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key3 = $_POST["KEYWORD3"];  //名前
 
     //DB問い合わせ
-    $obj=new UserModel();
-    $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
+    $obj=new BookModel();
+    //入力された情報の確認
+    $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
 
 
 //画面表示
 if ($result == 0){
+    if(array_count_values(is_null($dspBorrowUList[$i][3])) <= 3){
+        include("borrow_not.html");
+    }else{
     $borrow_bn_conf = 'borrow_bn_conf.php';
     include("borrow_bn_input.html");
-
+    }
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
