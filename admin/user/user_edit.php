@@ -1,13 +1,13 @@
 <?php
-require '../lib/user_func.php';
-require '../lib/check.php';
+require '../../lib/user_func.php';
+require '../../lib/check.php';
 
 $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
 
-///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
+
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
     $result = 1;
@@ -15,15 +15,16 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
-    $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key12 = $_POST["KEYWORD12"];//書籍番号
+    $Key13 = $_POST["KEYWORD13"];//書籍番号
+   echo $Key12;
+   echo $Key13;
+    //DB問い合わせ
+    $obj=new UserModel();
+    $result = $obj->GETUserDetail($ActType, $Key12, $Key13, $dspUserDet);
 
-//貸出冊数確認
-$obj=new UserModel();
-//入力された情報の確認
-$result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
 //画面表示
 if ($result == 0){
     include("user.html");
@@ -36,10 +37,11 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
     
-include("login.html");
+include("../../login.html");
 }
+}
+    
 	
-}
 ?>
 
 
