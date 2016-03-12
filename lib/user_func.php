@@ -361,7 +361,7 @@ echo $result;
                    //表示データ収集
                    $dspAdminUser[$i][0] = $array['Num'];//社員番号
                    $dspAdminUser[$i][1] = $array['ID'];//ID
-                   $dspAdminUser[$i][2] = $array['Name'];//出版社
+                   $dspAdminUser[$i][2] = $array['Name'];//名前
                   $i=$i+1;
                }
          

@@ -23,7 +23,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 $obj=new UserModel();
 //入力された情報の確認
 $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
+}  
 //画面表示
 if ($result == 0){
     include("user.html");
@@ -39,7 +39,7 @@ if ($result == 0){
 include("login.html");
 }
 	
-}
+
 ?>
 
 
