@@ -1,4 +1,4 @@
-body,h1,input{
+body,h1,input,span{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
@@ -61,4 +61,72 @@ body,h1,input{
 
 .image img{
   width: 100%;
+}
+
+.submit input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+}
+
+.password{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.password form{
+  width: 100%;
+}
+
+.password input[type="password"]{
+  height: 30px;
+  width: 350px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.error{
+  color: red;
+  display: inline;
+  padding-left: 20px;
+}
+
+.submit input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  margin-top: 40px;
+}
+
+.submit input[type="button"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+}
+
+.submit{
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
 }
