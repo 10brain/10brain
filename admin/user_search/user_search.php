@@ -26,6 +26,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 //画面表示
 if ($result == 0){
+    $user_det = '../user/user.php';
     include("user_search.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

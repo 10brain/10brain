@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/request/request.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_suc.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_bn_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_not.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/return/return.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_suc.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_fal.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/top.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user_edit.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user_search/user_search.html</file>
         </group>
     </open-files>
 </project-private>

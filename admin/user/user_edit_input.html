@@ -25,7 +25,7 @@ $useradd='useradd.php';
               <img src="../../img/4.png">
             </li>
             <li>
-              <h1>ユーザーの登録</h1>
+              <h1>ユーザー編集</h1>
             </li>
             <li>
               <img src="../../img/4.png">
@@ -42,9 +42,11 @@ $useradd='useradd.php';
             <span>ユーザー名</span><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><div class="error"><?=$io->get_error("Name_error"); ?><br>
             <span>ユーザーID</span><br>
-            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<div class="error"><?=$io->get_error("ID_error"); ?><br>
-            <!--<span>パスワード</span><br>
-            <input name="PW" id="PW" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('PW');?>" /><div class="error"><?=$io->get_error("PW_error"); ?><br>-->
+            <input name="ID" id="ID" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('ID');?>" /><div class="error"><?=$io->get_error("ID_error"); ?><br>
+            <span>パスワード</span><br>
+            <?=$io->get_param_html("pass"); ?>
+            <dl>
+            <dd>
         </div>
           <ul>
             <input type="hidden" name="ActionType" value="TgRSPInf">

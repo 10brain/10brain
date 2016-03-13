@@ -11,10 +11,27 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
-        <?=$dspUserDet[0];?>
-        <?=$dspUserDet[1];?>
-        <?=$dspUserDet[2];?>
-        <?=$dspUserDet[3];?>
+        <div>ユーザー情報</div>
+        <table>
+            <tr>
+                <td><?=$dspUserDet[0];?></td>
+                <td><?=$dspUserDet[1];?></td>
+                <td><?=$dspUserDet[2];?></td>
+                <td><?=$dspUserDet[3];?></td>
+
+            </tr>
+        </table>
+
+        <form method="post" action="<?=$user_edit;?>">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
+        <input type="hidden" name="KEYWORD13" value="<?=$Key13;?>">
+        <input type="hidden" name="KEYWORD14" value="<?=$Key14;?>">
+        <input type="submit" value="編集" />
+        </form>
+    </td>
+
     </body>
 </html>
