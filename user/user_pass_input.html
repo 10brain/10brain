@@ -9,42 +9,61 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>パスワード変更</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="user.css">
+      <link rel="stylesheet" type="text/css" href="../css/user.css">
     </head>
     <body>
 <?
 $pass='user_pass_edit.php';
 ?>
-      <div id="menu"></div>
+      <?=include('../header/header.html');?>
 
       <div id="content">
+      <div class="contents">
         <div class="title">
-
-          <h1>パスワードの変更</h1>
-
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>パスワード変更</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
         </div>
+
+
         <div class="password">
             <form action="<?=$pass;?>" method="post">
-            <span>現在のパスワード</span><br>
+            <span>現在のパスワード</span><div class="error"><?=$nowPass_error;?></div><br>
             <input type="password" name="pass" maxlength="80"><br>
-            <p><?=$nowPass_error;?></p>
-            <span>新しいパスワード</span><br>
+
+            <span>新しいパスワード</span><div class="error"><?=$newPass_error;?></div><br>
             <input type="password" name="newpass" maxlength="80"><br>
-            <p><?=$newPass_error;?></p>
-            <span>パスワードの確認</span><br>
+
+            <span>パスワードの確認</span><div class="error"><?=$nowPassc_error;?></div><br>
             <input type="password" name="newpass_conf" maxlength="80"><br>
-            <p><?=$nowPassc_error;?></p>
-            
-            <input type="image" value="変更">
-            
+
             <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
             <input type="hidden" name="KEYWORD14" value="<?=$dspUserInfo[2];?>">
+
+            <div class="submit">
+              <input type="submit" value="変更">
+            </div>
           </form>
+          <form>
+            <div class="submit">
+              <input type="button" onClick='history.back();' value="戻る">
+            </div>
+          </form>
+
         </div>
       </div>
-
-      <div id="footer"></div>
-    </body>
+      <?php include('../footer/footer.html');?>
+      </div>
 </html>

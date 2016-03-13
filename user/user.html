@@ -9,7 +9,7 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>マイページ | 10brain</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="css/user.css">
+      <link rel="stylesheet" type="text/css" href="../css/user.css">
     </head>
     <body>
 <?
@@ -35,14 +35,14 @@ and open the template in the editor.
         </div>
 
 
-        <div class="button">
+        <div class="submit">
             <form action="<?=$return;?>" method="post" class="return">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
                 <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="button" src="" alt="貸出履歴" class="request">
+                <input type="submit" src="" alt="貸出履歴" value="貸出履歴">
             </form>
             <form action="<?=$pass_edit;?>" method="post" class="pass">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -50,7 +50,7 @@ and open the template in the editor.
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="button" src="" alt="パス変更" class="request">
+                <input type="submit" src="" alt="パス変更" value="パス変更">
 
             </form>
         </div>
