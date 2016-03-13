@@ -5,22 +5,24 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+  <head>
+      <title>貸出画面</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/borrow.css">
+  </head>
+  <body>
+
      <form action="<?=$borrow_conf;?>" method="post" >
        <dl>
        <!--書籍番号-->
            <dt>書籍番号</dt>
            <dd><?=$borrow_bN;?></dd>
-       
+
        <!--書籍タイトル-->
            <dt>タイトル</dt>
            <dd><?=$borrow_ti;?></dd>
-           
+
        <!--返却予定日-->
        <dt>返却予定日</dt>
        <dd><input type="text" id="datepicker" name="KEYWORD42"><span>←</span></dd>

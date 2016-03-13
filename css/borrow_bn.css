@@ -1,0 +1,170 @@
+body,input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  height: 87%;
+  min-width: 70%;
+  min-height: 89%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 50px;
+}
+
+.container {
+	height: 100%;
+}
+
+.bb-custom-wrapper {
+	width: 90%;
+	height: 95%;
+	position: relative;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 20px;
+	border: 1px solid black;
+}
+
+.bb-custom-wrapper .bb-bookblock {
+	width: 95%;
+	height: 100%;
+	-webkit-perspective: 2000px;
+	perspective: 2000px;
+}
+
+.bb-bookblock {
+	width: 400px;
+	height: 300px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 100;
+	-webkit-perspective: 1300px;
+	perspective: 1300px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.bb-item {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	background: #fff;
+}
+
+.bb-custom-firstpage {
+	text-align: center;
+	width: 50%;
+	float: left;
+	height: 100%;
+}
+
+@media screen and (max-width: 61.75em){
+	.bb-custom-side {
+		font-size: 70%;
+	}
+}
+
+.bb-custom-side {
+	width: 50%;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+	background: #fff;
+	/* Centering with flexbox */
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
+
+.title{
+  color: black;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 20px 0 20px 0;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.page{
+  border: 1px solid black;
+  width: 90%;
+  height: 93%;
+  float: left;
+  margin-top: 5px;
+  padding: 30px;
+  color: black;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-right: 40px;
+}
+
+.page input[type="text"]{
+  width: 70%;
+  height: 35px;
+  border-style: none;
+  padding: 0;
+  outline: 0;
+  border: 1px solid black;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+
+.page input[type="submit"]{
+  height: 35px;
+  width: 150px;
+  padding: 6px 8px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.caution{
+  color: #758869;
+  text-align: center;
+  font-size: 11px;
+  margin: 100px auto 20px auto;
+  line-height: 20px;
+  width: 100%;
+}
+
+.error{
+  color: red;
+  display: inline;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.form{
+  margin-bottom: 30px;
+}

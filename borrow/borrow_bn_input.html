@@ -6,15 +6,76 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>書籍番号入力画面</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/borrow_bn.css">
     </head>
     <body>
-        <form action="<?=$borrow_bn_conf;?>" method="post" >
+
+          <?=include('../header/header.html');?>
+
+          <div id="content">
+      		<div class="container">
+      			<div class="bb-custom-wrapper">
+
+      				<div id="bb-bookblock" class="bb-bookblock bb-vertical">
+      					<div class="bb-item" style="display:block;">
+      						<div class="bb-custom-firstpage"></div>
+
+                  <div class="bb-custom-side">
+                    <div class="page">
+                      <div class="caution">借りる本の書籍番号を入力して、<br>書籍番号チェックボタンを押してください。</div>
+                      <span class="error"><?=$booknum_error;?></span>
+                      <form action="<?=$borrow_bn_conf;?>" method="post" >
+                        <div class="form">
+                          <input name="KEYWORD40" size="10" maxlength="10" type="text" placeholder="書籍番号入力" />
+
+                          <input type="hidden" name="ActionType" value="TgRSPInf">
+                          <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                          <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                          <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                          <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+
+                        </div>
+
+                        <input type="submit" value="書籍番号チェック">
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <?=include('../footer/footer.html');?>
+          </div>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<form action="<?=$borrow_bn_conf;?>" method="post" >-->
 
        <!--書籍番号-->
-        <dl>
+<!--        <dl>
         <dt>書籍番号<span class="attention">＊必須項目</span></dt>
         <dd><input name="KEYWORD40" size="10" maxlength="10" type="text" /><br>
             <div class="error"><?=$booknum_error;?></div>
@@ -31,4 +92,4 @@ and open the template in the editor.
   </form>
          <?=$db_error;?>
     </body>
-</html>
+</html>-->

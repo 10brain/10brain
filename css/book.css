@@ -4,8 +4,6 @@ body,input{
   font-size: 14px;
 }
 
-
-
 #content{
   position: absolute;
   top: 80px;
@@ -17,9 +15,6 @@ body,input{
   background-color: #FBF4E6;
   padding-bottom: 50px;
 }
-
-
-
 
 .title{
   color: black;
@@ -82,8 +77,6 @@ body,input{
 .prev img{
   width: 100%;
 }
-
-
 
 .page input[type="text"]{
   width: 60%;
