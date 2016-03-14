@@ -14,6 +14,7 @@ $lib_path = "../../lib/";
 
 require($lib_path."class.IO.php");
 require($lib_path."class.Form.Check.php");
+require($lib_path."class.Validation.php");
 require($lib_path."class.Form.Radio.php");
 
 $result = 0;
@@ -64,14 +65,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-
-    define("pass",  "1:初期化");
+    define("PASS",  "1:初期化");       
+   
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
-
-
-    $pass  = new Radio ("pass",  pass, $io);
+    $pass = new Check("pass", PASS, $io);
 
 
     if($io->is_not_falsification()){
@@ -132,8 +131,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     $csv = new CSV($io, CSV_PATH, $csv_name, "SJIS");
                     $result = $csv->write(CSV_TEMP);
                     // フラグファイル(?)作成
-                    if($result)
-                    {
+                    if($result){
                             touch(preg_replace("/\.csv/", "-F", CSV_PATH.$csv_name));
                     }
                     // csvファイルの作成(予備)
@@ -144,25 +142,29 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key51=$io->get_param_sql("Name");
-                            $Key52=$io->get_param_sql("ID");
+                            
+                            $Key13 = $io->get_param_sql("Name");
+                            $Key14 = $io->get_param_sql("ID");
+                            
+                            
+                            if($Key15 == '初期化する'){
+                                $Key15 = '9999';
+                            }else{
+                                $Key15 = '初期化しない';
+                            }
+
                             //データベース更新
-                            $obj=new UserModel();
+                            $obj = new UserModel();
                             //ID確認
                             $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
-                            if($result == 3){
-                                $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
-                                include(TEMP_INPUT);
-                            }elseif($result == 0){
-                                    include(HTML_SUCCESS); 
+                            if($result == 0){
+                                include(HTML_SUCCESS); 
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
-                            
-
                     }else{
-    //				pg_query($conID, "rollback");
+                            //pg_query($conID, "rollback");
                             // 失敗画面
                             //処理どうし→登録に失敗
                             include(HTML_FAILURE);
@@ -177,22 +179,26 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
                     $vali = new Validation();
 
-                        // 名前
-                        $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
-                                $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
-                        }
+                    // 名前
+                    $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
+                    if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
+                        $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
+                    }
 
-                        //ID
-                        $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
-                                $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
-                        }
-
+                    //ID
+                    $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
+                    if(!$vali->isString($io->get_param("ID"), true, 40, 0, "UTF-8")){
+                        $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
+                    }
+                    if($pass->is_regularly(1, 1)){
+                        $Key15 = '初期化する';
+                    }else{
+                        $Kwy15 = '初期化しない';
+                    }
 
                     if(!$io->is_error()){
-                            //$io->unset_parameter("agree_0");
-                           $decision=true;
+                        //$io->unset_parameter("agree_0");
+                        $decision=true;
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);

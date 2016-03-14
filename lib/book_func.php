@@ -111,8 +111,8 @@ class BookModel{
             $strSQL = $strSQL. ' WHERE title Like :Key21';
         }
         $Key21 = "%$Key21%";
-echo $Key21;
-echo $result;
+        echo $Key21;
+        echo $result;
         //SQL実行
         try {
            //クラス呼び出し

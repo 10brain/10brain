@@ -264,8 +264,8 @@ class UserModel{
         return $result;
     }
 
-    /*********ユーザーパスワード初期化SQL******************************************/
-    function GETUserPassIni($ActType, $Key1, $Key16){
+    /*********ユーザー編集SQL******************************************/
+    function GETUserEdit($ActType, $Key1, $Key12, $Key13, $Key14, $Key15){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -273,17 +273,26 @@ class UserModel{
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
-        }else{
-            $strSQL = "UPDATE User SET PW = :Key17";
+        }
+        $strSQL = "UPDATE User SET";
+        
+        if(isset($Key13)){
+            $strSQL = $strSQL." Name = :Key13,";
+        }
+        if(isset($Key14)){
+            $strSQL = $strSQL." ID = :Key14,";
+        }
+        if(isset($Key13)){
+            $strSQL = $strSQL."PW = :Key15,";
         }
         echo 'アクションタイプ確認ok';
         
         
-        //ID確認        
-        if(is_null($Key16) == True){
-            $strSQL = $strSQL. " Where PW IS NULL";
+        //条件
+        if(is_null($Key12) == True){
+            $strSQL = $strSQL. " Where Num IS NULL";
         }else{
-            $strSQL = $strSQL. " Where PW = :Key16";            
+            $strSQL = $strSQL. " Where Num = :Key12";            
         }
  
 
@@ -292,10 +301,11 @@ class UserModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key16', $Key16, PDO::PARAM_STR);
-           $stmh->bindParam(':Key17', $Key17, PDO::PARAM_INT);
+           $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
+           $stmh->bindParam(':Key13', $Key13, PDO::PARAM_STR);
+           $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
+           $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行

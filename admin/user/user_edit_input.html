@@ -37,14 +37,14 @@ $useradd='useradd.php';
         <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
-
+        <?=$Key12;?>
 
             <span>ユーザー名</span><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><div class="error"><?=$io->get_error("Name_error"); ?><br>
             <span>ユーザーID</span><br>
             <input name="ID" id="ID" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('ID');?>" /><div class="error"><?=$io->get_error("ID_error"); ?><br>
             <span>パスワード</span><br>
-            <?=$io->get_param_html("pass"); ?>
+            <?=$pass->get_all_checks("<div>?</div>", true)?><div class="error"><?=$io->get_error("pass");?></div>
             <dl>
             <dd>
         </div>
@@ -53,6 +53,7 @@ $useradd='useradd.php';
 
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
             <input type="image" value="確認">
           </ul>
           </form>
