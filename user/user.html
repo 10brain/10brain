@@ -34,17 +34,17 @@ and open the template in the editor.
           </ul>
         </div>
 
-<p><a href="#" >本を追加</a></p>
+<p class="link"><a href="../return/return.php" >貸出履歴</a></p>
+<p class="link"><a href="user_pass.php" >パス変更</a></p>
 
 
-        <div class="submit">
             <form action="<?=$return;?>" method="post" class="return">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
                 <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="submit" src="" alt="貸出履歴" value="貸出履歴">
+
             </form>
             <form action="<?=$pass_edit;?>" method="post" class="pass">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -52,10 +52,9 @@ and open the template in the editor.
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="submit" src="" alt="パス変更" value="パス変更">
 
             </form>
-        </div>
+
 
 
       </div>

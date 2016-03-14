@@ -133,6 +133,11 @@ body,h1,input,span{
 
 
 /*link*/
+.link{
+  float: left;
+  margin: 20px;
+}
+
 .contents a {
 	display: block;
 	text-align: center;
