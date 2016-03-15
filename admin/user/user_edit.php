@@ -39,6 +39,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
+    $Key15 = $_POST["KEYWORD15"];
 
 
     // 内部文字コード
@@ -145,7 +146,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             
                             $Key13 = $io->get_param_sql("Name");
                             $Key14 = $io->get_param_sql("ID");
-                            
+                            //$Key15 = $io->get_param_sql("pass");
                             
                             if($Key15 == '初期化する'){
                                 $Key15 = '9999';
@@ -156,21 +157,23 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             //データベース更新
                             $obj = new UserModel();
                             //ID確認
-                            $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
+                            $result = $obj->GETUserEdit($ActType, $Key1, $Key12, $Key13, $Key14, $Key15);
                             if($result == 0){
                                 include(HTML_SUCCESS); 
                             }else{
-                                $db_error ='システムエラーです。開発者に連絡してください。';
+                                $db_error = 'システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
                     }else{
                             //pg_query($conID, "rollback");
                             // 失敗画面
                             //処理どうし→登録に失敗
+                            $error = 'もう一度登録してください';
                             include(HTML_FAILURE);
                     }
             }else{
                     // リファラ制限画面
+                    $re = 'もう一度ログインしてから再度編集してください';
                     include(TEMP_BLOCK);
             }
 
@@ -193,7 +196,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     if($pass->is_regularly(1, 1)){
                         $Key15 = '初期化する';
                     }else{
-                        $Kwy15 = '初期化しない';
+                        $Key15 = '初期化しない';
                     }
 
                     if(!$io->is_error()){

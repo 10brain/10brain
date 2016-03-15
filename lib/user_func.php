@@ -282,7 +282,7 @@ class UserModel{
         if(isset($Key14)){
             $strSQL = $strSQL." ID = :Key14,";
         }
-        if(isset($Key13)){
+        if($Key15=='9999'){
             $strSQL = $strSQL."PW = :Key15,";
         }
         echo 'アクションタイプ確認ok';
@@ -304,8 +304,9 @@ class UserModel{
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
            $stmh->bindParam(':Key13', $Key13, PDO::PARAM_STR);
            $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
-           $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
-
+           if($Key15=='9999'){
+            $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
+           }
             echo $strSQL;
 
            $stmh->execute();//実行
