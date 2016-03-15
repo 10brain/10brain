@@ -130,3 +130,33 @@ body,h1,input,span{
   margin-top: 30px;
   text-align: center;
 }
+
+
+/*link*/
+.link{
+  float: left;
+  margin: 20px;
+}
+
+.contents a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	display: table-cell;
+	vertical-align: middle;
+	color: #333333;
+	width: 200px;
+	height: 200px;
+	box-sizing: border-box;
+	border: solid 1px #333333;
+	background: url(../img/button_link.png) no-repeat -1px -1px;
+	-webkit-transition: 0.3s ease-in-out;
+	   -moz-transition: 0.3s ease-in-out;
+	     -o-transition: 0.3s ease-in-out;
+	        transition: 0.3s ease-in-out;
+}
+
+.contents a:hover {
+	color: #ffffff;
+	background-position: -1px bottom;
+}
