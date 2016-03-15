@@ -61,12 +61,19 @@ body{
 
 .center{
   height:40px;
-  min-height: 40px;
-  width: 450px;
+  min-height: 60px;
+  width: 600px;
   margin: 0 auto;
   margin-top: 20px;
   position: relative;
   top: 12px;
+}
+
+.center p {
+	margin: 0;
+	padding: 0;
+	font-size: 8px;
+	text-align: center;
 }
 
 .center ul:after{
@@ -78,10 +85,10 @@ body{
 .center ul{
   /zoom: 1;
   margin: 0;
-  height:35px;
+  height:55px;
   min-height: 35px;
-  width: 450px;
-  min-width: 450px;
+  width: 550px;
+  min-width: 550px;
   text-align: center;
   overflow: hidden;
   padding: 0;
