@@ -101,6 +101,10 @@ body{
   list-style: none;
 }
 
+.center input[type="image"]{
+  outline: 0;
+}
+
 .right{
   float: left;
   position: absolute;
