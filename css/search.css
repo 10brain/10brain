@@ -84,6 +84,10 @@ table td{
   letter-spacing: 2px;
 }
 
+.tr{
+  height: 34px;
+}
+
 .table input[type="submit"]{
   height: 25px;
   width: 50px;

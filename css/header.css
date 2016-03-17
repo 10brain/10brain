@@ -132,9 +132,17 @@ body{
 
 }
 
+.logout{
+  font-weight: 100;
+  font-size: 10px;
+}
+
 .right li a{
-  padding: 2px 15px;
+  padding: 2px 15px 2px 15px;
+
   text-decoration:none;
+  position: relative;
+  top:3px;
 }
 
 .right li a:link{
