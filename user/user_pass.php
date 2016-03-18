@@ -17,11 +17,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
 
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
+
 }
 
 //画面表示
@@ -35,13 +36,9 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("../login.html");
 }
-    
-	
+
+
 ?>
-
-
-
-

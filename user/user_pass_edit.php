@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 $Key14 ="";
 $pass ="";
 $newpass ="";
@@ -24,8 +25,9 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key14 =$_POST['KEYWORD14']; //登録されているPW
-    
+
     $pass = $_POST["pass"];  //入力された現行パスワード
     $newpass = $_POST["newpass"];  //入力された新規パスワード
     $newpass_conf = $_POST["newpass_conf"];  //入力された確認用新規パスワード
@@ -35,7 +37,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     //DB問い合わせ
     //$obj=new UserModel();
     //$result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
+
 
         //現行パス確認
         if (!ckStr($pass,10,1) or !preg_match("/^[a-zA-Z0-9]+$/",$pass)){
@@ -91,11 +93,9 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("../login.html");
 }
-    
-	
+
+
 ?>
-
-
