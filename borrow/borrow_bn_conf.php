@@ -21,28 +21,30 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //名前
-    $Key40 = $_POST['KEYWORD40'];//書籍番号
+
+
+        $Key40 = $_POST['KEYWORD40'];//書籍番号
+
     /*echo $Key0;
     echo $Key1;
     echo $Key2;
     echo $Key3;*/
+    
+    $obj=new BookModel();
+    $result = $obj->GETBorrowSearch($Key40, $dspBorrowS);
 
 
 
     if($result==0){
-        $obj=new BookModel();
-        $result = $obj->GETBorrowSearch($Key40, $dspBorrowS);
         //echo $result;
         $borrow_bN = $dspBorrowS[0];
         $borrow_ti = $dspBorrowS[1];
         $borrow_st = $dspBorrowS[3];
-        if($dspBorrowS[3] == 1){
-            $borrow_bN = $dspBorrowS[0];
-            $borrow_ti = $dspBorrowS[1];
-            $borrow_st = $dspBorrowS[3];
+        
+        if($borrow_st == 1){
             $borrow_conf = 'borrow_conf.php';
             include("borrow_day_input.html");
-        }elseif($dspBorrowS[3] == 0){
+        }elseif($borrow_st == 0){
              $borrow_bn_conf = 'borrow.php';
              $booknum_error = 'すでに貸し出されています。';
              include("borrow_bn_input.html");
@@ -51,6 +53,9 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
              $booknum_error = '該当する書籍がありません。もう一度入力してください。';
              include("borrow_bn_input.html");
         }
+    }elseif($result==1){
+             $booknum_error = 'すでに貸し出されているか、該当する本がありません。';
+             include("borrow_bn_input.html");
     }else{
         if ($_POST["ActionType"] != "TgRSPInf"){
             $error = "";
@@ -62,6 +67,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
         include("../login.html");
     }
+
+
 }
 
 

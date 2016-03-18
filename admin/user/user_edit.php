@@ -25,6 +25,7 @@ $Key2 ="";
 $Key12 ="";
 $Key13 ="";
 $Key14 ="";
+$Key15 ="";
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
@@ -35,12 +36,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
-    $Key0 = $_POST["KEYWORD0"];  //ID
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
     $Key15 = $_POST["KEYWORD15"];
-
+    
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -143,15 +144,13 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            
                             $Key13 = $io->get_param_sql("Name");
                             $Key14 = $io->get_param_sql("ID");
-                            //$Key15 = $io->get_param_sql("pass");
                             
                             if($Key15 == '初期化する'){
                                 $Key15 = '9999';
                             }else{
-                                $Key15 = '初期化しない';
+                                $Key15 = '';
                             }
 
                             //データベース更新
@@ -162,7 +161,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                                 include(HTML_SUCCESS); 
                             }else{
                                 $db_error = 'システムエラーです。開発者に連絡してください。';
-                                include(TEMP_INPUT);
+                                include(HTML_FAILURE);
                             }
                     }else{
                             //pg_query($conID, "rollback");
@@ -174,7 +173,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             }else{
                     // リファラ制限画面
                     $re = 'もう一度ログインしてから再度編集してください';
-                    include(TEMP_BLOCK);
+                    include(HTML_FAILURE);
             }
 
     }else if($io->get_param("step_from") == "input"){

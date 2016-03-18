@@ -74,15 +74,16 @@ if ($result == 0){
     $obj=new UserModel();
     $result = $obj->GETUserPassEdit($ActType, $Key1, $Key2, $newpass);
     if($result == 0){
+            
             $passedit = "../index.php";
             $Key2=$newpass;
             include("user_pass_conf.html");
     }elseif($RetCode == 1){
             include("user_pass_input.html");
-            $db_error ="指定された条件では情報が見つかりませんでした。<BR />ご指定に誤りがないか再度ご確認ください。";
+            $db_error ="ユーザー情報がみつかりません。管理者に問い合わせてください";
     }else{
             include("user_pass_input.html");
-            $db_error ="ただいまサーバーが込み合っております。<BR />時間をおいて再度入力してください。";
+            $db_error ="システムエラーです。開発者に連絡してください。";
     }
 
 }else{

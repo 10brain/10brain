@@ -12,9 +12,9 @@ and open the template in the editor.
     </head>
     <body>
         <div>TODO write content</div>
-
+<?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post">
-           <?=$io->get_all_params();?>     
+                
             <dl>
             <dt>名前</dt>
             <dd><?=$io->get_param_html_br("Name");?></dd>
@@ -30,6 +30,7 @@ and open the template in the editor.
              <?=$Key15;?></dd>
             </dl>
            <input type="hidden" name="ActionType" value="TgRSPInf">
+           <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
             <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">

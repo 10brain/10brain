@@ -402,8 +402,17 @@ class BookModel{
     }*/
      /**************貸出用書籍検索SQL*************************************************/
     function GETBorrowSearch($Key40, &$dspBorrowS){
-        $strSQL = "Select * From Book Where BookNum = :Key40";
-        
+      
+        $strSQL = "Select * From Book";
+
+        if(is_null($Key40)){
+            $strSQL = $strSQL." Where BookNum Is NULL";
+        }else{
+            $strSQL = $strSQL." Where BookNum = :Key40";
+        }
+
+        $strSQL = $strSQL." And stock = 1";
+      
 
         //SQL実行
         try {
@@ -425,7 +434,7 @@ class BookModel{
 
            if($count == 0){
                //データなし
-               $result = 0;
+               $result = 1;
                echo $count;
            }else{
                //データ取得
@@ -470,7 +479,7 @@ class BookModel{
         //貸出登録
         if(!is_null($Key40)){
             $strSQL = "INSERT INTO Borrow(BookNum, BDate, RePlan,  Num)";
-            $strSQL = $strSQL. " VALUES( :Key40, '" .Date("Ymd") ."', :Key42, :Key0)";
+            $strSQL = $strSQL. " VALUES(:Key40, '" .Date("Ymd") ."', :Key42, :Key0)";
         }
 
         echo 'アクションタイプ確認ok';

@@ -277,13 +277,14 @@ class UserModel{
         $strSQL = "UPDATE User SET";
         
         if(isset($Key13)){
-            $strSQL = $strSQL." Name = :Key13,";
+            $strSQL = $strSQL." Name = :Key13";
         }
         if(isset($Key14)){
-            $strSQL = $strSQL." ID = :Key14,";
+            $strSQL = $strSQL.", ID = :Key14";
         }
-        if($Key15=='9999'){
-            $strSQL = $strSQL."PW = :Key15,";
+        
+        if($Key15 == '9999'){
+            $strSQL = $strSQL.", PW = :Key15";
         }
         echo 'アクションタイプ確認ok';
         
@@ -312,12 +313,14 @@ class UserModel{
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
-               $result=2;
+               $result=3;
            }
            echo 'DB接続ok';
            echo $result;
            
-        } catch (Exception $Exception) {}
+        } catch (Exception $Exception) {
+            $result=3;
+        }
         //return $dspUserInfo;
         return $result;
     }
