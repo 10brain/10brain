@@ -144,6 +144,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   background-color: white;
   border: 1px solid black;
   text-align: center;
+  outline: 0;
 }
 
 .page input[type="text"]{
@@ -156,6 +157,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   letter-spacing: 1px;
   padding-left: 30px;
   padding-right: 20px;
+  outline: 0;
 }
 
 .returndate{
@@ -189,6 +191,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
 }
 
 .submit input[type="button"]{
+  outline: 0;
   height: 35px;
   width: 150px;
   padding: 6px 8px;
@@ -198,4 +201,5 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   background-color: white;
   border: 1px solid black;
   text-align: center;
+
 }

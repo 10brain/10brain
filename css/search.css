@@ -64,6 +64,7 @@ body,input{
   color: black;
   background-color: #FBF4E6;
   border: 1px solid black;
+  outline: 0;
 }
 
 form{
@@ -98,6 +99,7 @@ table td{
   border: 1px solid #808080;
   letter-spacing: 3px;
   margin: 2px 5px;
+  outline: 0;
 }
 
 

@@ -23,21 +23,21 @@ class otherModel{
             $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
         }else{
             $result = 2;
-            return $result;    
+            return $result;
         }
         $strSQL = $strSQL." Where app IS NULL AND pur IS NULL";
         echo 'アクションタイプ確認ok';
-        /* 
+        /*
         //社員番号確認
         if(is_null($Key3) == True){
             $strSQL = $strSQL. " Where Num IS NULL";
         }else{
-            $strSQL = $strSQL. " Where Num = :Key3";            
+            $strSQL = $strSQL. " Where Num = :Key3";
         }
         echo $Key1.'確認';
         */
-       
-        
+
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -79,14 +79,14 @@ class otherModel{
                 }
                 print_r($dspRequest);
            }
-           
+
         } catch (Exception $Exception) {
             $result = 3;
         }
         //return $dspUserInfo;
         return $result;
     }
-    
+
         /*********過去リクエスト一覧SQL***************************************************/
     function GETOldRequest($ActType, $Key1, &$dspOldRequest){
         //初期値設定
@@ -99,24 +99,24 @@ class otherModel{
         }
         if(!is_null($Key1)){
             $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
-            
+
         }else{
             $result = 2;
-            return $result;    
+            return $result;
         }
         $strSQL = $strSQL." Where app IS NOT NULL AND pur IS NOT NULL";
         echo 'アクションタイプ確認ok';
-        /* 
+        /*
         //社員番号確認
         if(is_null($Key3) == True){
             $strSQL = $strSQL. " Where Num IS NULL";
         }else{
-            $strSQL = $strSQL. " Where Num = :Key3";            
+            $strSQL = $strSQL. " Where Num = :Key3";
         }
         echo $Key1.'確認';
         */
-       
-        
+
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -158,7 +158,7 @@ class otherModel{
                 }
                 print_r($dspOldRequest);
            }
-           
+
         } catch (Exception $Exception) {
             $result = 3;
         }
@@ -177,7 +177,7 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        
+
         if($Key1=='admin@10baton.com'){
             $strSQL = "Select * From Book";
         }else{
@@ -185,12 +185,12 @@ class otherModel{
             return $result;
         }
         echo 'アクションタイプ確認ok';
-        
-        //書籍番号確認        
+
+        //書籍番号確認
         if(is_null($Key40) == True){
             $strSQL = $strSQL. " Where ReqNum IS NULL";
         }else{
-            $strSQL = $strSQL. " Where ReqNum = :Key40 ";            
+            $strSQL = $strSQL. " Where ReqNum = :Key40 ";
         }
 
         //SQL実行
@@ -208,7 +208,7 @@ class otherModel{
            }
            echo 'DB接続ok';
            echo $result;
-           
+
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
@@ -233,13 +233,13 @@ class otherModel{
                }
 
            }
-           
+
         } catch (Exception $Exception) {}
         //return $dspUserInfo;
         return $result;
     }
 
-    
+
     /**************リクエスト登録SQL*************************************************/
     function GETRequestAdd($ActType, $Key0, $Key61, $Key62, $Key63){
         //初期値設定
@@ -254,7 +254,7 @@ class otherModel{
             $strSQL = $strSQL. " (:Key61, :Key62, :Key63, '" .Date('Ymd') ."', :Key0)";
         }
         echo 'アクションタイプ確認ok';
-        
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -275,7 +275,7 @@ class otherModel{
            echo 'DB接続ok';
            echo $result;
 
-           
+
         } catch (Exception $Exception) {
             $result = 3;
         }
@@ -292,21 +292,21 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        
+
         if($Key1=='admin@10baton.com'){
             $strSQL = "UPDATE Request SET app = :Key45";
         }else{
             $result = 2;
             return $result;
         }
-        
+
         if(is_null($Key40)){
             $strSQL = " Where ReqNum IS NULL";
         }else{
-            $strSQL = " Where ReqNum = :Key40";            
+            $strSQL = " Where ReqNum = :Key40";
         }
         echo 'アクションタイプ確認ok';
-        
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -316,9 +316,9 @@ class otherModel{
            if($Key45=='true'){
                $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);
            }else{
-                $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);                     
+                $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);
            }
-           
+
             echo $Key2.'確認';
             echo $strSQL;
 
@@ -345,21 +345,21 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        
+
         if($Key1=='admin@10baton.com'){
             $strSQL = "UPDATE Request SET app = :Key46";
         }else{
             $result = 2;
             return $result;
         }
-        
+
         if(is_null($Key40)){
             $strSQL = " Where ReqNum IS NULL";
         }else{
-            $strSQL = " Where ReqNum = :Key40";            
+            $strSQL = " Where ReqNum = :Key40";
         }
         echo 'アクションタイプ確認ok';
-        
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -369,9 +369,9 @@ class otherModel{
            if($Key45=='true'){
                $stmh->bindParam(':Key46', -1, PDO::PARAM_STR);
            }else{
-                $stmh->bindParam(':Key46', 0, PDO::PARAM_STR);                     
+                $stmh->bindParam(':Key46', 0, PDO::PARAM_STR);
            }
-           
+
             echo $Key2.'確認';
             echo $strSQL;
 

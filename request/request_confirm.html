@@ -16,7 +16,7 @@ and open the template in the editor.
     <body>
       <?=include('../header/header.html');?>
 <div id="content">
-<div class="contents">
+
 
 
   <div class="title">
@@ -32,8 +32,9 @@ and open the template in the editor.
       </li>
     </ul>
   </div>
+  <div class="contents">
 
-  <div class="form">
+  <div class="form1">
     <form name="input" action="<?=URL_ACTION;?>" method="post">
       <?=$io->get_all_params();?>
       <?=$decision;?>

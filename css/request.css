@@ -1,7 +1,7 @@
 body,h1,input,span,textarea{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #content{
@@ -17,8 +17,8 @@ body,h1,input,span,textarea{
 }
 
 .contents{
-  width: 80%;
-  height: 566px;
+  width: 60%;
+  height: 500px;
 	position: relative;
 	background-color: white;
 	margin: 0 auto;
@@ -29,7 +29,7 @@ body,h1,input,span,textarea{
 .title{
   height: 25px;
   width: 100%;
-  margin: 15px auto;
+  margin: 30px auto;
 }
 
 .title h1{
@@ -63,12 +63,22 @@ body,h1,input,span,textarea{
 }
 
 .form{
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 50px;
 }
 
 .form form{
+  width: 100%;
+}
+
+.form1{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.form1 form{
   width: 100%;
 }
 
@@ -82,6 +92,7 @@ body,h1,input,span,textarea{
   border: 1px solid #808080;
   margin: 0;
   margin-bottom: 15px;
+  outline: 0;
 }
 
 .form textarea{
@@ -94,6 +105,7 @@ body,h1,input,span,textarea{
   border: 1px solid #808080;
   margin: 0;
   margin-bottom: 5px;
+  outline: 0;
 }
 
 .check input[type="submit"]{
@@ -106,6 +118,7 @@ body,h1,input,span,textarea{
   border: 1px solid #808080;
   letter-spacing: 2px;
   margin-top: 20px;
+  outline: 0;
 }
 
 .submit input[type="submit"]{
@@ -118,6 +131,7 @@ body,h1,input,span,textarea{
   border: 1px solid #808080;
   letter-spacing: 2px;
   margin-top: 40px;
+  outline: 0;
 }
 
 .submit input[type="button"]{
@@ -129,6 +143,7 @@ body,h1,input,span,textarea{
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
+  outline: 0;
 }
 
 .submit{

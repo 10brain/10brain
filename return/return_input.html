@@ -15,7 +15,8 @@ and open the template in the editor.
         <?=include('../header/header.html');?>
 
         <div id="content">
-        <div class="contents">
+          <!--<div class="contents">-->
+          <br>
           <div class="title">
             <ul>
               <li class="image">
@@ -29,6 +30,7 @@ and open the template in the editor.
               </li>
             </ul>
           </div>
+
 <?$return='return_conf.php';?>
 <?if(is_null($dspBorrowUList[0])){?>
     <p>該当する本がありません。</p>
@@ -36,7 +38,7 @@ and open the template in the editor.
 }else{
 ?>
 
-          <table border="1" width="90%">
+          <table border="1" width="80%">
             <tr><td width="55%">タイトル</td><td width="15%">貸出日</td><td width="15%">返却予定日</td><td width="15%">返却日</td></tr>
 <?
     $i = 0;
@@ -71,7 +73,7 @@ and open the template in the editor.
 }
 ?>
 
-        </div>
+        <!--</div>-->
         <?php include('../footer/footer.html');?>
         </div>
     </body>

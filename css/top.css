@@ -108,6 +108,7 @@ button {
     line-height:0;
     overflow:visible;
     cursor:pointer;
+    outline: 0;
 }
 
 .slider-prev,
