@@ -102,3 +102,8 @@ input:-webkit-autofill {
 #login input[type="password"]:-ms-input-placeholder {
   color: white;
 }
+
+.err_msg{
+  display: inline;
+  font-size: 10px;
+}
