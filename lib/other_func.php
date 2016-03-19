@@ -9,7 +9,7 @@ require 'init.php';
 class otherModel{
 
 
-    /*********リクエスト一覧SQL***************************************************/
+    /*********リクエスト未承認一覧SQL***************************************************/
     function GETRequest($ActType, $Key1, &$dspRequest){
         //初期値設定
         $result = 0;
