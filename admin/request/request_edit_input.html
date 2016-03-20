@@ -10,7 +10,20 @@ and open the template in the editor.
       <title>リクエスト編集</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="request_edit.css">
+    <script type="text/javascript"> 
+        function addElement(select) { 
+            var str = select.value;
+            var element = document.createElement('div'); 
+            
+ 
+            var obj = document.getElementById("select"); 
+            obj.appendChild(element); 
+        } 
+        </script> 
     </head>
+    <?php
+        $app_conf[] = '<script type="text/javascript">select.value;</script>';
+    ?>
     <body>
       <div id="menu"></div>
 <?if(is_null($dspRequest[0])){?>
@@ -18,7 +31,13 @@ and open the template in the editor.
 <?
 }else{
 ?>
+                 <div id="sample">
+                            <select onchange="addElement(this);">
+                <option value="apple">1</option>
+                <option value="banana">2</option>
+            </select>
 
+        
           <table border="1" width="95%">
             <?=$io->get_all_params();?>
             <form name="input" action="<?=URL_ACTION;?>" method="post" >
@@ -35,13 +54,14 @@ and open the template in the editor.
                 <td><a href="<?=$dspRequest[$i][6];?>" target="_blank">⤴️</a></td>
                 <td><?=$dspRequest[$i][7];?></td>
                 <td><?=$dspRequest[$i][2];?></td>
-                <td><select><?=$app->get_all_options()?></select></td>
-                <?
-                  if($app == 1 or $app ==2){
-                    $ReqNum[] = $dspRequest[$i][0];
-
+                <td id="select">
+                    <select onchange="addElement(this);"><?=$app->get_all_options()?></select>
+                </td>
+                <?php
+                  print_r($app_conf);
+                  if($app == "1"){
                   }
-                 ?>
+                ?>
             </tr>
             
 <?
