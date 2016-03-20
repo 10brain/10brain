@@ -39,7 +39,7 @@ body,input{
   height: 93%;
   float: left;
   margin-top: 5px;
-  padding: 30px;
+  padding: 10px 30px;
   color: black;
   font-size: 16px;
   line-height: 60px;
@@ -133,4 +133,11 @@ body,input{
   background-color: white;
   border: 1px solid black;
   text-align: center;
+}
+
+.page p{
+  margin: 0;
+  height: 30px;
+  font-size: 16px;
+  padding: 0;
 }
