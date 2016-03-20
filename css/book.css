@@ -121,3 +121,16 @@ body,input{
   line-height: 20px;
   width: 100%;
 }
+
+.submit input[type="button"]{
+  outline: 0;
+  height: 35px;
+  width: 150px;
+  padding: 6px 8px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+}
