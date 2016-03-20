@@ -42,7 +42,7 @@
 		data: undefined,
 		closeButton: false,
 		fastIframe: true,
-		open: false,
+		open: true,
 		reposition: true,
 		loop: true,
 		slideshow: false,
