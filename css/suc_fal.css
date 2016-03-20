@@ -124,3 +124,31 @@ body,h1,input,p{
   height: 10%;
   margin-top: 10px;
 }
+
+/*not*/
+.not input[type="submit"]{
+  height: 35px;
+  width: 100px;
+  padding: 6px 6px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  outline: 0;
+}
+
+#inline_content img{
+  display: block;
+  margin: 0 auto;
+  width: 10%;
+  height: 10%;
+  margin-top: 10px;
+}
+
+.not .check{
+  width: 100%;
+  margin-top: 12px;
+  text-align: center;
+}
