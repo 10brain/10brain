@@ -1,4 +1,4 @@
-body,h1,input,span,textarea{
+body,h1,input,span,textarea,p{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
@@ -167,4 +167,47 @@ body,h1,input,span,textarea{
 .confirm{
   margin: 5px auto 30px auto;
   font-size: 16px;
+}
+
+/*suc*/
+.suc input[type="submit"]{
+  height: 40px;
+  width: 150px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  outline: 0;
+}
+
+#inline_content p{
+  text-align: center;
+  font-size: 12px;
+  padding-top: 30px;
+  letter-spacing: 2px;
+}
+
+/*fal*/
+.fal input[type="button"]{
+  height: 35px;
+  width: 100px;
+  padding: 6px 6px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  outline: 0;
+}
+
+#inline_content img{
+  display: block;
+  margin: 0 auto;
+  width: 10%;
+  height: 10%;
+  margin-top: 10px;
 }
