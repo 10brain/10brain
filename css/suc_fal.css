@@ -1,4 +1,4 @@
-body,h1,input,span,textarea,p{
+body,h1,input,p{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
@@ -26,6 +26,7 @@ body,h1,input,span,textarea,p{
 	border: 1px solid black;
 }
 
+/*title*/
 .title{
   height: 25px;
   width: 100%;
@@ -62,50 +63,10 @@ body,h1,input,span,textarea,p{
   width: 100%;
 }
 
-.form{
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.form form{
+.check{
   width: 100%;
-}
-
-.form1{
-  width: 60%;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.form1 form{
-  width: 100%;
-}
-
-.form input[type="text"]{
-  height: 30px;
-  width: 375px;
-  padding: 6px 8px;
-  font-size: 16px;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  margin: 0;
-  margin-bottom: 15px;
-  outline: 0;
-}
-
-.form textarea{
-  height: 120px;
-  width: 425px;
-  padding: 6px 8px;
-  font-size: 16px;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  margin: 0;
-  margin-bottom: 5px;
-  outline: 0;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .check input[type="submit"]{
@@ -121,50 +82,45 @@ body,h1,input,span,textarea,p{
   outline: 0;
 }
 
-.submit input[type="submit"]{
+/*suc*/
+.suc input[type="submit"]{
   height: 40px;
-  width: 200px;
+  width: 150px;
   padding: 6px 8px;
-  font-size: 1.2em;
+  font-size: 1.0em;
   color: black;
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
-  margin-top: 40px;
+  margin-top: 30px;
   outline: 0;
 }
 
-.submit input[type="button"]{
-  height: 40px;
-  width: 200px;
-  padding: 6px 8px;
-  font-size: 1.2em;
+#inline_content p{
+  text-align: center;
+  font-size: 12px;
+  padding-top: 30px;
+  letter-spacing: 2px;
+}
+
+/*fal*/
+.fal input[type="submit"]{
+  height: 35px;
+  width: 100px;
+  padding: 6px 6px;
+  font-size: 1.0em;
   color: black;
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
+  margin-top: 10px;
   outline: 0;
 }
 
-.submit{
-  width: 100%;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.check{
-  width: 100%;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.error{
-  color: red;
-  display: inline;
-  padding-left: 20px;
-}
-
-.confirm{
-  margin: 5px auto 30px auto;
-  font-size: 16px;
+#inline_content img{
+  display: block;
+  margin: 0 auto;
+  width: 10%;
+  height: 10%;
+  margin-top: 10px;
 }
