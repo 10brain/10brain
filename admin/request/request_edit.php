@@ -15,6 +15,7 @@ $lib_path = "../../lib/";
 require($lib_path."class.IO.php");
 require($lib_path."class.Form.Check.php");
 require($lib_path."class.Validation.php");
+require($lib_path."class.Form.Select.php");
 
 $result = 0;
 $ActType = "";
@@ -29,8 +30,13 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //名前
+    $Key60 = explode("\t", $_POST["KEYWORD60"]);//リクエスト番号（配列）
+    $Key61 = $_POST["app"];//承認却下
+    echo $Key61;
     $obj=new otherModel();
     $result = $obj->GETRequest($ActType, $Key1, $dspRequest);
 }
@@ -38,14 +44,13 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-define("HTML_CODE", "UTF-8");
+    define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "request_edit_input.html");
     define("TEMP_INPUT",   "request_edit_input.html");
     define("TEMP_ERROR",   "request_edit_input.html");
-    define("TEMP_CONFIRM", "request_edit_confirm.html");
-    define("TEMP_BLOCK",   "../../login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./request_edit_suc.html");
@@ -60,12 +65,15 @@ define("HTML_CODE", "UTF-8");
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-    //チェックボックス
-    define("LIST_AGREE_0", "1:上記に同意した上で問い合わせます。");
+    
+    //セレクトボックス
+    define("LIST_APP", ":選択してください,1:承認,2:却下");
+
 
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
+    $app = new Select("app", LIST_APP, $io);
 
 
 
@@ -74,80 +82,18 @@ define("HTML_CODE", "UTF-8");
             // 登録処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $decision=true;
-                    // csvファイルの作成 -----------------------------------------------------
-                    // 通し番号とユニークなファイル名を取得
-            /*	$fp = fopen(CSV_PATH.CSV_COUNT, "r+");
-                    if($fp)
-                    {
-                            if(flock($fp, LOCK_EX))
-                            {
-                                    $count = fgets($fp, 5);
-                                    if($count == "9999")
-                                    {
-                                            $count = "0001";
-                                    }
-                                    else
-                                    {
-                                            $count = sprintf("%04d", $count + 1);
-                                    }
-                                    rewind($fp);
-                                    fputs($fp, $count);
-                                    flock($fp, LOCK_UN);
-                            }
 
-                            do
-                            {
-                                    $csv_name = CSV_NAME;
-                                    $csv_name = preg_replace("/YMD/", date("Ymd"), $csv_name);
-                                    $csv_name = preg_replace("/HMS/", date("His"), $csv_name);
-                            }
-                            while(file_exists(CSV_PATH.$csv_name));
-
-                            fclose($fp);
-                    }
-                    // パラメータをcsv用に加工
-                    $io->set_parameter("csv_date", date("Ymd"));
-                    $io->set_parameter("csv_count", $count);
-
-                    $radio1 = new Radio ("radio1", LIST_RADIO1A.",".LIST_RADIO1B.",".LIST_RADIO1C, $io);
-                    if($io->get_param("radio1") == "5")
-                    {
-                            $io->set_parameter("csv_radio1", "1");
-                            $io->set_parameter("csv_description", $radio1->get_checked_text_main(false)."　".$io->get_param("description"));
-                    }
-                    else
-                    {
-                            $io->set_parameter("csv_radio1", $io->get_param("radio1"));
-                            $io->set_parameter("csv_description", $io->get_param("description"));
-                    }
-                    $io->set_parameter("csv_radio3s", $radio3->get_checked_text_sub(false));
-                    $io->set_parameter("csv_zip", preg_replace("/\-/", "", $io->get_param("zip")));
-
-
-                    // csvファイルの作成
-                    $csv = new CSV($io, CSV_PATH, $csv_name, "SJIS");
-                    $result = $csv->write(CSV_TEMP);
-                    // フラグファイル(?)作成
-                    if($result)
-                    {
-                            touch(preg_replace("/\.csv/", "-F", CSV_PATH.$csv_name));
-                    }
-                    // csvファイルの作成(予備)
-                    $csv = new CSV($io, CSV_PATH_BK, $csv_name, "SJIS");
-                    $result = $csv->write(CSV_TEMP);
-                    */
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
+                            $io->set_parameters($_GET);
                             $vali = new Validation();
-                            //$Key51=$io->get_param_sql("Name");
-                            //$Key52=$io->get_param_sql("ID");
                             //データベース更新
-                            $obj=new UserModel();
+                            $obj=new otherModel();
                             //ID確認
-                            $result = $obj->GETUserAdd($ActType, $Key1, $Key51, $Key52);
-                            if($result == 3){
-                                $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
+                            $result = $obj->GETRequestAdd($ActType, $Key1, $Key60, $Key61);
+                            if($result == 4){
+                                $dbid_error ='ステータスが読み込みできません。再度入力してください';
                                 include(TEMP_INPUT);
                             }elseif($result == 0){
                                     include(HTML_SUCCESS); 
@@ -168,48 +114,7 @@ define("HTML_CODE", "UTF-8");
                     include(TEMP_BLOCK);
             }
 
-    }else if($io->get_param("step_from") == "input"){
-            // 確認処理 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
-                    $vali = new Validation();
 
-                        // 名前
-                        $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
-                                $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
-                        }
-
-                        //ID
-                        $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
-                                $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
-                        }
-
-
-                    if(!$io->is_error()){
-                            //$io->unset_parameter("agree_0");
-                           $decision=true;
-                            // 登録確認画面
-                            $io->create_hash();
-                            include(TEMP_CONFIRM);
-                    }else{
-                            // 入力エラー画面
-                            include(TEMP_ERROR);
-                    }
-
-            }else{
-                    // リファラ制限画面
-                    include(TEMP_BLOCK);
-            }
-
-    }else if($io->get_param("step_from") == "agree"){
-            // 入力画面 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
-                    include(TEMP_INPUT);
-            }else{
-                    // リファラ制限画面
-                    include(TEMP_BLOCK);
-            }
 
     }else{
             // 同意画面 ================================================================

@@ -25,7 +25,7 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        $strSQL = $strSQL." Where app IS NULL AND pur IS NULL";
+        $strSQL = $strSQL." Where app IS NULL";
         echo 'アクションタイプ確認ok';
         /*
         //社員番号確認
@@ -294,16 +294,20 @@ class otherModel{
         }
 
         if($Key1=='admin@10baton.com'){
-            $strSQL = "UPDATE Request SET app = :Key45";
+            $strSQL = "UPDATE Request SET app = case RepNum";
         }else{
             $result = 2;
             return $result;
         }
 
-        if(is_null($Key40)){
-            $strSQL = " Where ReqNum IS NULL";
+        if(!is_null($Key60) and !is_null($Key61)){
+            foreach ($data as $Key60 => $Key61) {
+                $strSQL .= ' WHEN '.':Key60'.' THEN '.':Key61';
+            }
+            $strSQL .= ' END';
         }else{
-            $strSQL = " Where ReqNum = :Key40";
+            $result = 4;
+            return $result;
         }
         echo 'アクションタイプ確認ok';
 
@@ -312,14 +316,9 @@ class otherModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-           if($Key45=='true'){
-               $stmh->bindParam(':Key45', 0, PDO::PARAM_STR);
-           }else{
-                $stmh->bindParam(':Key45', -1, PDO::PARAM_STR);
-           }
+           $stmh->bindParam(':Key60', $Key60, PDO::PARAM_INT);
+           $stmh->bindParam(':Key61', $Key61, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行

@@ -20,7 +20,11 @@ and open the template in the editor.
 ?>
 
           <table border="1" width="95%">
-            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">承認</td><td width="10%">購入</td><td width="10%">編集ボタン</td></tr>
+            <?=$io->get_all_params();?>
+            <form name="input" action="<?=URL_ACTION;?>" method="post" >
+            <input type="hidden" name="step_from"/>
+
+            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">リクエスト日</td><td width="10%">ステータス</td></tr>
 <?
     $i = 0;
     while(!is_null($dspRequest[$i][0])){
@@ -31,26 +35,13 @@ and open the template in the editor.
                 <td><a href="<?=$dspRequest[$i][6];?>" target="_blank">⤴️</a></td>
                 <td><?=$dspRequest[$i][7];?></td>
                 <td><?=$dspRequest[$i][2];?></td>
-                <?if($dspRequest[$i][3]==0){?>
-                    <td>未承認</td>
-                <?}else{?>
-                    <td>承認</td>
-                 <?}?>
-                <?if($dspOldRequest[$i][4]==0){?>
-                    <td>未購入</td>
-                <?}else{?>
-                    <td>購入済</td>
-                 <?}?>
+                <td><select><?=$app->get_all_options()?></select></td>
+                <?
+                  if($app == 1 or $app ==2){
+                    $ReqNum[] = $dspRequest[$i][0];
 
-                <td><form method="post" action="<?=$request_edit;?>">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="hidden" name="KEYWORD60" value="<?=$dspOldRequest[$i][0];?>">
-                    <input type="hidden" name="KEYWORD61" value="<?=$dspOldRequest[$i][5];?>">
-                    <input type="submit" value="編集" />
-                    </form>
-                </td>
+                  }
+                 ?>
             </tr>
             
 <?
@@ -61,6 +52,16 @@ and open the template in the editor.
 <?
 }
 ?>
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD60" value="<?php echo implode('\t', $ReqNum);?>">
+
+                    <input type="submit" value="変更" />
+                    </form>
+
         </div>
 <!--
       <div class="content">

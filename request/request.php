@@ -46,7 +46,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     define("TEMP_INPUT",   "request_input.html");
     define("TEMP_ERROR",   "request_input.html");
     define("TEMP_CONFIRM", "request_confirm.html");
-    define("TEMP_BLOCK",   "../login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./request_suc.html");
