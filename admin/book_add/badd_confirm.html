@@ -1,19 +1,79 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>sample</title>
-</head>
-<body>
-<?php
-$test = '000000000023';
-?>
-<form action="badd_res.php" method="post" enctype="multipart/form-data">
-  ファイル：<br />
-  <input type="file" name="upfile" size="30" /><br />
-  <br />
-  <input type="hidden" name="KEYWORD63" value="<?=$test;?>" >
-  <input type="submit" value="アップロード" />
+    <head>
+        <title>書籍追加確認</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery.upload.js"></script>
+<script>
+$(function() {
+    // jQuery Upload Thumbs 
+    $('form input:file').uploadThumbs({
+        position : 0,      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                           // any: arbitrarily jquery selector
+        imgbreak : true    // append <br> after thumbnail images
+    });
+});
+</script>
 
-</form>
-</body>
+    </head>
+    <body>
+        <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post">
+        <input type="hidden" name="step_from" value="conf" />
+    
+        <?=$decision;?>
+            <dl>
+            <dt>ISBN</dt>
+            <dd><?=$io->get_param_html_br("isbn");?></dd>
+            </dl>
+            <dl>
+            <dt>タイトル</dt>
+            <dd><?=$io->get_param_html_br("title");?></dd>
+            </dl>
+            <dl>
+            <dt>ジャンル</dt>
+            <dd><?=$io->get_param_html_br("genre");?></dd>
+            </dl>
+            <dl>
+            <dt>出版社</dt>
+            <dd><?=$io->get_param_html_br("pub");?></dd>
+            </dl>
+            <dl>
+            <dt>著者</dt>
+            <dd><?=$io->get_param_html_br("writer");?></dd>
+            </dl>
+            <dl>
+            <dt>紹介文</dt>
+            <dd><?=$io->get_param_html_br("intro");?></dd>
+            </dl>
+            <dl>
+            <dt>出版年</dt>
+            <dd><?=$io->get_param_html_br("year");?></dd>
+            </dl>
+            <dl>
+            <dt>amazonリンク</dt>
+            <dd><?=$io->get_param_html_br("amazon");?></dd>
+            </dl>
+            <dl>
+            <dt>備考</dt>
+            <dd><?=$io->get_param_html_br("remarks");?></dd>
+            </dl>
+            
+
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            
+           <br><input type="submit" alt="送信する" />
+        </form>
+    </body>
 </html>

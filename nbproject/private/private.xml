@@ -15,17 +15,16 @@
             <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/top/top.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user_pass_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/book_func.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_res.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm_1.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_1.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book/book.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/top.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user_edit_input.html</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input_1.html</file>
         </group>
     </open-files>

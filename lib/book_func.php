@@ -250,8 +250,8 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, date) VALUES";
-            $strSQL = $strSQL. "(:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, '" .Date('Ymd') ."')";
+            $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, date, stock) VALUES";
+            $strSQL = $strSQL. "(:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, '" .Date('Ymd') ."', :stock)";
         }
         echo 'アクションタイプ確認ok';
 
@@ -269,7 +269,7 @@ class BookModel{
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
-           //$stmh->bindValue(':Key33', $Key33, PDO::PARAM_STR);
+           $stmh->bindValue(':stock', 1, PDO::PARAM_INT);
 
 
             //echo $Key2.'確認';
