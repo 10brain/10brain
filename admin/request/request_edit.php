@@ -67,7 +67,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     define("CHECK_REFERER",  ""); //
     
     //セレクトボックス
-    define("LIST_APP", ":選択してください,1:承認,2:却下");
+    define("LIST_APP", "0:選択してください,1:承認,2:却下");
 
 
     // 入出力インスタンスの生成
