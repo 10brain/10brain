@@ -292,7 +292,7 @@ class BookModel{
     }
 
     /**************書籍表紙登録SQL*************************************************/
-    function GETCoverAdd($ActType, $Key1, $Key24, $Key33, $Key34, $Key35){
+    function GETCoverAdd($ActType, $Key1, $Key60, $Key33, $Key34, $Key35){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -307,7 +307,7 @@ class BookModel{
             return $result;
         }else{
             $strSQL = "INSERT INTO cover(ISBN, coverName, coverMime, coverTyp) VALUES";
-            $strSQL = $strSQL. "(:Key24, :Key33, :Key34, :Key35)";
+            $strSQL = $strSQL. "(:Key60, :Key33, :Key34, :Key35)";
         }
         echo 'アクションタイプ確認ok';
 
@@ -316,7 +316,7 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
+           $stmh->bindParam(':Key60', $Key60, PDO::PARAM_STR);
            $stmh->bindParam(':key33', $Key33, PDO::PARAM_STR);
            $stmh->bindParam(':key34', $Key34, PDO::PARAM_STR);
            $stmh->bindParam(':key35', $Key35, PDO::PARAM_STR);

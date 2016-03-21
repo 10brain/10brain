@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>admin/book_add/badd.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/top/top.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/user/user_pass_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm_1.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_1.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/book.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/top.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/user/user_edit_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input_1.html</file>
         </group>
     </open-files>
 </project-private>
