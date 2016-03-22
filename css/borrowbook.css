@@ -1,4 +1,4 @@
-body,h1,input,span,textarea,p{
+body,h1,input{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
@@ -63,81 +63,50 @@ body,h1,input,span,textarea,p{
   width: 100%;
 }
 
-.form{
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 50px;
-}
 
-.form form{
-  width: 100%;
-}
+/*confirm*/
 
-.form1{
+.confirm{
   width: 60%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-.form1 form{
+.confirm ul{
+  /zoom:1;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.confirm li{
+  display: inline-block;
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.confirm form{
+  text-align: center;
   width: 100%;
+  margin: 15px auto;
 }
 
-.form input[type="text"]{
-  height: 30px;
-  width: 375px;
-  padding: 6px 8px;
-  font-size: 16px;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  margin: 0;
-  margin-bottom: 15px;
-  outline: 0;
-}
-
-.form textarea{
-  height: 120px;
-  width: 425px;
-  padding: 6px 8px;
-  font-size: 16px;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  margin: 0;
-  margin-bottom: 5px;
-  outline: 0;
-}
-
-.check input[type="submit"]{
+.confirm input[type="submit"]{
   height: 40px;
-  width: 200px;
+  width: 175px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
-  margin-top: 20px;
-  outline: 0;
-}
-
-.submit input[type="submit"]{
-  height: 40px;
-  width: 200px;
-  padding: 6px 8px;
-  font-size: 1.2em;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  letter-spacing: 2px;
-  margin-top: 40px;
   outline: 0;
 }
 
 .submit input[type="button"]{
   height: 40px;
-  width: 200px;
+  width: 175px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
@@ -148,24 +117,7 @@ body,h1,input,span,textarea,p{
 }
 
 .submit{
-  width: 100%;
   margin-top: 30px;
-  text-align: center;
-}
-
-.check{
   width: 100%;
-  margin-top: 30px;
   text-align: center;
-}
-
-.error{
-  color: red;
-  display: inline;
-  padding-left: 20px;
-}
-
-.confirm{
-  margin: 5px auto 30px auto;
-  font-size: 16px;
 }
