@@ -70,7 +70,7 @@ body{
 }
 
 .center form{
-  margin-bottom: 1.0em;
+  height: 47px;
 }
 
 .center p {
@@ -89,7 +89,7 @@ body{
 .center ul{
   /zoom: 1;
   margin: 0;
-  height:55px;
+  height:50px;
   min-height: 35px;
   width: 550px;
   min-width: 550px;
@@ -146,7 +146,7 @@ body{
 
   text-decoration:none;
   position: relative;
-  top:3px;
+  top:1px;
 }
 
 .right li a:link{
@@ -167,9 +167,4 @@ body{
 
 .right li+li a{
   border-left: solid 1px #B4B2AF;
-}
-
-.b{
-  width: 40%;
-  height: 65%;
 }

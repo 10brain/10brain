@@ -12,16 +12,16 @@ body{
   margin-top: 20px;
   margin-bottom: 5px;
   width: 95%;
-  height: 80%;
+  height: 95%;
   background-color: #FEFBF5;
   position: relative;;
-  top: 60px;
+  top: 80px;
 }
 
 /*ibo*/
 
 #container {
-	width: 900px;
+	width: 100%;
 	margin: 0 auto;
 	position: relative;
 }
@@ -78,7 +78,7 @@ body{
 
 .slider {
 	width: 800px;
-	height: 393px;
+	height: 510px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
@@ -116,13 +116,13 @@ button {
 	margin: 0;
 	padding: 0;
 	position: absolute;
-	top: 60%;
+	top: 48%;
 }
 
 .slider-prev {
-	left: 40px;
+	left: 175px;
 }
 
 .slider-next {
-	right: 40px;
+	right: 175px;
 }
