@@ -22,12 +22,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or !preg_match("^[a-zA-Z0-9]+$",$_POST["KEYW
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
-    
+
 }
 
 //画面表示
 if ($result == 0){
-    include("top.html");
+    include("./top.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
@@ -36,11 +36,9 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("login.html");
 }
-    
-	
+
+
 ?>
-
-

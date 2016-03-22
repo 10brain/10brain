@@ -69,10 +69,6 @@ body{
   top: 12px;
 }
 
-.center form{
-  margin-bottom: 1.0em;
-}
-
 .center p {
 	margin: 0;
 	padding: 0;
@@ -91,8 +87,8 @@ body{
   margin: 0;
   height:55px;
   min-height: 35px;
-  width: 550px;
-  min-width: 550px;
+  width: 650px;
+  min-width: 650px;
   text-align: center;
   overflow: hidden;
   padding: 0;
@@ -167,9 +163,4 @@ body{
 
 .right li+li a{
   border-left: solid 1px #B4B2AF;
-}
-
-.b{
-  width: 40%;
-  height: 65%;
 }
