@@ -7,33 +7,66 @@ and open the template in the editor.
 <html>
     <head>
       <meta charset="UTF-8">
-      <title>貸出履歴一覧</title>
+      <title>貸出履歴</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="../../return/return.css">
+      <link rel="stylesheet" type="text/css" href="../css/borrow.css">
     </head>
     <body>
-        <div id="menu"></div>
-        <div class="content">
+        <?=include('../header/header.html');?>
+
+        <div id="content">
+          <!--<div class="contents">-->
+          <br>
           <div class="title">
             <ul>
-              <li>
-                <img src="../../img/4.png">
+              <li class="image">
+                <img src="../img/4.png">
               </li>
               <li>
                 <h1>貸出履歴</h1>
               </li>
-              <li>
-                <img src="../../img/4.png">
+              <li class="image">
+                <img src="../img/4.png">
               </li>
             </ul>
           </div>
 
-          <table border="1" width="95%">
-            <tr><td width="40%">タイトル</td><td width="20%">貸出日</td><td width="20%">返却予定日</td><td width="20%">返却日</td></tr>
-            <tr><td></td><td></td><td></td><td></td></tr>
-          </table>
-        </div>
 
-        <div id="footer"></div>
+<?if(is_null($dspBorrowList[0])){?>
+    <p>該当する本がありません。</p>
+<?
+}else{
+?>
+
+          <table border="1" width="80%">
+            <tr><td width="15%">ユーザー</td><td width="40%">タイトル</td><td width="15%">貸出日</td><td width="15%">返却予定日</td><td width="15%">返却日</td></tr>
+<?
+    $i = 0;
+    while(!is_null($dspBorrowList[$i][0])){
+?>
+            <tr>
+                <td><?=$dspBorrowList[$i][5];?></td>
+                <td><?=$dspBorrowList[$i][4];?></td><!--書籍タイトル-->
+                <td><?=$dspBorrowList[$i][1];?></td><!--貸出日-->
+                <td><?=$dspBorrowList[$i][2];?></td><!--返却日予定日-->
+                <?if(is_null($dspBorrowList[$i][3])){?>
+                <td>
+                    未返却
+                <?}else{?>
+                <td><?=$dspBorrowList[$i][3];?></td><!--返却日-->
+                <?}?>
+            </tr>
+<?
+    $i=$i+1;
+    }
+?>
+          </table>
+<?
+}
+?>
+
+        <!--</div>-->
+        <?php include('../footer/footer.html');?>
+        </div>
     </body>
 </html>
