@@ -206,3 +206,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   margin: 0;
   height: 30px;
 }
+
+input:-webkit-autofill {
+	box-shadow: 0 0 0 1000px white inset;
+}
