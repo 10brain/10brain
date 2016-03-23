@@ -6,36 +6,85 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>書籍編集</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/badd.css">
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery.upload.js"></script>
+<script>
+$(function() {
+    // jQuery Upload Thumbs
+    $('form input:file').uploadThumbs({
+        position : 0,      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                           // any: arbitrarily jquery selector
+        imgbreak : true    // append <br> after thumbnail images
+    });
+});
+</script>
+
     </head>
     <body>
-        <div>TODO write content</div>
-        <form name="input" action="<?=URL_ACTION;?>" method="post">
+      <?=include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>本の編集</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+
+        <div class="form1">
+
         <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post">
+        <input type="hidden" name="step_from" value="conf" />
+
         <?=$decision;?>
-            <dl>
-            <dt>名前</dt>
-            <dd><?=$io->get_param_html_br("Name");?></dd>
-            </dl>
 
-            <dl>
-            <dt>ID</dt>
-            <dd><?=$io->get_param_html_br("ID");?></dd>
-            </dl>
-            <dl>
-            <dt>PW</dt>
-            <dd><?=$io->get_param_html_br("PW");?></dd>
-            </dl>
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
+            <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
+            <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>
+            <div class="confirm">ジャンル：<?=$io->get_param_html_br("genre");?></div>
+            <div class="confirm">出版社：<?=$io->get_param_html_br("pub");?></div>
+            <div class="confirm">著者：<?=$io->get_param_html_br("writer");?></div>
+            <div class="confirm">紹介文：<?=$io->get_param_html_br("intro");?></div>
+            <div class="confirm">出版年：<?=$io->get_param_html_br("year");?></div>
+            <div class="confirm">amazonリンク：<?=$io->get_param_html_br("amazon");?></div>
+            <div class="confirm">備考：<?=$io->get_param_html_br("remarks");?></div>
 
+
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
 
-            
-           <br><input type="image" alt="送信する" />
+            <div class="submit">
+              <input type="submit" value="書籍情報編集">
+            </div>
         </form>
+        <form>
+          <div class="submit">
+            <input type="button" onClick='history.back();' value="戻る">
+          </div>
+        </form>
+      </div>
 
+    </div>
+
+        <?=include('../footer/footer.html');?>
+        </div>
     </body>
 </html>

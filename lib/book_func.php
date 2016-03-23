@@ -561,7 +561,7 @@ class BookModel{
     }
 
     /*********貸出履歴（管理者）SQL***********************************************/
-    function GETBorrowList($ActType, $Key1, $Key22, $Key23, &$dspBorrowList){
+    function GETBorrowList($ActType, $Key1, &$dspBorrowList){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -586,9 +586,7 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
-
-            echo $Key2.'確認';
+           $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -606,13 +604,15 @@ class BookModel{
                echo $count;
            }else{
                 //表示データ収集
+                $i=0;
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
-                   $dspBorrowList[0] = $array['BNum'];//貸出番号
-                   $dspBorrowList[1] = $array['BDate'];//貸出日
-                   $dspBorrowList[2] = $array['RePlan'];//返却予定日
-                   $dspBorrowList[3] = $array['ReDate'];//返却日
-                   $dspBorrowList[4] = $array['BookNum'];//書籍番号
-                   $dspBorrowList[5] = $array['Num'];//社員番号
+                   $dspBorrowList[$i][0] = $array['BNum'];//貸出番号
+                   $dspBorrowList[$i][1] = $array['BDate'];//貸出日
+                   $dspBorrowList[$i][2] = $array['RePlan'];//返却予定日
+                   $dspBorrowList[$i][3] = $array['ReDate'];//返却日
+                   $dspBorrowList[$i][4] = $array['BookNum'];//書籍番号
+                   $dspBorrowList[$i][5] = $array['Num'];//社員番号
+                 $i=$i+1;
 
                 }
            }
