@@ -226,7 +226,7 @@ class BookModel{
                    $dspBookDet[8] = $array['cover'];/*.$array['coverTyp'].$array['coverRaw'];*///表紙名
                    $dspBookDet[9] = $array['ISBN'];//ISBN
                    $dspBookDet[10] = $array['stock'];
-                           
+
                }
 
            }
@@ -572,8 +572,9 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Borrow";
+            $strSQL = "Select * From";
         }
+        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num";
         echo 'アクションタイプ確認ok';
 
         //管理者ID確認
@@ -588,7 +589,7 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
+           //$stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -614,6 +615,8 @@ class BookModel{
                    $dspBorrowList[$i][3] = $array['ReDate'];//返却日
                    $dspBorrowList[$i][4] = $array['BookNum'];//書籍番号
                    $dspBorrowList[$i][5] = $array['Num'];//社員番号
+                   $dspBorrowList[$i][6] = $array['Name'];//社員番号
+                   $dspBorrowList[$i][7] = $array['title'];//社員番号
                  $i=$i+1;
 
                 }
