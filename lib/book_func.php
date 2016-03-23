@@ -225,6 +225,8 @@ class BookModel{
                    $dspBookDet[7] = $array['remarks'];//備考
                    $dspBookDet[8] = $array['cover'];/*.$array['coverTyp'].$array['coverRaw'];*///表紙名
                    $dspBookDet[9] = $array['ISBN'];//ISBN
+                   $dspBookDet[10] = $array['stock'];
+                           
                }
 
            }
