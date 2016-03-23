@@ -1,0 +1,97 @@
+body,input,textarea{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+}
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  min-width: 70%;
+  min-height: 84%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 35px;
+  background-size: cover;
+}
+
+.contents{
+  width: 60%;
+  height: 500px;
+	position: relative;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 45px;
+	border: 1px solid black;
+}
+
+.title{
+  height: 25px;
+  width: 100%;
+  margin: 15px auto 30px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.image{
+  display: inline-block;
+  list-style: none;
+  width: 20%;
+  min-width: 10px;
+  padding: 5px 30px;
+}
+
+.image img{
+  width: 100%;
+}
+
+.form{
+  width: 80%;
+  height: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+.form form{
+  width: 100%;
+}
+
+.submit{
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.submit input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  outline: 0;
+}
+
+.imgInput img{
+  max-width: 60%;
+}

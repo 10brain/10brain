@@ -22,6 +22,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
@@ -32,11 +33,12 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }else{
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key2 = $_POST["KEYWORD2"];
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
 
-    
 
-    
+
+
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
     define("HTML_CODE", "UTF-8");
@@ -78,7 +80,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                         $io->set_parameters($_GET);
-                        
+
                         $Key24 = $io->get_param_sql("isbn");
                         $Key25 = $io->get_param_sql("title");
                         $Key26 = $io->get_param_sql("genre");
@@ -88,19 +90,19 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                         $Key30 = $io->get_param_sql("year");
                         $Key31 = $io->get_param_sql("amazon");
                         $Key32 = $io->get_param_sql("remarks");
-                        
+
                          //データベース更新
                         $obj = new BookModel();
                         $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32);
 
                         if($result == 0){
                                 include(HTML_SUCCESS);
-                         
+
                         }else{
                             $db_error = 'システムエラーです。開発者に連絡してください。';
                             include(TEMP_INPUT);
                         }
-                            
+
                    }else{
                         //pg_query($conID, "rollback");
                         // 失敗画面
@@ -166,7 +168,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     $io->set_error("remarks_error", "内容に誤りが有ります");
                     }
 
-                                                    
+
                 if(!$io->is_error()){
                         //$io->unset_parameter("agree_0");
 
@@ -195,10 +197,10 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else{
             // 同意画面 ================================================================
-            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){	
+            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
-		
+
                     include(TEMP_AGREE);
             }else{
                     // リファラ制限画面
@@ -208,6 +210,3 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }
 
 ?>
-
-
-

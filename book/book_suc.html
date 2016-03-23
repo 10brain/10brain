@@ -57,22 +57,21 @@ and open the template in the editor.
             <p><a class='inline' href="#inline_content"></a></p>
         </div>
 <?
-$return = 'return.php';
+$search.php = 'search.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
-    			<div id='inline_content' style='padding:10px; background:#fff;'　class="not">
-            <img src="../img/fal.png">
-    			     <p>3冊以上借りてます。<br>返却してから本を借りてください。</p>
-               <div class="not">
-                 <form name="input" action="<?=$return;?>" method="post" >
+    			<div id='inline_content' style='padding:10px; background:#fff;'>
+    			     <p>登録が完了しました。</p>
+               <div class="suc">
+                 <form name="input" action="<?=$search;?>" method="post" >
                  <input type="hidden" name="ActionType" value="TgRSPInf">
                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                  <div class="check">
-                   <input type="submit" value="返却画面へ">
+                   <input type="submit" value="検索画面へ">
                  </div>
                </form>
               </div>

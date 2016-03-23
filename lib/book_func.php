@@ -77,7 +77,7 @@ class BookModel{
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
                    $dspBookList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookList[$i][1] = $array['title'];//書籍タイトル
-                   $dspBookList[$i][2] = $array['remarks'];//出版社
+                   $dspBookList[$i][2] = $array['pub'];//出版社
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
                    $dspBookList[$i][4] = $array['stock'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
@@ -404,7 +404,7 @@ class BookModel{
     }*/
      /**************貸出用書籍検索SQL*************************************************/
     function GETBorrowSearch($Key40, &$dspBorrowS){
-      
+
         $strSQL = "Select * From Book";
 
         if(is_null($Key40)){
@@ -414,7 +414,7 @@ class BookModel{
         }
 
         $strSQL = $strSQL." And stock = 1";
-      
+
 
         //SQL実行
         try {
@@ -422,7 +422,7 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-           
+
             echo $strSQL;
 
            $stmh->execute();//実行
@@ -461,10 +461,10 @@ class BookModel{
         //return $dspUserInfo;
         return $result;
 
-        
-        
+
+
     }
-    
+
 
 
     /**************貸出登録SQL*************************************************/

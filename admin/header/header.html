@@ -13,24 +13,25 @@ and open the template in the editor.
 
     <body>
       <?php
-       $home = '../top/top.php';
-       $borrow = '../borrow/borrow.php';
-       $return = '../return/return.php';
-       $search = '../search/search.php';
-       $request = '../request/request.php';
-       $mypage = '../user/user.php';
+        $home = '../../top/top.php';
+        $bookadd = '../book_add/badd.php';
+        $bookedit = '../book/search.php';//暫定リンク
+        $booklist = '../book/search.php';
+        $request = '../request/request.php';
+        $useradd = '../useradd/useradd.php';
+        $useredit = '../user_search/user_search.php';
       ?>
 
       <div id="menu">
         <div class="header">
-          <img src="../img/header.png">
+          <img src="../../img/header.png">
         </div>
 
         <div class="menu">
 
 
           <div class="left">
-            <img src="../img/icon.png">
+            <img src="../../img/icon.png">
           </div>
 
 
@@ -38,6 +39,7 @@ and open the template in the editor.
             <ul>
               <li><form action="<?=$home;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
@@ -45,34 +47,34 @@ and open the template in the editor.
                   <p>HOME</p>
                   </form>
               </li>
-              <li><form action="<?=$borrow;?>" method="post">
+              <li><form action="<?=$bookadd;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/b.png" alt="貸出" class="b"/>
-                  <p>BORROW</p>
+                  <input type="image" src="../img/b.png" alt="書籍追加" />
+                  <p>BOOKADD</p>
                   </form>
               </li>
-              <li><form action="<?=$return;?>" method="post">
+              <li><form action="<?=$bookedit;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/c.png" alt="返却" />
-                  <p>RETURN</p>
+                  <input type="image" src="../img/c.png" alt="書籍編集" />
+                  <p>BOOKEDIT</p>
                   </form>
               </li>
-              <li><form action="<?=$search;?>" method="post">
+              <li><form action="<?=$booklist;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/d.png" alt="検索">
-                  <p>SEARCH</p>
+                  <input type="image" src="../img/d.png" alt="貸出履歴" />
+                  <p>RECORD</p>
                   </form>
               </li>
               <li><form action="<?=$request;?>" method="post">
@@ -81,18 +83,28 @@ and open the template in the editor.
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/e.png" alt="リクエスト" class="request">
+                  <input type="image" src="../img/e.png" alt="リクエスト">
                   <p>REQUEST</p>
                   </form>
               </li>
-              <li><form action="<?=$mypage;?>" method="post">
+              <li><form action="<?=$useradd;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/f.png" alt="マイページ">
-                  <p>MYPAGE</p>
+                  <input type="image" src="../img/f.png" alt="ユーザー追加">
+                  <p>USERADD</p>
+                  </form>
+              </li>
+              <li><form action="<?=$useredit;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/g.png" alt="ユーザー編集">
+                  <p>USEREDIT</p>
                   </form>
               </li>
             </ul>
@@ -101,7 +113,7 @@ and open the template in the editor.
           <div class="right">
             <ul>
               <li>ようこそ、<?=$Key3;?>さん。</li>
-              <li><a href="../login/logout.php" class="logout">ログアウト</a></li>
+              <li><a href="../../login/logout.php" class="logout">ログアウト</a></li>
             </ul>
           </div>
 

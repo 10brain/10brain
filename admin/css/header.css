@@ -69,10 +69,6 @@ body{
   top: 12px;
 }
 
-.center form{
-  height: 47px;
-}
-
 .center p {
 	margin: 0;
 	padding: 0;
@@ -89,10 +85,10 @@ body{
 .center ul{
   /zoom: 1;
   margin: 0;
-  height:50px;
+  height:55px;
   min-height: 35px;
-  width: 550px;
-  min-width: 550px;
+  width: 650px;
+  min-width: 650px;
   text-align: center;
   overflow: hidden;
   padding: 0;
@@ -146,7 +142,7 @@ body{
 
   text-decoration:none;
   position: relative;
-  top:1px;
+  top:3px;
 }
 
 .right li a:link{

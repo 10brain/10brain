@@ -29,7 +29,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 if ($result == 0){
     //管理者か一般ユーザーか判定
     if($dspUserInfo[1]=='管理者'){
-        include("../admin/top.html");
+        include("../admin/top/top.html");
     }else{
         include("./top.html");
     }

@@ -1,7 +1,7 @@
-body,h1,input,span{
+body,input,textarea{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #content{
@@ -17,20 +17,20 @@ body,h1,input,span{
 }
 
 .contents{
-  width: 70%;
-  height: 500px;
-  min-height: 90%;
+  width: 60%;
+  height: 100%;
+  min-height: 500px;
 	position: relative;
 	background-color: white;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 45px;
 	border: 1px solid black;
 }
 
 .title{
   height: 25px;
   width: 100%;
-  margin: 30px auto;
+  margin: 15px auto 30px auto;
 }
 
 .title h1{
@@ -63,31 +63,30 @@ body,h1,input,span{
   width: 100%;
 }
 
-.submit input[type="submit"]{
-  height: 40px;
-  width: 200px;
-  padding: 6px 8px;
-  font-size: 1.2em;
-  color: black;
-  background-color: white;
-  border: 1px solid #808080;
-  letter-spacing: 2px;
-  outline: 0;
-}
-
-.password{
+.form{
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
+  font-size: 14px;
 }
 
-.password form{
+.form form{
   width: 100%;
 }
 
-.password input[type="password"]{
-  height: 30px;
-  width: 350px;
+.form1{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.form1 form{
+  width: 100%;
+}
+
+.form input[type="text"]{
+  height: 25px;
+  width: 375px;
   padding: 6px 8px;
   font-size: 16px;
   color: black;
@@ -98,10 +97,44 @@ body,h1,input,span{
   outline: 0;
 }
 
+.form textarea{
+  height: 120px;
+  width: 425px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  margin: 0;
+  margin-bottom: 5px;
+  outline: 0;
+}
+
+.check{
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.check input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  outline: 0;
+}
+
 .error{
   color: red;
   display: inline;
   padding-left: 20px;
+  font-size: 12px;
 }
 
 .submit input[type="submit"]{
@@ -113,7 +146,6 @@ body,h1,input,span{
   background-color: white;
   border: 1px solid #808080;
   letter-spacing: 2px;
-  margin-top: 40px;
   outline: 0;
 }
 
@@ -127,58 +159,16 @@ body,h1,input,span{
   border: 1px solid #808080;
   letter-spacing: 2px;
   outline: 0;
+  margin-bottom: 10px;
 }
 
 .submit{
   width: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
   text-align: center;
 }
 
-
-
-
-.link ul{
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-top: 50px;
-
-}
-
-.link li{
-  display: inline-block;
-  margin: 0 75px;
-  list-style: none;
-}
-
-button {
-  font-size: 15px;
-  letter-spacing: 2px;
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	display: table-cell;
-	vertical-align: middle;
-	color: #333333;
-	width: 200px;
-	height: 200px;
-  outline: 0;
-	box-sizing: border-box;
-	border: solid 1px #333333;
-	background: url(../img/button_link.png) no-repeat -1px -1px;
-	-webkit-transition: 0.3s ease-in-out;
-	   -moz-transition: 0.3s ease-in-out;
-	     -o-transition: 0.3s ease-in-out;
-	        transition: 0.3s ease-in-out;
-}
-
-button:hover {
-	color: #ffffff;
-	background-position: -1px bottom;
-  outline: 0;
-}
-
-input:-webkit-autofill {
-	box-shadow: 0 0 0 1000px white inset;
+.confirm{
+  margin: 5px auto 10px auto;
+  font-size: 14px;
 }

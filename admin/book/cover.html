@@ -1,4 +1,97 @@
+<!DOCTYPE html>
 <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>書籍編集</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/cover.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+      <?=include('../header/header.html');?>
+
+      <div id="content">
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>表紙画像</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+<?php
+$cover_add = 'cover_add.php';
+$test = '00000000000088';//本来はここにISBN値をもってくる
+?>
+        <div class="form">
+          <form method="post" action="<?=$cover_add;?>" enctype="multipart/form-data">
+            <div class="imgInput">
+              <input type="file" name="upfile" id="upfile"　size="30"　accept="image">
+            </div>
+
+            <input type="hidden" name="KEYWORD63" value="<?=$test;?>">
+            <div class="submit">
+              <input type="submit" value="アップロード">
+            </div>
+          </form>
+
+
+
+        </div>
+        </div>
+        <?=include('../footer/footer.html');?>
+      </div>
+    </body>
+</html>
+
+
+<script>
+$(function(){
+    var setFileInput = $('.imgInput');
+
+    setFileInput.each(function(){
+        var selfFile = $(this),
+        selfInput = $(this).find('input[type=file]');
+
+        selfInput.change(function(){
+            var file = $(this).prop('files')[0],
+            fileRdr = new FileReader(),
+            selfImg = selfFile.find('.imgView');
+
+            if(!this.files.length){
+                if(0 < selfImg.size()){
+                    selfImg.remove();
+                    return;
+                }
+            } else {
+                if(file.type.match('image.*')){
+                    if(!(0 < selfImg.size())){
+                        selfFile.append('<img alt="" class="imgView">');
+                    }
+                    var prevElm = selfFile.find('.imgView');
+                    fileRdr.onload = function() {
+                        prevElm.attr('src', fileRdr.result);
+                    }
+                    fileRdr.readAsDataURL(file);
+                } else {
+                    if(0 < selfImg.size()){
+                        selfImg.remove();
+                        return;
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
+
+<!--<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>sample</title>
@@ -17,4 +110,4 @@ $test = '00000000000088';//本来はここにISBN値をもってくる
 
 </form>
 </body>
-</html>
+</html>-->

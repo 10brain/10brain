@@ -102,7 +102,9 @@ table td{
   outline: 0;
 }
 
-
+input:-webkit-autofill {
+	box-shadow: 0 0 0 1000px #FBF4E6 inset;
+}
 
 
 
