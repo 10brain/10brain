@@ -1,3 +1,18 @@
+<?
+require '../../lib/book_func.php';
+require '../../lib/check.php';
+
+$$ActType = $_POST['ActionType'];
+$Key0 = $_POST['KEYWORD0'];
+$Key1 = $_POST['KEYWORD1'];
+$Key2 = $_POST['KEYWORD2'];
+$Key3 = $_POST['KEYWORD3'];
+$isbn = $_POST['KEYWORD20'];
+
+$obj=new BookModel();
+$result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,20 +42,24 @@
         <div class="contents">
 <?php
 $cover_add = 'cover_add.php';
-$test = '00000000000088';//本来はここにISBN値をもってくる
 ?>
         <div class="form">
           <form method="post" action="<?=$cover_add;?>" enctype="multipart/form-data">
+              <?
+              if(isset($isbn)){
+              ?>
+              <p>書籍番号：<?=$isbn;?></p>
+              <?}?>
             <div class="imgInput">
               <input type="file" name="upfile" id="upfile"　size="30"　accept="image">
             </div>
 
-            <input type="hidden" name="KEYWORD63" value="<?=$test;?>">
+            <input type="hidden" name="KEYWORD60" value="<?=$isbn;?>">
             <div class="submit">
               <input type="submit" value="アップロード">
             </div>
           </form>
-
+    
 
 
         </div>

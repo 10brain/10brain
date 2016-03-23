@@ -76,12 +76,12 @@ class UserModel{
                }
 
            }
-
+            $stmh = null;
         } catch (Exception $Exception) {}
         //return $dspUserInfo;
         return $result;
+       
     }
-
 
     /*********ユーザ詳細SQL*******************************************************/
     function GETUserDetail($ActType, $Key12, $Key13, &$dspUserDet){

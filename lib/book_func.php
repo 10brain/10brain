@@ -7,6 +7,62 @@ require 'init.php';
 //
 //*****************************************************************************/
 class BookModel{
+    /*********新着書籍一覧SQL*******************************************************/
+    function GETBookNewList($ActType, &$dspBookNewList){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From Book Borrow INNER JOIN cover ON cover.ISBN = Book.ISBN";
+        }
+        //echo $Key21;
+
+        $strSQL = $strSQL." ORDER BY date DESC LIMIT 30";
+
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           //$class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
+                   $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
+                   $dspBookNewList[$i][2] = $array['coverName'];//ISBN
+                   
+                $i=$i+1;
+                }
+                //print_r($dspBookList);
+           }
+
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
 
     /*********書籍一覧SQL*******************************************************/
     function GETBookList($ActType, $Key21, $Key22, &$dspBookList){
@@ -293,8 +349,8 @@ class BookModel{
         return $result;
     }
 
-    /**************書籍表紙登録SQL*************************************************/
-    function GETCoverAdd($ActType, $Key1, $Key60, $Key33, $Key34, $Key35){
+    /**************書籍表紙検索SQL*************************************************/
+    function GETCoverSearch($ActType, $Key1, $Key60, &$dspCover){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -308,8 +364,8 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "INSERT INTO cover(ISBN, coverName, coverMime, coverTyp) VALUES";
-            $strSQL = $strSQL. "(:Key60, :Key33, :Key34, :Key35)";
+            $strSQL = "Select * From Book";
+            $strSQL = $strSQL. "(:Key60)";
         }
         echo 'アクションタイプ確認ok';
 
@@ -319,9 +375,7 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key60', $Key60, PDO::PARAM_STR);
-           $stmh->bindParam(':key33', $Key33, PDO::PARAM_STR);
-           $stmh->bindParam(':key34', $Key34, PDO::PARAM_STR);
-           $stmh->bindParam(':key35', $Key35, PDO::PARAM_STR);
+ 
 
 
             //echo $Key2.'確認';

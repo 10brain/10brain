@@ -1,5 +1,6 @@
 <?php
 require '../lib/user_func.php';
+
 require '../lib/check.php';
 
 $result = 0;
@@ -31,7 +32,10 @@ if ($result == 0){
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top/top.html");
     }else{
-        include("./top.html");
+        /*require_once '../lib/book_func.php';
+        $obj = new BookModel();
+        $result = $obj->GETBookNewList($ActType, $dspBookNewList);*/
+        include("../top/top.html");
     }
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

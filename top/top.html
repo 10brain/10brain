@@ -39,6 +39,26 @@ and open the template in the editor.
          <div class="slideSet">
           <div class="slide">
           <div class="section">
+        <?
+            $i = 0;
+            while(!is_null($dspBookNewList[$i][0])){
+        ?>
+            <form method="post" action="../book/book.php">
+                <input type="hidden" name="ActionType" value="TgRSPInf">
+                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
+                <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
+                <input type="image" src="/admin/book_add/tmp_cover/<?=$dspBookNewList[$i][2];?>" value="" />
+            </form>
+        <?
+            $i=$i+1;
+            }
+        ?>
+        </div>
+
+          <!--
           <img src="../images/pic1.png" height="141" width="100" alt>
           </div>
           <div class="section">
@@ -104,6 +124,7 @@ and open the template in the editor.
           <div class="slide">side4</div>
           <div class="slide">side5</div>
          </div>
+          -->
         </div>
         <button class="slider-prev"><img src="../images/prev.png" ></button>
         <button class="slider-next"><img src="../images/next.png" ></button>

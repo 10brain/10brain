@@ -25,10 +25,12 @@ class DBModel{
             $this->pdo = new PDO(DSN, DBuser, DBpass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             //$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            
+            $pdo = null;
         } catch (Exception $Exception) {
             die('エラー文:' .$Exception->getMessage());
         }
-        $pdo = null;
+        
     }
     
 }

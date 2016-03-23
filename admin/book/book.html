@@ -31,8 +31,8 @@ and open the template in the editor.
         </div>
         <div class="contents">
 <?
-$book_edit = './bookedit.php';
-$cover = './cover_add.php';
+$book_edit = '../book/bookedit.php';
+$cover = '../book/cover.html';
 ?>
         <div class="form1">
             <span>ISBN：<?=$dspBookDet[9];?></span>
@@ -74,9 +74,8 @@ $cover = './cover_add.php';
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                  <input type="hidden" name="KEYWORD2" value="<?=$Key3;?>">
-                  <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
-                  <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[9];?>">
                   <div class="submit">
                     <input type="submit" value="表紙編集">
                   </div>
