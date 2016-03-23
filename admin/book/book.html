@@ -9,13 +9,32 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>書籍情報</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="book.css">
+      <link rel="stylesheet" type="text/css" href="../css/book.css">
     </head>
     <body>
-      <div id="menu"></div>
+      <?=include('../header/header.html');?>
 
-      <div class="content">
-        <div class="form">
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>本の詳細</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+<?
+$book_edit = './bookedit.php';
+$cover = './cover_add.php';
+?>
+        <div class="form1">
             <span>ISBN：<?=$dspBookDet[9];?></span>
             <br>
             <span>タイトル：<?=$dspBookDet[0];?></span>
@@ -38,26 +57,45 @@ and open the template in the editor.
             <br>
             <ul>
               <li>
-                <form action="search.php" method="post"　enctype="multipart/form-data">
-                  <input type="button" value="戻る">
+                <form method="post" action="<?=$book_edit;?>">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
+                  <div class="submit">
+                    <input type="submit" value="書籍情報編集">
+                  </div>
                 </form>
               </li>
               <li>
-                <form method="post" action="<?=$book_edit;?>">
-                <input type="hidden" name="ActionType" value="TgRSPInf">
-                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
-                <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
-                <input type="submit" value="編集" />
-
-                  <input type="button" value="編集">
+                <form method="post" action="<?=$cover;?>">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
+                  <div class="submit">
+                    <input type="submit" value="表紙編集">
+                  </div>
                 </form>
               </li>
             </ul>
-        </div>
-      </div>
 
-      <div id="footer"></div>
+            <form>
+              <div class="submit">
+                <input type="button" onClick='history.back();' value="戻る">
+              </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+        <?=include('../footer/footer.html');?>
+        </div>
     </body>
 </html>

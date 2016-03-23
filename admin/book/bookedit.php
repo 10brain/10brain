@@ -30,7 +30,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }else{
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key2 = $_POST["KEYWORD2"];
+    $Key2 = $_POST["KEYWORD3"];  //パスワード
     $Key20 = $_POST["KEYWORD20"];  //パスワード
     $Key21 = $_POST["KEYWORD21"];  //パスワード
 
@@ -151,12 +152,12 @@ define("HTML_CODE", "UTF-8");
                                 $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
                                 include(TEMP_INPUT);
                             }elseif($result == 0){
-                                    include(HTML_SUCCESS); 
+                                    include(HTML_SUCCESS);
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
-                            
+
 
                     }else{
     //				pg_query($conID, "rollback");
@@ -171,7 +172,7 @@ define("HTML_CODE", "UTF-8");
 
     }else if($io->get_param("step_from") == "input"){
             // 確認処理 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
 
                         // 名前
@@ -205,7 +206,7 @@ define("HTML_CODE", "UTF-8");
 
     }else if($io->get_param("step_from") == "agree"){
             // 入力画面 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     include(TEMP_INPUT);
             }else{
                     // リファラ制限画面
@@ -214,7 +215,7 @@ define("HTML_CODE", "UTF-8");
 
     }else{
             // 同意画面 ================================================================
-            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){	
+            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
 
@@ -228,6 +229,3 @@ define("HTML_CODE", "UTF-8");
 }
 
 ?>
-
-
-
