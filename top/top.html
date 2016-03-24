@@ -1,3 +1,6 @@
+<?php header('Content-Type: application/xhtml+xml; charset=utf-8');
+      header('X-Content-Type-Options: nosniff');
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -8,6 +11,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>ホーム</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/top.css">
         <script src="jquery-2.1.3.min.js"></script>
@@ -17,7 +21,6 @@ and open the template in the editor.
       <?php include('../header/header.html');?>
 
       <div id="content">
-
 
         <div id="container">
 
@@ -34,15 +37,18 @@ and open the template in the editor.
               </li>
             </ul>
           </div>
-
         <div class="slider">
          <div class="slideSet">
           <div class="slide">
-          <div class="section">
+          
         <?
             $i = 0;
             while(!is_null($dspBookNewList[$i][0])){
         ?>
+        <div class="section">
+            <?
+             $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+            ?>
             <form method="post" action="../book/book.php">
                 <input type="hidden" name="ActionType" value="TgRSPInf">
                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
@@ -50,13 +56,15 @@ and open the template in the editor.
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                 <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
                 <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
-                <input type="image" src="/admin/book_add/tmp_cover/<?=$dspBookNewList[$i][2];?>" value="" />
+                <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
+                <input type="image" src="<?=$book;?>" />
             </form>
+            </div>
         <?
             $i=$i+1;
             }
         ?>
-        </div>
+        
 
           <!--
           <img src="../images/pic1.png" height="141" width="100" alt>

@@ -1,6 +1,5 @@
 <?php
-require '../lib/user_func.php';
-
+require '../lib/other_func.php';
 require '../lib/check.php';
 
 $result = 0;
@@ -20,8 +19,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
     //DB問い合わせ
-    $obj=new UserModel();
-    $result = $obj->GETLogin($ActType, $Key1, $Key2, $dspUserInfo);
+    $obj=new otherModel();
+    $result = $obj->GETTopLogin($ActType, $Key1, $Key2, $dspUserInfo, $dspBookNewList);
     $Key3 = $dspUserInfo[1];
     $Key0 = $dspUserInfo[0];
 }
@@ -32,9 +31,8 @@ if ($result == 0){
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top/top.html");
     }else{
-        /*require_once '../lib/book_func.php';
-        $obj = new BookModel();
-        $result = $obj->GETBookNewList($ActType, $dspBookNewList);*/
+        header("Content-type: image/jpeg");
+        
         include("../top/top.html");
     }
 }else{

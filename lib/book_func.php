@@ -17,7 +17,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book Borrow INNER JOIN cover ON cover.ISBN = Book.ISBN";
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
         //echo $Key21;
 
@@ -74,7 +74,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
         echo $Key21;
 
@@ -137,7 +137,7 @@ class BookModel{
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
                    $dspBookList[$i][4] = $array['stock'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
-                   $dspBookList[$i][6] = $array['coverName'].$array['coverTyp'].$array['coverRaw'];
+                   $dspBookList[$i][6] = $array['coverName'];
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -207,6 +207,46 @@ class BookModel{
                }
 
            }
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+
+            //echo $Key21;
+
+            $strSQL = $strSQL." ORDER BY Book.date DESC LIMIT 30";
+
+
+           //クラス呼び出し
+           //$class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
+                   $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
+                   $dspBookNewList[$i][2] = $array['coverName'];//ISBN
+                   
+                $i=$i+1;
+                }
+                //print_r($dspBookList);
+           }
+
 
         } catch (Exception $Exception) {}
         //return $dspUserInfo;
@@ -217,13 +257,15 @@ class BookModel{
     function GETBookDetail($ActType, $Key20, $Key21, &$dspBookDet){
         //初期値設定
         $result = 0;
+        //echo $Key20;
+        //echo $Key21;
         /**SQL発行**/
         //アクションタイプ確認
         if($ActType != 'TgRSPInf'){
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book ";
         }
         echo 'アクションタイプ確認ok';
 
@@ -246,10 +288,10 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           echo $strSQL;
+           
             $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
             $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
-
+            echo $strSQL;
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
@@ -279,10 +321,10 @@ class BookModel{
                    $dspBookDet[5] = $array['year'];//出版年
                    $dspBookDet[6] = $array['amazon'];//リンク
                    $dspBookDet[7] = $array['remarks'];//備考
-                   $dspBookDet[8] = $array['cover'];/*.$array['coverTyp'].$array['coverRaw'];*///表紙名
+                   $dspBookDet[8] = $array['coverName'];
                    $dspBookDet[9] = $array['ISBN'];//ISBN
                    $dspBookDet[10] = $array['stock'];
-
+                   
                }
 
            }

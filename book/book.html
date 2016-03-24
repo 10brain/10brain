@@ -41,21 +41,33 @@
 					<div class="bb-item">
 						<div class="bb-custom-firstpage">
 <!--1ページ目-->
-							<?=$dspBookDet[8];?>
+						<?
+                                                  if(is_null($cover)){
+                                                ?>
+                                                <p>表紙がなければダミー画像</p>
+                                                <?
+                                                    }else{
+                                                ?>
+                                                <img src="<?=$cover;?>" />
+                                                <?
+                                                    }
+                                                ?>
+                                                
+                                   
 						</div>
 						<div class="bb-custom-side">
 <!--2ページ目-->
-								<div class="page">
-									<div class="title">タイトル：<?=$dspBookDet[0];?></div>
-									<div class="other">
-										出版社：<?=$dspBookDet[2];?><br>
-										著者：<?=$dspBookDet[3];?><br>
-										ジャンル：<?=$dspBookDet[1];?>
-									</div>
-								</div>
-								<div class="next">
-									<a id="bb-nav-next" href="#"><img src="../img/next.png"></a>
-								</div>
+                                                    <div class="page">
+                                                            <div class="title">タイトル：<?=$dspBookDet[0];?></div>
+                                                            <div class="other">
+                                                                    出版社：<?=$dspBookDet[2];?><br>
+                                                                    著者：<?=$dspBookDet[3];?><br>
+                                                                    ジャンル：<?=$dspBookDet[1];?>
+                                                            </div>
+                                                    </div>
+                                                    <div class="next">
+                                                            <a id="bb-nav-next" href="#"><img src="../img/next.png"></a>
+                                                    </div>
 
 						</div>
 					</div>
@@ -74,6 +86,7 @@
 
 
 								<div class="page">
+
                                                                     <?
                                                                         if($dspBookDet[10] == '1'){
                                                                     ?>
@@ -106,7 +119,6 @@
                                                                      <?
                                                                         }
                                                                      ?>
-                                                                        
 								</div>
 						</div>
 					</div>
