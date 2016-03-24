@@ -35,7 +35,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
-
+    $Key20 = $_POST["KEYWORD20"];  //パスワード
+    $Key21 = $_POST["KEYWORD21"];  //パスワード
 
 
 

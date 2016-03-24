@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 
 
 //IDとパスワードチェック
@@ -23,11 +24,11 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     echo $Key1;
     echo $Key2;
     echo $Key20;
-     echo $Key21;       
+    echo $Key21;
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
-    
+
 //画面表示
 if ($result == 0){
     $book_edit = 'bookedit.php';
@@ -40,12 +41,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("login.html");
 }
 }
-    
-	
+
+
 ?>
-
-
