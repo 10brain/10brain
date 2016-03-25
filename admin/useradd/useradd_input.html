@@ -7,31 +7,32 @@ and open the template in the editor.
 <html>
     <head>
       <meta charset="UTF-8">
-      <title>ユーザー情報登録</title>
+      <title>ユーザー情報追加</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="useradd.css">
+      <link rel="stylesheet" type="text/css" href="../css/useradd.css">
     </head>
     <body>
-<?
-$useradd='useradd.php';
-?>
-      <div id="menu"></div>
+      <?=include('../header/header.html');?>
 
-      <div class="content">
+      <div id="content">
 
         <div class="title">
           <ul>
-            <li>
-              <img src="../../img/4.png">
+            <li class="image">
+              <img src="../img/4.png">
             </li>
             <li>
-              <h1>ユーザーの登録</h1>
+              <h1>ユーザーの追加</h1>
             </li>
-            <li>
-              <img src="../../img/4.png">
+            <li class="image">
+              <img src="../img/4.png">
             </li>
           </ul>
         </div>
+
+<?
+$useradd='useradd.php';
+?>
 
         <div class="form">
         <?=$io->get_all_params();?>
@@ -39,26 +40,27 @@ $useradd='useradd.php';
         <input type="hidden" name="step_from" value="input" />
 
 
-            <span>ユーザー名</span><br>
-            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><div class="error"><?=$io->get_error("Name_error"); ?><br>
-            <span>ユーザーID</span><br>
-            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<div class="error"><?=$io->get_error("ID_error"); ?><br>
-            <!--<span>パスワード</span><br>
-            <input name="PW" id="PW" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('PW');?>" /><div class="error"><?=$io->get_error("PW_error"); ?><br>-->
-        </div>
-          <ul>
-            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <span>ユーザー名</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
+            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
+            <span>ユーザーID</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
+            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<br>
 
+        </div>
+            <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-            <input type="image" value="確認">
-          </ul>
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+
+            <div class="check">
+              <input type="submit" value="確認">
+            </div>
           </form>
             <?=$dbid_error;?><br>
             <?=$db_error;?>
 
       </div>
 
-      <div id="footer"></div>
+      <?=include('../footer/footer.html');?>
+    </div>
     </body>
 </html>

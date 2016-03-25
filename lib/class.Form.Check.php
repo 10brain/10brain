@@ -20,7 +20,7 @@
 		var $options    = Array();
 		var $values     = Array();
 		var $io         = null;
-		
+
 		//メソッド
 		/**********************************************************************
 		 * コンストラクタ
@@ -66,7 +66,7 @@
 			}
 			$this->values = is_array($io->get_param($name)) ? $io->get_param($name) : Array($io->get_param($name));
 			$this->io = $io;
-			
+
 			return;
 		}
 		/**********************************************************************
@@ -100,11 +100,11 @@
 				$text2    = $this->get_checks_text($id, $option[1][1]);
 				$checked  = in_array($value, $this->values) ? " checked" : "";
 				$disabled = !$enable ? " disabled" : "";
-				
-				$tag_check = "<input type=\"checkbox\" class=\"check\" name=\"".$this->name."[]\" id=\"".$id."\" value=\"".$value."\"".$checked.$disabled." />";
-				$tag_label = "<label for=\"".$id."\">".$text1."</label>".$text2;
+
+				$tag_check = "<input type=\"checkbox\" class=\"checkbox\" name=\"".$this->name."[]\" id=\"".$id."\" value=\"".$value."\"".$checked.$disabled." />";
+				$tag_label = "<label for=\"".$id."\"><p>".$text1."</p></label>"/*.$text2*/;
 				$ret.= str_replace("?", $tag_check.$tag_label, $base);
-				
+
 				if($notarray)
 				{
 					$ret = str_replace("[]", "", $ret);
@@ -128,7 +128,7 @@
 			{
 				$value    = $this->io->conv_to_html($this->io->get_param($id."_txt"), false);
 				$disabled = !$enable ? " disabled" : "";
-				
+
 				$tag_txtbx = "<input type=\"text\" name=\"".$id."_txt\" id=\"".$id."_txt\" value=\"".$value."\"".$disabled." />";
 				$ret = str_replace("[txt]", $tag_txtbx, $text);
 			}

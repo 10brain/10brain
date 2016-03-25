@@ -1,7 +1,7 @@
 body,input,textarea{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 #content{
@@ -67,7 +67,7 @@ body,input,textarea{
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .form form{
@@ -75,10 +75,9 @@ body,input,textarea{
 }
 
 .form1{
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 50px;
 }
 
 .form1 form{
@@ -87,14 +86,14 @@ body,input,textarea{
 
 .form input[type="text"]{
   height: 25px;
-  width: 375px;
+  width: 300px;
   padding: 6px 8px;
   font-size: 16px;
   color: black;
   background-color: white;
   border: 1px solid black;
   margin: 0;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   outline: 0;
 }
 
@@ -122,7 +121,7 @@ body,input,textarea{
   height: 40px;
   width: 200px;
   padding: 6px 8px;
-  font-size: 1.0em;
+  font-size: 14px;
   color: black;
   background-color: white;
   border: 1px solid black;
@@ -140,7 +139,7 @@ body,input,textarea{
 
 .submit input[type="submit"]{
   height: 40px;
-  width: 125px;
+  width: 200px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
@@ -148,12 +147,11 @@ body,input,textarea{
   border: 1px solid black;
   letter-spacing: 2px;
   outline: 0;
-  font-size: 14px;
 }
 
 .submit input[type="button"]{
   height: 40px;
-  width: 150px;
+  width: 200px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
@@ -162,33 +160,85 @@ body,input,textarea{
   letter-spacing: 2px;
   outline: 0;
   margin-bottom: 10px;
-  font-size: 14px;
 }
 
 .submit{
   width: 100%;
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
 }
 
 .confirm{
-  margin: 5px auto 10px auto;
-  font-size: 14px;
+  margin: 5px auto 50px auto;
+  font-size: 16px;
 }
 
-.form1 ul{
-  /zoom:1;
-  padding: 0;
-  text-align: center;
+input[type=checkbox] {
+    display: inline-block;
+    margin-right: 6px;
 }
 
-.form1 li{
-  display: inline-block;
-  list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
+input[type=checkbox] + label {
+    position: relative;
+    display: inline-block;
+    margin-right: 12px;
+    line-height: 1.5px;
+    cursor: pointer;
 }
 
-.form1 span{
-  line-height: 300%;
+@media (min-width: 1px) {
+    input[type=checkbox] {
+        display: none;
+        margin: 0;
+    }
+
+    input[type=checkbox] + label {
+        padding: 0 0 0 24px;
+    }
+
+    input[type=checkbox] + label::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+		-webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin-top: -9px;
+        background-color: white;
+    }
+
+    input[type=checkbox] + label::before {
+        border: 1px solid black;
+    }
+
+    input[type=checkbox]:checked + label::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    input[type=checkbox]:checked + label::after {
+      left: 4px;
+      width: 16px;
+      height: 8px;
+      margin-top: -2px;
+      border-left: 2px solid black;
+      border-bottom: 2px solid black;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-65deg);
+    }
+}
+
+.form p{
+  position: relative;
+  top: 5px;
+  margin-left: 10px;
+  letter-spacing: 2px;
 }

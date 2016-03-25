@@ -76,7 +76,7 @@ body,h1,input,p{
   font-size: 1.2em;
   color: black;
   background-color: white;
-  border: 1px solid #808080;
+  border: 1px solid black;
   letter-spacing: 2px;
   margin-top: 20px;
   outline: 0;
@@ -90,7 +90,7 @@ body,h1,input,p{
   font-size: 1.0em;
   color: black;
   background-color: white;
-  border: 1px solid #808080;
+  border: 1px solid black;
   letter-spacing: 2px;
   margin-top: 30px;
   outline: 0;
@@ -111,7 +111,7 @@ body,h1,input,p{
   font-size: 1.0em;
   color: black;
   background-color: white;
-  border: 1px solid #808080;
+  border: 1px solid black;
   letter-spacing: 2px;
   margin-top: 10px;
   outline: 0;
@@ -133,7 +133,7 @@ body,h1,input,p{
   font-size: 1.0em;
   color: black;
   background-color: white;
-  border: 1px solid #808080;
+  border: 1px solid black;
   letter-spacing: 2px;
   margin-top: 10px;
   outline: 0;

@@ -22,6 +22,7 @@ $ActType = "";
 $Key0 ="";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 $Key12 ="";
 $Key13 ="";
 $Key14 ="";
@@ -35,13 +36,14 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }else{
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key2 = $_POST["KEYWORD2"];
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
     $Key15 = $_POST["KEYWORD15"];
-    
+
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -67,8 +69,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-    define("PASS",  "1:初期化");       
-   
+    define("PASS",  "1:初期化");
+
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
@@ -146,7 +148,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             $vali = new Validation();
                             $Key13 = $io->get_param_sql("Name");
                             $Key14 = $io->get_param_sql("ID");
-                            
+
                             if($Key15 == '初期化する'){
                                 $Key15 = '9999';
                             }else{
@@ -158,7 +160,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                             //ID確認
                             $result = $obj->GETUserEdit($ActType, $Key1, $Key12, $Key13, $Key14, $Key15);
                             if($result == 0){
-                                include(HTML_SUCCESS); 
+                                include(HTML_SUCCESS);
                             }else{
                                 $db_error = 'システムエラーです。開発者に連絡してください。';
                                 include(HTML_FAILURE);
@@ -178,7 +180,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else if($io->get_param("step_from") == "input"){
             // 確認処理 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
 
                     // 名前
@@ -216,11 +218,11 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else if($io->get_param("step_from") == "agree"){
             // 入力画面 ================================================================
-            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){	
-               
+            if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
+
 
                 include(TEMP_INPUT);
-                    
+
             }else{
                     // リファラ制限画面
                     include(TEMP_BLOCK);
@@ -228,7 +230,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     }else{
             // 同意画面 ================================================================
-            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){	
+            if(CHECK_REFERER == "" or strpos($_SERVER["HTTP_REFERER"], CHECK_REFERER) !== false){
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
                     $io->set_parameter("Name", $Key14);
@@ -243,8 +245,3 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }
 
 ?>
-
-
-
-
-
