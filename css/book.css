@@ -51,31 +51,32 @@ body,input{
   float: left;
   margin-left: 10px;
   width: 7%;
-  max-width: 31px;
+  max-width: 40px;
   min-width: 5px;
   height: 15%;
-  max-height: 41px;
-  min-height: 7px;
+  max-height: 40px;
+  min-height: 5px;
 }
 
 .next img{
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
 }
 
 .prev{
   float: left;
   margin-right: 10px;
   width: 7%;
-  max-width: 31px;
+  max-width: 40px;
   min-width: 5px;
   height: 15%;
-  max-height: 41px;
-  min-height: 7px;
+  max-height: 40px;
+  min-height: 5px;
 }
 
 .prev img{
-  width: 100%;
+  width: 40px;
+  height: 40px;
 }
 
 .page input[type="text"]{
