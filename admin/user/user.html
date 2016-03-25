@@ -6,32 +6,62 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>ユーザー情報</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/user.css">
     </head>
     <body>
-        <div>ユーザー情報</div>
-        <table>
-            <tr>
-                <td><?=$dspUserDet[0];?></td>
-                <td><?=$dspUserDet[1];?></td>
-                <td><?=$dspUserDet[2];?></td>
-                <td><?=$dspUserDet[3];?></td>
+      <?=include('../header/header.html');?>
 
-            </tr>
-        </table>
+      <div id="content">
 
-        <form method="post" action="<?=$user_edit;?>">
-        <input type="hidden" name="ActionType" value="TgRSPInf">
-        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-        <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
-        <input type="hidden" name="KEYWORD13" value="<?=$Key13;?>">
-        <input type="hidden" name="KEYWORD14" value="<?=$Key14;?>">
-        <input type="submit" value="編集" />
-        </form>
-    </td>
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの詳細</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+          <div class="form1">
+            <span>社員番号：<?=$dspUserDet[0];?></span>
+            <br>
+            <span>ID：<?=$dspUserDet[1];?></span>
+            <br>
+            <span>パスワード：<?=$dspUserDet[2];?></span>
+            <br>
+            <span>社員名：<?=$dspUserDet[3];?></span>
+            <br>
+
+            <form method="post" action="<?=$user_edit;?>">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+              <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
+              <input type="hidden" name="KEYWORD13" value="<?=$Key13;?>">
+              <input type="hidden" name="KEYWORD14" value="<?=$Key14;?>">
+              <div class="submit">
+                <input type="submit" value="ユーザー情報編集">
+              </div>
+            </form>
+            <form>
+              <div class="submit">
+                <input type="button" onClick='history.back();' value="戻る">
+              </div>
+            </form>
+          </div>
+      </div>
+
+    <?=include('../footer/footer.html');?>
+    </div>
 
     </body>
 </html>

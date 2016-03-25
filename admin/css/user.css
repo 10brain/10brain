@@ -67,7 +67,7 @@ body,input,textarea{
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .form form{
@@ -75,10 +75,10 @@ body,input,textarea{
 }
 
 .form1{
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 30px;
+  font-size: 16px;
 }
 
 .form1 form{
@@ -140,7 +140,7 @@ body,input,textarea{
 
 .submit input[type="submit"]{
   height: 40px;
-  width: 125px;
+  width: 150px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
@@ -149,6 +149,7 @@ body,input,textarea{
   letter-spacing: 2px;
   outline: 0;
   font-size: 14px;
+  margin-top: 50px;
 }
 
 .submit input[type="button"]{
@@ -167,7 +168,7 @@ body,input,textarea{
 
 .submit{
   width: 100%;
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -176,19 +177,6 @@ body,input,textarea{
   font-size: 14px;
 }
 
-.form1 ul{
-  /zoom:1;
-  padding: 0;
-  text-align: center;
-}
-
-.form1 li{
-  display: inline-block;
-  list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 .form1 span{
-  line-height: 300%;
+  line-height: 350%;
 }

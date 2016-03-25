@@ -53,7 +53,6 @@ class BookModel{
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
                    $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-                   
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -241,7 +240,7 @@ class BookModel{
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
                    $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-                   
+
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -288,7 +287,7 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           
+
             $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
             $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
             echo $strSQL;
@@ -324,7 +323,7 @@ class BookModel{
                    $dspBookDet[8] = $array['coverName'];
                    $dspBookDet[9] = $array['ISBN'];//ISBN
                    $dspBookDet[10] = $array['stock'];
-                   
+                   $dspBookDet[11] = $array['BookNum'];
                }
 
            }
@@ -417,7 +416,7 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key60', $Key60, PDO::PARAM_STR);
- 
+
 
 
             //echo $Key2.'確認';

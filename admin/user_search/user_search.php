@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 
 
 //IDとパスワードチェック
@@ -17,7 +18,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $ActType = $_POST["ActionType"];
     $Key0 = $_POST["KEYWORD0"];
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key2 = $_POST["KEYWORD2"];
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key11 = $_POST["KEYWORD11"];//書籍番号
 
     //DB問い合わせ
@@ -36,12 +38,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("../../login.html");
 }
 }
-    
-	
+
+
 ?>
-
-

@@ -80,7 +80,7 @@ class UserModel{
         } catch (Exception $Exception) {}
         //return $dspUserInfo;
         return $result;
-       
+
     }
 
     /*********ユーザ詳細SQL*******************************************************/
@@ -160,7 +160,7 @@ class UserModel{
     }
 
     /*********ユーザー登録SQL*************************************************/
-    function GETUserAdd($ActType, $Key1, $Key51, $Key52){
+    function GETUserAdd($ActType, $Key1, $Key51, $Key52, $Key53){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -175,7 +175,7 @@ class UserModel{
             return $result;
         }else{
 
-            $strSQL = "INSERT INTO User(ID, Name) VALUES (:Key52, :Key51)";
+            $strSQL = "INSERT INTO User(ID, Name, PW) VALUES (:Key52, :Key51, :Key53)";
         }
         echo 'アクションタイプ確認ok';
 
@@ -187,6 +187,7 @@ class UserModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
            $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
+           $stmh->bindParam(':Key53', 9999, PDO::PARAM_STR);
 
             echo $strSQL;
 
@@ -196,8 +197,8 @@ class UserModel{
                //システムエラー
                $result=3;
            }
-           echo $result;
-           echo 'DB接続ok';
+           /*echo $result;
+           echo 'DB接続ok';*/
 
 
 

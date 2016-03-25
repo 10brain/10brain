@@ -6,6 +6,7 @@ $result = 0;
 $ActType = "";
 $Key1 ="";
 $Key2 ="";
+$Key3 ="";
 
 
 
@@ -17,7 +18,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 }else{
     $ActType = $_POST["ActionType"];
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key2 = $_POST["KEYWORD2"];
+    $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
@@ -39,12 +41,10 @@ if ($result == 0){
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-    
+
 include("../../login.html");
 }
 }
-    
-	
+
+
 ?>
-
-

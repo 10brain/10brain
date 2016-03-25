@@ -39,7 +39,13 @@ and open the template in the editor.
 ?>
 
           <table border="1" width="80%">
-            <tr><td width="15%">ユーザー</td><td width="40%">タイトル</td><td width="15%">貸出日</td><td width="15%">返却予定日</td><td width="15%">返却日</td></tr>
+            <tr>
+              <td width="10%">ユーザー</td>
+              <td width="45%">タイトル</td>
+              <td width="15%">貸出日</td>
+              <td width="15%">返却予定日</td>
+              <td width="15%">返却日</td>
+            </tr>
 <?
     $i = 0;
     while(!is_null($dspBorrowList[$i][0])){
