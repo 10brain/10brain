@@ -13,7 +13,7 @@ body{
   margin-bottom: 5px;
   width: 95%;
   height: 95%;
-  background-color: #FEFBF5;
+  background-color: #F6E8D2;
   position: relative;;
   top: 80px;
 }
@@ -69,15 +69,15 @@ body{
 }
 
 .slider .slide {
-	width: 800px;
+	width: 820px;
 	height: 393px;
-	margin: 70px auto 0;
+	margin-top: 30px;
 	padding-left: 50px;
 	float: left;
 }
 
 .slider {
-	width: 800px;
+	width: 853px;
 	height: 510px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -127,8 +127,19 @@ button {
 	right: 5px;
 }
 
+.section{
+  margin: 20px 25px;
+}
+
 .section input[type="image"]{
   max-width: 100px;
   max-height: 141px;
   outline: 0;
+
+}
+
+.slider-prev img,
+.slider-next img{
+  width: 40px;
+  height: 40px;
 }
