@@ -29,23 +29,23 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     echo $Key3;*/
     echo $Key0;
     echo $Key42;
-echo $Key43;
 
-    if(!ckNum($Key40, 5,1)){
-        $bnum_error = "書籍番号が正しくありません。";
-        $result = 4;
-    }
-    if(!ckStr($Key43, 255)){
-        $title_error = "書籍タイトルが正しくありません。";
-        $result = 4;
-    }
-    if(is_null($Key42)){
-        $day_error = "日付が正しくありません。";
-        $result = 4;
-    }
+
     if($result==0){
-        $book='book_dec.php';
-        include 'book_confirm.html';
+           $obj=new BookModel();
+           $result = $obj->GETBorrowAdd($ActType, $Key0, $Key40, $Key42);
+        if($result==0){
+            //データベース更新
+            $obj=new BookModel();
+            $result = $obj->GETStock($ActType, $Key0, $Key40);
+            if($result==0){
+              include('book_suc.html'); 
+            }else{
+              include('book_fal.html');
+            }
+            
+        }
+
     }else{
         if ($_POST["ActionType"] != "TgRSPInf"){
             $error = "";
@@ -55,7 +55,7 @@ echo $Key43;
             $error = "ただいまサーバーが込み合っております。";
         }
 
-        include("../login/login.html");
+        include("../login.html");
     }
 }
 

@@ -32,18 +32,21 @@ and open the template in the editor.
 
     <div class="confirm">
       <ul>
-        <li>書籍番号：<?=$dspBorrowU[0];?></li><br>
-        <li>タイトル：<?=$dspBorrowU[1];?></li><br>
-        <li>返却予定日：<?=$dspBorrowU[2];?></li><br>
+        <li>書籍番号：<?=$Key40;?></li><br>
+        <li>タイトル：<?=$Key43;?></li><br>
+        <li>返却予定日：<?=$Key42;?></li><br>
 
       </ul>
 
-        <form action="" method="post">
-          <input type="hidden" name="ActionType" value="TgRSPInf">
-          <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-          <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-          <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-          <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <form action="<?=$book;?>" method="post">
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            <input type="hidden" name="KEYWORD40" value="<?=$Key40;?>">
+            <input type="hidden" name="KEYWORD42" value="<?=$Key42;?>">
+            <input type="hidden" name="KEYWORD43" value="<?=$Key43;?>">
 
           <input type="submit" value="貸出">
         </form>
