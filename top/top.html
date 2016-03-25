@@ -37,34 +37,102 @@ and open the template in the editor.
               </li>
             </ul>
           </div>
+
         <div class="slider">
          <div class="slideSet">
           <div class="slide">
-          
-        <?
-            $i = 0;
-            while(!is_null($dspBookNewList[$i][0])){
-        ?>
-        <div class="section">
-            <?
-             $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
-            ?>
-            <form method="post" action="../book/book.php">
-                <input type="hidden" name="ActionType" value="TgRSPInf">
-                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
-                <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
-                <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
-                <input type="image" src="<?=$book;?>" />
-            </form>
+
+<?
+    $i = 0;
+    while(!is_null($dspBookNewList[$i][0])){
+      if($i>9){
+        break;
+      }else{
+?>
+            <div class="section">
+<?
+ $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+?>
+              <form method="post" action="../book/book.php">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
+                  <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
+                  <input type="image" src="<?=$book;?>" />
+              </form>
             </div>
-        <?
-            $i=$i+1;
-            }
-        ?>
-        
+<?
+    $i=$i+1;
+    }
+  }
+?>
+          </div>
+
+          <div class="slide">
+
+<?
+    $i = 10;
+    while(!is_null($dspBookNewList[$i][0])){
+      if($i>19){
+        break;
+      }else{
+?>
+            <div class="section">
+<?
+ $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+?>
+              <form method="post" action="../book/book.php">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
+                  <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
+                  <input type="image" src="<?=$book;?>" />
+              </form>
+            </div>
+<?
+    $i=$i+1;
+    }
+  }
+?>
+          </div>
+
+          <div class="slide">
+
+<?
+    $i = 20;
+    while(!is_null($dspBookNewList[$i][0])){
+      if($i>29){
+        break;
+      }else{
+?>
+            <div class="section">
+<?
+ $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+?>
+              <form method="post" action="../book/book.php">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookNewList[$i][0];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
+                  <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
+                  <input type="image" src="<?=$book;?>" />
+              </form>
+            </div>
+<?
+    $i=$i+1;
+    }
+  }
+?>
+          </div>
+
 
           <!--
           <img src="../images/pic1.png" height="141" width="100" alt>
@@ -136,7 +204,7 @@ and open the template in the editor.
         </div>
         <button class="slider-prev"><img src="../images/prev.png" ></button>
         <button class="slider-next"><img src="../images/next.png" ></button>
-        </div>
+      </div>
         <script>
         (function(){
         var slideWidth = $('.slide').outerWidth(); // .slideの幅を取得して代入
@@ -180,6 +248,6 @@ and open the template in the editor.
       </div>
 
       <?php include('../footer/footer.html');?>
-
+      </div>
     </body>
 </html>

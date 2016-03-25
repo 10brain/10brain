@@ -145,3 +145,20 @@ body,input{
 .page input:-webkit-autofill {
 	box-shadow: 0 0 0 1000px white inset;
 }
+
+.bb-custom-firstpage{
+  padding: 30px;
+}
+
+.bb-custom-firstpage img{
+  max-width: 385px;
+  max-height: 530px;
+}
+
+.notborrow{
+  margin: 0;
+  height: 30px;
+  font-size: 16px;
+  padding: 0;
+  color: red;
+}

@@ -116,13 +116,19 @@ button {
 	margin: 0;
 	padding: 0;
 	position: absolute;
-	top: 48%;
+	top: 38%;
 }
 
 .slider-prev {
-	left: 175px;
+	left: 5px;
 }
 
 .slider-next {
-	right: 175px;
+	right: 5px;
+}
+
+.section input[type="image"]{
+  max-width: 100px;
+  max-height: 141px;
+  outline: 0;
 }
