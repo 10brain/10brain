@@ -60,9 +60,9 @@
             <div class="page">
                     <div class="title">タイトル：<?=$dspBookDet[0];?></div>
                     <div class="other">
-                            出版社：<?=$dspBookDet[2];?><br>
-                            著者：<?=$dspBookDet[3];?><br>
-                            ジャンル：<?=$dspBookDet[1];?>
+                        出版社：<?=$dspBookDet[2];?><br>
+                        著者：<?=$dspBookDet[3];?><br>
+                        ジャンル：<?=$dspBookDet[1];?>
                     </div>
             </div>
             <div class="next">
@@ -91,27 +91,30 @@
     if($dspBookDet[10] == '1'){
 ?>
 
-									<p>本を借りる</p>
-									<div class="other">書籍番号：<?=$Key20;?></div>
-									<div class="title">タイトル：<?=$dspBookDet[0];?></div>
-									<form action="<?=$book;?>" method="post">
-									<div class="returndate">
-										<span>返却予定日</span><input type="text" id="datepicker"><span>←</span><br>
-									</div>
-									<div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。<br></div>
+                                            <p>本を借りる</p>
+                                            <div class="other">書籍番号：<?=$Key20;?></div>
+                                            <div class="title">タイトル：<?=$dspBookDet[0];?></div>
+                                            <form action="<?=$book;?>" method="post">
+                                            <div class="returndate">
+                                                <span>返却予定日</span><input type="text" name="KEYWORD42" id="datepicker"><span>←</span><br>
+                                            </div>
+                                            <div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。<br></div>
 
-										<input type="hidden" name="ActionType" value="TgRSPInf">
-										<input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-										<input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-										<input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-										<input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-										<input type="submit" value="確認" /></td>
-									</form>
-									<form>
-										<div class="submit">
-											<input type="button" onClick='history.back();' value="戻る">
-										</div>
-									</form>
+                                                <input type="hidden" name="ActionType" value="TgRSPInf">
+                                                <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                                                <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                                                <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                                                <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                                                <input type="hidden" name="KEYWORD40" value="<?=$Key20;?>">
+
+                                                <input type="submit" value="確認" /></td>
+                                            </form>
+                                            <form>
+                                                    <div class="submit">
+                                                            <input type="button" onClick='history.back();' value="戻る">
+                                                    </div>
+                                            </form>
+                                            
          <?
             }else{
          ?>
