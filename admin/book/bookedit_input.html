@@ -30,7 +30,7 @@ and open the template in the editor.
         </div>
 
         <div class="form">
-  <?=$io->get_all_params(); ?>
+          <?=$io->get_all_params();?>
           <form name="input" action="<?=URL_ACTION;?>" method="post">
           <input type="hidden" name="step_from" value="input">
           <p><?=$db_error;?></p>
@@ -39,7 +39,7 @@ and open the template in the editor.
             <input name="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
 
             <span>タイトル</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
-            <input name="title" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+            <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
             <span>ジャンル</span><div class="error"><?=$io->get_error("genre_error"); ?></div><br>
             <input name="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><br>

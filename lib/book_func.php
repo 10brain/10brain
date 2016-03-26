@@ -328,7 +328,7 @@ class BookModel{
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
-           $stmh->bindValue(':stock', $stock, PDO::PARAM_INT);
+           $stmh->bindParam(':stock', $stock, PDO::PARAM_INT);
 
 
             //echo $Key2.'確認';
@@ -955,7 +955,7 @@ class BookModel{
     }
 
     /**************書籍編集SQL*************************************************/
-    function GETBookEDIT($ActType, $Key1, $Key20, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32){
+    function GETBookEDIT($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key20){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -964,82 +964,45 @@ class BookModel{
             $result = 2;
             return $result;
         }
-                        echo '>'.$Key24;
-                        echo $Key25;
-                        echo $Key26;
-                        echo $Key27;
-                        echo $Key28;
-                        echo $Key29;
-                        echo $Key30;
-                        echo $Key31;
-                        echo $Key32;
+   
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }else{
-            $strSQL = "UPDATE Book SET";
-        }
-        
-        if(is_null($Key24)){
-            $strSQL = $strSQL." ISBN IS NULL,";
-        }else{
-            $strSQL = $strSQL." ISBN = :Key24,";
-        }
-        
-        if(is_null($Key25)){
-            $strSQL = $strSQL." title IS NULL,";
-        }else{
-            $strSQL = $strSQL." title = :Key25,";
-        }
 
-        if(is_null($Key26)){
-            $strSQL = $strSQL." genre IS NULL,";
-        }else{
-            $strSQL = $strSQL." genre = :Key26,";
         }
-        if(is_null($Key27)){
-            $strSQL = $strSQL." pub IS NULL,";
-        }else{
-            $strSQL = $strSQL." pub = :Key27,";
-        }
-        if(is_null($Key28)){
-            $strSQL = $strSQL." writer IS NULL,";
-        }else{
-            $strSQL = $strSQL." writer = :Key28,";
-        }
-        if(is_null($Key29)){
-            $strSQL = $strSQL." intro IS NULL,";
-        }else{
-            $strSQL = $strSQL." intro = :Key29,";
-        }
-                
-        if(is_null($Key30)){
-            $strSQL = $strSQL." year IS NULL,";
-        }else{
-            $strSQL = $strSQL." year = :Key30,";
-        }
+        echo $Key24;
+
+            $strSQL = "UPDATE Book SET ISBN=:Key24";
+
+            $strSQL = $strSQL.", title=:Key25";
+   
+            $strSQL = $strSQL.", genre=:Key26";
+
+            $strSQL = $strSQL.", pub=:Key27";
+
+            $strSQL = $strSQL.", writer=:Key28";
+
+            $strSQL = $strSQL.", intro=:Key29";
+  
+            $strSQL = $strSQL.", year=:Key30";
+
+            $strSQL = $strSQL.", amazon=:Key31";
+
+            $strSQL = $strSQL.", remarks=:Key32";
+
         
-        if(is_null($Key31)){
-            $strSQL = $strSQL." amazon IS NULL,";
-        }else{
-            $strSQL = $strSQL." amazon = :Key31,";
-        }
-        if(is_null($Key32)){
-            $strSQL = $strSQL." remarks IS NULL";
-        }else{
-            $strSQL = $strSQL." remarks = :Key32";
-        }
-        
-        $strSQL = $strSQL. " WHERE ISBN = :Key24 AND BookNum = :Key20";
+        $strSQL = $strSQL. " WHERE BookNum=:Key20";
 
         echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
            //クラス呼び出し
+            
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key20', $Key20, PDO::PARAM_INT);
+
            $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
            $stmh->bindParam(':Key25', $Key25, PDO::PARAM_STR);
            $stmh->bindParam(':Key26', $Key26, PDO::PARAM_STR);
@@ -1049,27 +1012,21 @@ class BookModel{
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
+           $stmh->bindParam(':Key20', $Key20, PDO::PARAM_INT);
+           
 
-
-            //echo $Key2.'確認';
             echo $strSQL;
 
            $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-
 
         } catch (Exception $Exception) {
             $result=4;
+            echo $Exception;
+
         }
 
         return $result;
     }
-
 
 
 }

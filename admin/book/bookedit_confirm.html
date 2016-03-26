@@ -48,11 +48,10 @@ $(function() {
 
         <div class="form1">
 
-        <?=$io->get_all_params();?>
+         
         <form name="input" action="<?=URL_ACTION;?>" method="post">
-        <input type="hidden" name="step_from" value="conf" />
-
-        <?=$decision;?>
+        <?=$io->get_all_params();?>
+        
 
             <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>

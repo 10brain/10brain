@@ -45,7 +45,7 @@ class otherModel{
            $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
            $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
             //echo $Key2.'確認';
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
@@ -59,7 +59,7 @@ class otherModel{
            if($count == 0){
                //データなし
                $result = 1;
-               echo $count;
+               //echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -71,7 +71,7 @@ class otherModel{
                    $dspUserInfo[0] = $array['Num'];//社員番号
                    $dspUserInfo[1] = $array['Name'];//名前
                    $dspUserInfo[2] = $array['PW'];//パスワード
-                   echo $result;
+                   //echo $result;
                    /*echo $dspUserInfo[0];
                    echo $dspUserInfo[1];*/
                }
@@ -89,21 +89,21 @@ class otherModel{
            $stmh = $class->pdo->prepare($strSQL);
             //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                 //表示データ収集
                $i=0;
