@@ -12,20 +12,17 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/user/user.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_conf.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/lib/book_func.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_res.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_confirm_1.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/useradd/useradd_input.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_1.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/book.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/top.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book_add/badd_input_1.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/class.IO.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/cover.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book_suc.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book_fal.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_edit.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book_confirm.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/check.php</file>
         </group>
     </open-files>
 </project-private>
