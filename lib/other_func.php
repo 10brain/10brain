@@ -17,8 +17,8 @@ class otherModel{
             $result = 2;
             return $result;
         }
-            
-        
+
+
         /*echo 'アクションタイプ確認ok';*/
         //SQL実行
         try {
@@ -53,7 +53,7 @@ class otherModel{
                $result=2;
            }
            //echo 'DB接続ok';
-           
+
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -111,25 +111,25 @@ class otherModel{
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
                    $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-                   
+
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
            }
 
         } catch (Exception $Exception) {
-            
-            
+
+
         }
         //return $dspUserInfo;
 
         ///
         //return $dspUserInfo;
         return $result;
-       
+
     }
 
-          
+
 
     /*********リクエスト未承認一覧SQL***************************************************/
     function GETRequest($ActType, $Key1, &$dspRequest){
