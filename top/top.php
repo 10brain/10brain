@@ -30,9 +30,7 @@ if ($result == 0){
     //管理者か一般ユーザーか判定
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top/top.html");
-    }else{
-        header("Content-type: image/jpeg");
-        
+    }else{        
         include("../top/top.html");
     }
 }else{
