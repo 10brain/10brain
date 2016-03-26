@@ -34,11 +34,10 @@ and open the template in the editor.
 
 
         <div class="form">
-<?=$io->get_all_params(); ?>
-          <form name="input" action="<?=URL_ACTION;?>" method="post">
-
-          <input type="hidden" name="step_from" value="input">
-
+        <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+            <?=$db_error;?>
 
             <span>ISBNコード(またはASIN)</span><div class="error"><?=$io->get_error("isbn_error"); ?></div><br>
             <input name="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>

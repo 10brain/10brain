@@ -294,7 +294,7 @@ class BookModel{
 
 
     /**************書籍登録SQL*************************************************/
-    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33){
+    function GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32){
         //初期値設定
         $result = 0;
         /**SQL発行**/

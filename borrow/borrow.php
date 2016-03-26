@@ -30,7 +30,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 //画面表示
 if ($result == 0){
-    if(array_count_values(is_null($dspBorrowUList[$i][3])) >= 3){
+    if(array_count_values(is_null($dspBorrowUList[$i][3])) <= 3){
         include("borrow_not.html");
     }else{
     $borrow_bn_conf = 'borrow_bn_conf.php';
