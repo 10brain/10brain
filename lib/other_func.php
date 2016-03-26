@@ -17,8 +17,8 @@ class otherModel{
             $result = 2;
             return $result;
         }
-            
-        
+
+
         /*echo 'アクションタイプ確認ok';*/
         //SQL実行
         try {
@@ -45,7 +45,7 @@ class otherModel{
            $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
            $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
             //echo $Key2.'確認';
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
@@ -53,7 +53,7 @@ class otherModel{
                $result=2;
            }
            //echo 'DB接続ok';
-           
+
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -71,7 +71,7 @@ class otherModel{
                    $dspUserInfo[0] = $array['Num'];//社員番号
                    $dspUserInfo[1] = $array['Name'];//名前
                    $dspUserInfo[2] = $array['PW'];//パスワード
-                   echo $result;
+                   //echo $result;
                    /*echo $dspUserInfo[0];
                    echo $dspUserInfo[1];*/
                }
@@ -89,15 +89,15 @@ class otherModel{
            $stmh = $class->pdo->prepare($strSQL);
             //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -111,25 +111,25 @@ class otherModel{
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
                    $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-                   
+
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
            }
 
         } catch (Exception $Exception) {
-            
-            
+
+
         }
         //return $dspUserInfo;
 
         ///
         //return $dspUserInfo;
         return $result;
-       
+
     }
 
-          
+
 
     /*********リクエスト未承認一覧SQL***************************************************/
     function GETRequest($ActType, $Key1, &$dspRequest){
