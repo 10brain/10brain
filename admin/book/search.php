@@ -1,4 +1,7 @@
 <?php
+/*******************************************************************************
+ @管理者用書籍検索
+ ******************************************************************************/
 require '../../lib/book_func.php';
 require '../../lib/check.php';
 
@@ -7,7 +10,8 @@ $ActType = "";
 $Key1 ="";
 $Key2 ="";
 $Key3 ="";
-
+$Key21 = "";
+$Key22 = "";
 
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
@@ -16,15 +20,16 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];
-    $Key3 = $_POST["KEYWORD3"]; //パスワード
-
-    $Key21 = $_POST["KEYWORD21"];//書籍番号
-
+    $Key2 = $_POST["KEYWORD2"];  //パスワード
+    $Key3 = $_POST["KEYWORD3"];  //名前
+    $Key21 = $_POST["KEYWORD21"];  //フリーワード
+    $Key22 = $_POST["KEYWORD22"];  //and or
     //DB問い合わせ
     $obj=new BookModel();
-    $result = $obj->GETAdminBook($ActType, $Key21, $dspAdminBook);
+    $result = $obj->GETBookList($ActType, $Key21, $Key22, $dspBookList);
+
 
 //画面表示
 if ($result == 0){
@@ -38,9 +43,9 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../../login.html");
-}
+include("login.html");
 }
 
+}
 
 ?>

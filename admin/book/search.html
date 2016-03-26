@@ -46,50 +46,56 @@ $book_det = './book.php';
 ?>
             <!--DB内容表示-->
             <!--contents START -->
-<?if(is_null($dspAdminBook[0])){?>
+<?if(is_null($dspBookList[0])){?>
 <p>該当する本がありません。</p>
 <?
 }else{
 ?>
-         <table border="1" width="80%">
-           <tr class="tr">
-              <td width="10%"></td>
-              <td width="55%">タイトル</td>
-              <td width="15%">出版社</td>
-              <td width="10%">ジャンル</td>
-              <td width="10%">貸出状況</td>
-           </tr>
+
+<table border="1" width="80%">
+  <tr class="tr">
+      <td width="10%"></td>
+      <td width="60%">タイトル</td>
+      <td width="10%">出版社</td>
+      <td width="10%">ジャンル</td>
+      <td width="10%">貸出状況</td></tr>
+
+
+
 <?
     $i = 0;
-    while(!is_null($dspAdminBook[$i][0])){
+    while(!is_null($dspBookList[$i][0])){
 ?>
 
-	         <tr>
-              <td>
-                <form method="post" action="<?=$book_det;?>">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                    <input type="hidden" name="KEYWORD20" value="<?=$dspAdminBook[$i][0];?>">
-                    <input type="hidden" name="KEYWORD21" value="<?=$dspAdminBook[$i][6];?>">
-                    <input type="submit" value="詳細" />
-                </form>
-              </td>
-              <td><?=$dspAdminBook[$i][1];?></td>
-              <td><?=$dspAdminBook[$i][3];?></td>
-              <td><?=$dspAdminBook[$i][2];?></td>
-            <?if($dspAdminBook[$i][4]==0){?>
-              <td>貸出中</td>
-            <?}else{?>
-              <td>在庫有</td>
-            <?}?>
-            </tr>
+		<tr>
+                    <td>
+                        <form method="post" action="../book/book.php">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+                        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+                        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+                        <input type="submit" value="詳細" />
+                        </form>
+                    </td>
+
+                    <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
+                    <td><?=$dspBookList[$i][2];?></td><!--出版社-->
+                    <td><?=$dspBookList[$i][3];?></td><!--カテゴリ-->
+                    <?if($dspBookList[$i][4]==0){?>
+                        <td>貸出中</td>
+                    <?}else{?>
+                        <td>在庫有</td>
+                    <?}?>
+                </tr>
 <?
     $i=$i+1;
     }
 ?>
-           </table>
+</table>
 <?
 }
 ?>

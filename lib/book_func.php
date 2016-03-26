@@ -200,50 +200,10 @@ class BookModel{
                    $dspAdminBook[$i][2] = $array['genre'];//ジャンル
                    $dspAdminBook[$i][3] = $array['pub'];//出版社
                    $dspAdminBook[$i][4] = $array['stock'];//在庫数
-                   $dspAdminBook[$i][5] = $array['cover'];
                    $dspAdminBook[$i][6] = $array['ISBN'];//ISBN
                   $i=$i+1;
                }
 
-           }
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
-
-            //echo $Key21;
-
-            $strSQL = $strSQL." ORDER BY Book.date DESC LIMIT 30";
-
-
-           //クラス呼び出し
-           //$class=new DBModel();
-           $stmh = $class->pdo->prepare($strSQL);
-            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
-
-            echo $strSQL;
-
-           $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-
-           $count=$stmh->rowCount();//実行結果の行数をカウント
-           if($count == 0){
-               //データなし
-               $result = 0;
-               echo $count;
-           }else{
-                //表示データ収集
-               $i=0;
-                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
-                   $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
-                   $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
-                   $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-
-                $i=$i+1;
-                }
-                //print_r($dspBookList);
            }
 
 
@@ -320,10 +280,9 @@ class BookModel{
                    $dspBookDet[5] = $array['year'];//出版年
                    $dspBookDet[6] = $array['amazon'];//リンク
                    $dspBookDet[7] = $array['remarks'];//備考
-                   $dspBookDet[8] = $array['coverName'];
-                   $dspBookDet[9] = $array['ISBN'];//ISBN
-                   $dspBookDet[10] = $array['stock'];
-                   $dspBookDet[11] = $array['BookNum'];
+                   $dspBookDet[8] = $array['ISBN'];//ISBN
+                   $dspBookDet[9] = $array['stock'];
+                   $dspBookDet[10] = $array['BookNum'];
                }
 
            }
@@ -358,6 +317,7 @@ class BookModel{
         try {
            //クラス呼び出し
            $class=new DBModel();
+           $stock = 1;
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
            $stmh->bindParam(':Key25', $Key25, PDO::PARAM_STR);
@@ -368,7 +328,7 @@ class BookModel{
            $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
            $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
-           $stmh->bindValue(':stock', 1, PDO::PARAM_INT);
+           $stmh->bindValue(':stock', $stock, PDO::PARAM_INT);
 
 
             //echo $Key2.'確認';
@@ -391,7 +351,7 @@ class BookModel{
     }
 
     /**************書籍表紙検索SQL*************************************************/
-    function GETCoverSearch($ActType, $Key1, $Key60, &$dspCover){
+    function GETCoverSearch($ActType, $Key1, $Key21, &$dspCover){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -405,8 +365,14 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
-            $strSQL = $strSQL. "(:Key60)";
+            $strSQL = "Select * From cover";
+
+        }
+        
+        if(is_null($Key21)){
+           $strSQL = $strSQL. " WHERE ISBN IS NULL";
+        }else{
+            $strSQL = $strSQL. " WHERE ISBN =: Key21";
         }
         echo 'アクションタイプ確認ok';
 
@@ -415,13 +381,9 @@ class BookModel{
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key60', $Key60, PDO::PARAM_STR);
-
-
-
-            //echo $Key2.'確認';
+            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
             echo $strSQL;
-
+            
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
@@ -430,6 +392,23 @@ class BookModel{
            echo 'DB接続ok';
            echo $result;
 
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   //表示データ収集
+                   $dspCover[0] = $array['isbn'];//画像名
+               }
+
+           }
 
         } catch (Exception $Exception) {
             $result='4';
@@ -972,6 +951,122 @@ class BookModel{
         }
 
         //return $dspUserInfo;
+        return $result;
+    }
+
+    /**************書籍編集SQL*************************************************/
+    function GETBookEDIT($ActType, $Key1, $Key20, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+                        echo '>'.$Key24;
+                        echo $Key25;
+                        echo $Key26;
+                        echo $Key27;
+                        echo $Key28;
+                        echo $Key29;
+                        echo $Key30;
+                        echo $Key31;
+                        echo $Key32;
+        if($Key1 != 'admin@10baton.com'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "UPDATE Book SET";
+        }
+        
+        if(is_null($Key24)){
+            $strSQL = $strSQL." ISBN IS NULL,";
+        }else{
+            $strSQL = $strSQL." ISBN = :Key24,";
+        }
+        
+        if(is_null($Key25)){
+            $strSQL = $strSQL." title IS NULL,";
+        }else{
+            $strSQL = $strSQL." title = :Key25,";
+        }
+
+        if(is_null($Key26)){
+            $strSQL = $strSQL." genre IS NULL,";
+        }else{
+            $strSQL = $strSQL." genre = :Key26,";
+        }
+        if(is_null($Key27)){
+            $strSQL = $strSQL." pub IS NULL,";
+        }else{
+            $strSQL = $strSQL." pub = :Key27,";
+        }
+        if(is_null($Key28)){
+            $strSQL = $strSQL." writer IS NULL,";
+        }else{
+            $strSQL = $strSQL." writer = :Key28,";
+        }
+        if(is_null($Key29)){
+            $strSQL = $strSQL." intro IS NULL,";
+        }else{
+            $strSQL = $strSQL." intro = :Key29,";
+        }
+                
+        if(is_null($Key30)){
+            $strSQL = $strSQL." year IS NULL,";
+        }else{
+            $strSQL = $strSQL." year = :Key30,";
+        }
+        
+        if(is_null($Key31)){
+            $strSQL = $strSQL." amazon IS NULL,";
+        }else{
+            $strSQL = $strSQL." amazon = :Key31,";
+        }
+        if(is_null($Key32)){
+            $strSQL = $strSQL." remarks IS NULL";
+        }else{
+            $strSQL = $strSQL." remarks = :Key32";
+        }
+        
+        $strSQL = $strSQL. " WHERE ISBN = :Key24 AND BookNum = :Key20";
+
+        echo 'アクションタイプ確認ok';
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key20', $Key20, PDO::PARAM_INT);
+           $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
+           $stmh->bindParam(':Key25', $Key25, PDO::PARAM_STR);
+           $stmh->bindParam(':Key26', $Key26, PDO::PARAM_STR);
+           $stmh->bindParam(':Key27', $Key27, PDO::PARAM_STR);
+           $stmh->bindParam(':Key28', $Key28, PDO::PARAM_STR);
+           $stmh->bindParam(':Key29', $Key29, PDO::PARAM_STR);
+           $stmh->bindParam(':Key30', $Key30, PDO::PARAM_STR);
+           $stmh->bindParam(':Key31', $Key31, PDO::PARAM_STR);
+           $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
+
+
+            //echo $Key2.'確認';
+            echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+
+
+        } catch (Exception $Exception) {
+            $result=4;
+        }
+
         return $result;
     }
 

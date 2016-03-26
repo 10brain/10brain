@@ -160,7 +160,7 @@ class UserModel{
     }
 
     /*********ユーザー登録SQL*************************************************/
-    function GETUserAdd($ActType, $Key1, $Key51, $Key52, $Key53){
+    function GETUserAdd($ActType, $Key1, $Key51, $Key52){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -182,12 +182,13 @@ class UserModel{
         //SQL実行
         try {
             $Key52 = $Key52.'@10baton.com';
+            $pw = 9999;
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key51', $Key51, PDO::PARAM_STR);
            $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
-           $stmh->bindParam(':Key53', 9999, PDO::PARAM_STR);
+           $stmh->bindParam(':Key53', $pw, PDO::PARAM_INT);
 
             echo $strSQL;
 

@@ -38,7 +38,7 @@ echo $Key43;
     //入力された情報の確認
     $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
     
-    if(array_count_values(is_null($dspBorrowUList[$i][3])) <= 3){
+    if(array_count_values(is_null($dspBorrowUList[$i][3])) >= 3){
         include("book_not.html");
     }else{
         if (!preg_match("/^[0-9]+$/", $Key40)){
@@ -49,13 +49,16 @@ echo $Key43;
             $title_error = "書籍タイトルが正しくありません。";
             $result = 4;
         }
-        if(is_null($Key42)){
+        if(isset($Key42)){
             $day_error = "日付が正しくありません。";
             $result = 4;
         }
+        
     }
-    
-if($result==0){
+ 
+if($result==4){
+    include 'book.html';
+}elseif($result==0){
     $book='book_dec.php';
     include 'book_confirm.html';
 }else{

@@ -140,8 +140,8 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key51=$io->get_param_sql("Name");
-                            $Key52=$io->get_param_sql("ID");
+                            $Key51= $io->get_param_html("Name");
+                            $Key52= $io->get_param_html("ID");
                             //データベース更新
                             $obj=new UserModel();
                             //ID確認

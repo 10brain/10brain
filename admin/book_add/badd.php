@@ -32,13 +32,11 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
-    $Key2 = $_POST["KEYWORD2"];
+    $Key2 = $_POST["KEYWORD2"];  //名前
     $Key3 = $_POST["KEYWORD3"];  //パスワード
-
-
-
-
+    
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
     define("HTML_CODE", "UTF-8");
@@ -79,17 +77,17 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                        $io->set_parameters($_GET);
+                        $vali = new Validation();
 
-                        $Key24 = $io->get_param_sql("isbn");
-                        $Key25 = $io->get_param_sql("title");
-                        $Key26 = $io->get_param_sql("genre");
-                        $Key27 = $io->get_param_sql("pub");
-                        $Key28 = $io->get_param_sql("writer");
-                        $Key29 = $io->get_param_sql("into");
-                        $Key30 = $io->get_param_sql("year");
-                        $Key31 = $io->get_param_sql("amazon");
-                        $Key32 = $io->get_param_sql("remarks");
+                        $Key24 = $io->get_param_html("isbn");
+                        $Key25 = $io->get_param_html("title");
+                        $Key26 = $io->get_param_html("genre");
+                        $Key27 = $io->get_param_html("pub");
+                        $Key28 = $io->get_param_html("writer");
+                        $Key29 = $io->get_param_html("into");
+                        $Key30 = $io->get_param_html("year");
+                        $Key31 = $io->get_param_html("amazon");
+                        $Key32 = $io->get_param_html("remarks");
 
                          //データベース更新
                         $obj = new BookModel();
@@ -143,17 +141,17 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     }
                     //writer
                     $io->set_parameter("writer", mb_convert_kana($io->get_param("writer"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("writer"), TRUE, 40, "UTF-8")){
+                    if(!$vali->isString($io->get_param("writer"), FALSE, 40, "UTF-8")){
                     $io->set_error("writer_error", "未入力、または内容に誤りが有ります");
                     }
                     //intro
                     $io->set_parameter("intro", mb_convert_kana($io->get_param("intro"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("intro"), TRUE, 255, "UTF-8")){
+                    if(!$vali->isString($io->get_param("intro"), FALSE, 255, "UTF-8")){
                     $io->set_error("intro_error", "未入力、または内容に誤りが有ります");
                     }
                     //year
                     $io->set_parameter("year", mb_convert_kana($io->get_param("year"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("year"), TRUE, 4, "UTF-8")){
+                    if(!$vali->isString($io->get_param("year"), FALSE, 4, "UTF-8")){
                     $io->set_error("year_error", "未入力、または内容に誤りが有ります");
                     }
                     //amazon
@@ -163,7 +161,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     }
                     //remarks
                     $io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("remarks"), TRUE, 400, "UTF-8"))
+                    if(!$vali->isString($io->get_param("remarks"), FALSE, 400, "UTF-8"))
                     {
                     $io->set_error("remarks_error", "内容に誤りが有ります");
                     }

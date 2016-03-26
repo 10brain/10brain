@@ -30,12 +30,10 @@ and open the template in the editor.
           </ul>
         </div>
         <div class="contents">
-<?
-$book_edit = './bookedit.php';
-$cover = './cover.html';
-?>
+
+
         <div class="form1">
-            <span>ISBN：<?=$dspBookDet[9];?></span>
+            <span>ISBN：<?=$dspBookDet[8];?></span>
             <br>
             <span>タイトル：<?=$dspBookDet[0];?></span>
             <br>
@@ -53,7 +51,7 @@ $cover = './cover.html';
             <br>
             <span>備考：<?=$dspBookDet[7];?></span>
             <br>
-            <span>画像ファイル：<?=$dspBookDet[8];?></span>
+            <span>画像ファイル：<img src="<?=$cover;?>" /></span>
             <br>
             <ul>
               <li>
@@ -62,21 +60,22 @@ $cover = './cover.html';
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[11];?>">
-                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[9];?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[10];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[8];?>">                  
                   <div class="submit">
                     <input type="submit" value="書籍情報編集">
                   </div>
                 </form>
               </li>
               <li>
-                <form method="post" action="<?=$cover;?>">
+                <form method="post" action="<?=$cover_edit;?>">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[11];?>">
-                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[9];?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[10];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[8];?>">
+                  <input type="hidden" name="KEYWORD22" value="<?=$cover;?>">
                   <div class="submit">
                     <input type="submit" value="表紙編集">
                   </div>
