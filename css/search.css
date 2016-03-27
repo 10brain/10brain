@@ -37,11 +37,11 @@ body,input{
   top: 0;
   left: 30px;
   top: 10px;
+  width: 20px;
 }
 
 .either1 img{
   padding-top: 8px;
-  padding-bottom: 8px;
 }
 
 .search input[type="text"]{
@@ -346,7 +346,7 @@ input:-webkit-autofill {
 
         display: inline-block;
         width: 120px;
-
+        height: 46px;
         overflow: hidden;
         border: 1px solid black;
     }

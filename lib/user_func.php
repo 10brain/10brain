@@ -95,7 +95,7 @@ class UserModel{
         }else{
             $strSQL = "Select * From User";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //社員番号確認
         if(is_null($Key12) == True){
@@ -119,22 +119,22 @@ class UserModel{
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_INT);
            $stmh->bindParam(':Key13', $Key13, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
-            echo $strSQL;
+            //echo $Key2.'確認';
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -177,7 +177,7 @@ class UserModel{
 
             $strSQL = "INSERT INTO User(ID, Name, PW) VALUES (:Key52, :Key51, :Key53)";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
@@ -190,7 +190,7 @@ class UserModel{
            $stmh->bindParam(':Key52', $Key52, PDO::PARAM_STR);
            $stmh->bindParam(':Key53', $pw, PDO::PARAM_INT);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
 
@@ -223,7 +223,7 @@ class UserModel{
         }else{
             $strSQL = "UPDATE User SET PW = :newpass";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
 
         //ID確認
@@ -249,16 +249,16 @@ class UserModel{
            $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
            $stmh->bindParam(':newpass', $newpass, PDO::PARAM_STR);
 
-            echo $Key2.'確認';
-            echo $strSQL;
+            //echo $Key2.'確認';
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {}
@@ -276,7 +276,7 @@ class UserModel{
             $result = 2;
             return $result;
         }
-        
+
         $strSQL = "UPDATE User SET";
 
         if($Key13){
@@ -286,10 +286,10 @@ class UserModel{
             $strSQL = $strSQL.", ID=:Key14";
         }
 
-        
+
             $strSQL = $strSQL.", PW=:Key15";
-        
-        echo 'アクションタイプ確認ok';
+
+        //echo 'アクションタイプ確認ok';
 
 
         //条件
@@ -299,7 +299,7 @@ class UserModel{
             $strSQL = $strSQL. " Where Num = :Key12";
         }
 
-        echo $Key15;
+        //echo $Key15;
         //SQL実行
         try {
            //クラス呼び出し
@@ -309,7 +309,7 @@ class UserModel{
            $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
            $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
 
 
@@ -336,15 +336,15 @@ class UserModel{
         }else{
             $strSQL = "Select * From User";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //書籍番号確認
         if($Key11){
             $strSQL = $strSQL. ' WHERE Name Like :Key11';
         }
         $Key11 = "%$Key11%";
-echo $Key11;
-echo $result;
+//echo $Key11;
+//echo $result;
         //SQL実行
         try {
            //クラス呼び出し
@@ -358,9 +358,9 @@ echo $result;
                //システムエラー
                $result=2;
            }
-          echo $strSQL;
-           echo 'DB接続ok';
-           echo $result;
+          //echo $strSQL;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
