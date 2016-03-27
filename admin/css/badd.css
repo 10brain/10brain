@@ -28,9 +28,9 @@ body,input,textarea{
 }
 
 .title{
-  height: 25px;
+  height: 51px;
   width: 100%;
-  margin: 15px auto 30px auto;
+  margin: 15px auto;
 }
 
 .title h1{
@@ -38,6 +38,7 @@ body,input,textarea{
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: normal;
+  margin: 12px auto;
 }
 
 .title ul{

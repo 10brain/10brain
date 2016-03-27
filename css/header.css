@@ -51,7 +51,7 @@ body{
   position: relative;
   left: 0px;
   top: 12px;
-  max-width: 12%;
+  /*max-width: 12%;*/
   overflow: hidden;
   margin-top: 20px;
   margin-left: 30px;

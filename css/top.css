@@ -28,7 +28,7 @@ body{
 }
 
 .title{
-  height: 50px;
+  height: 51px;
   width: 100%;
   margin: 15px auto;
   margin-top: 50px;
@@ -39,6 +39,7 @@ body{
   letter-spacing: 3px;
   font-size: 20px;
   font-weight: normal;
+  margin: 12px auto;
 }
 
 .title ul{
@@ -55,13 +56,13 @@ body{
 .image{
   display: inline-block;
   list-style: none;
-  width: 20%;
-  min-width: 10px;
+  /*width: 20%;
+  min-width: 10px;*/
   padding: 5px 30px;
 }
 
 .image img{
-  width: 100%;
+  width: 200px
 }
 
 .line {

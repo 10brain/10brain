@@ -30,7 +30,7 @@ body,h1,input{
 .title{
   height: 25px;
   width: 100%;
-  margin: 30px auto;
+  margin: 15px auto;
 }
 
 .title h1{
@@ -38,6 +38,7 @@ body,h1,input{
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: normal;
+  margin: 12px auto;
 }
 
 .title ul{
