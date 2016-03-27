@@ -57,21 +57,21 @@ and open the template in the editor.
             <p><a class='inline' href="#inline_content"></a></p>
         </div>
 <?
-$useredit = 'user_edit.php';
+$user = '../user_search/user_search.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
     			<div id='inline_content' style='padding:10px; background:#fff;'>
     			     <p>登録が完了しました。</p>
                <div class="suc">
-                 <form name="input" action="<?=$useredit;?>" method="post" >
+                 <form name="input" action="<?=$user;?>" method="post" >
                  <input type="hidden" name="ActionType" value="TgRSPInf">
                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                  <div class="check">
-                   <input type="submit" value="書籍編集画面へ">
+                   <input type="submit" value="ユーザー一覧画面へ">
                  </div>
                </form>
               </div>
