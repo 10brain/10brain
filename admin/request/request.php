@@ -16,6 +16,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
@@ -28,10 +29,10 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 //画面表示
 if ($result == 0){
-        $request = 'request_edit.php';
-        $request_pur= 'request_pur.php';
-        $request_old = 'requestOld.php';
-        include("request.html");
+    $request_0='request_edit.php';
+    $request_pur='request_pur.php';
+    $request_old='requestOld.php';
+    include("request.html");
 
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
