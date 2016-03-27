@@ -4,6 +4,10 @@ body,input,textarea{
   font-size: 12px;
 }
 
+input:-webkit-autofill {
+	box-shadow: 0 0 0 1000px white inset;
+}
+
 #content{
   position: absolute;
   top: 80px;
@@ -19,11 +23,11 @@ body,input,textarea{
 .contents{
   width: 60%;
   height: 100%;
-  min-height: 500px;
+  min-height: 480px;
 	position: relative;
 	background-color: white;
 	margin: 0 auto;
-	margin-top: 45px;
+	margin-top: 30px;
 	border: 1px solid black;
 }
 
@@ -67,7 +71,7 @@ body,input,textarea{
 .form{
   width: 50%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
   font-size: 16px;
 }
 
@@ -78,7 +82,7 @@ body,input,textarea{
 .form1{
   width: 60%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .form1 form{
