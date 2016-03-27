@@ -35,7 +35,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
-    $Key20 = $_POST["KEYWORD20"];  
+    $Key20 = $_POST["KEYWORD20"];
     $Key21 = $_POST["KEYWORD21"];
 
     if(isset($Key21)){
@@ -51,7 +51,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
         $Key27 = $dspBookDet[5];//出版年
         $Key28 = $dspBookDet[6];//リンク
         $Key29 = $dspBookDet[7];//備考
-        
+
     }
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -71,11 +71,11 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     // url系情報の指定
     // CHECK_REFERER  非ブランクなら、フォーム内でリファラチェックを行う。初期アクセスではこの値を含むか、以降はフォーム内の遷移かをチェックする。
     // SALESFORCE     非ブランクなら、確認画面からのリンク先をこの値に変更する。ブランクなら、内部の登録処理へ進む。
-    define("MY_NAME",       basename($_SERVER["SCRIPT_NAME"]));
-    define("MY_PATH",       dirname($_SERVER["SCRIPT_NAME"])."/");
-    define("URL_ACTION",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.MY_NAME);
-    define("URL_SUCCESS",   "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
-    define("URL_FAILURE",   "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
+    define("MY_NAME",        basename($_SERVER["SCRIPT_NAME"]));
+    define("MY_PATH",        dirname($_SERVER["SCRIPT_NAME"])."/");
+    define("URL_ACTION",     "http://".$_SERVER["SERVER_NAME"].MY_PATH.MY_NAME);
+    define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
+    define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
 
 
@@ -106,7 +106,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                         $Key32 = $io->get_parameter("remarks");
 
 
-                        
+
                          //データベース更新
                         $obj = new BookModel();
                         $result = $obj->GETBookEDIT($ActType, $Key1, $Key20, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32);

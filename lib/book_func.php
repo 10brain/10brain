@@ -31,15 +31,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
             //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -75,7 +75,7 @@ class BookModel{
         }else{
             $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
-        echo $Key21;
+        //echo $Key21;
 
 
 
@@ -111,15 +111,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
             //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -159,15 +159,15 @@ class BookModel{
         }else{
             $strSQL = "Select * From Book";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //書籍番号確認
         if($Key21){
             $strSQL = $strSQL. ' WHERE title Like :Key21';
         }
         $Key21 = "%$Key21%";
-        echo $Key21;
-        echo $result;
+        //echo $Key21;
+        //echo $result;
         //SQL実行
         try {
            //クラス呼び出し
@@ -181,9 +181,9 @@ class BookModel{
                //システムエラー
                $result=2;
            }
-          echo $strSQL;
-           echo 'DB接続ok';
-           echo $result;
+          //echo $strSQL;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -226,7 +226,7 @@ class BookModel{
         }else{
             $strSQL = "Select * From Book ";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //書籍番号確認
         if(is_null($Key20) == True){
@@ -241,7 +241,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " And ISBN = :Key21";
         }
-        echo $result;
+        //echo $result;
         //SQL実行
         try {
            //クラス呼び出し
@@ -250,20 +250,20 @@ class BookModel{
 
             $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
             $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -311,7 +311,7 @@ class BookModel{
             $strSQL = "INSERT INTO Book(ISBN, title, genre, pub, writer, intro, year, amazon, remarks, date, stock) VALUES";
             $strSQL = $strSQL. "(:Key24, :Key25, :Key26, :Key27, :Key28, :Key29, :Key30, :Key31, :Key32, '" .Date('Ymd') ."', :stock)";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
@@ -332,15 +332,15 @@ class BookModel{
 
 
             //echo $Key2.'確認';
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {
@@ -368,13 +368,13 @@ class BookModel{
             $strSQL = "Select * From cover";
 
         }
-        
+
         if(is_null($Key21)){
            $strSQL = $strSQL. " WHERE ISBN IS NULL";
         }else{
             $strSQL = $strSQL. " WHERE ISBN =: Key21";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
@@ -382,15 +382,15 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
             $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
-            echo $strSQL;
-            
+            //echo $strSQL;
+
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -497,15 +497,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
            $count=$stmh->rowCount();//実行結果の行数をカウント
 
            if($count == 0){
@@ -558,7 +558,7 @@ class BookModel{
             $strSQL = $strSQL. " VALUES(:Key40, '" .Date("Ymd") ."', :Key42, :Key0)";
         }
 
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
@@ -570,15 +570,15 @@ class BookModel{
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_INT);
 
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {
@@ -608,7 +608,7 @@ class BookModel{
             $strSQL =  $strSQL. " Where BookNum = :Key40";
 
 
-        echo '在庫数処理開始';
+        //echo '在庫数処理開始';
         //SQL実行
         try {
            //クラス呼び出し
@@ -617,15 +617,15 @@ class BookModel{
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
 
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {
@@ -649,7 +649,7 @@ class BookModel{
             $strSQL = "Select * From";
         }
         $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num";
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //管理者ID確認
         if($Key1 != 'admin@10baton.com'){
@@ -664,15 +664,15 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            //$stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -715,7 +715,7 @@ class BookModel{
         }
 
             $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum";
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //ID確認
         if(is_null($Key0) == True){
@@ -724,7 +724,7 @@ class BookModel{
             $strSQL = $strSQL. " Where Num = :Key0 ";
         }
         $strSQL = $strSQL. " Order By BDate DESC";
-        echo $Key1.'確認';
+        //echo $Key1.'確認';
 
 
         //SQL実行
@@ -733,15 +733,15 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -786,7 +786,7 @@ class BookModel{
         }
 
             $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum";
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //ID確認
         if(is_null($Key0) == True){
@@ -801,7 +801,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " And BNum = :Key40";
         }
-        echo $Key1.'確認';
+        //echo $Key1.'確認';
 
 
         //SQL実行
@@ -811,15 +811,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -861,7 +861,7 @@ class BookModel{
         }else{
           $strSQL = "Update Borrow SET ReDate='" .Date('Ymd') ."'";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //貸出番号確認
         if(is_null($Key40) == True){
@@ -876,7 +876,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " And Num = :Key0 ";
         }
-        echo $Key1.'確認';
+        //echo $Key1.'確認';
 
 
         //SQL実行
@@ -886,15 +886,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
         } catch (Exception $Exception) {
             $result=4;
@@ -926,7 +926,7 @@ class BookModel{
             $strSQL = $strSQL. " And BookNum = :Key20 ";
         }
 
-        echo '在庫数処理開始';
+        //echo '在庫数処理開始';
         //SQL実行
         try {
            //クラス呼び出し
@@ -935,15 +935,15 @@ class BookModel{
            $stmh->bindParam(':Key20', $Key20, PDO::PARAM_STR);
 
 
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {
@@ -964,7 +964,7 @@ class BookModel{
             $result = 2;
             return $result;
         }
-                        echo '>'.$Key24;
+                        /*echo '>'.$Key24;
                         echo $Key25;
                         echo $Key26;
                         echo $Key27;
@@ -972,20 +972,20 @@ class BookModel{
                         echo $Key29;
                         echo $Key30;
                         echo $Key31;
-                        echo $Key32;
+                        echo $Key32;*/
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }else{
             $strSQL = "UPDATE Book SET";
         }
-        
+
         if(is_null($Key24)){
             $strSQL = $strSQL." ISBN IS NULL,";
         }else{
             $strSQL = $strSQL." ISBN = :Key24,";
         }
-        
+
         if(is_null($Key25)){
             $strSQL = $strSQL." title IS NULL,";
         }else{
@@ -1012,13 +1012,13 @@ class BookModel{
         }else{
             $strSQL = $strSQL." intro = :Key29,";
         }
-                
+
         if(is_null($Key30)){
             $strSQL = $strSQL." year IS NULL,";
         }else{
             $strSQL = $strSQL." year = :Key30,";
         }
-        
+
         if(is_null($Key31)){
             $strSQL = $strSQL." amazon IS NULL,";
         }else{
@@ -1029,10 +1029,10 @@ class BookModel{
         }else{
             $strSQL = $strSQL." remarks = :Key32";
         }
-        
+
         $strSQL = $strSQL. " WHERE ISBN = :Key24 AND BookNum = :Key20";
 
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
@@ -1052,15 +1052,15 @@ class BookModel{
 
 
             //echo $Key2.'確認';
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {

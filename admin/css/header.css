@@ -74,6 +74,8 @@ body{
 	padding: 0;
 	font-size: 8px;
 	text-align: center;
+  position: relative;
+  top: 0;
 }
 
 .center ul:after{
@@ -141,8 +143,8 @@ body{
   padding: 2px 15px 2px 15px;
 
   text-decoration:none;
-  position: relative;
-  top:3px;
+  position: absolute;
+  top:4px;
 }
 
 .right li a:link{

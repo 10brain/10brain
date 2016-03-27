@@ -38,7 +38,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-define("HTML_CODE", "UTF-8");
+    define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "badd_input.html");

@@ -9,7 +9,6 @@ $Key2 ="";
 $Key3 ="";
 
 
-
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
     $result = 1;
@@ -23,8 +22,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
-   echo $Key12;
-   echo $Key13;
+   //echo $Key12;
+   //echo $Key13;
     //DB問い合わせ
     $obj=new UserModel();
     $result = $obj->GETUserDetail($ActType, $Key12, $Key13, $dspUserDet);
