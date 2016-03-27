@@ -21,7 +21,7 @@ body,input{
 }
 
 .bb-custom-wrapper {
-	width: 90%;
+  width: 80%;
 	height: 95%;
 	position: relative;
 	background-color: white;
@@ -66,6 +66,16 @@ body,input{
 	height: 100%;
 }
 
+.bb-custom-firstpage{
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.bb-custom-firstpage img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
 @media screen and (max-width: 61.75em){
 	.bb-custom-side {
 		font-size: 70%;
@@ -104,7 +114,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   color: black;
   font-size: 16px;
   line-height: 20px;
-  margin: 20px 0 20px 0;
+  margin: 5% 0 5% 0;
   letter-spacing: 1px;
   text-align: left;
 }
@@ -112,18 +122,18 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
 .other{
   color: black;
   font-size: 16px;
-  line-height: 60px;
+  line-height: 300%;
   letter-spacing: 1px;
   text-align: left;
 }
 
 .page{
   border: 1px solid black;
-  width: 90%;
+  width: 85%;
   height: 93%;
   float: left;
   margin-top: 5px;
-  padding: 10px 30px;
+  padding: 10px 10px;
   color: black;
   font-size: 16px;
   line-height: 60px;
@@ -144,6 +154,8 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   border: 1px solid black;
   text-align: center;
   outline: 0;
+  position: relative;
+  top: -14px;
 }
 
 .page input[type="text"]{
@@ -161,6 +173,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
 
 .returndate{
   text-align: left;
+  height: 50px;
 }
 
 .returndate span{
@@ -172,7 +185,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   color: #758869;
   text-align: center;
   font-size: 5px;
-  margin: 50px auto 20px auto;
+  margin: 5% auto 3% auto;
   line-height: 20px;
   width: 100%;
 }
@@ -185,9 +198,6 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   margin: 0;
 }
 
-.form{
-  margin-bottom: 30px;
-}
 
 .submit input[type="button"]{
   outline: 0;
@@ -200,6 +210,8 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   background-color: white;
   border: 1px solid black;
   text-align: center;
+  position: relative;
+  top: -23px;
 }
 
 .page p{

@@ -92,11 +92,11 @@
 ?>
 
                                             <p>本を借りる</p>
-                                            <div class="other">書籍番号：<?=$Key40;?></div>
-                                            <div class="title">タイトル：<?=$Key43;?></div>
+                                            <div class="other">書籍番号：<?=$Key20;?></div>
+                                            <div class="title">タイトル：<?=$dspBookDet[0];?></div>
                                             <form action="<?=$book;?>" method="post">
                                             <div class="returndate">
-                                                <span>返却予定日</span><input type="text" name="KEYWORD42" id="datepicker"><span>←</span><br>
+                                                <span>返却予定日</span><input type="text" name="KEYWORD42" id="datepicker"><span>←</span>
                                             </div>
                                             <div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。<br></div>
 
@@ -114,7 +114,7 @@
                                                             <input type="button" onClick='history.back();' value="戻る">
                                                     </div>
                                             </form>
-                                            
+
          <?
             }else{
          ?>
