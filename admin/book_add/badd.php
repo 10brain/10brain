@@ -191,7 +191,7 @@ define("HTML_CODE", "UTF-8");
 
                     //genre
                     $io->set_parameter("genre", mb_convert_kana($io->get_param("genre"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("genre"), TRUE, 10, 0, "UTF-8")){
+                    if(!$vali->isString($io->get_param("genre"), TRUE, 40, 0, "UTF-8")){
                     $io->set_error("genre_error", "未入力、または内容に誤りが有ります");
                     }
                     //pub
@@ -216,7 +216,7 @@ define("HTML_CODE", "UTF-8");
                     }
                     //amazon
                     $io->set_parameter("amazon", mb_convert_kana($io->get_param("amazon"), "KV", INNER_CODE));
-                    if(!$vali->isURL($io->get_param("amazon"), FALSE, 255, 0, "UTF-8")){
+                    if(!$vali->isURL($io->get_param("amazon"), TRUE, 255, 0, "UTF-8")){
                     $io->set_error("amazon_error", "未入力、または内容に誤りが有ります");
                     }
                     //remarks
