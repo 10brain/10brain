@@ -267,7 +267,7 @@ class UserModel{
     }
 
     /*********ユーザー編集SQL******************************************/
-    function GETUserEdit($ActType, $Key1, $Key12, $Key13, $Key14, $Key15){
+    function GETUserEdit($ActType, $Key1, $Key13, $Key14, $Key15, $Key12){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -276,18 +276,19 @@ class UserModel{
             $result = 2;
             return $result;
         }
+        
         $strSQL = "UPDATE User SET";
 
-        if(isset($Key13)){
-            $strSQL = $strSQL." Name = :Key13";
+        if($Key13){
+            $strSQL = $strSQL." Name=:Key13";
         }
-        if(isset($Key14)){
-            $strSQL = $strSQL.", ID = :Key14";
+        if($Key14){
+            $strSQL = $strSQL.", ID=:Key14";
         }
 
-        if($Key15 == '9999'){
-            $strSQL = $strSQL.", PW = :Key15";
-        }
+        
+            $strSQL = $strSQL.", PW=:Key15";
+        
         echo 'アクションタイプ確認ok';
 
 
@@ -298,32 +299,28 @@ class UserModel{
             $strSQL = $strSQL. " Where Num = :Key12";
         }
 
-
+        echo $Key15;
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
            $stmh->bindParam(':Key13', $Key13, PDO::PARAM_STR);
            $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
-           if($Key15=='9999'){
-            $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
-           }
+           $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
+           $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
             echo $strSQL;
 
+
+
            $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=3;
-           }
-           echo 'DB接続ok';
-           echo $result;
 
         } catch (Exception $Exception) {
-            $result=3;
+            $result=4;
+            echo $Exception;
+
         }
-        //return $dspUserInfo;
+
         return $result;
     }
 

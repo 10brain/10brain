@@ -17,12 +17,14 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //パスワード
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
+    $Key15 = '9999'; 
    echo $Key12;
    echo $Key13;
     //DB問い合わせ

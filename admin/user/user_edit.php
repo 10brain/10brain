@@ -15,18 +15,13 @@ $lib_path = "../../lib/";
 require($lib_path."class.IO.php");
 require($lib_path."class.Form.Check.php");
 require($lib_path."class.Validation.php");
-require($lib_path."class.Form.Radio.php");
 
 $result = 0;
 $ActType = "";
-$Key0 ="";
 $Key1 ="";
 $Key2 ="";
 $Key3 ="";
-$Key12 ="";
-$Key13 ="";
-$Key14 ="";
-$Key15 ="";
+$Key15 = '';
 ///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
 if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
@@ -35,19 +30,21 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
-    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
     $Key15 = $_POST["KEYWORD15"];
+    $Key16 = $_POST["KEYWORD16"];
+
 
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-    define("HTML_CODE", "UTF-8");
+define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "user_edit_input.html");
@@ -71,10 +68,15 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     define("CHECK_REFERER",  ""); //
     define("PASS",  "1:初期化");
 
+
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
+        
     $pass = new Check("pass", PASS, $io);
+
+
+
 
 
     if($io->is_not_falsification()){
@@ -135,7 +137,8 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     $csv = new CSV($io, CSV_PATH, $csv_name, "SJIS");
                     $result = $csv->write(CSV_TEMP);
                     // フラグファイル(?)作成
-                    if($result){
+                    if($result)
+                    {
                             touch(preg_replace("/\.csv/", "-F", CSV_PATH.$csv_name));
                     }
                     // csvファイルの作成(予備)
@@ -146,36 +149,39 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            $Key13 = $io->get_param_sql("Name");
-                            $Key14 = $io->get_param_sql("ID");
-
-                            if($Key15 == '初期化する'){
+                            $Key13= $io->get_param_html("Name");
+                            $Key14= $io->get_param_html("ID");
+                            if($Key15 == '9999'){
                                 $Key15 = '9999';
+                                $pw = '初期化する';
                             }else{
-                                $Key15 = '';
+                                $Key15 = $Key16;
+                                $pw = '初期化しない';
+                            }
+                            //データベース更新
+                            $obj=new UserModel();
+                            //ID確認
+                            $result = $obj->GETUserEdit($ActType, $Key1, $Key13, $Key14, $Key15, $Key12);
+                            if($result==3){
+                                $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
+                                include(TEMP_INPUT);
+                            }elseif($result == 0){
+                                    include(HTML_SUCCESS);
+                            }else{
+                                $db_error ='システムエラーです。開発者に連絡してください。';
+                                include(TEMP_INPUT);
                             }
 
-                            //データベース更新
-                            $obj = new UserModel();
-                            //ID確認
-                            $result = $obj->GETUserEdit($ActType, $Key1, $Key12, $Key13, $Key14, $Key15);
-                            if($result == 0){
-                                include(HTML_SUCCESS);
-                            }else{
-                                $db_error = 'システムエラーです。開発者に連絡してください。';
-                                include(HTML_FAILURE);
-                            }
+
                     }else{
-                            //pg_query($conID, "rollback");
+    //				pg_query($conID, "rollback");
                             // 失敗画面
                             //処理どうし→登録に失敗
-                            $error = 'もう一度登録してください';
                             include(HTML_FAILURE);
                     }
             }else{
                     // リファラ制限画面
-                    $re = 'もう一度ログインしてから再度編集してください';
-                    include(HTML_FAILURE);
+                    include(TEMP_BLOCK);
             }
 
     }else if($io->get_param("step_from") == "input"){
@@ -183,26 +189,32 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
 
-                    // 名前
-                    $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
-                        $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
-                    }
+                        // 名前
+                        $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
+                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
+                                $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
+                        }
 
-                    //ID
-                    $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("ID"), true, 40, 0, "UTF-8")){
-                        $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
-                    }
-                    if($pass->is_regularly(1, 1)){
-                        $Key15 = '初期化する';
-                    }else{
-                        $Key15 = '初期化しない';
-                    }
+                        //ID
+                        $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
+                        if(!$vali->isMail($io->get_param("ID"), true, 10, 0, "UTF-8")){
+                                $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
+                        }
+                        if($pass->is_regularly(1, 1)){
+                            $Key15 = '9999';
+                            $pw = '初期化する';
+                            echo $Key15;
+                        }else{
+                            $Key15 = $Key16;
+                            $pw = '初期化しない';
+                        }
+
+
+
 
                     if(!$io->is_error()){
-                        //$io->unset_parameter("agree_0");
-                        $decision=true;
+                            //$io->unset_parameter("agree_0");
+                           $decision=true;
                             // 登録確認画面
                             $io->create_hash();
                             include(TEMP_CONFIRM);
@@ -219,10 +231,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     }else if($io->get_param("step_from") == "agree"){
             // 入力画面 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
-
-
-                include(TEMP_INPUT);
-
+                    include(TEMP_INPUT);
             }else{
                     // リファラ制限画面
                     include(TEMP_BLOCK);
@@ -235,6 +244,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     $io->set_parameters($_GET);
                     $io->set_parameter("Name", $Key14);
                     $io->set_parameter("ID", $Key13);
+
 
                     include(TEMP_AGREE);
             }else{

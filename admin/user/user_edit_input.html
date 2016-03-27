@@ -22,7 +22,7 @@ and open the template in the editor.
               <img src="../img/4.png">
             </li>
             <li>
-              <h1>ユーザーの編集</h1>
+              <h1>ユーザーの追加</h1>
             </li>
             <li class="image">
               <img src="../img/4.png">
@@ -30,45 +30,40 @@ and open the template in the editor.
           </ul>
         </div>
 
-<?
-$useradd='useradd.php';
-?>
+
 
         <div class="form">
-          <?=$io->get_all_params();?>
-          <form name="input" action="<?=URL_ACTION;?>" method="post" >
-          <input type="hidden" name="step_from" value="input" />
-          <?=$db_error;?><?=$error;?><?=$re;?>
+        <?=$io->get_all_params();?>
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <input type="hidden" name="step_from" value="input" />
+           <?=$db_error;?>
 
-              <span>ユーザー名</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
-              <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
-              <span>ユーザーID</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
-              <input name="ID" id="ID" size="20" maxlength="40" type="text" value="<?=$io->get_param_html('ID');?>" /><br>
+            <span>ユーザー名</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
+            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
+            <span>ユーザーID</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
+            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" /><br>
               <span>パスワード</span><div class="error"><?=$io->get_error("pass");?></div><br>
               <?=$pass->get_all_checks("?", true)?>
 
-        </div>
-
+       
             <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
             <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
             <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
+            <input type="hidden" name="KEYWORD15" value="<?=$Key15;?>">
+            <input type="hidden" name="KEYWORD16" value="<?=$Key16;?>">
             <div class="check">
               <input type="submit" value="確認">
             </div>
-
           </form>
-          <form>
-            <div class="submit">
-              <input type="button" onClick='history.back();' value="戻る">
-            </div>
-          </form>
-            <br>
+           <br>
+            
 
-
-
-        <?=include('../footer/footer.html');?>
       </div>
+
+      <?=include('../footer/footer.html');?>
+    </div>
     </body>
 </html>

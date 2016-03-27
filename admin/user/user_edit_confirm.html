@@ -6,10 +6,10 @@ and open the template in the editor.
 -->
 <html>
     <head>
-      <title>ユーザー情報編集</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="../css/useradd.css">
+        <title>ユーザー情報追加</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/useradd.css">
     </head>
     <body>
       <?=include('../header/header.html');?>
@@ -22,7 +22,7 @@ and open the template in the editor.
               <img src="../img/4.png">
             </li>
             <li>
-              <h1>ユーザーの追加</h1>
+              <h1>ユーザー情報編集</h1>
             </li>
             <li class="image">
               <img src="../img/4.png">
@@ -32,33 +32,37 @@ and open the template in the editor.
         <div class="contents">
 
         <div class="form1">
-<?=$io->get_all_params();?>
-          <form name="input" action="<?=URL_ACTION;?>" method="post">
+        
+        <form name="input" action="<?=URL_ACTION;?>" method="post">
+         <?=$io->get_all_params();?>  
+<!--<?=$decision;?>-->
 
-            <div class="confirm">ユーザー名：<?=$io->get_param_html_br("Name");?></div>
-            <div class="confirm">ユーザーID：<?=$io->get_param_html_br("ID");?></div>
-            <div class="confirm">PW：<?=$Key15;?></div>
+          <div class="confirm">ユーザー名：<?=$io->get_param_html("Name");?></div>
+          <div class="confirm">ユーザーID：<?=$io->get_param_html("ID");?></div>
+          <div class="confirm">PW:<?=$Key15;?></div>
 
-             <input type="hidden" name="ActionType" value="TgRSPInf">
-             <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
-              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-              <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
-              <input type="hidden" name="KEYWORD15" value="<?=$Key15;?>">
-              <div class="submit">
-                <input type="submit" value="ユーザー情報編集">
-              </div>
-          </form>
-          <form>
-            <div class="submit">
-              <input type="button" onClick='history.back();' value="戻る">
-            </div>
-          </form>
-        </div>
+
+          <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
+            <input type="hidden" name="KEYWORD15" value="<?=$Key15;?>">
+          <input type="hidden" name="KEYWORD16" value="<?=$Key16;?>">
+          <div class="submit">
+            <input type="submit" value="編集">
+          </div>
+        </form>
+        <form>
+          <div class="submit">
+            <input type="button" onClick='history.back();' value="戻る">
+          </div>
+        </form>
+      </div>
     </div>
 
-      <?=include('../footer/footer.html');?>
-      </div>
+          <?=include('../footer/footer.html');?>
+          </div>
     </body>
 </html>
