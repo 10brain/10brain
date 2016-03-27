@@ -177,7 +177,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
-                    // ISBN
+                    // ISBN.
                     $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
                     if(!$vali->isISBN($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
                             $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
@@ -216,7 +216,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
                     }
                     //amazon
                     $io->set_parameter("amazon", mb_convert_kana($io->get_param("amazon"), "KV", INNER_CODE));
-                    if(!$vali->isURL($io->get_param("amazon"), TRUE, 255, 0, "UTF-8")){
+                    if(!$vali->isURL($io->get_param("amazon"), FALSE, 255, 0, "UTF-8")){
                     $io->set_error("amazon_error", "未入力、または内容に誤りが有ります");
                     }
                     //remarks
