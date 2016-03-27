@@ -8,6 +8,8 @@ $Key1 = $_POST['KEYWORD1'];
 $Key2 = $_POST['KEYWORD2'];
 $Key3 = $_POST['KEYWORD3'];
 $isbn = $_POST['KEYWORD20'];
+$bnum = $_POST['KEYWORD21'];
+$cover = $_POST['KEYWORD22'];
 
 $obj=new BookModel();
 $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
@@ -45,11 +47,16 @@ $cover_add = 'cover_add.php';
 ?>
         <div class="form">
           <form method="post" action="<?=$cover_add;?>" enctype="multipart/form-data">
-              <?
-              if(isset($isbn)){
-              ?>
+              <? if(isset($isbn)){?>
               <p>ISBN：<?=$isbn;?></p>
               <?}?>
+              <?if(isset($bnum)){?>
+              <p>書籍番号：<?=$bnum;?></p>
+              <?}?>
+              <?if(isset($cover)){?>
+              <p>現在の表紙：<img src="<?=$cover;?>" /></p>
+              <?}?>
+             
             <div class="imgInput">
               <input type="file" name="upfile" id="upfile"　size="30"　accept="image">
             </div>
@@ -59,6 +66,8 @@ $cover_add = 'cover_add.php';
              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
             <input type="hidden" name="KEYWORD20" value="<?=$isbn;?>">
+             <input type="hidden" name="KEYWORD21" value="<?=$bnum;?>">
+             <input type="hidden" name="KEYWORD22" value="<?=$cover;?>">
             <div class="submit">
               <input type="submit" value="アップロード">
             </div>

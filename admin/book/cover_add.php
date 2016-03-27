@@ -13,7 +13,8 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
     $Key2 = $_POST['KEYWORD2'];
     $Key3 = $_POST['KEYWORD3'];
     $Key20 = $_POST['KEYWORD20'];
-    echo $Key20;
+    $Key21 = $_POST['KEYWORD21'];
+    $Key22 = $_POST['KEYWORD22'];
 
     try {
         // $_FILES['upfile']['error'] の値を確認
@@ -66,6 +67,7 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
 
 }
 echo $Key0;
+if(!isset($Key22)){
 try {
 
     // データベースに接続
@@ -96,7 +98,7 @@ try {
         $stmt->execute();//実行
         if(!$stmt){
             //システムエラー
-            echo 'なんでできないの？';
+            
         }
 
         $msgs[] = ['green', 'ファイルは正常にアップロードされました'];
@@ -110,6 +112,45 @@ try {
         $msgs[] = ['red', $e->getMessage()];
 
     }
+}else{
+try {
+    $type0= $_FILES['upfile']['type'];
+    // データベースに接続
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=10brain;charset=utf8',
+        'root',
+        'root',
+        [
+          PDO::ATTR_EMULATE_PREPARES => false,
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+        //初期値設定
+        $result = 0;
+        $tmp_dir = "../book_add/tmp_cover/".$uploadfile;
+        echo $tmp_dir;
+        $tmp_dir = file_get_contents($tmp_dir);
+        //echo $tmp_dir;
+        // INSERT処理
+        $stmt = $pdo->prepare('UPDATE cover SET coverName=:key1, coverMime=:key2 WHERE ISBN=:isbn');
+        $stmt->bindParam(':key1', $uploadfile, PDO::PARAM_STR);
+        $stmt->bindParam(':key2', $type0, PDO::PARAM_STR);
+        $stmt->bindParam(':isbn', $Key20, PDO::PARAM_STR);
+
+        $stmt->execute();//実行     
+    } catch (RuntimeException $e) {
+        echo $e;
+        while (ob_get_level()) {
+            ob_end_clean(); // バッファをクリア
+        }
+        http_response_code($e instanceof PDOException ? 500 : $e->getCode());
+        $msgs[] = ['red', $e->getMessage()];
+
+    }
+
+    
+}
 ?></p><?=$test;?>
 </body>
 </html>
