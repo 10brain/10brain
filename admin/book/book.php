@@ -33,7 +33,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 if ($result == 0){
     $book_edit = 'bookedit.php';
-    $cover_edit = 'cover.php';
+    $cover_edit = 'cover.html';
     include("book.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
