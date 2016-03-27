@@ -57,7 +57,7 @@ and open the template in the editor.
             <p><a class='inline' href="#inline_content"></a></p>
         </div>
 <?
-$useredit = './user_edit.php';
+$user = '../user_search/user_search.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
@@ -65,7 +65,7 @@ $useredit = './user_edit.php';
               <img src="../../img/fal.png">
     			     <p>登録できませんでした。</p>
                <div class="fal">
-                 <form name="input" action="<?=$useredit;?>" method="post" >
+                 <form name="input" action="<?=$user;?>" method="post" >
                  <input type="hidden" name="ActionType" value="TgRSPInf">
                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
