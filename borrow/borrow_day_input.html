@@ -37,14 +37,14 @@
                 <div class="bb-custom-side">
                   <div class="page">
 										<p>本を借りる</p>
-                    <form action="<?=$borrow_conf;?>" method="post" >
+                    <form action="<?=$borrow_conf;?>" method="post" class="form">
   									<div class="other">書籍番号：<?=$borrow_bN;?></div>
   									<div class="title">タイトル：<?=$borrow_ti;?></div>
 
   									<div class="returndate">
   										<span>返却予定日</span><input type="text" name="KEYWORD42" id="datepicker"><span>←</span><br>
   									</div>
-  									<div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。<br></div>
+  									<div class="caution">返却期限は貸出日から２週間以内です。<br>返却期限がすぎているものがある場合、<br>借りることができません。<br>また、借りている本が３冊以上ある場合も、<br>借りることができません。</div>
 
   										<input type="hidden" name="ActionType" value="TgRSPInf">
   										<input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
@@ -53,7 +53,7 @@
   										<input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                                                                                 <input type="hidden" name="KEYWORD40" value="<?=$borrow_bN;?>">
                                                                                 <input type="hidden" name="KEYWORD43" value="<?=$borrow_ti;?>">
-  										<input type="submit" value="確認" /></td>
+  										<input type="submit" value="確認" />
   									</form>
                     <form>
                       <div class="submit">

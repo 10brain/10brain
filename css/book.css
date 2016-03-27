@@ -20,7 +20,7 @@ body,input{
   color: black;
   font-size: 16px;
   line-height: 20px;
-  margin: 20px 0 20px 0;
+  margin: 5% 0 5% 0;
   letter-spacing: 1px;
   text-align: left;
 }
@@ -28,18 +28,18 @@ body,input{
 .other{
   color: black;
   font-size: 16px;
-  line-height: 60px;
+  line-height: 300%;
   letter-spacing: 1px;
   text-align: left;
 }
 
 .page{
   border: 1px solid black;
-  width: 90%;
+  width: 85%;
   height: 93%;
   float: left;
   margin-top: 5px;
-  padding: 10px 30px;
+  padding: 10px 10px;
   color: black;
   font-size: 16px;
   line-height: 60px;
@@ -49,7 +49,7 @@ body,input{
 
 .next{
   float: left;
-  margin-left: 10px;
+  margin-left: 5px;
   width: 7%;
   max-width: 40px;
   min-width: 5px;
@@ -59,13 +59,12 @@ body,input{
 }
 
 .next img{
-  width: 40px;
-  height: 40px;
+  max-width: 100%;
 }
 
 .prev{
   float: left;
-  margin-right: 10px;
+  margin-right: 5px;
   width: 7%;
   max-width: 40px;
   min-width: 5px;
@@ -75,8 +74,7 @@ body,input{
 }
 
 .prev img{
-  width: 40px;
-  height: 40px;
+  max-width: 100%;
 }
 
 .page input[type="text"]{
@@ -94,6 +92,7 @@ body,input{
 
 .returndate{
   text-align: left;
+  height: 50px;
 }
 
 .returndate span{
@@ -118,7 +117,7 @@ body,input{
   color: #758869;
   text-align: center;
   font-size: 5px;
-  margin: 50px auto 20px auto;
+  margin: 5% auto 3% auto;
   line-height: 20px;
   width: 100%;
 }
@@ -148,12 +147,13 @@ body,input{
 }
 
 .bb-custom-firstpage{
-  padding: 30px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
 .bb-custom-firstpage img{
-  max-width: 385px;
-  max-height: 530px;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .notborrow{
