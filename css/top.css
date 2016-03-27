@@ -12,7 +12,7 @@ body{
   margin-top: 20px;
   margin-bottom: 5px;
   width: 95%;
-  height: 95%;
+  height: 597px;
   background-color: #FBF4E6;
   position: relative;;
   top: 80px;
@@ -21,6 +21,7 @@ body{
 /*ibo*/
 
 #container {
+  height: 100%;
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
@@ -30,12 +31,13 @@ body{
   height: 50px;
   width: 100%;
   margin: 15px auto;
+  margin-top: 50px;
 }
 
 .title h1{
   text-align: center;
-  letter-spacing: 2px;
-  font-size: 18px;
+  letter-spacing: 3px;
+  font-size: 20px;
   font-weight: normal;
 }
 
@@ -116,7 +118,7 @@ button {
 	margin: 0;
 	padding: 0;
 	position: absolute;
-	top: 38%;
+	top: 37%;
 }
 
 .slider-prev {

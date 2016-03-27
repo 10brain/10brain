@@ -64,7 +64,7 @@ table input[type="submit"]{
 }
 
 .title{
-  height: 25px;
+  height: 51px;
   width: 100%;
   margin: 15px auto;
 }
@@ -74,6 +74,7 @@ table input[type="submit"]{
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: normal;
+  margin: 12px auto;
 }
 
 .title ul{

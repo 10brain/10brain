@@ -53,24 +53,22 @@ body{
   top: 12px;
   max-width: 12%;
   overflow: hidden;
-  padding-top: 20px;
-  padding-left: 30px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 
-
+.left input[type="image"]{
+  outline: 0;
+}
 
 .center{
   height:40px;
   min-height: 60px;
-  width: 600px;
+  width: 550px;
   margin: 0 auto;
   margin-top: 20px;
   position: relative;
   top: 12px;
-}
-
-.center form{
-  height: 47px;
 }
 
 .center p {
@@ -101,12 +99,31 @@ body{
 
 .center li{
   display: inline-block;
-  margin: 0 20px;
   list-style: none;
 }
 
 .center input[type="image"]{
   outline: 0;
+  width: 20px;
+  margin-left: 10px;
+}
+
+.center input[type="submit"]{
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  outline: 0;
+  border: none;
+  background-color: white;
+  margin-right: 10px;
+  padding: 0;
+  cursor: pointer;
+  padding: 3px 0;
+}
+
+.headertext{
+  position: relative;
+  top: -5px;
 }
 
 .right{
