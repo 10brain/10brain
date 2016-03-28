@@ -51,10 +51,15 @@ body{
   position: relative;
   left: 0px;
   top: 12px;
-  max-width: 12%;
+  /*max-width: 12%;*/
   overflow: hidden;
-  padding-top: 20px;
-  padding-left: 30px;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+.left input[type="image"]{
+  outline: 0;
+  height: 40px;
 }
 
 

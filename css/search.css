@@ -107,6 +107,95 @@ input:-webkit-autofill {
 }
 
 
+/*image*/
+#slider{
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 95%;
+  height: 400px;
+  background-color: #FBF4E6;
+  position: relative;;
+  top: 0px;
+}
+
+.slider .slide {
+	width: 820px;
+	height: 360px;
+	margin-top: 30px;
+	padding-left: 50px;
+	float: left;
+}
+
+.slider {
+	width: 853px;
+	height: 360px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.slider .slideSet {
+	position: absolute;
+}
+
+.section img{
+	margin-bottom: 40px;
+}
+
+.section {
+	float: left;
+	width: 100px;
+	margin: 0 50px 0 0;
+}
+
+button {
+    width: auto;
+    padding:0;
+    margin:0;
+    background:none;
+    border:0;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
+    outline: 0;
+}
+
+.slider-prev,
+.slider-next {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 37%;
+}
+
+.slider-prev {
+	left: 5px;
+}
+
+.slider-next {
+	right: 5px;
+}
+
+.section{
+  margin: 20px 25px;
+}
+
+.section input[type="image"]{
+  max-width: 100px;
+  max-height: 141px;
+  outline: 0;
+
+}
+
+.slider-prev img,
+.slider-next img{
+  width: 40px;
+  height: 40px;
+}
+
+
+
 
 
 

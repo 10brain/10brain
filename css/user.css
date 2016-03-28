@@ -55,13 +55,14 @@ body,h1,input,span{
 .image{
   display: inline-block;
   list-style: none;
-  width: 20%;
+  width: 22%;
   min-width: 10px;
-  padding: 5px 30px;
+  padding: 5px 5px;
 }
 
 .image img{
   width: 100%;
+  max-width: 200px;
 }
 
 .submit input[type="submit"]{
