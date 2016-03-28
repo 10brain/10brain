@@ -53,12 +53,13 @@ body{
   top: 12px;
   /*max-width: 12%;*/
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 30px;
 }
 
 .left input[type="image"]{
   outline: 0;
+  height: 40px;
 }
 
 .center{
@@ -100,6 +101,11 @@ body{
 .center li{
   display: inline-block;
   list-style: none;
+  transition: .3s;
+}
+
+.center li :hover{
+  transform: rotate(5deg);
 }
 
 .center input[type="image"]{
