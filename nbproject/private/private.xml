@@ -12,17 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/lib/class.IO.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/cover.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/book/book.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/book/book_suc.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/book/book_fal.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/top/top.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_edit_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/request/request_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_edit.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/book/book.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/book/book_confirm.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/lib/check.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_edit_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/top/top.html</file>
         </group>
     </open-files>
 </project-private>

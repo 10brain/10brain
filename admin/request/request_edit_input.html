@@ -34,12 +34,12 @@ and open the template in the editor.
                 <td><?=$dspRequest[$i][2];?></td>
                 <td id="select">
                   <select name="app[]">
-                    <option>選択してください</option>
+                    <option value="0">選択してください</option>
                     <option value="1">承認</option>
-                    <option value="0">却下</option>
+                    <option value="2">却下</option>
                   </select>
                 </td>
-                <input type="hidden" name="KEYWORD60[]" value="<?=$dspRequest[$i][0];?>">
+            <input type="hidden" name="reqnum[]" value="<?=$dspRequest[$i][0];?>">
             </tr>
             
 <?

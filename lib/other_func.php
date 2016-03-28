@@ -135,6 +135,7 @@ class otherModel{
     function GETRequest($ActType, $Key1, &$dspRequest){
         //初期値設定
         $result = 0;
+        $key00 = 0;
         /**SQL発行**/
         //アクションタイプ確認
         if($ActType != 'TgRSPInf'){
@@ -147,7 +148,7 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        $strSQL = $strSQL." Where app IS NULL";
+        $strSQL = $strSQL." Where app='0'";
         echo 'アクションタイプ確認ok';
         /*
         //社員番号確認
@@ -158,14 +159,14 @@ class otherModel{
         }
         echo $Key1.'確認';
         */
-
+        echo $key00;
 
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-           //$stmh->bindParam(':Key3', $Key3, PDO::PARAM_INT);
+           //$stmh->bindParam(':key', $key00, PDO::PARAM_INT);
 
             //echo $Key2.'確認';
             //echo $strSQL;
@@ -509,49 +510,52 @@ class otherModel{
         return $result;
     }
     /********リクエスト承認******************************************************/
-    /*function GETRequestApp($ActType, $Key0, $Key61, $Key62, $Key63){
+    function GETReqApp($ActType, $app, $reqnum){
         //初期値設定
         $result = 0;
-        /**SQL発行**
+        /**SQL発行**/
         //アクションタイプ確認
         if($ActType != 'TgRSPInf'){
             $result = 2;
             return $result;
         }
-            //$i =0;
-            /*$strSQL = "INSERT INTO Request(Reqtitle, Reqamaz, ReqRem, ReqDate, Num) VALUES";
-            $strSQL = $strSQL. " (:Key61, :Key62, :Key63, '" .Date('Ymd') ."', :Key0)";
+        print_r($req['app']);
+        print_r($req['num']);
         
+                
+
         echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
-           //クラス呼び出し
-           $class=new DBModel();
-           $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key61', $Key61, PDO::PARAM_STR);
-           $stmh->bindParam(':Key62', $Key62, PDO::PARAM_STR);
-           $stmh->bindParam(':Key63', $Key63, PDO::PARAM_STR);
-           $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
+
+           
+            $count = count($app);
+            
+            for ($i=0; $i<=$count; $i++) {
+                $strSQL = "UPDATE Request SET app=:app WHERE ReqNum=:reqnum";
+                $class=new DBModel();
+                $stmh = $class->pdo->prepare($strSQL);
+                $stmh->bindParam(':app', $app[$i], PDO::PARAM_INT);
+                $stmh->bindParam(':reqnum', $reqnum[$i], PDO::PARAM_STR);
+                $stmh->execute();
+               
+            }
 
             echo $strSQL;
 
-           $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-
-
+           
+           //$stmh->commit();
         } catch (Exception $Exception) {
-            $result = 3;
+            echo $Exception;
+                $result = 3;
         }
+        
+       
         //return $dspUserInfo;
         return $result;
     }
-        */
+        
 
 
 }
