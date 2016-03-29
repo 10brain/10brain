@@ -34,22 +34,29 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //名前
-    $reqnum = $_POST['reqnum'];
-    print_r($reqnum);
-    $app = $_POST['app'];
-    print_r($app);
-    /*$req = $_POST['req'];
-    print_r($req['app']);
-    print_r($req['num']);*/
-    
-}
-    $obj = new otherModel();
-    $result = $obj->GETReqApp($ActType, $app, $reqnum);
+} 
+    $obj=new otherModel();
+    $result = $obj->GETRequestPur($ActType, $Key1, $dspRequestPur);
 
+function mk_target_col($arrList, $target){ 		//指定した列を取り出す関数を定義
+	$arrTarget = array();	//指定した列を格納する配列を用意
+	foreach($arrList as $arrLine){ 		//ここから2次元配列のループ
+		foreach($arrLine as $key => $value){ //ここから単純配列から特定のキーを取り出すループ
+			if($key == $target){ //配列のキーが$target(関数の第２引数)と一致したら
+				$arrTarget[] = $value; 	//$arrTargetに格納する
+			} 
+		} 
+	}
+	return $arrTarget;		//指定した列が格納された配列を返す
+}
+
+//関数の実行
+$id = mk_target_col($dspRequestPur, "0");
+print_r($id);
 
 if ($result == 0){
-    $conf = 'request_conf.php';
-    include("request_edit_confirm.html");
+    $conf = 'request_pur_conf.php';
+    include("request_pur_input.html");
 
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
@@ -62,7 +69,4 @@ if ($result == 0){
 
 include("../../login.html");
 }
-
-
 ?>
-

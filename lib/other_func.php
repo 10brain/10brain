@@ -150,16 +150,7 @@ class otherModel{
         }
         $strSQL = $strSQL." Where app='0'";
         echo 'アクションタイプ確認ok';
-        /*
-        //社員番号確認
-        if(is_null($Key3) == True){
-            $strSQL = $strSQL. " Where Num IS NULL";
-        }else{
-            $strSQL = $strSQL. " Where Num = :Key3";
-        }
-        echo $Key1.'確認';
-        */
-        echo $key00;
+    
 
         //SQL実行
         try {
@@ -210,8 +201,78 @@ class otherModel{
         return $result;
     }
 
+    
+    /*********リクエスト未承認一覧SQL***************************************************/
+    function GETRequestPur($ActType, $Key1, &$dspRequestPur){
+        //初期値設定
+        $result = 0;
+        $key00 = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        if(!is_null($Key1)){
+            $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
+        }else{
+            $result = 2;
+            return $result;
+        }
+        $strSQL = $strSQL." Where app!='0' And pur='0' OR pur='2'";
+        echo 'アクションタイプ確認ok';
+        echo $key00;
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+
+           
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           echo 'DB接続ok';
+           echo $result;
+           echo $strSQL;
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           echo $count;
+           if($count == 0){
+               //データなし
+               $result = 0;
+               echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspRequestPur[$i][0] = $array['ReqNum'];//リクエスト番号
+                   $dspRequestPur[$i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
+                   $dspRequestPur[$i][2] = $array['ReqDate'];//リクエスト登録日
+                   $dspRequestPur[$i][3] = $array['app'];//承認
+                   $dspRequestPur[$i][4] = $array['pur'];//購入
+                   $dspRequestPur[$i][5] = $array['Num'];//リクエスト者社員番号
+                   $dspRequestPur[$i][6] = $array['ReqAmaz'];//リクエストリンク
+                   $dspRequestPur[$i][7] = $array['ReqRem'];//リクエスト備考
+                   $dspRequestPur[$i][8] = $array['Name'];//社員名
+                  $i=$i+1;
+                }
+               
+           }
+
+        } catch (Exception $Exception) {
+            $result = 3;
+        }
+        //return $dspUserInfo;
+        return $result;
+    }
+
+    
+    
         /*********過去リクエスト一覧SQL***************************************************/
-    function GETOldRequest($ActType, $Key1, &$dspOldRequest){
+        function GETOldRequest($ActType, $Key1, &$dspOldRequest){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -405,110 +466,43 @@ class otherModel{
         //return $dspUserInfo;
         return $result;
     }
-    /**************リクエスト承認SQL*************************************************/
-    function GETRequestApp($ActType, $Key1, $Key45, $Key40){
-        //初期値設定
-        $result = 0;
-        /**SQL発行**/
-        //アクションタイプ確認
-        if($ActType != 'TgRSPInf'){
-            $result = 2;
-            return $result;
-        }
-
-        if($Key1=='admin@10baton.com'){
-            $strSQL = "UPDATE Request SET app = case RepNum";
-        }else{
-            $result = 2;
-            return $result;
-        }
-
-        if(!is_null($Key60) and !is_null($Key61)){
-            foreach ($data as $Key60 => $Key61) {
-                $strSQL .= ' WHEN '.':Key60'.' THEN '.':Key61';
-            }
-            $strSQL .= ' END';
-        }else{
-            $result = 4;
-            return $result;
-        }
-        echo 'アクションタイプ確認ok';
-
-        //SQL実行
-        try {
-           //クラス呼び出し
-           $class=new DBModel();
-           $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key60', $Key60, PDO::PARAM_INT);
-           $stmh->bindParam(':Key61', $Key61, PDO::PARAM_STR);
-
-            echo $strSQL;
-
-           $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-
-        } catch (Exception $Exception) {}
-        //return $dspUserInfo;
-        return $result;
-    }
-
     /**************リクエスト購入SQL*************************************************/
-    function GETRequestPur($ActType, $Key1, $Key41, $Key46){
+    function GETReqPur($Key1, $pur, $reqnum){
         //初期値設定
         $result = 0;
         /**SQL発行**/
         //アクションタイプ確認
-        if($ActType != 'TgRSPInf'){
+        if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }
-
-        if($Key1=='admin@10baton.com'){
-            $strSQL = "UPDATE Request SET app = :Key46";
-        }else{
-            $result = 2;
-            return $result;
-        }
-
-        if(is_null($Key40)){
-            $strSQL = " Where ReqNum IS NULL";
-        }else{
-            $strSQL = " Where ReqNum = :Key40";
-        }
-        echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
-           //クラス呼び出し
-           $class=new DBModel();
-           $stmh = $class->pdo->prepare($strSQL);
-           $stmh->bindParam(':Key40', $Key40, PDO::PARAM_STR);
-           if($Key45=='true'){
-               $stmh->bindParam(':Key46', -1, PDO::PARAM_STR);
-           }else{
-                $stmh->bindParam(':Key46', 0, PDO::PARAM_STR);
-           }
+            $count = count($pur);
+            
+            for ($i=0; $i<=$count; $i++) {
+                $strSQL = "UPDATE Request SET pur=:pur WHERE ReqNum=:reqnum";
+                $class=new DBModel();
+                $stmh = $class->pdo->prepare($strSQL);
+                $stmh->bindParam(':pur', $pur[$i], PDO::PARAM_INT);
+                $stmh->bindParam(':reqnum', $reqnum[$i], PDO::PARAM_STR);
+                $stmh->execute();
+               
+            }
 
-            echo $Key2.'確認';
             echo $strSQL;
-
-           $stmh->execute();//実行
-           if(!$stmh){
-               //システムエラー
-               $result=2;
-           }
-           echo 'DB接続ok';
-           echo $result;
-
-        } catch (Exception $Exception) {}
+           
+           //$stmh->commit();
+        } catch (Exception $Exception) {
+            echo $Exception;
+                $result = 3;
+        }
+       
         //return $dspUserInfo;
         return $result;
     }
+        
     /********リクエスト承認******************************************************/
     function GETReqApp($ActType, $app, $reqnum){
         //初期値設定

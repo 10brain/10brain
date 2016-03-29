@@ -13,7 +13,7 @@ and open the template in the editor.
     </head>
     <body>
       <div id="menu"></div>
-<?if(is_null($dspRequest[0])){?>
+<?if(is_null($dspRequestPur[0])){?>
 <p>現在処理できるリクエストはありません。</p>
 <?
 }else{
@@ -24,22 +24,22 @@ and open the template in the editor.
              
 <?
     $i = 0;
-    while(!is_null($dspRequest[$i][0])){
+    while(!is_null($dspRequestPur[$i][0])){
 ?>
             <tr>
-                <td><?=$dspRequest[$i][1];?></td>
-                <td><?=$dspRequest[$i][8];?></td>
-                <td><a href="<?=$dspRequest[$i][6];?>" target="_blank">⤴️</a></td>
-                <td><?=$dspRequest[$i][7];?></td>
-                <td><?=$dspRequest[$i][2];?></td>
+                <td><?=$dspRequestPur[$i][1];?></td>
+                <td><?=$dspRequestPur[$i][8];?></td>
+                <td><a href="<?=$dspRequestPur[$i][6];?>" target="_blank">⤴️</a></td>
+                <td><?=$dspRequestPur[$i][7];?></td>
+                <td><?=$dspRequestPur[$i][2];?></td>
                 <td id="select">
-                  <select name="app[]">
-                    <option>選択してください</option>
-                    <option value="1">承認</option>
-                    <option value="0">却下</option>
+                  <select name="pur[]">
+                    <option value="0">選択してください</option>
+                    <option value="1">購入</option>
+                    <option value="2">未購入</option>
                   </select>
                 </td>
-                <input type="hidden" name="KEYWORD60[]" value="<?=$dspRequest[$i][0];?>">
+            <input type="hidden" name="reqnum[]" value="<?=$dspRequestPur[$i][0];?>">
             </tr>
             
 <?
