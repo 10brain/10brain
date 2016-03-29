@@ -76,41 +76,63 @@ class BookModel{
             $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
         //echo $Key21;
+    echo $Key21;
+    echo $Key22;
 
 
-
-   if ($Key21) {
-       //$strSQL = $strSQL." Where title like :Key21";
-            /*foreach ($Key21 as $keyword) {
-                // プレースホルダのLIKE部分を用意
-                $holders[] = "((title LIKE $keyword ESCAPE '!') OR (genre LIKE $keyword ESCAPE '!'))";
-                // LIKE検索のために「%キーワード%」の形式にする
-                $values[] = $values[] = '%' . preg_replace('/(?=[!_%])/', '!', $keyword) . '%';
-            }
-            // or条件で結合する
-            if($Key22=="1"){
-            $strSQL = $strSQL. ' WHERE (' . implode(' OR ', $holders) . ')';
-            }else{
-            // 実行
-            $strSQL = $strSQL. ' WHERE (' . implode(' AND ', $holders) . ')';
-            }*/
-
-   }
-
-        //入力フォームに値が入っているか確認
+        // キーワードの空白を半角へ変換
         /*
-        if(!is_null($Key20)){
-            $strSQL = $strSQL. " Where ";
+        $$Key21 = str_replace("　", " ", $Key21);
+        // このへんでサニタイズすればいいんだけど面倒くさくてやめた
+        // 空白毎に配列に収納
+        $Key21 = preg_split("/[ ]+/",$Key21);
+
+        $concat = "concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ')";
+
+        $where = " WHERE 1";
+                     if($Key22==1){
+                        $con = " AND";
+                    }else{
+                        $con = " OR";
+                    }
+
+        foreach($Key21 as $item){
+            if($item != ""){
+                $where .= $con.$concat." LIKE '%{$item}%'";
+            }
         }
         */
+        if(strlen($Key21)>0){
+		//受け取ったキーワードの全角スペースを半角スペースに変換する
+		$keyword = str_replace("　", " ", $Key21);
 
+		//キーワードを空白で分割する
+		$array = explode(" ",$keyword);
+                print_r($array);
+		//分割された個々のキーワードをSQLの条件where句に反映する
+		$strSQL = $strSQL." WHERE ";
+
+		for($i = 0; $i <count($array);$i++){
+			$strSQL .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+
+			if ($i <count($array) -1){
+                            if($Key22 == 1){
+                                $con = " AND ";
+                            }else{
+                                $con = " OR ";
+                            }
+				$strSQL .= $con;
+			}
+		}
+	}
+        echo $strSQL;
         //SQL実行
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
-            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
-
+           $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+            $stmh->bindParam(':Key22', $Key22, PDO::PARAM_INT);
             //echo $strSQL;
 
            $stmh->execute();//実行

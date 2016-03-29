@@ -23,6 +23,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key3 = $_POST["KEYWORD3"];  //名前
     $Key21 = $_POST["KEYWORD21"];  //フリーワード
     $Key22 = $_POST["KEYWORD22"];  //and or
+
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookList($ActType, $Key21, $Key22, $dspBookList);
