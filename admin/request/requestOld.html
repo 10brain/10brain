@@ -13,9 +13,6 @@ and open the template in the editor.
     </head>
     <body>
         <div id="menu"></div>
-        <div class="old">
-          <a href="requestOld.html">？？</a>
-        </div>
         <div class="content">
 
           <div class="title">
@@ -39,37 +36,23 @@ and open the template in the editor.
 ?>
 
           <table border="1" width="95%">
-            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">承認</td><td width="10%">購入</td><td width="10%">編集ボタン</td></tr>
+            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">ステータス</td></tr>
 <?
     $i = 0;
     while(!is_null($dspOldRequest[$i][0])){
 ?>
             <tr>
                 <td><?=$dspOldRequest[$i][1];?></td>
-                <td><?=$dspOldRequest[$i][8];?></td>
-                <td><a href="<?=$dspOldRequest[$i][6];?>" target="_blank">⤴️</a></td>
                 <td><?=$dspOldRequest[$i][7];?></td>
+                <td><a href="<?=$dspOldRequest[$i][5];?>" target="_blank">⤴️</a></td>
+                <td><?=$dspOldRequest[$i][6];?></td>
                 <td><?=$dspOldRequest[$i][2];?></td>
-                <?if($dspOldRequest[$i][3]==0){?>
-                    <td>未承認</td>
-                <?}else{?>
+                <?if($dspOldRequest[$i][3]== '1'){?>
                     <td>承認</td>
-                 <?}?>
-                <?if($dspOldRequest[$i][4]==0){?>
-                    <td>未購入</td>
-                <?}else{?>
-                    <td>購入済</td>
+                 <?}else{?>
+                    <td>却下</td>
                  <?}?>
 
-                <td><form method="post" action="<?=$request_edit;?>">
-                    <input type="hidden" name="ActionType" value="TgRSPInf">
-                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-                    <input type="hidden" name="KEYWORD60" value="<?=$dspOldRequest[$i][0];?>">
-                    <input type="hidden" name="KEYWORD61" value="<?=$dspOldRequest[$i][5];?>">
-                    <input type="submit" value="編集" />
-                    </form>
-                </td>
             </tr>
             
 <?

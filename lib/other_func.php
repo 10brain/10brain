@@ -219,7 +219,7 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        $strSQL = $strSQL." Where app!='0' And pur='0' OR pur='2'";
+        $strSQL = $strSQL." Where app=1 And pur='0' OR pur='2'";
         echo 'アクションタイプ確認ok';
         echo $key00;
 
@@ -283,22 +283,13 @@ class otherModel{
         }
         if(!is_null($Key1)){
             $strSQL = "Select * From Request INNER JOIN User ON User.Num = Request.Num";
-
         }else{
             $result = 2;
             return $result;
         }
-        $strSQL = $strSQL." Where app IS NOT NULL AND pur IS NOT NULL";
+        $strSQL = $strSQL." WHERE (app=1 and pur=1) OR (app=2 and pur=0)";
+
         echo 'アクションタイプ確認ok';
-        /*
-        //社員番号確認
-        if(is_null($Key3) == True){
-            $strSQL = $strSQL. " Where Num IS NULL";
-        }else{
-            $strSQL = $strSQL. " Where Num = :Key3";
-        }
-        echo $Key1.'確認';
-        */
 
 
         //SQL実行
@@ -316,15 +307,15 @@ class otherModel{
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
-           echo $strSQL;
+           //echo 'DB接続ok';
+           //echo $result;
+           //echo $strSQL;
            $count=$stmh->rowCount();//実行結果の行数をカウント
-           echo $count;
+           //echo $count;
            if($count == 0){
                //データなし
-               $result = 0;
-               echo $count;
+              // $result = 0;
+              // echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -332,15 +323,18 @@ class otherModel{
                    $dspOldRequest[$i][0] = $array['ReqNum'];//リクエスト番号
                    $dspOldRequest[$i][1] = $array['ReqTitle'];//リクエスト書籍タイトル
                    $dspOldRequest[$i][2] = $array['ReqDate'];//リクエスト登録日
-                   $dspOldRequest[$i][3] = $array['app'];//承認
-                   $dspOldRequest[$i][4] = $array['pur'];//購入
-                   $dspOldRequest[$i][5] = $array['Num'];//リクエスト者社員番号
-                   $dspOldRequest[$i][6] = $array['ReqAmaz'];//リクエストリンク
-                   $dspOldRequest[$i][7] = $array['ReqRem'];//リクエスト備考
-                   $dspOldRequest[$i][8] = $array['Name'];//社員名
+                    if($array['app'] == 1 AND $arry['pur'] == 1){
+                        $dspOldRequest[$i][3] = $arry['pur'];
+                    }else{
+                        $dspOldRequest[$i][3] = $array['app'];
+                    }
+                   $dspOldRequest[$i][4] = $array['Num'];//リクエスト者社員番号
+                   $dspOldRequest[$i][5] = $array['ReqAmaz'];//リクエストリンク
+                   $dspOldRequest[$i][6] = $array['ReqRem'];//リクエスト備考
+                   $dspOldRequest[$i][7] = $array['Name'];//社員名
                   $i=$i+1;
                 }
-                print_r($dspOldRequest);
+               // print_r($dspOldRequest);
            }
 
         } catch (Exception $Exception) {
