@@ -379,9 +379,9 @@ class Validation
          * 　　：$enc_sou：文字エンコード(ソースファイル)
          * 戻値：        ：正規の値ならば真を、問題があれば偽を返す
          ****************************************************************************/
-        function isDW_NAME($value = "", $require = false, $max = 0, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
+        function isDW_NAME($value = "", $require = false, $max = 30, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
                 $ret = true;
-                if (!$this->isMatch($value, $require, "/^(".VALIDATION_DW_KANJI."|".VALIDATION_DW_HIRAGANA."|".VALIDATION_DW_SPACE."|".VALIDATION_SW_SPACE.")+$/", $max, $min, $enc_chk, $enc_sou))
+                if (!$this->isMatch($value, $require, "/^(".VALIDATION_DW_KANJI."|".VALIDATION_DW_HIRAGANA.")+$/", $max, $min, $enc_chk, $enc_sou))
                 {
                         $ret = false;
                 }

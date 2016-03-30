@@ -191,7 +191,7 @@ define("HTML_CODE", "UTF-8");
 
                         // 名前
                         $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isDW_NAME($io->get_param("Name"), true, 30, 0, "UTF-8")){
+                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
                                 $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
                         }
 

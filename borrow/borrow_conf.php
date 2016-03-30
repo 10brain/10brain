@@ -23,13 +23,10 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key40 = $_POST['KEYWORD40'];//書籍番号
     $Key42 = $_POST['KEYWORD42'];//返却日
     $Key43 = $_POST['KEYWORD43'];//書籍タイトル
-    /*echo $Key0;
-    echo $Key1;
-    echo $Key2;
-    echo $Key3;*/
 
 
-   if (!preg_match("/^[0-9]+$/", $Key40)){
+
+   if (!preg_match("/^('/^\d{3}\-\d{10}$/'|'/^[A-Z0-9]+$/')+$/", $Key40)){
         $bnum_error = "書籍番号が正しくありません。";
         $result = 4;
     }

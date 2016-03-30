@@ -1,12 +1,10 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>表紙登録</title>
-</head>
-<body>
-<p>
 <?php
 if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+    if(!preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $_POST["KEYWORD1"])){
+    $result = 1;
+    }elseif(!preg_match('/^[a-zA-Z0-9--@\[-\`\{-\~]+$/',$_POST["KEYWORD2"])){
+        $result = 1;
+    }else{
     $ActType = $_POST['ActionType'];
     $Key0 = $_POST['KEYWORD0'];
     $Key1 = $_POST['KEYWORD1'];
@@ -15,17 +13,20 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
     $Key20 = $_POST['KEYWORD20'];
     $Key21 = $_POST['KEYWORD21'];
     $Key22 = $_POST['KEYWORD22'];
-
+    $Key24 = $_POST['KEYWORD24'];
+    }
     try {
         // $_FILES['upfile']['error'] の値を確認
         switch ($_FILES['upfile']['error']) {
             case UPLOAD_ERR_OK: // OK
                 break;
             case UPLOAD_ERR_NO_FILE:   // ファイル未選択
-                throw new RuntimeException('ファイルが選択されていません');
+                $result = 2;
+                $msg ='ファイルが選択されていません';
             case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
             case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
-                throw new RuntimeException('ファイルサイズが大きすぎます');
+                $result = 2;
+                $msg ='ファイルサイズが大きすぎます';
             default:
                 throw new RuntimeException('その他のエラーが発生しました');
         }
@@ -35,7 +36,8 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
         /*if($type = )*/
         
         if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
-            throw new RuntimeException('画像形式が未対応です');
+            $result = 2;
+            $msg ='画像形式が未対応です';
         }else{
         // ファイルデータからSHA-1ハッシュを取ってファイル名を決定し、ファイルを保存する
             $tmp_file = @$_FILES['upfile']['tmp_name'];
@@ -47,26 +49,20 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
             $dir = '../book_add/tmp_cover/';
         if (move_uploaded_file($_FILES["upfile"]["tmp_name"], $dir.$uploadfile)) {
             chmod($dir.$uploadfile, 0644);
-            echo $uploadfile."をアップロードしました。";
-            
-            
-            
+            $result = 0;
+
         }else{    
-            
-            throw new RuntimeException('ファイル保存時にエラーが発生しました');
+            $result = 2;
+            $msg ='ファイル保存時にエラーが発生しました';
         }
 
 
-        $msg = ['green', 'ファイルは正常にアップロードされました'];
-
     } catch (RuntimeException $e) {
-
-        $msg = ['red', $e->getMessage()];
-
+       $result = 2;
     }
 
 }
-echo $Key0;
+//echo $Key0;
 if(!isset($Key22)){
 try {
 
@@ -84,7 +80,7 @@ try {
         //初期値設定
         $result = 0;
         $tmp_dir = "../book_add/tmp_cover/".$uploadfile;
-        echo $tmp_dir;
+        //echo $tmp_dir;
         $tmp_dir = file_get_contents($tmp_dir);
         //echo $tmp_dir;
         $_FILES['upfile']['type'];
@@ -101,15 +97,13 @@ try {
             
         }
 
-        $msgs[] = ['green', 'ファイルは正常にアップロードされました'];
-
     } catch (RuntimeException $e) {
-        echo $e;
+        $result = 2;
         while (ob_get_level()) {
             ob_end_clean(); // バッファをクリア
         }
         http_response_code($e instanceof PDOException ? 500 : $e->getCode());
-        $msgs[] = ['red', $e->getMessage()];
+        
 
     }
 }else{
@@ -140,17 +134,31 @@ try {
 
         $stmt->execute();//実行     
     } catch (RuntimeException $e) {
-        echo $e;
+        //echo $e;
         while (ob_get_level()) {
             ob_end_clean(); // バッファをクリア
         }
         http_response_code($e instanceof PDOException ? 500 : $e->getCode());
-        $msgs[] = ['red', $e->getMessage()];
+        $result = 2;
 
     }
-
     
+    if($result == 0){
+        include 'bookedit_suc.html';
+    }else{
+        include 'bookedit_fal.html';
+    }
+
 }
-?></p><?=$test;?>
+   
+?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表紙登録</title>
+</head>
+<body>
+<p>
+</p><?=$test;?>
 </body>
 </html>
