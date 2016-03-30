@@ -45,7 +45,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -76,32 +76,10 @@ class BookModel{
             $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
         //echo $Key21;
-    echo $Key21;
-    echo $Key22;
+    //echo $Key21;
+    //echo $Key22;
 
 
-        // キーワードの空白を半角へ変換
-        /*
-        $$Key21 = str_replace("　", " ", $Key21);
-        // このへんでサニタイズすればいいんだけど面倒くさくてやめた
-        // 空白毎に配列に収納
-        $Key21 = preg_split("/[ ]+/",$Key21);
-
-        $concat = "concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ')";
-
-        $where = " WHERE 1";
-                     if($Key22==1){
-                        $con = " AND";
-                    }else{
-                        $con = " OR";
-                    }
-
-        foreach($Key21 as $item){
-            if($item != ""){
-                $where .= $con.$concat." LIKE '%{$item}%'";
-            }
-        }
-        */
         if(strlen($Key21)>0){
 		//受け取ったキーワードの全角スペースを半角スペースに変換する
 		$keyword = str_replace("　", " ", $Key21);
@@ -147,7 +125,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -211,7 +189,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+            //   echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -418,7 +396,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+              // echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -439,65 +417,6 @@ class BookModel{
         return $result;
     }
 
-    /**************書籍表紙登録SQL*************************************************/
-    /*function GETBookCoverAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key33, $Key34, $Key35){
-                // INSERT処理
-        try{
-                $stmt = $pdo->prepare('INSERT INTO image(name,type,raw_data,thumb_data,date) VALUES(?,?,?,?,?)');
-                $stmt->execute([
-                    $_FILES['upfile']['name'],
-                    $info[2],
-                    file_get_contents($_FILES['upfile']['tmp_name']),
-                    ob_get_clean(), // バッファからデータを取得してクリア
-                    (new DateTime('now', new DateTimeZone('Asia/Tokyo')))->format('Y-m-d H:i:s'),
-                ]);
-
-                $msgs[] = ['green', 'ファイルは正常にアップロードされました'];
-
-            } catch (RuntimeException $e) {
-
-                while (ob_get_level()) {
-                    ob_end_clean(); // バッファをクリア
-                }
-                http_response_code($e instanceof PDOException ? 500 : $e->getCode());
-                $msgs[] = ['red', $e->getMessage()];
-
-            }
-
-        /* ID指定があったとき *
-        } elseif (isset($_GET['id'])) {
-
-            try {
-
-                $stmt = $pdo->prepare('SELECT type, raw_data FROM image WHERE id = ? LIMIT 1');
-                $stmt->bindValue(1, $_GET['id'], PDO::PARAM_INT);
-                $stmt->execute();
-                if (!$row = $stmt->fetch()) {
-                    throw new RuntimeException('該当する画像は存在しません', 404);
-                }
-                header('X-Content-Type-Options: nosniff');
-                header('Content-Type: ' . image_type_to_mime_type($row['type']));
-                echo $row['raw_data'];
-                exit;
-
-            } catch  (Exception $Exception){
-
-                http_response_code($e instanceof PDOException ? 500 : $e->getCode());
-                $msgs[] = ['red', $e->getMessage()];
-
-            }
-
-        }
-
-        // サムネイル一覧取得
-        $rows = $pdo->query('SELECT id,name,type,thumb_data,date FROM image ORDER BY date DESC')->fetchAll();
-
-    } catch (PDOException $e) {
-
-        http_response_code(500);
-        $msgs[] = ['red', $e->getMessage()];
-
-    }*/
      /**************貸出用書籍検索SQL*************************************************/
     function GETBorrowSearch($Key40, &$dspBorrowS){
 
@@ -533,11 +452,11 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 1;
-               echo $count;
+               //echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
-               print_r($array);
+               //print_r($array);
                if($array == false){
                    //システムエラー
                    $result = 2;
@@ -700,7 +619,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                 //表示データ収集
                 $i=0;
@@ -769,7 +688,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+             //  echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -783,8 +702,8 @@ class BookModel{
                    $dspBorrowUList[$i][6] = $array['title'];//書籍タイトル
                    $i=$i+1;
                 }
-                print_r($dspBorrowUList[0]);
-                print_r($dspBorrowUList);
+                //print_r($dspBorrowUList[0]);
+                //print_r($dspBorrowUList);
            }
 
         } catch (Exception $Exception) {
@@ -847,7 +766,7 @@ class BookModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+              // echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -990,7 +909,6 @@ class BookModel{
         if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
-        }else{
 
         }
         echo $Key24;
@@ -1045,7 +963,7 @@ class BookModel{
 
         } catch (Exception $Exception) {
             $result=4;
-            echo $Exception;
+            //echo $Exception;
 
         }
 

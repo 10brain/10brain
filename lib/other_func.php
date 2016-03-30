@@ -167,15 +167,15 @@ class otherModel{
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
-           echo $strSQL;
+           //echo 'DB接続ok';
+           //echo $result;
+           //echo $strSQL;
            $count=$stmh->rowCount();//実行結果の行数をカウント
-           echo $count;
+           //echo $count;
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+               //echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -220,8 +220,8 @@ class otherModel{
             return $result;
         }
         $strSQL = $strSQL." Where app=1 And pur='0' OR pur='2'";
-        echo 'アクションタイプ確認ok';
-        echo $key00;
+        //echo 'アクションタイプ確認ok';
+        //echo $key00;
 
         //SQL実行
         try {
@@ -243,7 +243,7 @@ class otherModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+             //  echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -289,7 +289,7 @@ class otherModel{
         }
         $strSQL = $strSQL." WHERE (app=1 and pur=1) OR (app=2 and pur=0)";
 
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
 
         //SQL実行
@@ -362,7 +362,7 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //書籍番号確認
         if(is_null($Key40) == True){
@@ -378,20 +378,20 @@ class otherModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key40', $Key40, PDO::PARAM_INT);
 
-            echo $strSQL;
+           // echo $strSQL;
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+              // echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -443,15 +443,15 @@ class otherModel{
            $stmh->bindParam(':Key63', $Key63, PDO::PARAM_STR);
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
 
-            echo $strSQL;
+           // echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
 
         } catch (Exception $Exception) {
@@ -485,11 +485,11 @@ class otherModel{
                
             }
 
-            echo $strSQL;
+            //echo $strSQL;
            
            //$stmh->commit();
         } catch (Exception $Exception) {
-            echo $Exception;
+           // echo $Exception;
                 $result = 3;
         }
        
@@ -507,12 +507,12 @@ class otherModel{
             $result = 2;
             return $result;
         }
-        print_r($req['app']);
-        print_r($req['num']);
+        //print_r($req['app']);
+      //  print_r($req['num']);
         
                 
 
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {

@@ -58,7 +58,7 @@ class UserModel{
            if($count == 0){
                //データなし
                $result = 1;
-               echo $count;
+              // echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);
@@ -366,7 +366,7 @@ class UserModel{
            if($count == 0){
                //データなし
                $result = 0;
-               echo $count;
+            //   echo $count;
            }else{
                 //表示データ収集
                $i=0;
