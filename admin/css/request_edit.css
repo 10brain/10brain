@@ -144,9 +144,9 @@ table input[type="submit"]{
 
 .submit input[type="button"]{
   height: 40px;
-  width: 175px;
+  width: 125px;
   padding: 6px 8px;
-  font-size: 1.2em;
+  font-size: 1.0em;
   color: black;
   background-color: white;
   border: 1px solid #808080;
@@ -167,7 +167,7 @@ table input[type="submit"]{
 }
 
 .submit{
-  margin-top: 30px;
+  margin-top: 10px;
   width: 100%;
   text-align: center;
 }

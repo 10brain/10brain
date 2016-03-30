@@ -28,7 +28,7 @@
 		live: true, // whether to automatically detect changes
 
 		// messages
-		placeholder: "-", // default placeholder when nothing is selected
+		placeholder: "", // default placeholder when nothing is selected
 		empty: "No results match your keyword.", // error message when nothing matches the filter search term
 		error_message: "There was a problem with the request.", // error message when the AJAX call fails
 
