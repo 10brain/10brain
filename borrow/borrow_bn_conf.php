@@ -11,9 +11,10 @@ $Key3 ="";
 $Key40 ="";
 $booknum_error = '';
 //IDとパスワードチェック
-if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
+
+if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
-}elseif (!ckStr($_POST["KEYWORD2"],30,1)){
+}elseif (!isPW($_POST["KEYWORD2"],10,1)){
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];

@@ -201,4 +201,105 @@ function cvWeb($str){
  return $str;
 }
 
+/////////////////////////////////////////////////
+//日付入力確認
+/////////////////////////////////////////////////
+function inpDate(&$date,$blank){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($date,"n","UTF8");
+ 
+    //空入力チェック
+    if($date == ""){
+       //空欄許可チェック
+       if($blank == 0){
+        $ret = true;
+       }
+    }else{
+      if(preg_match('/^\d{4}\-\d{1,2}\-\d{1,2}$/', $date)){
+        $ret = true;
+      }
+    return $ret;
+    }
+}
+
+/////////////////////////////////////////////////
+//IDチェック
+/////////////////////////////////////////////////
+function isID(&$ID,$max,$blank){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($ID,"r","UTF8");
+    //変換後文字列長取得
+   $len = strlen($ID);
+
+   //タグ取り除き
+   $str = Strip_Tags($ID);
+
+   //変換後文字列長取得
+   $len2 = strlen($ID);
+
+
+   //入力チェック
+   if($blank == 0){
+    if(0 <= $len and $len <= $max){
+        if(preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $ID)){
+
+        $ret = true;
+           }
+       }
+   }
+   else{
+    if(0 < $len and $len <= $max){
+     $ret = true;
+    }
+   }
+
+   //入力チェック
+   if($len != $len2){
+     $ret = false;
+   }
+
+    return $ret;
+ }
+
+/////////////////////////////////////////////////
+//passチェック
+/////////////////////////////////////////////////
+function isPW(&$PW,$max,$blank){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($PW,"r","UTF8");
+    //変換後文字列長取得
+   $len = strlen($PW);
+
+   //タグ取り除き
+   $str = Strip_Tags($PW);
+
+   //変換後文字列長取得
+   $len2 = strlen($PW);
+
+
+   //入力チェック
+   if($blank == 0){
+    if(0 <= $len and $len <= $max){
+        if(preg_match('/^[a-zA-Z0-9-/:-@\[-\`\{-\~]+$/', $PW)){
+
+        $ret = true;
+           }
+       }
+   }
+   else{
+    if(0 < $len and $len <= $max){
+     $ret = true;
+    }
+   }
+
+   //入力チェック
+   if($len != $len2){
+     $ret = false;
+   }
+
+    return $ret;
+ }
 
