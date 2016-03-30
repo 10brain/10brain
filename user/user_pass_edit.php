@@ -15,14 +15,14 @@ $nowPass_error ="";
 $newPass_error ="";
 $newPassc_error ="";
 
-///^[a-zA-Z0-9!$&*.=^`|~#%'+\/?_{}-]+@([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}$/
 //IDとパスワードチェック
-if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])){
+if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
-}elseif (!ckStr($_POST["KEYWORD2"],30,1)){
+}elseif (!isPW($_POST["KEYWORD2"],10,1)){
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //社員番号
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //パスワード
@@ -40,7 +40,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
 
 
         //現行パス確認
-        if (!ckStr($pass,10,1) or !preg_match("/^[a-zA-Z0-9]+$/",$pass)){
+        if (!isPW($pass,10,1)){
                 $result = 1;
                 $nowPass_error = "内容に誤りがあります。再度入力してください。";
         }elseif($pass != $Key14){
@@ -49,7 +49,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
         }
 
         //新規パスワード確認
-        if (!ckStr($newpass,10,1) or !preg_match("/^[a-zA-Z0-9]+$/", $newpass)){
+        if (!isPW($newpass,10,1)){
                 $result = 1;
                 $newPass_error = "内容に誤りがあります。再度入力してください。";
         }elseif($newpass == $Key14){
@@ -58,7 +58,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
         }
 
         //新規パスワード確認
-        if (!ckStr($newpass_conf,10,1) or !preg_match("/^[a-zA-Z0-9]+$/",$newpass_conf)){
+        if (!isPW($newpass_conf,10,1)){
                 $result = 1;
                 $newPassc_error = "内容に誤りがあります。再度入力してください。";
         }elseif($newpass != $newpass_conf){
@@ -77,8 +77,8 @@ if ($result == 0){
             
             $passedit = "../index.php";
             $Key2=$newpass;
-            include("user_pass_conf.html");
-    }elseif($RetCode == 1){
+            include("user_pass_suc.html");
+    }elseif($result == 1){
             include("user_pass_input.html");
             $db_error ="ユーザー情報がみつかりません。管理者に問い合わせてください";
     }else{
@@ -95,7 +95,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../login.html");
+include("user_pass_input.html");
 }
 
 
