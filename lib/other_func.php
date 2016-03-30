@@ -498,12 +498,12 @@ class otherModel{
     }
         
     /********リクエスト承認******************************************************/
-    function GETReqApp($ActType, $app, $reqnum){
+    function GETReqApp($Key1, $app, $reqnum){
         //初期値設定
         $result = 0;
         /**SQL発行**/
         //アクションタイプ確認
-        if($ActType != 'TgRSPInf'){
+        if($Key1 != 'admin@10baton.com'){
             $result = 2;
             return $result;
         }
