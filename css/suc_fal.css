@@ -122,9 +122,8 @@ body,h1,input,p{
 #inline_content img{
   display: block;
   margin: 0 auto;
-  width: 10%;
-  height: 10%;
-  margin-top: 10px;
+  width: 40px;
+  margin-top: 5px;
 }
 
 /*not*/
@@ -144,9 +143,8 @@ body,h1,input,p{
 #inline_content img{
   display: block;
   margin: 0 auto;
-  width: 10%;
-  height: 10%;
-  margin-top: 10px;
+  width: 40px;
+  margin-top: 5px;
 }
 
 .not .check{

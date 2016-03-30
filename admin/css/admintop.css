@@ -19,7 +19,8 @@ body,h1,input,span{
 
 .brain img{
   position: fixed;
-  top: 20px;
+  top: 22px;
+  width: 100px;
 }
 
 #content{

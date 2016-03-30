@@ -11,7 +11,7 @@ body,h1,input,span{
 
 .brain{
   text-align: center;
-  width: 90%;
+  width: 92.5%;
   height: 50px;
   position: fixed;
   top: 20px;
@@ -19,7 +19,8 @@ body,h1,input,span{
 
 .brain img{
   position: fixed;
-  top: 20px;
+  top: 22px;
+  width: 100px;
 }
 
 #content{
