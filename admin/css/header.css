@@ -65,7 +65,7 @@ body{
 .center{
   height:40px;
   min-height: 60px;
-  width: 750px;
+  width: 775px;
   margin: 0 auto;
   margin-top: 20px;
   position: relative;
@@ -90,7 +90,7 @@ body{
   margin: 0;
   height:50px;
   min-height: 35px;
-  width: 750px;
+  width: 775px;
   min-width: 550px;
   text-align: center;
   overflow: hidden;
@@ -111,6 +111,12 @@ body{
 .center input[type="image"]{
   outline: 0;
   width: 20px;
+  margin-left: 10px;
+}
+
+.hito input[type="image"]{
+  outline: 0;
+  width: 26px;
   margin-left: 10px;
 }
 
