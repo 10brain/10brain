@@ -198,3 +198,7 @@ input:-webkit-autofill {
 .form1 span{
   line-height: 300%;
 }
+
+.form1 img{
+  height: 300px;
+}
