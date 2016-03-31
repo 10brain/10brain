@@ -12,7 +12,7 @@ body{
 }
 
 .header{
-  height: 12px;
+  height: 10px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -25,7 +25,7 @@ body{
   left: 0;
   right: 0;
   width: 100%;
-  height: 12px;
+  height: 10px;
 }
 
 .menu{
@@ -62,12 +62,10 @@ body{
   height: 40px;
 }
 
-
-
 .center{
   height:40px;
   min-height: 60px;
-  width: 600px;
+  width: 775px;
   margin: 0 auto;
   margin-top: 20px;
   position: relative;
@@ -79,8 +77,6 @@ body{
 	padding: 0;
 	font-size: 8px;
 	text-align: center;
-  position: relative;
-  top: 0;
 }
 
 .center ul:after{
@@ -92,10 +88,10 @@ body{
 .center ul{
   /zoom: 1;
   margin: 0;
-  height:55px;
+  height:50px;
   min-height: 35px;
-  width: 650px;
-  min-width: 650px;
+  width: 775px;
+  min-width: 550px;
   text-align: center;
   overflow: hidden;
   padding: 0;
@@ -104,12 +100,42 @@ body{
 
 .center li{
   display: inline-block;
-  margin: 0 20px;
   list-style: none;
+  transition: .3s;
+}
+
+.center li :hover{
+  transform: rotate(5deg);
 }
 
 .center input[type="image"]{
   outline: 0;
+  width: 20px;
+  margin-left: 10px;
+}
+
+.hito input[type="image"]{
+  outline: 0;
+  width: 26px;
+  margin-left: 10px;
+}
+
+.center input[type="submit"]{
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  outline: 0;
+  border: none;
+  background-color: white;
+  margin-right: 10px;
+  padding: 0;
+  cursor: pointer;
+  padding: 3px 0;
+}
+
+.headertext{
+  position: relative;
+  top: -5px;
 }
 
 .right{
@@ -148,8 +174,8 @@ body{
   padding: 2px 15px 2px 15px;
 
   text-decoration:none;
-  position: absolute;
-  top:4px;
+  position: relative;
+  top:1px;
 }
 
 .right li a:link{

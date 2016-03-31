@@ -9,25 +9,26 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>過去のリクエスト一覧</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="request.css">
+      <link rel="stylesheet" type="text/css" href="../css/request_edit.css">
     </head>
     <body>
-        <div id="menu"></div>
-        <div class="content">
+      <?=include('../header/header.html');?>
 
-          <div class="title">
-            <ul>
-              <li>
-                <img src="../../img/4.png">
-              </li>
-              <li>
-                <h1>リクエスト一覧</h1>
-              </li>
-              <li>
-                <img src="../../img/4.png">
-              </li>
-            </ul>
-          </div>
+      <div id="content">
+        <!--<div class="contents">-->
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>未承認リクエスト一覧</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
 
 <?if(is_null($dspOldRequest[0])){?>
 <p>過去のリクエストはありません。</p>
@@ -35,8 +36,15 @@ and open the template in the editor.
 }else{
 ?>
 
-          <table border="1" width="95%">
-            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">登録日</td><td width="10%">ステータス</td></tr>
+          <table border="1" width="80%">
+            <tr>
+              <td width="40%">タイトル</td>
+              <td width="10%">ユーザー</td>
+              <td width="5%">リンク</td>
+              <td width="15%">備考</td>
+              <td width="10%">リクエスト日</td>
+              <td width="10%">ステータス</td>
+            </tr>
 <?
     $i = 0;
     while(!is_null($dspOldRequest[$i][0])){
@@ -44,27 +52,40 @@ and open the template in the editor.
             <tr>
                 <td><?=$dspOldRequest[$i][1];?></td>
                 <td><?=$dspOldRequest[$i][7];?></td>
-                <td><a href="<?=$dspOldRequest[$i][5];?>" target="_blank">⤴️</a></td>
+                <td><a href="<?=$dspOldRequest[$i][5];?>" target="_blank"><img src="../img/ya.png"></a></td>
                 <td><?=$dspOldRequest[$i][6];?></td>
                 <td><?=$dspOldRequest[$i][2];?></td>
-                <?if($dspOldRequest[$i][3]== '1'){?>
-                    <td>購入済</td>
-                 <?}else{?>
-                    <td>却下</td>
-                 <?}?>
-
+<?if($dspOldRequest[$i][3]== '1'){?>
+                <td>購入済</td>
+<?}else{?>
+                <td>却下</td>
+<?}?>
             </tr>
-            
+
 <?
     $i = $i+1;
-    }
+}
 ?>
           </table>
 <?
 }
 ?>
-        </div>
 
-        <div id="footer"></div>
+<?
+  $request='./request.php';
+?>
+          <form name="input" action="<?=$request;?>" method="post"/>
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            <div class="submit">
+              <input type="button" onClick='history.back();' value="戻る">
+            </div>
+          </form>
+
+      <?php include('../footer/footer.html');?>
+      </div>
     </body>
 </html>

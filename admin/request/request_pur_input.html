@@ -9,19 +9,52 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>リクエスト編集</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="request_edit.css">
+      <link rel="stylesheet" type="text/css" href="../css/request_edit.css">
+      <link rel="stylesheet" type="text/css" href="../css/jquery.minimalect.css" media="screen" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../../js/jquery.minimalect.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("select").minimalect();
+    });
+    </script>
     </head>
     <body>
-      <div id="menu"></div>
+      <?=include('../header/header.html');?>
+
+      <div id="content">
+        <!--<div class="contents">-->
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>未購入リクエスト一覧</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+
 <?if(is_null($dspRequestPur[0])){?>
 <p>現在処理できるリクエストはありません。</p>
 <?
 }else{
-?>  
-          <table border="1" width="95%">
-            <tr><td width="15%">タイトル</td><td width="10%">ユーザー</td><td width="15%">リンク</td><td width="10%">備考</td><td width="10%">リクエスト日</td><td width="10%">ステータス</td></tr>
+?>
+          <table border="1" width="80%">
+            <tr>
+              <td width="40%">タイトル</td>
+              <td width="10%">ユーザー</td>
+              <td width="5%">リンク</td>
+              <td width="15%">備考</td>
+              <td width="10%">リクエスト日</td>
+              <td width="10%">ステータス</td>
+            </tr>
             <form name="input" action="<?=$conf;?>" method="post"/>
-             
+
 <?
     $i = 0;
     while(!is_null($dspRequestPur[$i][0])){
@@ -29,112 +62,53 @@ and open the template in the editor.
             <tr>
                 <td><?=$dspRequestPur[$i][1];?></td>
                 <td><?=$dspRequestPur[$i][8];?></td>
-                <td><a href="<?=$dspRequestPur[$i][6];?>" target="_blank">⤴️</a></td>
+                <td><a href="<?=$dspRequestPur[$i][6];?>" target="_blank"><img src="../img/ya.png"></a></td>
                 <td><?=$dspRequestPur[$i][7];?></td>
                 <td><?=$dspRequestPur[$i][2];?></td>
                 <td id="select">
-                  <select name="pur[]">
-                    <option value="0">選択してください</option>
-                    <option value="1">購入</option>
-                    <option value="2">未購入</option>
+                  <select name="pur[]" id="select">
+                    <option value="0" selected="selected">未購入</option>
+                    <option value="1">購入済</option>
                   </select>
+                  <input type="hidden" name="reqnum[]" value="<?=$dspRequestPur[$i][0];?>">
                 </td>
-            <input type="hidden" name="reqnum[]" value="<?=$dspRequestPur[$i][0];?>">
             </tr>
-            
+
 <?
     $i=$i+1;
     }
 ?>
-         
+
 <?
 }
 ?>
- </table>
+          </table>
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  
 
+
+                  <div class="submit">
                     <input type="submit" value="変更" />
-                    </form>
+                  </div>
+          </form>
+<?
+  $request='./request.php';
+?>
+          <form name="input" action="<?=$request;?>" method="post"/>
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            <div class="submit">
+              <input type="button" onClick='history.back();' value="戻る">
+            </div>
+          </form>
 
+        <?php include('../footer/footer.html');?>
         </div>
-<!--
-      <div class="content">
-        <div class="edit">
-            <span>タイトル：</span>
-            <br>
-            <span>ユーザー：</span>
-            <br>
-            <span>登録日：</span>
-            <br>
-
-            <form action="request.php" method="post">
-              <ul>
-                <li>
-                  <div class="sample">
-                    <div class="either">
-                      <input type="radio" name="KEYWORD22" id="batsu" value="2" checked="checked" />
-                      <label for="batsu">却下</label>
-                      <input type="radio" name="KEYWORD22" id="sankaku" value="1" />
-                      <label for="sankaku">未承認</label>
-                      <input type="radio" name="KEYWORD22" id="maru" value="0" />
-                      <label for="maru">承認済</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <input type="button" value="確認">
-                </li>
-              </ul>
-            </form>
-            <br>
-
-            <form action="request.php" method="post">
-              <ul>
-                <li>
-                  <div class="sample">
-                    <div class="either">
-                      <input type="radio" name="KEYWORD22" id="buy" value="1" checked="checked" />
-                      <label for="buy">未購入</label>
-                      <input type="radio" name="KEYWORD22" id="bought" value="0" />
-                      <label for="bought">購入済</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <input type="button" value="確認">
-                </li>
-              </ul>
-            </form>
-            <br>
-              <ul>
-                <li>
-                  <form action="request.php" method="post">
-                    <input type="button" value="削除">
-                  </form>
-
-                </li>
-                <li>
-                  <div class="add">
-                    <form action="request.php" method="post">
-                      <input type="button" value="書籍情報登録へ">
-                    </form>
-                  </div>
-                </li>
-              </ul>
-              <ul>
-                  <form action="request.php" method="post">
-                    <input type="button" value="戻る">
-                  </form>
-              </ul>  
-
-        </div>
-      </div>-->
-
-      <div id="footer"></div>
     </body>
 </html>
