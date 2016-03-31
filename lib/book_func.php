@@ -103,7 +103,7 @@ class BookModel{
 			}
 		}
 	}
-        echo $strSQL;
+        //echo $strSQL;
         //SQL実行
         try {
            //クラス呼び出し
@@ -911,7 +911,7 @@ class BookModel{
             return $result;
 
         }
-        echo $Key24;
+        //echo $Key24;
 
             $strSQL = "UPDATE Book SET ISBN=:Key24";
 

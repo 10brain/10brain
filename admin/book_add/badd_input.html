@@ -57,7 +57,7 @@ and open the template in the editor.
             <input name="year"  size="10" maxlength="4" type="text" value="<?=$io->get_param_html('year');?>" /><br>
 
             <span>amazonリンク</span><div class="error"><?=$io->get_error("amazon_error"); ?></div><br>
-            <input name="amazon"  size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" placeholder="http://"/><br>
+            <input name="amazon"  size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" placeholder="http://www.amazon.co.jp/"/><br>
 
             <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
             <textarea rows="2" cols="60" wrap="SOFT" name="remarks"/><?=$io->get_param_html("remarks"); ?></textarea><br>

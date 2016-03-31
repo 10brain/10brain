@@ -16,7 +16,7 @@ and open the template in the editor.
 
         <div id="content">
           <!--<div class="contents">-->
-          
+
           <div class="title">
             <ul>
               <li class="image">
@@ -31,6 +31,8 @@ and open the template in the editor.
             </ul>
           </div>
 
+<p>返却予定日から１週間過ぎている書籍は赤文字で表示されます。</p>
+
 <?$return='return_conf.php';?>
 <?if(is_null($dspBorrowUList[0])){?>
     <p>該当する本がありません。</p>
@@ -39,7 +41,12 @@ and open the template in the editor.
 ?>
 
           <table border="1" width="80%">
-            <tr><td width="55%">タイトル</td><td width="15%">貸出日</td><td width="15%">返却予定日</td><td width="15%">返却日</td></tr>
+            <tr>
+              <td width="55%">タイトル</td>
+              <td width="15%">貸出日</td>
+              <td width="15%">返却予定日</td>
+              <td width="15%">返却日</td>
+            </tr>
 <?
     $i = 0;
     while(!is_null($dspBorrowUList[$i][0])){

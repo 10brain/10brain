@@ -36,13 +36,14 @@ and open the template in the editor.
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
            <?=$db_error;?>
+         <span class="caution">ユーザー情報を入力してください。</span><br><br>
 
-            <span>ユーザー名</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
+            <span>ユーザー名</span><span class="caution">　スペースは空けずにフルネームで入力してください。</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
-            <span>ユーザーID</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
+            <span>ユーザーID</span><span class="caution">　10バトンでのアドレスを入力してください。</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
             <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" /><br>
-              <span>パスワード</span><div class="error"><?=$io->get_error("pass");?></div><br>
-              <?=$pass->get_all_checks("?", true)?>
+            <span>パスワード</span><span class="caution">　パスワードを初期化する場合は、チェックを入れてください。</span><div class="error"><?=$io->get_error("pass");?></div><br>
+            <?=$pass->get_all_checks("?", true)?>
 
 
             <input type="hidden" name="ActionType" value="TgRSPInf">
