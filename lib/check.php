@@ -204,23 +204,17 @@ function cvWeb($str){
 /////////////////////////////////////////////////
 //日付入力確認
 /////////////////////////////////////////////////
-function inpDate(&$date,$blank){
+function inpDate(&$date){
     $ret = false;
     //全角英数→半角英数変換
     $date = mb_convert_kana($date,"n","UTF8");
  
-    //空入力チェック
-    if($date == ""){
-       //空欄許可チェック
-       if($blank == 0){
-        $ret = true;
-       }
-    }else{
-      if(preg_match('/^\d{4}\-\d{1,2}\-\d{1,2}$/', $date)){
+
+      if(preg_match('/^\d{4}\/\d{1,2}\/\d{1,2}$/', $date)){
         $ret = true;
       }
     return $ret;
-    }
+    
 }
 
 /////////////////////////////////////////////////

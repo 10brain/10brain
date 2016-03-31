@@ -26,11 +26,21 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $obj=new BookModel();
     //入力された情報の確認
     $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
-
+        $i = 0;
+    while(!is_null($dspBorrowUList[$i][0])){
+        if($dspBorrowUList[$i][3] == null){
+            $null[] = $dspBorrowUList[$i][3];
+        }
+        
+        $i++;
+    }
+ 
+    $null = count($null);
+  
 
 //画面表示
 if ($result == 0){
-    if(array_count_values(is_null($dspBorrowUList[$i][3])) >= 3){
+    if($null  >= 3){
         include("borrow_not.html");
     }else{
     $borrow_bn_conf = 'borrow_bn_conf.php';

@@ -37,27 +37,38 @@ echo $Key43;
     $obj=new BookModel();
     //入力された情報の確認
     $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
+        $i = 0;
+    while(!is_null($dspBorrowUList[$i][0])){
+        if($dspBorrowUList[$i][3] == null){
+            $null[] = $dspBorrowUList[$i][3];
+        }
+        
+        $i++;
+    }
+ 
+    $null = count($null);
+  
     
-    if(array_count_values(is_null($dspBorrowUList[$i][3])) >= 3){
+    if($null  >= 3){
         include("book_not.html");
     }else{
         if (!preg_match("/^[0-9]+$/", $Key40)){
-            $bnum_error = "書籍番号が正しくありません。";
+            $error = "書籍番号が正しくありません。";
             $result = 4;
         }
         if(is_null($Key43)){
-            $title_error = "書籍タイトルが正しくありません。";
+            $error = "書籍タイトルが正しくありません。";
             $result = 4;
         }
-        if(isset($Key42)){
-            $day_error = "日付が正しくありません。";
+        if(!inpDate($Key42)){
+            $error = "日付が正しくありません。";
             $result = 4;
         }
         
     }
  
 if($result==4){
-    include 'book.html';
+    include 'book_fal.html';
 }elseif($result==0){
     $book='book_dec.php';
     include 'book_confirm.html';
