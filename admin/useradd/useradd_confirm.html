@@ -10,6 +10,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/useradd.css">
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/fade.js"></script>
     </head>
     <body>
       <?=include('../header/header.html');?>
@@ -32,9 +34,9 @@ and open the template in the editor.
         <div class="contents">
 
         <div class="form1">
-        
+
         <form name="input" action="<?=URL_ACTION;?>" method="post">
-         <?=$io->get_all_params();?>  
+         <?=$io->get_all_params();?>
 <!--<?=$decision;?>-->
 
           <div class="confirm">ユーザー名：<?=$io->get_param_html("Name");?></div>

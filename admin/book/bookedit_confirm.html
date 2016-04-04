@@ -13,7 +13,8 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="../css/badd.css">
         <meta http-equiv="Content-Script-Type" content="text/javascript" />
          <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="jquery.upload.js"></script>
+         <script src="jquery.upload.js"></script>
+         <script src="../../js/fade.js"></script>
 <script>
 $(function() {
     // jQuery Upload Thumbs
@@ -48,10 +49,10 @@ $(function() {
 
         <div class="form1">
 
-         
+
         <form name="input" action="<?=URL_ACTION;?>" method="post">
         <?=$io->get_all_params();?>
-        
+
 
             <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>

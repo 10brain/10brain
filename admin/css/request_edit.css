@@ -161,7 +161,7 @@ table input[type="submit"]{
   font-size: 1.0em;
   color: black;
   background-color: white;
-  border: 1px solid #808080;
+  border: 1px solid black;
   letter-spacing: 2px;
   outline: 0;
 }
