@@ -91,7 +91,7 @@ input:-webkit-autofill {
 }
 
 .form input[type="text"]{
-  height: 25px;
+  height: 20px;
   width: 375px;
   padding: 6px 8px;
   font-size: 16px;
@@ -104,7 +104,7 @@ input:-webkit-autofill {
 }
 
 .form textarea{
-  height: 120px;
+  height: 100px;
   width: 425px;
   padding: 6px 8px;
   font-size: 16px;

@@ -65,7 +65,7 @@ body,input,textarea{
 }
 
 .form{
-  width: 80%;
+  width: 95%;
   height: 60%;
   margin: 0 auto;
   margin-top: 50px;
@@ -94,6 +94,23 @@ body,input,textarea{
   outline: 0;
 }
 
-.imgInput img{
-  max-width: 60%;
+.imgInput input[type="file"]{
+  max-height: 100px;
+  max-width: 200px;
+}
+
+.form img{
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.form ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.form li{
+  display: inline-block;
+  list-style: none;
 }

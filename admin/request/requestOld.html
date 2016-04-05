@@ -10,6 +10,8 @@ and open the template in the editor.
       <title>過去のリクエスト一覧</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../css/request_edit.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
     </head>
     <body>
       <?=include('../header/header.html');?>
@@ -81,7 +83,7 @@ and open the template in the editor.
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
             <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
             <div class="submit">
-              <input type="button" onClick='history.back();' value="戻る">
+              <input type="submit" value="戻る">
             </div>
           </form>
 

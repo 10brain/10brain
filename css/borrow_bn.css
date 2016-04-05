@@ -8,7 +8,7 @@ body,input{
   position: absolute;
   top: 80px;
   width: 100%;
-  height: 87%;
+  height: 100%;
   min-width: 70%;
   min-height: 89%;
   margin: 0 auto;
@@ -17,11 +17,11 @@ body,input{
 }
 
 .container {
-	height: 100%;
+	height: 85%;
 }
 
 .bb-custom-wrapper {
-	width: 90%;
+	width: 80%;
 	height: 95%;
 	position: relative;
 	background-color: white;
@@ -111,7 +111,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
 
 .page{
   border: 1px solid black;
-  width: 90%;
+  width: 85%;
   height: 93%;
   float: left;
   margin-top: 5px;
@@ -121,7 +121,7 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 90%;}
   line-height: 30px;
   letter-spacing: 1px;
   text-align: center;
-  margin-right: 40px;
+
 }
 
 .page input[type="text"]{

@@ -86,7 +86,7 @@ body,h1,input,span,textarea,p{
 }
 
 .form input[type="text"]{
-  height: 30px;
+  height: 20px;
   width: 375px;
   padding: 6px 8px;
   font-size: 16px;
@@ -99,7 +99,7 @@ body,h1,input,span,textarea,p{
 }
 
 .form textarea{
-  height: 120px;
+  height: 100px;
   width: 425px;
   padding: 6px 8px;
   font-size: 16px;
@@ -174,4 +174,13 @@ body,h1,input,span,textarea,p{
 
 input:-webkit-autofill {
 	box-shadow: 0 0 0 1000px white inset;
+}
+
+.caution{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
 }

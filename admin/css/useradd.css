@@ -248,3 +248,12 @@ input[type=checkbox] + label {
   margin-left: 10px;
   letter-spacing: 2px;
 }
+
+.caution{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
+}

@@ -10,6 +10,8 @@ and open the template in the editor.
       <title>パスワード変更</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../css/user.css">
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
     </head>
     <body>
 <?
@@ -18,7 +20,7 @@ $pass='user_pass_edit.php';
       <?=include('../header/header.html');?>
 
       <div id="content">
-      
+
         <div class="title">
           <ul>
             <li class="image">
@@ -37,6 +39,9 @@ $pass='user_pass_edit.php';
 
         <div class="password">
             <form action="<?=$pass;?>" method="post">
+
+            <span class="caution">パスワードに設定できる文字は半角英数字と「:」「-」「@」「_」「.」の記号のみです。</span><br><br>
+
             <span>現在のパスワード</span><div class="error"><?=$nowPass_error;?></div><br>
             <input type="password" name="pass" maxlength="80"><br>
 

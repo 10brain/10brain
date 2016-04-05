@@ -105,6 +105,7 @@ class BookModel{
                             }
 		}
 	}
+
         $strSQL = $strSQL.$strSQL2;
         //SQL実行
         try {

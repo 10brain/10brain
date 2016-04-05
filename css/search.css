@@ -8,6 +8,7 @@ body,input{
   position: absolute;
   top: 80px;
   width: 100%;
+  /*height: 100%;*/
   min-width: 70%;
   min-height: 84%;
   margin: 0 auto;
@@ -106,13 +107,22 @@ input:-webkit-autofill {
 	box-shadow: 0 0 0 1000px #FBF4E6 inset;
 }
 
+#content p{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
+}
+
 
 /*image*/
 #slider{
   margin: 0 auto;
   margin-top: 5px;
   width: 95%;
-  height: 400px;
+  height: 405px;
   background-color: #FBF4E6;
   position: relative;;
   top: 0px;
