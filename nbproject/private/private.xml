@@ -12,16 +12,24 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_edit_pur.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_pur_conf.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/requestOld.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_pur.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/cover_add_1.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/top/top.php</file>
             <file>file:/Applications/MAMP/htdocs/10brain/search/search.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_pur_suc.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_pur_fal.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/search/search.html</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/requestOld.php</file>
-            <file>file:/Applications/MAMP/htdocs/10brain/admin/request/request_pur_input.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/bookedit_suc.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/other_func.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/search.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/borrow/borrow.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/class.Validation.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/book/book_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/book_func.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/cover.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/borrow/borrow_bn_conf.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/cover_add.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/header/header.html</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/user_func.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/book/bookedit_1.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/lib/check.php</file>
+            <file>file:/Applications/MAMP/htdocs/10brain/admin/borrow/borrow.html</file>
         </group>
     </open-files>
 </project-private>

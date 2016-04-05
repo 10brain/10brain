@@ -73,7 +73,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+                $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN WHERE ";
         }
         //echo $Key21;
     //echo $Key21;
@@ -81,6 +81,7 @@ class BookModel{
 
 
         if(strlen($Key21)>0){
+            $strSQL .= " WHERE ";
 		//受け取ったキーワードの全角スペースを半角スペースに変換する
 		$keyword = str_replace("　", " ", $Key21);
 
@@ -88,22 +89,23 @@ class BookModel{
 		$array = explode(" ",$keyword);
                 print_r($array);
 		//分割された個々のキーワードをSQLの条件where句に反映する
-		$strSQL = $strSQL." WHERE ";
+		$count = count($array);
 
-		for($i = 0; $i <count($array);$i++){
-			$strSQL .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+		for($i = 0; $i <$count;$i++){
+			$strSQL2 = "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
 
-			if ($i <count($array) -1){
+			
                             if($Key22 == 1){
                                 $con = " AND ";
                             }else{
                                 $con = " OR ";
                             }
-				$strSQL .= $con;
-			}
+                            if($i<$count){
+				$strSQL2 .= $con;
+                            }
 		}
 	}
-        echo $strSQL;
+        $strSQL = $strSQL.$strSQL2;
         //SQL実行
         try {
            //クラス呼び出し
@@ -111,15 +113,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
             $stmh->bindParam(':Key22', $Key22, PDO::PARAM_INT);
-            //echo $strSQL;
+            echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           //echo 'DB接続ok';
-           //echo $result;
+           echo 'DB接続ok';
+           echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -139,7 +141,7 @@ class BookModel{
                    $dspBookList[$i][6] = $array['coverName'];
                 $i=$i+1;
                 }
-                //print_r($dspBookList);
+                print_r($dspBookList);
            }
 
         } catch (Exception $Exception) {}

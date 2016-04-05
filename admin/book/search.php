@@ -43,7 +43,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("login.html");
+include("/10brain/login/login.html");
 }
 
 }
