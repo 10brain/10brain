@@ -73,15 +73,20 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-                $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN WHERE ";
+                $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
-        //echo $Key21;
-    //echo $Key21;
-    //echo $Key22;
+
 
 
         if(strlen($Key21)>0){
-            $strSQL .= " WHERE ";
+            $strSQL2= " WHERE ";
+            //andor判定
+            if($Key22 == 1){
+                $con = " AND ";
+            }else{
+                $con = " OR ";
+            }
+            echo $Key22;
 		//受け取ったキーワードの全角スペースを半角スペースに変換する
 		$keyword = str_replace("　", " ", $Key21);
 
@@ -91,22 +96,27 @@ class BookModel{
 		//分割された個々のキーワードをSQLの条件where句に反映する
 		$count = count($array);
 
-		for($i = 0; $i <$count;$i++){
-			$strSQL2 = "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
 
+		for($i = 0; $i <$count;$i++){
+
+                        if($Key22 ==1){
+                            if($i!=0){
+				$strSQL3 .= $con;
+                            }
+			 $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+
+                        }else{
+                            if($i!=0){
+				$strSQL3 .= $con;
+                            }
+
+                          $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+                        }
 			
-                            if($Key22 == 1){
-                                $con = " AND ";
-                            }else{
-                                $con = " OR ";
-                            }
-                            if($i<$count){
-				$strSQL2 .= $con;
-                            }
 		}
 	}
 
-        $strSQL = $strSQL.$strSQL2;
+        $strSQL = $strSQL.$strSQL2.$strSQL3;
         //SQL実行
         try {
            //クラス呼び出し
@@ -142,7 +152,7 @@ class BookModel{
                    $dspBookList[$i][6] = $array['coverName'];
                 $i=$i+1;
                 }
-                print_r($dspBookList);
+                //print_r($dspBookList);
            }
 
         } catch (Exception $Exception) {}

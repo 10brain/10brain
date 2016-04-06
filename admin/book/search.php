@@ -49,3 +49,6 @@ include("/10brain/login/login.html");
 }
 
 ?>
+
+INSERT INTO 'Book'(`ISBN`,`BookNum`,`title`,`amazon`,`remarks`,`pub`,`writer`,`intro`,`year`,`genre`,`date`, `stock`) VALUES
+()
