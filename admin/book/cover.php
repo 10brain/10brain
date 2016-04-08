@@ -21,7 +21,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key3 = $_POST["KEYWORD3"];  //名前
 }
 $cover_add = 'cover_add.php';
-$isbn = $_POST['KEYWORD24'];//本来はここにISBN値をもってくる
+$isbn = $_POST['KEYWORD24'];//ISBN
 ?>
 <html>
 <head>

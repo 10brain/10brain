@@ -1,66 +1,70 @@
 <?php
 if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
     if(!preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $_POST["KEYWORD1"])){
-    $result = 1;
+        $result = 1;
     }elseif(!preg_match('/^[a-zA-Z0-9--@\[-\`\{-\~]+$/',$_POST["KEYWORD2"])){
         $result = 1;
     }else{
-    $ActType = $_POST['ActionType'];
-    $Key0 = $_POST['KEYWORD0'];
-    $Key1 = $_POST['KEYWORD1'];
-    $Key2 = $_POST['KEYWORD2'];
-    $Key3 = $_POST['KEYWORD3'];
-    $Key20 = $_POST['KEYWORD20'];
-    $Key21 = $_POST['KEYWORD21'];
-    $Key22 = $_POST['KEYWORD22'];
-    $Key24 = $_POST['KEYWORD24'];
+        $ActType = $_POST['ActionType'];
+        $Key0 = $_POST['KEYWORD0'];
+        $Key1 = $_POST['KEYWORD1'];
+        $Key2 = $_POST['KEYWORD2'];
+        $Key3 = $_POST['KEYWORD3'];
+        $Key20 = $_POST['KEYWORD20'];
+        $Key21 = $_POST['KEYWORD21'];
+        $Key22 = $_POST['KEYWORD22'];
+        $Key24 = $_POST['KEYWORD24'];
     }
-    try {
-        // $_FILES['upfile']['error'] の値を確認
-        switch ($_FILES['upfile']['error']) {
-            case UPLOAD_ERR_OK: // OK
-                break;
-            case UPLOAD_ERR_NO_FILE:   // ファイル未選択
-                $result = 2;
-                $msg ='ファイルが選択されていません';
-            case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
-            case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
-                $result = 2;
-                $msg ='ファイルサイズが大きすぎます';
-            default:
-                throw new RuntimeException('その他のエラーが発生しました');
-        }
-
-        // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので、MIMEタイプを自前でチェックする
-        $type = @exif_imagetype($_FILES['upfile']['tmp_name']);
-        /*if($type = )*/
+    if(!$_FILES['upfile']['name']){
+        $uploadfile = 'noimage.png';
+        $type = 'image/ping';
         
-        if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
-            $result = 2;
-            $msg ='画像形式が未対応です';
-        }else{
-        // ファイルデータからSHA-1ハッシュを取ってファイル名を決定し、ファイルを保存する
-            $tmp_file = @$_FILES['upfile']['tmp_name'];
-            $ext = pathinfo($_FILES['upfile']['name'], PATHINFO_EXTENSION);
+    }else{
+        
+        try {
+            // $_FILES['upfile']['error'] の値を確認
+            switch ($_FILES['upfile']['error']) {
+                case UPLOAD_ERR_OK: // OK
+                    break;
+
+                case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
+
+                    $result = 2;
+                    $msg ='ファイルサイズが大きすぎます';
+                default:
+                    throw new RuntimeException('その他のエラーが発生しました');
+            }
+
+            // $_FILES['upfile']['mime']の値はブラウザ側で偽装可能なので、MIMEタイプを自前でチェックする
+            $type = @exif_imagetype($_FILES['upfile']['tmp_name']);
+            /*if($type = )*/
+
+            if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
+                $result = 2;
+                $msg ='画像形式が未対応です';
+            }else{
+            // ファイルデータからSHA-1ハッシュを取ってファイル名を決定し、ファイルを保存する
+                $tmp_file = @$_FILES['upfile']['tmp_name'];
+                $ext = pathinfo($_FILES['upfile']['name'], PATHINFO_EXTENSION);
+            }
+                //list($file_name,$file_type) = explode(".",$_FILES['upfile']['name']);
+                
+                $uploadfile = $Key20.".".$ext;
+                $dir = '../book_add/tmp_cover/';
+            if (move_uploaded_file($_FILES["upfile"]["tmp_name"], $dir.$uploadfile)) {
+                chmod($dir.$uploadfile, 0644);
+                $result = 0;
+
+            }else{    
+                $result = 2;
+                $msg ='ファイル保存時にエラーが発生しました';
+            }
+
+
+        } catch (RuntimeException $e) {
+           $result = 2;
         }
-            //list($file_name,$file_type) = explode(".",$_FILES['upfile']['name']);
-            $dateformat=date("Ymd");
-            $uploadfile = $dateformat.$Key20.".".$ext;
-            $dir = '../book_add/tmp_cover/';
-        if (move_uploaded_file($_FILES["upfile"]["tmp_name"], $dir.$uploadfile)) {
-            chmod($dir.$uploadfile, 0644);
-            $result = 0;
-
-        }else{    
-            $result = 2;
-            $msg ='ファイル保存時にエラーが発生しました';
-        }
-
-
-    } catch (RuntimeException $e) {
-       $result = 2;
     }
-
 }
 //echo $Key0;
 if(!isset($Key22)){
@@ -83,12 +87,12 @@ try {
         //echo $tmp_dir;
         $tmp_dir = file_get_contents($tmp_dir);
         //echo $tmp_dir;
-        $_FILES['upfile']['type'];
+        $type = $_FILES['upfile']['type'];
         // INSERT処理
         $stmt = $pdo->prepare('INSERT INTO cover(ISBN,coverName,coverMime) VALUES(:isbn, :key1, :key2)');
         $stmt->bindParam(':isbn', $Key20, PDO::PARAM_STR);
         $stmt->bindParam(':key1', $uploadfile, PDO::PARAM_STR);
-        $stmt->bindParam(':key2', $_FILES['upfile']['type'], PDO::PARAM_STR);
+        $stmt->bindParam(':key2', $type, PDO::PARAM_STR);
 
 
         $stmt->execute();//実行
@@ -152,13 +156,4 @@ try {
 }
    
 ?>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>表紙登録</title>
-</head>
-<body>
-<p>
-</p><?=$test;?>
-</body>
-</html>
+

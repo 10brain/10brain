@@ -33,7 +33,7 @@ define("VALIDATION_DW_ULETTER",  "[Ａ-Ｚ]");           // 全角英字(大)
 define("VALIDATION_DW_LLETTER",  "[ａ-ｚ]");           // 全角英字(小)
 
 define("VALIDATION_DW_KANJI",    "/^(?:[\x{3041}-\x{3096}\x{30A1}-\x{30FA}\x{31F0}-\x{31FF}\x{FF66}-\x{FF6F}\x{FF71}-\x{FF9D}][\x{3099}\x{309A}]?|\x{30FC}|[\p{Han}][\x{E0100}-\x{E01EF}\x{FE00}-\x{FE02}]?)+$/u");
-define("VALIDATION_ISBN",    "/^\d{3}\-\d{10}$/");
+define("VALIDATION_ISBN",    "/^\d{3}\-\d{10}/");
 define("VALIDATION_ASIN",    "/^[A-Z0-9]+$/"); //半角大文字英数字
 define("VALIDATION_PASS",    "/^[a-zA-Z0-9-/:-@_.\[-\`\{-\~]+$/"); //半角大文字英数字
 
