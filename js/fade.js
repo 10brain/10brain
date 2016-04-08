@@ -1,9 +1,19 @@
 $('head').append(
-'<style type="text/css">body {display:none;}'
+'<style type="text/css">#content {display:none;}'
 );
 $(window).load(function() {
-$('body').delay("700").fadeIn("3000");
+$('#content').delay("700").fadeIn("3000");
 $(window).on("beforeunload",function(e){
-    $('body').fadeOut("3000");
+    $('#content').fadeOut("3000");
+});
+});
+
+$('head').append(
+'<style type="text/css">#login {display:none;}'
+);
+$(window).load(function() {
+$('#login').delay("700").fadeIn("3000");
+$(window).on("beforeunload",function(e){
+    $('#login').fadeOut("3000");
 });
 });
