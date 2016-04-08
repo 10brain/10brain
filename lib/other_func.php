@@ -149,7 +149,7 @@ class otherModel{
             return $result;
         }
         $strSQL = $strSQL." Where app='0'";
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
     
 
         //SQL実行
@@ -235,11 +235,11 @@ class otherModel{
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
-           echo $strSQL;
+           //echo 'DB接続ok';
+           //echo $result;
+           //echo $strSQL;
            $count=$stmh->rowCount();//実行結果の行数をカウント
-           echo $count;
+           //echo $count;
            if($count == 0){
                //データなし
                $result = 0;
@@ -431,7 +431,7 @@ class otherModel{
             $strSQL = "INSERT INTO Request(Reqtitle, Reqamaz, ReqRem, ReqDate, Num) VALUES";
             $strSQL = $strSQL. " (:Key61, :Key62, :Key63, '" .Date('Ymd') ."', :Key0)";
         }
-        echo 'アクションタイプ確認ok';
+        //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {

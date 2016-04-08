@@ -317,7 +317,7 @@ class UserModel{
 
         } catch (Exception $Exception) {
             $result=4;
-            echo $Exception;
+            //echo $Exception;
 
         }
 

@@ -124,15 +124,15 @@ class BookModel{
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
             $stmh->bindParam(':Key22', $Key22, PDO::PARAM_INT);
-            echo $strSQL;
+            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           echo 'DB接続ok';
-           echo $result;
+           //echo 'DB接続ok';
+           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
