@@ -10,7 +10,7 @@ and open the template in the editor.
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>ホーム</title>
+        <title>ホーム | 10brain</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/top.css">
@@ -85,7 +85,11 @@ and open the template in the editor.
 ?>
             <div class="section">
 <?
+if(!is_null($dspBookNewList[$i][2])){
  $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+ }else{
+ $book = '/10brain/admin/book_add/tmp_cover/noimage.php';
+ }
 ?>
               <form method="post" action="../book/book.php">
                   <input type="hidden" name="ActionType" value="TgRSPInf">

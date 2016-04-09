@@ -37,6 +37,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
  
     $null = count($null);
   
+    
+    
+  
 
 //画面表示
 if ($result == 0){

@@ -26,7 +26,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 
 
-   if (!preg_match("/^('/^\d{3}\-\d{10}$/'|'/^[A-Z0-9]+$/')+$/", $Key40)){
+   if (!preg_match("/[0-9]$/", $Key40)){
         $bnum_error = "書籍番号が正しくありません。";
         $result = 4;
     }
@@ -34,7 +34,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         $title_error = "書籍タイトルが正しくありません。";
         $result = 4;
     }
-    if(is_null($Key42)){
+    if(!inpDate($Key42)){
         $day_error = "日付が正しくありません。";
         $result = 4;
     }

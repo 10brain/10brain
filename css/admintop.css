@@ -2,6 +2,7 @@ body,h1,input,span{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 14px;
+  background-color: #FBF4E6;
 }
 
 .header img{

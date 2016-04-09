@@ -73,14 +73,20 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+                $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
-        //echo $Key21;
-    //echo $Key21;
-    //echo $Key22;
+
 
 
         if(strlen($Key21)>0){
+            $strSQL2= " WHERE ";
+            //andor判定
+            if($Key22 == 1){
+                $con = " AND ";
+            }else{
+                $con = " OR ";
+            }
+            echo $Key22;
 		//受け取ったキーワードの全角スペースを半角スペースに変換する
 		$keyword = str_replace("　", " ", $Key21);
 
@@ -88,22 +94,29 @@ class BookModel{
 		$array = explode(" ",$keyword);
                 print_r($array);
 		//分割された個々のキーワードをSQLの条件where句に反映する
-		$strSQL = $strSQL." WHERE ";
+		$count = count($array);
 
-		for($i = 0; $i <count($array);$i++){
-			$strSQL .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
 
-			if ($i <count($array) -1){
-                            if($Key22 == 1){
-                                $con = " AND ";
-                            }else{
-                                $con = " OR ";
+		for($i = 0; $i <$count;$i++){
+
+                        if($Key22 ==1){
+                            if($i!=0){
+				$strSQL3 .= $con;
                             }
-				$strSQL .= $con;
-			}
+			 $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+
+                        }else{
+                            if($i!=0){
+				$strSQL3 .= $con;
+                            }
+
+                          $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+                        }
+			
 		}
 	}
-        //echo $strSQL;
+
+        $strSQL = $strSQL.$strSQL2.$strSQL3;
         //SQL実行
         try {
            //クラス呼び出し
@@ -911,7 +924,7 @@ class BookModel{
             return $result;
 
         }
-        //echo $Key24;
+        echo $Key24;
 
             $strSQL = "UPDATE Book SET ISBN=:Key24";
 
