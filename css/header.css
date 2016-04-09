@@ -125,12 +125,16 @@ body{
   padding: 0;
   cursor: pointer;
   padding: 3px 0;
-  /*background: linear-gradient(transparent 60%, #abe0f6 70%);*/
+  background: linear-gradient(transparent 60%, #abe0f6 70%);
 }
 
-input.mark {
-	background: linear-gradient(transparent 60%, #abe0f6 70%);
+.center input[type="submit"]:hover {
+	background: linear-gradient(transparent 60%, #6595a9 70%);
 }
+
+/*input.mark {
+	background: linear-gradient(transparent 60%, #abe0f6 70%);
+}*/
 
 .headertext{
   position: relative;
