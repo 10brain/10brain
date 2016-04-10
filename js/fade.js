@@ -17,3 +17,13 @@ $(window).on("beforeunload",function(e){
     $('#login').fadeOut("3000");
 });
 });
+
+$('head').append(
+'<style type="text/css">#colorbox #cboxWrapper {display:none;}'
+);
+$(window).load(function() {
+$('#colorbox #cboxWrapper').delay("100").fadeIn("1000");
+$(window).on("beforeunload",function(e){
+    $('#colorbox #cboxWrapper').fadeOut("3000");
+});
+});
