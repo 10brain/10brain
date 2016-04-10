@@ -130,8 +130,8 @@ button {
 }
 
 .section input[type="image"]{
-  max-width: 100px;
-  max-height: 141px;
+  width: 100px;
+  height: 141px;
   outline: 0;
 
 }
