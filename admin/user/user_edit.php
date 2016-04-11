@@ -203,7 +203,6 @@ define("HTML_CODE", "UTF-8");
                         if($pass->is_regularly(1, 1)){
                             $Key15 = '9999';
                             $pw = '初期化する';
-                            echo $Key15;
                         }else{
                             $Key15 = $Key16;
                             $pw = '初期化しない';
