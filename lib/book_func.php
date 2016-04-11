@@ -112,7 +112,7 @@ class BookModel{
 
                           $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
                         }
-			
+
 		}
 	}
 
@@ -605,7 +605,7 @@ class BookModel{
         }else{
             $strSQL = "Select * From";
         }
-        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num";
+        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num ORDER BY BDate DESC";
         //echo 'アクションタイプ確認ok';
 
         //管理者ID確認
