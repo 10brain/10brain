@@ -878,9 +878,9 @@ class BookModel{
             $strSQL =  $strSQL. " stock+1";
         //書籍番号確認
         if(is_null($Key20) == True){
-            $strSQL = $strSQL. " And BookNum IS NULL";
+            $strSQL = $strSQL. " Where BookNum IS NULL";
         }else{
-            $strSQL = $strSQL. " And BookNum = :Key20 ";
+            $strSQL = $strSQL. " Where BookNum = :Key20 ";
         }
 
         //echo '在庫数処理開始';
