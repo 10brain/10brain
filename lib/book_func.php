@@ -605,7 +605,7 @@ class BookModel{
         }else{
             $strSQL = "Select * From";
         }
-        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num ORDER BY BDate DESC";
+        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num ORDER BY BNum DESC";
         //echo 'アクションタイプ確認ok';
 
         //管理者ID確認
@@ -680,7 +680,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " Where Num = :Key0 ";
         }
-        $strSQL = $strSQL. " Order By BDate DESC";
+        $strSQL = $strSQL. " Order By BNum DESC";
         //echo $Key1.'確認';
 
 
