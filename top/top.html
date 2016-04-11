@@ -53,7 +53,11 @@ and open the template in the editor.
 ?>
             <div class="section">
 <?
+if(!is_null($dspBookNewList[$i][2])){
  $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+ }else{
+ $book = '/10brain/admin/book_add/tmp_cover/noimage.png';
+ }
 ?>
               <form method="post" action="../book/book.php">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -88,7 +92,7 @@ and open the template in the editor.
 if(!is_null($dspBookNewList[$i][2])){
  $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
  }else{
- $book = '/10brain/admin/book_add/tmp_cover/noimage.php';
+ $book = '/10brain/admin/book_add/tmp_cover/noimage.png';
  }
 ?>
               <form method="post" action="../book/book.php">
@@ -121,7 +125,11 @@ if(!is_null($dspBookNewList[$i][2])){
 ?>
             <div class="section">
 <?
+if(!is_null($dspBookNewList[$i][2])){
  $book = '/10brain/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
+ }else{
+ $book = '/10brain/admin/book_add/tmp_cover/noimage.png';
+ }
 ?>
               <form method="post" action="../book/book.php">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -142,24 +150,6 @@ if(!is_null($dspBookNewList[$i][2])){
 ?>
           </div>
 
-<!--ダミー
-<div class="slide">
-  <div class="section">
-    <img src="../images/pic1.png">
-  </div>
-  <div class="section">
-    <img src="../images/pic2.png">
-  </div>
-  <div class="section">
-    <img src="../images/pic3.png">
-  </div>
-  <div class="section">
-    <img src="../images/pic4.png">
-  </div>
-  <div class="section">
-    <img src="../images/pic5.png">
-  </div>
-</div>-->
 
         </div>
         <button class="slider-prev"><img src="../images/prev.png" ></button>
