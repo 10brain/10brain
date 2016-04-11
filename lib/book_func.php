@@ -433,7 +433,7 @@ class BookModel{
      /**************貸出用書籍検索SQL*************************************************/
     function GETBorrowSearch($Key40, &$dspBorrowS){
 
-        $strSQL = "Select * From Book";
+        $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
 
         if(is_null($Key40)){
             $strSQL = $strSQL." Where BookNum Is NULL";
@@ -477,7 +477,7 @@ class BookModel{
                    $dspBorrowS[0] = $array['BookNum'];
                    $dspBorrowS[1] = $array['title'];
                    $dspBorrowS[3] = $array['stock'];
-
+                   $dspBorrowS[6] = $array['coverName'];
                }
 
            }

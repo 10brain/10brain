@@ -22,15 +22,14 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //名前
+    $Key40 = $_POST['KEYWORD40'];//書籍番号
 
-
-        $Key40 = $_POST['KEYWORD40'];//書籍番号
 
     /*echo $Key0;
     echo $Key1;
     echo $Key2;
     echo $Key3;*/
-    
+
     $obj=new BookModel();
     $result = $obj->GETBorrowSearch($Key40, $dspBorrowS);
 
@@ -41,7 +40,14 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         $borrow_bN = $dspBorrowS[0];
         $borrow_ti = $dspBorrowS[1];
         $borrow_st = $dspBorrowS[3];
-        
+
+        $cover = $dspBorrowS[6];
+        if(!is_null($cover)){
+        $cover = '/10brain/admin/book_add/tmp_cover/'.$cover;
+        }else{
+         $cover = '/10brain/admin/book_add/tmp_cover/noimage.png';
+        }
+
         if($borrow_st == 1){
             $borrow_conf = 'borrow_conf.php';
             include("borrow_day_input.html");
