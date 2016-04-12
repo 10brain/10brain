@@ -95,6 +95,7 @@ body,h1,input{
 }
 
 .confirm input[type="submit"]{
+  position: relative;	
   height: 40px;
   width: 175px;
   padding: 6px 8px;
@@ -123,3 +124,43 @@ body,h1,input{
   width: 100%;
   text-align: center;
 }
+
+.balloon {
+  position: relative;
+  display: none;
+  width: 200px;
+  height: 30px;
+  border: 1px solid #333333;
+  background-color: #fff;
+  text-align: center;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #333333;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.confirm input[type="submit"]:hover + .balloon {
+  display: block;
+} 

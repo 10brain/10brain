@@ -2,8 +2,6 @@ body{
   margin:0;
   font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 12px;
-  background-color: #FBF4E6;
-  z-index: 0;
 }
 
 #menu{
@@ -138,6 +136,13 @@ body{
 	background: linear-gradient(transparent 60%, #abe0f6 70%);
 }*/
 
+p.blink {
+	display: block;	
+	width: 20px;
+	background: url("../img/blink_27.png") no-repeat;
+	background-size: 16px;
+}
+
 .headertext{
   position: relative;
   top: -5px;
@@ -202,3 +207,4 @@ body{
 .right li+li a{
   border-left: solid 1px #B4B2AF;
 }
+
