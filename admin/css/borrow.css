@@ -101,6 +101,18 @@ table input[type="submit"]{
   max-width: 200px;
 }
 
+.red{
+  color: red;
+}
+
+#content p{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
+}
 
 /*confirm*/
 
