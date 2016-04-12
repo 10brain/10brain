@@ -43,7 +43,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 //画面表示
 if ($result == 0){
-    if($null  >= 3){
+    if($null >= 3){
         include("borrow_not.html");
     }else{
     $borrow_bn_conf = 'borrow_bn_conf.php';
