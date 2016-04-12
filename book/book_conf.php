@@ -31,7 +31,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     echo $Key42;
 echo $Key43;
 
-}
+
 
     //DB問い合わせ
     $obj=new BookModel();
@@ -49,8 +49,8 @@ echo $Key43;
     $null = count($null);
   
     
-    if($null  >= 3){
-        include("book_not.html");
+    if($null >= 3){
+        $result = 3;
     }else{
         if (!preg_match("/^[0-9]+$/", $Key40)){
             $error = "書籍番号が正しくありません。";
@@ -69,6 +69,8 @@ echo $Key43;
  
 if($result==4){
     include 'book_fal.html';
+}elseif($result==3){
+    include 'book_not.html';
 }elseif($result==0){
     $book='book_dec.php';
     include 'book_confirm.html';
@@ -84,6 +86,6 @@ if($result==4){
     include("../login/login.html");
 }
 
-
+}
 
 ?>
