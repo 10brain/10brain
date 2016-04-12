@@ -433,7 +433,7 @@ class BookModel{
      /**************貸出用書籍検索SQL*************************************************/
     function GETBorrowSearch($Key40, &$dspBorrowS){
 
-        $strSQL = "Select * From Book";
+        $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
 
         if(is_null($Key40)){
             $strSQL = $strSQL." Where BookNum Is NULL";
@@ -477,7 +477,7 @@ class BookModel{
                    $dspBorrowS[0] = $array['BookNum'];
                    $dspBorrowS[1] = $array['title'];
                    $dspBorrowS[3] = $array['stock'];
-
+                   $dspBorrowS[6] = $array['coverName'];
                }
 
            }
@@ -605,7 +605,7 @@ class BookModel{
         }else{
             $strSQL = "Select * From";
         }
-        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num ORDER BY BDate DESC";
+        $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum INNER JOIN User ON Borrow.Num = User.Num ORDER BY BNum DESC";
         //echo 'アクションタイプ確認ok';
 
         //管理者ID確認
@@ -680,7 +680,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " Where Num = :Key0 ";
         }
-        $strSQL = $strSQL. " Order By BDate DESC";
+        $strSQL = $strSQL. " Order By BNum DESC";
         //echo $Key1.'確認';
 
 
@@ -878,9 +878,9 @@ class BookModel{
             $strSQL =  $strSQL. " stock+1";
         //書籍番号確認
         if(is_null($Key20) == True){
-            $strSQL = $strSQL. " And BookNum IS NULL";
+            $strSQL = $strSQL. " Where BookNum IS NULL";
         }else{
-            $strSQL = $strSQL. " And BookNum = :Key20 ";
+            $strSQL = $strSQL. " Where BookNum = :Key20 ";
         }
 
         //echo '在庫数処理開始';

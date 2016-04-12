@@ -56,7 +56,17 @@ and open the template in the editor.
             <tr>
                 <td><?=$dspBorrowUList[$i][6];?></td><!--書籍タイトル-->
                 <td><?=$dspBorrowUList[$i][1];?></td><!--貸出日-->
+                
+<?if(is_null($dspBorrowUList[$i][3])){
+  if($dspBorrowUList[$i][2] < date('Y-m-d', strtotime('-1 week'))){?>
+                <td><span class="red"><?=$dspBorrowUList[$i][2];?></span></td><!--返却日予定日-->
+  <?}else{?>
                 <td><?=$dspBorrowUList[$i][2];?></td><!--返却日予定日-->
+  <?}
+}else{?>
+                <td><?=$dspBorrowUList[$i][2];?></td><!--返却日予定日-->
+<?}?>
+
                 <?if(is_null($dspBorrowUList[$i][3])){?>
                 <td>
                     <form action="<?=$return;?>" method="post">

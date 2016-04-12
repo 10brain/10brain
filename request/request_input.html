@@ -37,7 +37,7 @@ and open the template in the editor.
                 <?=$io->get_all_params();?>
                 <form name="input" action="<?=URL_ACTION;?>" method="post" >
                   <input type="hidden" name="step_from" value="input">
-                  <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。</span><br><br>
+                  <span class="caution">管理者にリクエストしたい本の情報を入力してください。※は必須項目です。</span><br><br>
 
                   <span>本のタイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
                   <input name="title" id="title" size="10" maxlength="80" type="text" value="<?=$io->get_param_html('title');?>" /><br>

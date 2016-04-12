@@ -32,6 +32,7 @@ and open the template in the editor.
             </ul>
           </div>
 
+<p>返却予定日から１週間過ぎている書籍は赤文字で表示されます。<br>ユーザーに連絡してください。</p>
 
 <?if(is_null($dspBorrowList[0])){?>
     <p>該当する本がありません。</p>
@@ -55,13 +56,17 @@ and open the template in the editor.
                 <td><?=$dspBorrowList[$i][6];?></td>
                 <td><?=$dspBorrowList[$i][7];?></td><!--書籍タイトル-->
                 <td><?=$dspBorrowList[$i][1];?></td><!--貸出日-->
-                <?php
-                 if((date("Ymd",strtotime("-1 week"))==$dspBorrowList[$i][2]) and is_null($dspBorrowList[$i][3])){
-                ?>
-                <td style="color:red;"><?=$dspBorrowList[$i][2];?></td><!--返却日予定日-->
-                <?}else{?>
+
+<?if(is_null($dspBorrowList[$i][3])){
+  if($dspBorrowList[$i][2] < date('Y-m-d', strtotime('-1 week'))){?>
+                <td><span class="red"><?=$dspBorrowList[$i][2];?></span></td><!--返却日予定日-->
+  <?}else{?>
                 <td><?=$dspBorrowList[$i][2];?></td><!--返却日予定日-->
-                <?}?>
+  <?}
+}else{?>
+                <td><?=$dspBorrowList[$i][2];?></td><!--返却日予定日-->
+<?}?>
+
                 <?if(is_null($dspBorrowList[$i][3])){?>
                 <td>
                     未返却

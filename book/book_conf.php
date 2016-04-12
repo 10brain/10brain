@@ -26,10 +26,10 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     /*echo $Key0;
     echo $Key1;
     echo $Key2;
-    echo $Key3;*/
+    echo $Key3;
     echo $Key0;
     echo $Key42;
-echo $Key43;
+echo $Key43;*/
 
 
 
@@ -42,15 +42,16 @@ echo $Key43;
         if($dspBorrowUList[$i][3] == null){
             $null[] = $dspBorrowUList[$i][3];
         }
-        
+
         $i++;
     }
- 
+
     $null = count($null);
-  
-    
+
+
+
     if($null >= 3){
-        $result = 3;
+        $result=3;
     }else{
         if (!preg_match("/^[0-9]+$/", $Key40)){
             $error = "書籍番号が正しくありません。";
@@ -64,9 +65,9 @@ echo $Key43;
             $error = "日付が正しくありません。";
             $result = 4;
         }
-        
+
     }
- 
+
 if($result==4){
     include 'book_fal.html';
 }elseif($result==3){
