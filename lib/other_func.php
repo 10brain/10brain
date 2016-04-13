@@ -111,7 +111,7 @@ class otherModel{
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
                    $dspBookNewList[$i][2] = $array['coverName'];//ISBN
-
+                   $dspBookNewList[$i][3] = $array['stock'];
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -150,7 +150,7 @@ class otherModel{
         }
         $strSQL = $strSQL." Where app='0'";
         //echo 'アクションタイプ確認ok';
-    
+
 
         //SQL実行
         try {
@@ -201,7 +201,7 @@ class otherModel{
         return $result;
     }
 
-    
+
     /*********リクエスト未承認一覧SQL***************************************************/
     function GETRequestPur($ActType, $Key1, &$dspRequestPur){
         //初期値設定
@@ -229,7 +229,7 @@ class otherModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
 
-           
+
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
@@ -259,7 +259,7 @@ class otherModel{
                    $dspRequestPur[$i][8] = $array['Name'];//社員名
                   $i=$i+1;
                 }
-               
+
            }
 
         } catch (Exception $Exception) {
@@ -269,8 +269,8 @@ class otherModel{
         return $result;
     }
 
-    
-    
+
+
         /*********過去リクエスト一覧SQL***************************************************/
         function GETOldRequest($ActType, $Key1, &$dspOldRequest){
         //初期値設定
@@ -474,7 +474,7 @@ class otherModel{
         //SQL実行
         try {
             $count = count($pur);
-            
+
             for ($i=0; $i<=$count; $i++) {
                 $strSQL = "UPDATE Request SET pur=:pur WHERE ReqNum=:reqnum";
                 $class=new DBModel();
@@ -482,21 +482,21 @@ class otherModel{
                 $stmh->bindParam(':pur', $pur[$i], PDO::PARAM_INT);
                 $stmh->bindParam(':reqnum', $reqnum[$i], PDO::PARAM_STR);
                 $stmh->execute();
-               
+
             }
 
             //echo $strSQL;
-           
+
            //$stmh->commit();
         } catch (Exception $Exception) {
            // echo $Exception;
                 $result = 3;
         }
-       
+
         //return $dspUserInfo;
         return $result;
     }
-        
+
     /********リクエスト承認******************************************************/
     function GETReqApp($Key1, $app, $reqnum){
         //初期値設定
@@ -509,17 +509,17 @@ class otherModel{
         }
         //print_r($req['app']);
       //  print_r($req['num']);
-        
-                
+
+
 
         //echo 'アクションタイプ確認ok';
 
         //SQL実行
         try {
 
-           
+
             $count = count($app);
-            
+
             for ($i=0; $i<=$count; $i++) {
                 $strSQL = "UPDATE Request SET app=:app WHERE ReqNum=:reqnum";
                 $class=new DBModel();
@@ -527,23 +527,23 @@ class otherModel{
                 $stmh->bindParam(':app', $app[$i], PDO::PARAM_INT);
                 $stmh->bindParam(':reqnum', $reqnum[$i], PDO::PARAM_STR);
                 $stmh->execute();
-               
+
             }
 
             echo $strSQL;
 
-           
+
            //$stmh->commit();
         } catch (Exception $Exception) {
             echo $Exception;
                 $result = 3;
         }
-        
-       
+
+
         //return $dspUserInfo;
         return $result;
     }
-        
+
 
 
 }

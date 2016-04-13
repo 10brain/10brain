@@ -69,6 +69,13 @@ if(!is_null($dspBookNewList[$i][2])){
                   <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
                   <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
                   <input type="image" src="<?=$book;?>" />
+                  <div class="balloon">
+                    <?if($dspBookNewList[$i][3]==0){?>
+                        <span>貸出中</span>
+                    <?}else{?>
+                        <span>在庫有</span>
+                    <?}?>
+                  </div>
               </form>
             </div>
 <?
@@ -105,6 +112,13 @@ if(!is_null($dspBookNewList[$i][2])){
                   <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
                   <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
                   <input type="image" src="<?=$book;?>" />
+                  <div class="balloon">
+                    <?if($dspBookNewList[$i][3]==0){?>
+                        <span>貸出中</span>
+                    <?}else{?>
+                        <span>在庫有</span>
+                    <?}?>
+                  </div>
               </form>
             </div>
 <?
@@ -141,6 +155,13 @@ if(!is_null($dspBookNewList[$i][2])){
                   <input type="hidden" name="KEYWORD21" value="<?=$dspBookNewList[$i][1];?>">
                   <input type="hidden" name="COVER" value="<?=$dspBookNewList[$i][2];?>">
                   <input type="image" src="<?=$book;?>" />
+                  <div class="balloon">
+                    <?if($dspBookNewList[$i][3]==0){?>
+                        <span>貸出中</span>
+                    <?}else{?>
+                        <span>在庫有</span>
+                    <?}?>
+                  </div>
               </form>
             </div>
 <?
