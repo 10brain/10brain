@@ -43,9 +43,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
         $cover = $dspBorrowS[6];
         if(!is_null($cover)){
-        $cover = '/10brain/admin/book_add/tmp_cover/'.$cover;
+        $cover = '/admin/book_add/tmp_cover/'.$cover;
         }else{
-         $cover = '/10brain/admin/book_add/tmp_cover/noimage.png';
+         $cover = '/admin/book_add/tmp_cover/noimage.png';
         }
 
         if($borrow_st == 1){

@@ -26,7 +26,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     //echo $Key1;
     //echo $Key2;
     //echo $Key20;
-    $cover = '/10brain/admin/book_add/tmp_cover/'.$cover;
+    $cover = '/admin/book_add/tmp_cover/'.$cover;
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);

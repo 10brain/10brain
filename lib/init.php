@@ -9,7 +9,7 @@
 //******************************************************************************
 define('DSN', 'mysql:host=localhost; dbname=10brain; charset=utf8');
 define('DBuser', 'root');//DBuser設定
-define('DBpass', 'root');//DBパスワード
+define('DBpass', '10btnDB');//DBパスワード
 
 /**DB接続クラス**/
 class DBModel{

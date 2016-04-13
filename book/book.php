@@ -27,9 +27,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     echo $Key2;
     echo $Key20;
     if(!is_null($cover)){
-    $cover = '/10brain/admin/book_add/tmp_cover/'.$cover;
+    $cover = '/admin/book_add/tmp_cover/'.$cover;
     }else{
-     $cover = '/10brain/admin/book_add/tmp_cover/noimage.png';   
+     $cover = '/admin/book_add/tmp_cover/noimage.png';   
     }
     //DB問い合わせ
     $obj=new BookModel();
