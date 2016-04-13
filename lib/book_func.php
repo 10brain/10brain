@@ -557,7 +557,7 @@ class BookModel{
         //貸出登録
         //在庫処理sql
 
-            $strSQL = "Update Book SET stock=-1";
+            $strSQL = "Update Book SET stock=stock-1";
             //$strSQL =  $strSQL. " CASE WHEN stock IS NULL OR stock <= 0 THEN 0 ELSE stock - 1 END";
             if(is_null($Key40)){
                 $strSQL =  $strSQL. " Where BookNum IS NULL";

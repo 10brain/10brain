@@ -151,8 +151,6 @@ button {
   top: -170px;
   width: 45px;
   height: 20px;
-  border: 1px solid #ffffff;
-  background-color: #ffffff;
   margin: 0 auto;
   transition: .3s;
   opacity: 0;
@@ -168,7 +166,6 @@ button {
   margin-left: -8px;
   width: 0;
   height: 0;
-  border-top: 8px solid #ffffff;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
 }
@@ -180,7 +177,6 @@ button {
   margin-left: -8px;
   width: 0;
   height: 0;
-  border-top: 8px solid #ffffff;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   content: "";
@@ -192,7 +188,7 @@ span{
   top: 0px;
   left: 8px;
   font-size: 8px;
-  color: #808080;
+  color: #312e30;
 }
 
 .section input[type="image"]:hover + .balloon {
@@ -200,4 +196,30 @@ span{
   top: -175px;
   -webkit-transform: rotateY(0deg); /*回転*/
   transform: rotateY(0deg); /*回転*/
+}
+
+.red{
+  border: 1px solid #F1D7D6;
+  background-color: #F1D7D6;
+}
+
+.red:before{
+  border-top: 8px solid #F1D7D6;
+}
+
+.red:after{
+  border-top: 8px solid #F1D7D6;
+}
+
+.blue{
+  border: 1px solid #d3e8f1;
+  background-color: #d3e8f1;
+}
+
+.blue:before{
+  border-top: 8px solid #d3e8f1;
+}
+
+.blue:after{
+  border-top: 8px solid #d3e8f1;
 }
