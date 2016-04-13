@@ -17,14 +17,13 @@ and open the template in the editor.
         <?=include('../header/header.html');?>
 
         <div id="content">
-          <br>
           <div class="title">
             <ul>
               <li class="image">
                 <img src="../img/4.png">
               </li>
               <li>
-                <h1>返却</h1>
+                <h1>本を返す</h1>
               </li>
               <li class="image">
                 <img src="../img/4.png">
@@ -49,7 +48,11 @@ and open the template in the editor.
                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                 <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowU[4];?>">
                 <input type="hidden" name="KEYWORD20" value="<?=$dspBorrowU[0];?>">
+
                 <input type="submit" value="返却">
+                <div class="balloon">
+                <span>ここを押すと返すことになります</span>
+                </div>
               </form>
 
               <form>

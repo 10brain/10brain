@@ -142,6 +142,7 @@ table input[type="submit"]{
 .confirm form{
   text-align: center;
   width: 100%;
+  height: 40px;
   margin: 15px auto;
 }
 
@@ -173,4 +174,54 @@ table input[type="submit"]{
   margin-top: 30px;
   width: 100%;
   text-align: center;
+}
+
+.balloon {
+  position: relative;
+  top: -90px;
+  width: 175px;
+  height: 30px;
+  border: 1px solid #e6f2f7;
+  background-color: #e6f2f7;
+  margin: 0 auto;
+  transition: .3s;
+  opacity: 0;
+}
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #e6f2f7;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.balloon:after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #e6f2f7;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  content: "";
+}
+
+span{
+  text-align: center;
+  position: relative;
+  top: 5px;
+  font-size: 8px;
+  color: #808080;
+}
+
+.confirm input[type="submit"]:hover + .balloon {
+  opacity: 1;
+  top: -83px;
 }
