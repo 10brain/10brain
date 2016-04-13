@@ -98,6 +98,7 @@ body{
   overflow: hidden;
   padding: 0;
   position: absolute;
+  top: -13px;
 }
 
 .center li{
@@ -108,6 +109,10 @@ body{
 
 .center li :hover{
   transform: rotate(5deg);
+}
+
+.center form{
+  height: 24px;
 }
 
 .center input[type="image"]{
@@ -127,11 +132,39 @@ body{
   padding: 0;
   cursor: pointer;
   padding: 3px 0;
-  background: linear-gradient(transparent 60%, #abe0f6 70%);
+  /*background: linear-gradient(transparent 60%, #abe0f6 70%);*/
 }
 
 .center input[type="submit"]:hover {
 	background: linear-gradient(transparent 60%, #6595a9 70%);
+}
+
+.light{
+  position: relative;
+  top: -35px;
+  left: -8px;
+}
+
+.b{
+  width: 30px;
+  position: relative;
+  top: 18px;
+}
+
+.light p{
+  position: relative;
+  opacity: 0;
+  transition: .1s;
+  width: 8px;
+  height: 8px;
+}
+
+.center input[type="image"]:hover + .light p{
+  opacity: 1;
+}
+
+.center img{
+  width: 8px;
 }
 
 /*input.mark {

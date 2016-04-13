@@ -61,14 +61,17 @@ and open the template in the editor.
                   <input type="submit" value="HOME"  />
                 </form>
               </li>
-              <li>
-                <form action="<?=$borrow;?>" method="post">
+              <li class="b">
+                <form action="<?=$borrow;?>" method="post" >
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                   <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                  <input type="image" src="../img/b.png" alt="貸出" class="b"/>
+                  <input type="image" src="../img/b.png" alt="貸出"/>
+                  <li class="light">
+                    <p><img src="../img/light.png"></p>
+                  </li>
                 </form>
               </li>
               <li class="headertext">
@@ -81,7 +84,7 @@ and open the template in the editor.
                   <input class="mark" type="submit" value="借りる"  />
                 </form>
               </li>
-              <li>
+              <li class="b">
                 <form action="<?=$return;?>" method="post">
                   <input type="hidden" name="ActionType" value="TgRSPInf">
                   <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
@@ -89,6 +92,9 @@ and open the template in the editor.
                   <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                   <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                   <input type="image" src="../img/c.png" alt="返却" />
+                  <li class="light">
+                    <p><img src="../img/light.png"></p>
+                  </li>
                 </form>
               </li>
               <li class="headertext">
