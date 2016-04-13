@@ -135,9 +135,9 @@ body{
   /*background: linear-gradient(transparent 60%, #abe0f6 70%);*/
 }
 
-.center input[type="submit"]:hover {
+/*.center input[type="submit"]:hover {
 	background: linear-gradient(transparent 60%, #6595a9 70%);
-}
+}*/
 
 .light{
   position: relative;
