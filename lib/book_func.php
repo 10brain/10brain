@@ -86,7 +86,7 @@ class BookModel{
             }else{
                 $con = " OR ";
             }
-            echo $Key22;
+            /*echo $Key22;*/
 		//受け取ったキーワードの全角スペースを半角スペースに変換する
 		$keyword = str_replace("　", " ", $Key21);
 
@@ -672,7 +672,6 @@ class BookModel{
         }
 
             $strSQL = $strSQL." Borrow INNER JOIN Book ON Borrow.BookNum = Book.BookNum";
-        //echo 'アクションタイプ確認ok';
 
         //ID確認
         if(is_null($Key0) == True){
@@ -681,7 +680,6 @@ class BookModel{
             $strSQL = $strSQL. " Where Num = :Key0 ";
         }
         $strSQL = $strSQL. " Order By BNum DESC";
-        //echo $Key1.'確認';
 
 
         //SQL実行
@@ -690,21 +688,17 @@ class BookModel{
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
-            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
                //システムエラー
                $result=2;
            }
-           //echo 'DB接続ok';
-           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 0;
-             //  echo $count;
            }else{
                 //表示データ収集
                $i=0;
@@ -718,14 +712,11 @@ class BookModel{
                    $dspBorrowUList[$i][6] = $array['title'];//書籍タイトル
                    $i=$i+1;
                 }
-                //print_r($dspBorrowUList[0]);
-                //print_r($dspBorrowUList);
            }
 
         } catch (Exception $Exception) {
             $result=4;
         }
-        //return $dspUserInfo;
         return $result;
     }
 
