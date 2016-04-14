@@ -32,11 +32,12 @@ body{
 
 .menu{
   background-color: #FFFFFF;
-  height: 80px;
+  height: 70px;
   min-height: 60px;
   width: 100%;
   overflow: hidden;
-
+  position: fixed;
+  top: 10px;
 }
 
 .menu:after{
@@ -50,12 +51,10 @@ body{
 
 .left{
   float: left;
-  position: relative;
+  position: absolute;
   left: 0px;
-  top: 12px;
-  /*max-width: 12%;*/
+  top: 15px;
   overflow: hidden;
-  margin-top: 15px;
   margin-left: 30px;
 }
 
@@ -65,13 +64,10 @@ body{
 }
 
 .center{
-  height:40px;
+  height:70px;
   min-height: 60px;
   width: 550px;
   margin: 0 auto;
-  margin-top: 20px;
-  position: relative;
-  top: 12px;
 }
 
 .center p {
@@ -90,29 +86,40 @@ body{
 .center ul{
   /zoom: 1;
   margin: 0;
-  height:50px;
+  height:35px;
   min-height: 35px;
   width: 550px;
   min-width: 550px;
   text-align: center;
   overflow: hidden;
   padding: 0;
-  position: absolute;
-  top: -13px;
+  position: fixed;
+  top: 28px;
 }
 
-.center li{
+.headerimage{
   display: inline-block;
   list-style: none;
   transition: .3s;
+  position: relative;
+  top: 5px;
 }
 
-.center li :hover{
-  transform: rotate(5deg);
+.headerimage:hover{
+  transform: rotate(-30deg);
+}
+
+.headertext{
+  display: inline-block;
+  list-style: none;
+  transition: .3s;
+  position: relative;
+  top: 0px;
 }
 
 .center form{
   height: 24px;
+  margin-bottom: 0;
 }
 
 .center input[type="image"]{
@@ -131,60 +138,26 @@ body{
   margin-right: 10px;
   padding: 0;
   cursor: pointer;
-  padding: 3px 0;
+  margin-bottom: 5px;
   /*background: linear-gradient(transparent 60%, #abe0f6 70%);*/
 }
 
-/*.center input[type="submit"]:hover {
-	background: linear-gradient(transparent 60%, #6595a9 70%);
-}*/
-
-.light{
-  position: relative;
-  top: -35px;
-  left: -8px;
+.center input[type="submit"]:hover {
+  transition: color .3s;
+	color: #d3e8f1;
 }
 
-.b{
-  width: 30px;
-  position: relative;
-  top: 18px;
-}
 
-.light p{
-  position: relative;
-  opacity: 0;
-  transition: .1s;
-  width: 12px;
-  height: 12px;
-}
-
-.center input[type="image"]:hover + .light p{
-  opacity: 1;
-}
-
-.center img{
-  width: 12px;
-}
-
-/*input.mark {
-	background: linear-gradient(transparent 60%, #abe0f6 70%);
-}*/
-
-.headertext{
-  position: relative;
-  top: -5px;
-}
 
 .right{
   float: left;
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 12px;
+  top: 10px;
   color: #323232;
   font-weight: bolder;
   letter-spacing: 1.5px;
-  height: 45px;
+  height: 25px;
   width: 300px;
 
 }
