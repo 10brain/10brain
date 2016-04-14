@@ -22,7 +22,7 @@ $('head').append(
 '<style type="text/css">#colorbox #cboxWrapper {display:none;}'
 );
 $(window).load(function() {
-$('#colorbox #cboxWrapper').delay("100").fadeIn("1000");
+$('#colorbox #cboxWrapper').delay("100").fadeIn("3000");
 $(window).on("beforeunload",function(e){
     $('#colorbox #cboxWrapper').fadeOut("3000");
 });
