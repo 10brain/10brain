@@ -44,7 +44,7 @@ and open the template in the editor.
             <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
             <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?></div><br>
-            <input name="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><br>
+            <select name="select01" id="select01"><?=$select01->get_all_options();?></select><br><div class="error"><?=$io->get_error("select01"); ?></div><br>
 
             <span>出版社</span><span class="caution">※</span><div class="error"><?=$io->get_error("pub_error"); ?></div><br>
             <input name="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><br>

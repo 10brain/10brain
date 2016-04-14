@@ -143,7 +143,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
-                            echo $select01;
+                           
                         $Key24 = $io->get_param_html("isbn");
                         $Key25 = $io->get_param_html("title");
                         $Key26 = $select01;
@@ -194,8 +194,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     }
 
                     //genre
-			if(!$select01->is_regularly(false))
-			{
+			if(!$select01->is_regularly(false)){
 				$io->set_error("genre", "内容に誤りが有ります");
 			}
                     //pub

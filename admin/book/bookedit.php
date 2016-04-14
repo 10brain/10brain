@@ -59,13 +59,13 @@ define("HTML_CODE", "UTF-8");
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-
+    define("LIST_SELECT01",  ":選択してください,1:NW,2:DB,3:開発,4:Web,5:一般業務,6:デザイン,7:その他");
 
 
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
-
+    $select01 = new Select("select01", LIST_SELECT01, $io);
 
 
 
@@ -178,7 +178,7 @@ define("HTML_CODE", "UTF-8");
                     $vali = new Validation();
                     // ISBN.
                     $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
-                    if(is_Book($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
+                    if(!is_Book($io->get_param("isbn"), 14, 1, 0)){
                             $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
                     }
 
@@ -189,23 +189,22 @@ define("HTML_CODE", "UTF-8");
                     }
 
                     //genre
-                    $io->set_parameter("genre", mb_convert_kana($io->get_param("genre"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("genre"), TRUE, 50, 0, "UTF-8")){
-                    $io->set_error("genre_error", "未入力、または内容に誤りが有ります");
-                    }
+			if(!$select01->is_regularly(false)){
+				$io->set_error("genre", "内容に誤りが有ります");
+                        }
                     //pub
                     $io->set_parameter("pub", mb_convert_kana($io->get_param("pub"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("pub"), TRUE, 30, "UTF-8")){
+                    if(!$vali->isString($io->get_param("pub"), TRUE, 255, 0,"UTF-8")){
                     $io->set_error("pub_error", "未入力、または内容に誤りが有ります");
                     }
                     //writer
                     $io->set_parameter("writer", mb_convert_kana($io->get_param("writer"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("writer"), FALSE, 40, "UTF-8")){
+                    if(!$vali->isString($io->get_param("writer"), FALSE, 100, "UTF-8")){
                     $io->set_error("writer_error", "未入力、または内容に誤りが有ります");
                     }
                     //intro
                     $io->set_parameter("intro", mb_convert_kana($io->get_param("intro"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("intro"), FALSE, 255, "UTF-8")){
+                    if(!$vali->isString($io->get_param("intro"), FALSE, 400, "UTF-8")){
                     $io->set_error("intro_error", "未入力、または内容に誤りが有ります");
                     }
                     //year
