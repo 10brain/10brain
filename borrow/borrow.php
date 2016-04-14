@@ -31,15 +31,15 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         if($dspBorrowUList[$i][3] == null){
             $null[] = $dspBorrowUList[$i][3];
         }
-        
+
         $i++;
     }
- 
+
     $null = count($null);
-  
-    
-    
-  
+
+
+
+
 
 //画面表示
 if ($result == 0){
@@ -58,7 +58,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../login.html");
+include("../login/login.html");
 }
 
 }

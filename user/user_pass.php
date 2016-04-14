@@ -37,7 +37,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../login.html");
+include("../login/login.html");
 }
 
 

@@ -39,11 +39,11 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             $obj=new BookModel();
             $result = $obj->GETStock($ActType, $Key0, $Key40);
             if($result==0){
-              include('book_suc.html'); 
+              include('book_suc.html');
             }else{
               include('book_fal.html');
             }
-            
+
         }
 
     }else{
@@ -55,7 +55,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             $error = "ただいまサーバーが込み合っております。";
         }
 
-        include("../login.html");
+        include("../login/login.html");
     }
 }
 

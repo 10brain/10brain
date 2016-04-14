@@ -29,7 +29,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     if(!is_null($cover)){
     $cover = '/admin/book_add/tmp_cover/'.$cover;
     }else{
-     $cover = '/admin/book_add/tmp_cover/noimage.png';   
+     $cover = '/admin/book_add/tmp_cover/noimage.png';
     }
     //DB問い合わせ
     $obj=new BookModel();
@@ -47,7 +47,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("login.html");
+include("../login/login.html");
 }
 }
 
