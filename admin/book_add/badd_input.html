@@ -41,7 +41,7 @@ and open the template in the editor.
             <input name="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
 
             <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
-            <input name="title" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+            <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
             <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?></div><br>
             <input name="genre" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('genre');?>" /><br>

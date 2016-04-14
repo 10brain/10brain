@@ -176,15 +176,15 @@ define("HTML_CODE", "UTF-8");
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
-                    // ISBN
+                    // ISBN.
                     $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
-                    if(!$vali->isDW_ISBN($io->get_param("isbn"), TRUE, 15, 0, "UTF-8")){
+                    if(is_Book($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
                             $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
                     }
 
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("title"), TRUE, 400, 0, "UTF-8")){
+                    if(!$vali->isString($io->get_param("title"), TRUE, 255, 0, "UTF-8")){
                     $io->set_error("title_error", "未入力、または内容に誤りが有ります");
                     }
 

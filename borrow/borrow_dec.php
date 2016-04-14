@@ -27,7 +27,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     echo $Key1;
     echo $Key2;
     echo $Key3;*/
-    echo $Key42;
+    //echo $Key42;
 
 
     if($result==0){
@@ -38,7 +38,13 @@ if (!isID($_POST["KEYWORD1"],40,1)){
            $obj=new BookModel();
             $result = $obj->GETStock($ActType, $Key0, $Key40);
             if($result==0){
-              include('borrow_suc.html'); 
+                    //DB問い合わせ
+    $obj=new otherModel();
+    $result = $obj->GETTopLogin($ActType, $Key1, $Key2, $dspUserInfo, $dspBookNewList);
+    $Key3 = $dspUserInfo[1];
+    $Key0 = $dspUserInfo[0];
+
+              include('../top/top.html'); 
             }else{
               include('borrow_fal.html');
             }

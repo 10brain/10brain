@@ -15,6 +15,8 @@ $lib_path = "../../lib/";
 require($lib_path."class.IO.php");
 require($lib_path."class.Form.Check.php");
 require($lib_path."class.Validation.php");
+require($lib_path."class.Form.Select.php");
+
 
 $result = 0;
 $ActType = "";
@@ -65,6 +67,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
+    
+    $select01 = new Select("select01", ":選択してください,01:NW,02:DB,03:開発,04:Web,05:一般業務",06:一般業務");
+
 
 
 
@@ -178,7 +183,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     $vali = new Validation();
                     // ISBN.
                     $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
-                    if(is_Book($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
+                    if(!is_Book($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
                             $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
                     }
 
