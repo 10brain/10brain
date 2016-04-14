@@ -44,7 +44,7 @@ and open the template in the editor.
 
             <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>
-            <div class="confirm">ジャンル：<?=$io->get_param_html_br("genre");?></div>
+            <div class="confirm">ジャンル：<?=$select01->get_selected_text();?></div>
             <div class="confirm">出版社：<?=$io->get_param_html_br("pub");?></div>
             <div class="confirm">著者：<?=$io->get_param_html_br("writer");?></div>
             <div class="confirm">紹介文：<?=$io->get_param_html_br("intro");?></div>
