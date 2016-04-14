@@ -40,7 +40,7 @@ if ($result == 0){
 	$error = "入力内容に誤りがあります。再度入力してください。";
     }else{
 	$error = "ただいまサーバーが込み合っております。";
-        //include("../login.html");
+        //include("../login/login.html");
     }
     
 
