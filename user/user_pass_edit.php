@@ -40,7 +40,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 
         //現行パス確認
-        if (!isPW($pass,10,1)){
+        if (!isPW($pass,10,4)){
                 $result = 1;
                 $nowPass_error = "内容に誤りがあります。再度入力してください。";
         }elseif($pass != $Key14){
@@ -49,7 +49,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         }
 
         //新規パスワード確認
-        if (!isPW($newpass,10,1)){
+        if (!isPW($newpass,10,4)){
                 $result = 1;
                 $newPass_error = "内容に誤りがあります。再度入力してください。";
         }elseif($newpass == $Key14){
@@ -58,7 +58,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         }
 
         //新規パスワード確認
-        if (!isPW($newpass_conf,10,1)){
+        if (!isPW($newpass_conf,10,4)){
                 $result = 1;
                 $newPassc_error = "内容に誤りがあります。再度入力してください。";
         }elseif($newpass != $newpass_conf){
