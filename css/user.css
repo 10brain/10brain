@@ -108,20 +108,20 @@ body,h1,input,span{
 
 .submit input[type="submit"]{
   height: 40px;
-  width: 200px;
+  width: 175px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
   background-color: white;
   border: 1px solid black;
   letter-spacing: 2px;
-  margin-top: 40px;
+  margin-top: 10px;
   outline: 0;
 }
 
 .submit input[type="button"]{
   height: 40px;
-  width: 200px;
+  width: 175px;
   padding: 6px 8px;
   font-size: 1.2em;
   color: black;
