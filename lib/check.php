@@ -1,7 +1,8 @@
 <?php
 define("VALIDATION_ISBN",    "/^\d{3}\-\d{10}$/");
 define("VALIDATION_ASIN",    "/^[A-Z0-9]+$/"); //半角大文字英数字
-
+define("VALIDATION_PW0",    "/^[a-zA-Z0-9]+$/"); //半角大文字英数字
+define("VALIDATION_PW0",    "/^[a-zA-Z0-9]+$/"); //半角大文字英数字
 /////////////////////////////////////////////////
 //日付取得
 //	変数に今日の日付を返す
@@ -250,6 +251,7 @@ function isID(&$ID,$max,$blank){
     if(0 < $len and $len <= $max){
      $ret = true;
     }
+
    }
 
    //入力チェック
@@ -263,7 +265,7 @@ function isID(&$ID,$max,$blank){
 /////////////////////////////////////////////////
 //passチェック
 /////////////////////////////////////////////////
-function isPW(&$PW,$max,$blank){
+function isPW(&$PW,$max,$min,$blank){
     $ret = false;
     //全角英数→半角英数変換
     $date = mb_convert_kana($PW,"r","UTF8");
@@ -279,15 +281,15 @@ function isPW(&$PW,$max,$blank){
 
    //入力チェック
    if($blank == 0){
-    if(0 <= $len and $len <= $max){
-        if(preg_match('/^[a-zA-Z0-9-/:-@\[-\`\{-\~]+$/', $PW)){
+    if($min <= $len and $len <= $max){
+        if(preg_match('/[a-zA-Z0-9:-@_.]/', $PW)){
 
         $ret = true;
            }
        }
    }
    else{
-    if(0 < $len and $len <= $max){
+    if($min <= $len and $len <= $max){
      $ret = true;
     }
    }

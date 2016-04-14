@@ -48,7 +48,7 @@ $pass='user_pass_edit.php';
             <span>新しいパスワード</span><div class="error"><?=$newPass_error;?></div><br>
             <input type="password" name="newpass" maxlength="80"><br>
 
-            <span>パスワードの確認</span><div class="error"><?=$nowPassc_error;?></div><br>
+            <span>パスワードの確認</span><div class="error"><?=$newPassc_error;?></div><br>
             <input type="password" name="newpass_conf" maxlength="80"><br>
 
             <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -56,7 +56,6 @@ $pass='user_pass_edit.php';
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
             <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-            <input type="hidden" name="KEYWORD14" value="<?=$dspUserInfo[2];?>">
 
             <div class="submit">
               <input type="submit" value="変更">

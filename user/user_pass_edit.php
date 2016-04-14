@@ -18,7 +18,7 @@ $newPassc_error ="";
 //IDとパスワードチェック
 if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
-}elseif (!isPW($_POST["KEYWORD2"],10,1)){
+}elseif (!isPW($_POST["KEYWORD2"],10,4)){
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
@@ -26,7 +26,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //パスワード
-    $Key14 =$_POST['KEYWORD14']; //登録されているPW
+
 
     $pass = $_POST["pass"];  //入力された現行パスワード
     $newpass = $_POST["newpass"];  //入力された新規パスワード
@@ -40,25 +40,25 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 
         //現行パス確認
-        if (!isPW($pass,10,4)){
+        if (!isPW($pass,10,3,0)){
                 $result = 1;
                 $nowPass_error = "内容に誤りがあります。再度入力してください。";
-        }elseif($pass != $Key14){
+        }elseif($pass != $Key2){
                 $result = 1;
                 $nowPass_error = "登録されているパスワードと一致しません。再度入力してください。";
         }
 
         //新規パスワード確認
-        if (!isPW($newpass,10,4)){
+        if (!isPW($newpass,10,4,0)){
                 $result = 1;
                 $newPass_error = "内容に誤りがあります。再度入力してください。";
-        }elseif($newpass == $Key14){
+        }elseif($newpass == $Key2){
                 $result = 1;
                 $newPass_error = "現在使用しているパスワードとは別のパスワードを入力してください。";
         }
 
         //新規パスワード確認
-        if (!isPW($newpass_conf,10,4)){
+        if (!isPW($newpass_conf,10,4,0)){
                 $result = 1;
                 $newPassc_error = "内容に誤りがあります。再度入力してください。";
         }elseif($newpass != $newpass_conf){
@@ -79,10 +79,12 @@ if ($result == 0){
             $Key2=$newpass;
             include("user_pass_suc.html");
     }elseif($result == 1){
+        $Key2=$Key2;
             include("user_pass_input.html");
             $db_error ="ユーザー情報がみつかりません。管理者に問い合わせてください";
     }else{
-            include("user_pass_input.html");
+        $Key2=$Key2;
+        include("user_pass_input.html");
             $db_error ="システムエラーです。開発者に連絡してください。";
     }
 
@@ -90,12 +92,14 @@ if ($result == 0){
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
     }elseif ($result == 1){
-	$error = "入力内容に誤りがあります。再度入力してください。";
+        $Key2=$Key2;
+        $error = "入力内容に誤りがあります。再度入力してください。";
     }else{
 	$error = "ただいまサーバーが込み合っております。";
     }
-
-include("user_pass_input.html");
+        $Key2=$Key2;
+         $Key14 =$_POST['KEYWORD14']; //登録されているPW
+        include("user_pass_input.html");
 }
 
 
