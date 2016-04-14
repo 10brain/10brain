@@ -28,7 +28,6 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
                     break;
 
                 case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
-
                     $result = 2;
                     $msg ='ファイルサイズが大きすぎます';
                 default:
@@ -74,7 +73,7 @@ try {
     $pdo = new PDO(
         'mysql:host=localhost;dbname=10brain;charset=utf8',
         'root',
-        'root',
+        '10btnDB',
         [
           PDO::ATTR_EMULATE_PREPARES => false,
           PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -117,7 +116,7 @@ try {
     $pdo = new PDO(
         'mysql:host=localhost;dbname=10brain;charset=utf8',
         'root',
-        'root',
+        '10btnDB',
         [
           PDO::ATTR_EMULATE_PREPARES => false,
           PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

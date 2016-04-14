@@ -23,23 +23,3 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 $cover_add = 'cover_add.php';
 $isbn = $_POST['KEYWORD24'];//ISBN
 ?>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>sample</title>
-</head>
-<body>
-<form action="<?=$cover_add;?>" method="post" enctype="multipart/form-data">
-  ファイル：<br />
-  <input type="file" name="upfile" size="30" /><br />
-  <br />
-  <input type="hidden" name="ActionType" value="TgRSPInf">
-  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
-  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
-  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-  <input type="hidden" name="KEYWORD24" value="<?=$isbn;?>">
-  <input type="submit" value="アップロード" />
-
-</form>
-</body>
-</html>
