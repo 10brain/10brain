@@ -36,7 +36,7 @@ if (!ckStr($_POST["KEYWORD1"],30,1) or ereg("^[a-zA-Z0-9]+$",$_POST["KEYWORD1"])
     $Key3 = $_POST["KEYWORD3"];  //名前
     $reqnum = $_POST['reqnum'];
     print_r($reqnum);
-    $pur = $_POST['app'];
+    $app = $_POST['app'];
     print_r($app);
     /*$req = $_POST['req'];
     print_r($req['app']);
