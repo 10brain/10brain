@@ -31,9 +31,13 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
 }else{
     $ActType = $_POST["ActionType"];
+    $Key0 = $_POST["KEYWORD0"];  //ID
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
+
+      $genre = $_POST["GENRE"];    
+ 
 
 
 
@@ -61,7 +65,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-    define("LIST_SELECT01",  ":選択してください,1:NW,2:DB,3:開発,4:Web,5:一般業務,6:デザイン,7:その他");
+    define("LIST_SELECT01",  "1:NW,2:DB,3:開発,4:Web,5:一般業務,6:デザイン,7:その他");
 
 
     // 入出力インスタンスの生成
@@ -146,7 +150,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                            
                         $Key24 = $io->get_param_html("isbn");
                         $Key25 = $io->get_param_html("title");
-                        $Key26 = $select01;
+                        $Key26 = $genre;
                         $Key27 = $io->get_param_html("pub");
                         $Key28 = $io->get_param_html("writer");
                         $Key29 = $io->get_param_html("into");
@@ -183,8 +187,8 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     $vali = new Validation();
                     // ISBN.
                     $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
-                    if(is_Book($io->get_param("isbn"), TRUE, 14, 0, "UTF-8")){
-                            $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
+                   if(!preg_match("/^\d{3}\-\d{10}$/",$io->get_param("isbn")) || !preg_match("/\A[a-z\d]{10}+\z/i",$io->get_param("isbn"))){
+                        $io->set_error("title_error", "未入力、または内容に誤りが有ります");
                     }
 
                     //title

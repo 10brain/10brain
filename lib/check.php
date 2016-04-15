@@ -301,49 +301,43 @@ function isPW(&$PW,$max,$min,$blank){
 
     return $ret;
  }
-        /****************************************************************************
-         *文字列の書式チェックを行う(名前)
-         * 引数：$value  ：評価する値
-         * 　　：$require：必須フラグ(真なら値必須)
-         * 　　：$max    ：最大バイト数(0なら上限無し)
-         * 　　：$min    ：最小バイト数
-         * 　　：$enc_chk：文字エンコード(チェック時形式)
-         * 　　：$enc_sou：文字エンコード(ソースファイル)
-         * 戻値：        ：正規の値ならば真を、問題があれば偽を返す
-         ****************************************************************************/
-        function is_Book(&$book,$blank){
-            $ret = false;
-            //全角英数→半角英数変換
-            $date = mb_convert_kana($book,"r","UTF8");
-            //変換後文字列長取得
-           $len = strlen($book);
+ /////////////////////////////////////////////////
+//ISBNチェック
+/////////////////////////////////////////////////
+function is_Book(&$book,$max,$min,$blank){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($book,"r","UTF8");
+    //変換後文字列長取得
+   $len = strlen($PW);
 
-           //タグ取り除き
-           $str = Strip_Tags($book);
+   //タグ取り除き
+   $str = Strip_Tags($PW);
 
-           //変換後文字列長取得
-           $len2 = strlen($book);
+   //変換後文字列長取得
+   $len2 = strlen($PW);
 
 
-           //入力チェック
-           if($blank == 0){
-            if(0 <= $len and $len <= $max){
-                if(preg_match("/^(".VALIDATION_ISBN."|".VALIDATION_ASIN.")+$/", $book)){
+   //入力チェック
+   if($blank == 0){
+    if($min < $len and $len <= $max){
+        if(preg_match("/^\d{3}\-\d{10}$/", $book)){
 
-                $ret = true;
-                   }
-               }
+        $ret = true;
            }
-           else{
-            if(0 < $len and $len <= $max){
-             $ret = true;
-            }
-           }
+       }
+   }
+   else{
+    if($min < $len and $len <= $max){
+     $ret = true;
+    }
+   }
 
-           //入力チェック
-           if($len != $len2){
-             $ret = false;
-           }
+   //入力チェック
+   if($len != $len2){
+     $ret = false;
+   }
 
-            return $ret;
-         }
+    return $ret;
+ }
+

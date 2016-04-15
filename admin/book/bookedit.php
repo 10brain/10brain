@@ -15,6 +15,7 @@ $lib_path = "../../lib/";
 require($lib_path."class.IO.php");
 require($lib_path."class.Form.Check.php");
 require($lib_path."class.Validation.php");
+require($lib_path."class.Form.Select.php");
 
 $result = 0;
 $ActType = "";
@@ -34,6 +35,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key3 = $_POST["KEYWORD3"];  //パスワード
     $Key20 = $_POST["KEYWORD20"];
     $Key21 = $_POST["KEYWORD21"];
+    $genre = $_POST["GENRE"];
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -59,7 +61,7 @@ define("HTML_CODE", "UTF-8");
     define("URL_SUCCESS",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_SUCCESS);
     define("URL_FAILURE",    "http://".$_SERVER["SERVER_NAME"].MY_PATH.HTML_FAILURE);
     define("CHECK_REFERER",  ""); //
-    define("LIST_SELECT01",  ":選択してください,1:NW,2:DB,3:開発,4:Web,5:一般業務,6:デザイン,7:その他");
+    define("LIST_SELECT01",  "1:NW,2:DB,3:開発,4:Web,5:一般業務,6:デザイン,7:その他");
 
 
     // 入出力インスタンスの生成
@@ -141,7 +143,7 @@ define("HTML_CODE", "UTF-8");
                         $vali = new Validation();
                         $Key24 = $io->get_param_html("isbn");
                         $Key25 = $io->get_param_html("title");
-                        $Key26 = $io->get_param_html("genre");
+                        $Key26 = $genre;
                         $Key27 = $io->get_param_html("pub");
                         $Key28 = $io->get_param_html("writer");
                         $Key29 = $io->get_param_html("into");
@@ -154,7 +156,7 @@ define("HTML_CODE", "UTF-8");
                         $result = $obj->GETBookEDIT($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key20);
 
                             if($result == 0){
-                                    include(HTML_SUCCESS);
+                                include(HTML_SUCCESS);
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
@@ -189,9 +191,9 @@ define("HTML_CODE", "UTF-8");
                     }
 
                     //genre
-			if(!$select01->is_regularly(false)){
-				$io->set_error("genre", "内容に誤りが有ります");
-                        }
+                    if(!$select01->is_regularly(false)){
+                        $io->set_error("genre", "内容に誤りが有ります");
+                    }
                     //pub
                     $io->set_parameter("pub", mb_convert_kana($io->get_param("pub"), "KV", INNER_CODE));
                     if(!$vali->isString($io->get_param("pub"), TRUE, 255, 0,"UTF-8")){
