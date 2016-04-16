@@ -31,6 +31,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         if($dspBorrowUList[$i][3] == null){
             $null[] = $dspBorrowUList[$i][3];
         }
+        if(strtotime(date('Y-m-d'))>strtotime($dspBorrowUList[$i][2]) and $dspBorrowUList[$i][3] == null){
+            $return[] = $dspBorrowUList[$i][2];
+        }
 
         $i++;
     }
@@ -39,12 +42,12 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 
 
-
-
 //画面表示
 if ($result == 0){
     if($null >= 3){
         include("borrow_not.html");
+    }elseif(!is_null($return)){
+        include("borrow_not2.html");
     }else{
     $borrow_bn_conf = 'borrow_bn_conf.php';
     include("borrow_bn_input.html");

@@ -42,6 +42,9 @@ echo $Key43;*/
         if($dspBorrowUList[$i][3] == null){
             $null[] = $dspBorrowUList[$i][3];
         }
+        if(strtotime(date('Y-m-d'))>strtotime($dspBorrowUList[$i][2]) and $dspBorrowUList[$i][3] == null){
+            $return[] = $dspBorrowUList[$i][2];
+        }
 
         $i++;
     }
@@ -51,7 +54,9 @@ echo $Key43;*/
 
 
     if($null >= 3){
-        $result=3;
+        include("borrow_not.html");
+    }elseif(!is_null($return)){
+        include("book_not2.html");
     }else{
         if (!preg_match("/^[0-9]+$/", $Key40)){
             $error = "書籍番号が正しくありません。";
