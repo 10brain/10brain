@@ -9,9 +9,16 @@ and open the template in the editor.
       <meta charset="UTF-8">
       <title>書籍編集 | 10brain</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/jquery.minimalect.css" media="screen" />
       <link rel="stylesheet" type="text/css" href="../css/badd.css">
       <script src="../../js/jquery.js"></script>
+      <script src="../../js/jquery.minimalect.js"></script>
       <script src="../../js/fade.js"></script>
+      <script>
+        $(document).ready(function(){
+            $("#select01").minimalect();
+        });
+      </script>
     </head>
     <body>
       <?=include('../header/header.html');?>
@@ -43,8 +50,8 @@ and open the template in the editor.
             <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
             <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
-            <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?></div><br>
-            <select name="select01" id="select01"><?=$select01->get_all_options();?></select><br><div class="error"><?=$io->get_error("select01"); ?></div><br>
+            <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?><?=$io->get_error("select01"); ?></div><br>
+            <select name="select01" id="select01"><?=$select01->get_all_options();?></select><br>
 
             <span>出版社</span><span class="caution">※</span><div class="error"><?=$io->get_error("pub_error"); ?></div><br>
             <input name="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><br>
