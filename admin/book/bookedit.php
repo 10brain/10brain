@@ -277,7 +277,22 @@ define("HTML_CODE", "UTF-8");
 
                     $io->set_parameter("isbn", $Key21);
                     $io->set_parameter("title", $Key22);
-                    $io->set_parameter("genre", $Key23);
+                    if($Key23=='NW'){
+                        $select01->value = "1";
+                    }elseif ($Key23=='DB') {
+                        $select01->value = "2";
+                    }elseif ($Key23=='開発') {
+                        $select01->value = "3";
+                    }elseif ($Key23=='Web') {
+                        $select01->value = "4";
+                    }elseif ($Key23=='一般業務') {
+                        $select01->value = "5";
+                    }elseif ($Key23=='デザイン') {
+                        $select01->value = "6";
+                    }elseif ($Key23=='その他') {
+                        $select01->value = "7";
+                    }
+
                     $io->set_parameter("pub", $Key24);
                     $io->set_parameter("writer", $Key25);
                     $io->set_parameter("intro", $Key26);

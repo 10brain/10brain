@@ -38,7 +38,6 @@ and open the template in the editor.
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
            <?=$db_error;?>
-           <?=$result;?>
          <span class="caution">ユーザー情報を入力してください。</span><br><br>
 
             <span>ユーザー名</span><span class="caution">　スペースは空けずにフルネームで入力してください。</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>

@@ -281,16 +281,16 @@ class UserModel{
 
         if($Key13){
             $strSQL = $strSQL." Name=:Key13";
-            echo "名前：".$Key13;
+            //echo "名前：".$Key13;
         }
         if($Key14){
             $strSQL = $strSQL.", ID=:Key14";
-            echo "ID：".$Key14;
+          //  echo "ID：".$Key14;
         }
 
         if($Key15){
         $strSQL = $strSQL.", PW=:Key15";
-        echo "PW：".$Key15;
+        //echo "PW：".$Key15;
         }
         //echo 'アクションタイプ確認ok';
         
@@ -313,7 +313,7 @@ class UserModel{
            $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
            $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
-            echo $strSQL;
+            //echo $strSQL;
 
 
 

@@ -159,9 +159,6 @@ define("HTML_CODE", "UTF-8");
                                 
                                 $pw = '初期化しない';
                             }
-                            echo $Key13;
-                             echo $Key14;
-                              echo $Key15;
                             //データベース更新
                             $obj=new UserModel();
                             //ID確認
