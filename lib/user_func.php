@@ -281,16 +281,19 @@ class UserModel{
 
         if($Key13){
             $strSQL = $strSQL." Name=:Key13";
+            echo "名前：".$Key13;
         }
         if($Key14){
             $strSQL = $strSQL.", ID=:Key14";
+            echo "ID：".$Key14;
         }
 
-
-            $strSQL = $strSQL.", PW=:Key15";
-
+        if($Key15){
+        $strSQL = $strSQL.", PW=:Key15";
+        echo "PW：".$Key15;
+        }
         //echo 'アクションタイプ確認ok';
-
+        
 
         //条件
         if(is_null($Key12) == True){
@@ -302,6 +305,7 @@ class UserModel{
         //echo $Key15;
         //SQL実行
         try {
+            $Key14 = $Key14.'@10baton.com';
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
@@ -309,7 +313,7 @@ class UserModel{
            $stmh->bindParam(':Key14', $Key14, PDO::PARAM_STR);
            $stmh->bindParam(':Key15', $Key15, PDO::PARAM_STR);
            $stmh->bindParam(':Key12', $Key12, PDO::PARAM_STR);
-            //echo $strSQL;
+            echo $strSQL;
 
 
 

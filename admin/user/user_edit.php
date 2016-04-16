@@ -38,7 +38,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
     $Key15 = $_POST["KEYWORD15"];
-    $Key16 = $_POST["KEYWORD16"];
+
 
 
 
@@ -149,23 +149,24 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
+                            
                             $Key13= $io->get_param_html("Name");
                             $Key14= $io->get_param_html("ID");
                             if($Key15 == '9999'){
                                 $Key15 = '9999';
                                 $pw = '初期化する';
                             }else{
-                                $Key15 = $Key16;
+                                
                                 $pw = '初期化しない';
                             }
+                            echo $Key13;
+                             echo $Key14;
+                              echo $Key15;
                             //データベース更新
                             $obj=new UserModel();
                             //ID確認
                             $result = $obj->GETUserEdit($ActType, $Key1, $Key13, $Key14, $Key15, $Key12);
-                            if($result==3){
-                                $dbid_error ='入力されたものと同じIDがあります。再度入力してください。';
-                                include(TEMP_INPUT);
-                            }elseif($result == 0){
+                            if($result == 0){
                                     include(HTML_SUCCESS);
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
@@ -191,20 +192,20 @@ define("HTML_CODE", "UTF-8");
 
                         // 名前
                         $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("Name"), true, 30, 0, "UTF-8")){
+                        if(!$vali->isDW_Kanji($io->get_param("Name"), true, 30, 0, "UTF-8")){
                                 $io->set_error("Name_error", "未入力、または内容に誤りが有ります");
                         }
 
                         //ID
                         $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isMail($io->get_param("ID"), true, 10, 0, "UTF-8")){
+                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
                                 $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
                         }
                         if($pass->is_regularly(1, 1)){
                             $Key15 = '9999';
                             $pw = '初期化する';
                         }else{
-                            $Key15 = $Key16;
+                            
                             $pw = '初期化しない';
                         }
 
@@ -242,6 +243,8 @@ define("HTML_CODE", "UTF-8");
                     // GETパラメータ(sp)を取得
                     $io->set_parameters($_GET);
                     $io->set_parameter("Name", $Key14);
+                    //ID編集用に@以降を削除して＠前のみ編集を可能にする
+                    $Key13 = strstr($Key13, "@", TRUE);
                     $io->set_parameter("ID", $Key13);
 
 

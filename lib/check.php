@@ -321,8 +321,7 @@ function is_Book(&$book,$max,$min,$blank){
    //入力チェック
    if($blank == 0){
     if($min < $len and $len <= $max){
-        if(preg_match("/^\d{3}\-\d{10}$/", $book)){
-
+        if(!preg_match("/^\d{3}\-\d{10}+$/", $book)){
         $ret = true;
            }
        }

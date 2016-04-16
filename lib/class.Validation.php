@@ -32,9 +32,9 @@ define("VALIDATION_DW_DIGIT",    "[０-９]");           // 全角数字
 define("VALIDATION_DW_ULETTER",  "[Ａ-Ｚ]");           // 全角英字(大)
 define("VALIDATION_DW_LLETTER",  "[ａ-ｚ]");           // 全角英字(小)
 
-define("VALIDATION_DW_KANJI",    "/^(?:[\x{3041}-\x{3096}\x{30A1}-\x{30FA}\x{31F0}-\x{31FF}\x{FF66}-\x{FF6F}\x{FF71}-\x{FF9D}][\x{3099}\x{309A}]?|\x{30FC}|[\p{Han}][\x{E0100}-\x{E01EF}\x{FE00}-\x{FE02}]?)+$/u");
+define("VALIDATION_DW_KANJI",    "(?:[\x{3041}-\x{3096}\x{30A1}-\x{30FA}\x{31F0}-\x{31FF}\x{FF66}-\x{FF6F}\x{FF71}-\x{FF9D}][\x{3099}\x{309A}]?|\x{30FC}|[\p{Han}][\x{E0100}-\x{E01EF}\x{FE00}-\x{FE02}]?)");
 define("VALIDATION_ISBN",    "/^\d{3}\-\d{10}$/");
-define("VALIDATION_ASIN",    "[A-Z0-9]"); //半角大文字英数字
+define("VALIDATION_ASIN",    "/^[A-Z0-9]+$/"); //半角大文字英数字
 
 class Validation
 {
@@ -379,18 +379,18 @@ class Validation
          * 　　：$enc_sou：文字エンコード(ソースファイル)
          * 戻値：        ：正規の値ならば真を、問題があれば偽を返す
          ****************************************************************************/
-        function isDW_NAME($value = "", $require = false, $max = 30, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
+        function isDW_Kanji($value = "", $require = false, $max = 30, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
                 $ret = true;
-                if (!$this->isMatch($value, $require, "/^(".VALIDATION_DW_KANJI."|".VALIDATION_DW_HIRAGANA."|".VALIDATION_DW_SPACE."|".VALIDATION_SW_SPACE.")+$/", $max, $min, $enc_chk, $enc_sou))
+                if (!$this->isMatch($value, $require, "/^".VALIDATION_DW_KANJI."+$/u", $max, $min, $enc_chk, $enc_sou))
                 {
                         $ret = false;
                 }
                 return $ret;
         }
         /****************************************************************************/
-        function is_Book($value = "", $require = false, $max = 14, $min = 1, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
+        function isBook($value = "", $require = false, $max = 14, $min = 0, $enc_chk = "UTF-8", $enc_sou = "UTF-8"){
                 $ret = true;
-                if (!$this->isMatch($value, $require, "/^(".VALIDATION_ISBN.")+$/", $max, $min, $enc_chk, $enc_sou))
+                if (!$this->isMatch($value, $require, "/^(".VALIDATION_ISBN."|".VALIDATION_DW_SPACE."|".VALIDATION_SW_SPACE.")+$/", $max, $min, $enc_chk, $enc_sou))
                 {
                         $ret = false;
                 }

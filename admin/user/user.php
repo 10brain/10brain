@@ -23,7 +23,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key12 = $_POST["KEYWORD12"];//社員番号
     $Key13 = $_POST["KEYWORD13"];//ID
     $Key14 = $_POST["KEYWORD14"];//名前
-    $Key15 = '9999'; 
+    
    //echo $Key12;
    //echo $Key13;
 

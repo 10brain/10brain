@@ -31,19 +31,20 @@ and open the template in the editor.
           </ul>
         </div>
 
-
+          
 
         <div class="form">
         <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
            <?=$db_error;?>
+           <?=$result;?>
          <span class="caution">ユーザー情報を入力してください。</span><br><br>
 
             <span>ユーザー名</span><span class="caution">　スペースは空けずにフルネームで入力してください。</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
             <span>ユーザーID</span><span class="caution">　10バトンでのアドレスを入力してください。</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
-            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" /><br>
+            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<br>
             <span>パスワード</span><span class="caution">　パスワードを初期化する場合は、チェックを入れてください。</span><div class="error"><?=$io->get_error("pass");?></div><br>
             <?=$pass->get_all_checks("?", true)?>
 
@@ -55,7 +56,7 @@ and open the template in the editor.
             <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
             <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
             <input type="hidden" name="KEYWORD15" value="<?=$Key15;?>">
-            <input type="hidden" name="KEYWORD16" value="<?=$Key16;?>">
+            
             <div class="check">
               <input type="submit" value="確認">
             </div>
