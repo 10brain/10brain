@@ -197,7 +197,8 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-                $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+                //$strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+           $strSQL = "Select * From Book";
         }
 
 

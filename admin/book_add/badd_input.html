@@ -43,10 +43,14 @@ and open the template in the editor.
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
             <?=$io->get_all_params();?>
         <input type="hidden" name="step_from" value="input" />
-          <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。<br>ISBNコード(またはASIN)は半角数字、「-」のみ使用可能です。</span><br><br>
+          <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。<br>ISBNコードまたはASINコードはどちらか入力してください。半角数字、「-」のみ使用可能です。</span><br><br>
             <?=$db_error;?>
-            <span>ISBNコード(またはASIN)</span><span class="caution">※</span><div class="error"><?=$io->get_error("isbn_error"); ?></div><br>
-            <input name="isbn" size="10" maxlength="14" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
+            <span>ISBNコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("isbn_error"); ?></div><br>
+            <input name="isbn" size="10" maxlength="15" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
+            
+            <span>ASINコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
+            <input name="asin" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('asin');?>" /><br>
+            <div class="error"><?=$io->get_error("bookcode_error"); ?></div><br><br>
 
             <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
             <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>

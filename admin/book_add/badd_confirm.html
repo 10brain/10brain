@@ -42,7 +42,9 @@ and open the template in the editor.
         <form name="input" action="<?=URL_ACTION;?>" method="post">
         <?=$io->get_all_params();?>
 
-            <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
+            <div class="confirm">ISBN：<?=$io->get_param_html_br("isbn");?></div>
+            <div class="confirm">ASIN：<?=$io->get_param_html_br("asin");?></div><br>
+
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>
             <div class="confirm">ジャンル：<?=$select01->get_selected_text();?></div>
             <div class="confirm">出版社：<?=$io->get_param_html_br("pub");?></div>
