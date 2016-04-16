@@ -103,6 +103,37 @@ input:-webkit-autofill {
   outline: 0;
 }
 
+.minict_wrapper{
+  height: 34px;
+  width: 393px;
+  margin: 0;
+}
+
+.minict_wrapper:after{
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
+}
+
+.minict_wrapper span{
+  height: 32px;
+  padding-top: 4px;
+  font-size: 16px;
+  padding-left: 8px;
+  letter-spacing: 0px;
+}
+
+.minict_wrapper ul{
+  top: 32px;
+}
+
+.minict_wrapper ul li{
+  height: 32px;
+  padding-top: 3px;
+  font-size: 14px;
+  letter-spacing: 0px;
+}
+
 .form textarea{
   height: 100px;
   width: 425px;
