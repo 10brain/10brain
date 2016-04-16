@@ -45,7 +45,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                 $Key3 = $dspUserInfo[1];
                 $Key0 = $dspUserInfo[0];
 
-              include('../top/top.html'); 
+              include('borrow_suc.html'); 
             }else{
               include('borrow_fal.html');
             }
