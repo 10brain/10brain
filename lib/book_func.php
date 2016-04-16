@@ -7,6 +7,130 @@ require 'init.php';
 //
 //*****************************************************************************/
 class BookModel{
+        /*********トップ用SQL*******************************************************/
+    function GETTopLogin($ActType, $Key1, $Key2, &$dspUserInfo, &$dspBookNewList){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+
+
+        /*echo 'アクションタイプ確認ok';*/
+        //SQL実行
+        try {
+            $strSQL = "Select * From User";
+            //ID確認
+            if(is_null($Key1) == True){
+
+                $strSQL = $strSQL. " Where ID IS NULL";
+            }else{
+                $strSQL = $strSQL. " Where ID = :Key1 ";
+            }
+            /*echo $Key1.'確認';*/
+
+            //PW確認
+            if(is_null($Key2) == True){
+                $strSQL = $strSQL. " And PW IS NULL";
+            }else{
+                $strSQL = $strSQL. " And PW = :Key2 ";
+            }
+
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key1', $Key1, PDO::PARAM_STR);
+           $stmh->bindParam(':Key2', $Key2, PDO::PARAM_STR);
+            //echo $Key2.'確認';
+            //echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           //echo 'DB接続ok';
+
+
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 1;
+               //echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   //表示データ収集
+                   $dspUserInfo[0] = $array['Num'];//社員番号
+                   $dspUserInfo[1] = $array['Name'];//名前
+                   $dspUserInfo[2] = $array['PW'];//パスワード
+                   //echo $result;
+                   /*echo $dspUserInfo[0];
+                   echo $dspUserInfo[1];*/
+               }
+
+           }
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+
+            //echo $Key21;
+
+            $strSQL = $strSQL." ORDER BY Book.date DESC LIMIT 30";
+
+
+           //クラス呼び出し
+           //$class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+            //$stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+
+            //echo $strSQL;
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           //echo 'DB接続ok';
+           //echo $result;
+
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 0;
+               //echo $count;
+           }else{
+                //表示データ収集
+               $i=0;
+                while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
+                   $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
+                   $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
+                   $dspBookNewList[$i][2] = $array['coverName'];//ISBN
+                   $dspBookNewList[$i][3] = $array['stock'];
+                $i=$i+1;
+                }
+                //print_r($dspBookList);
+           }
+
+        } catch (Exception $Exception) {
+
+
+        }
+        //return $dspUserInfo;
+
+        ///
+        //return $dspUserInfo;
+        return $result;
+
+    }
+
+
+    
     /*********新着書籍一覧SQL*******************************************************/
     function GETBookNewList($ActType, &$dspBookNewList){
         //初期値設定

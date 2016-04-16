@@ -1,5 +1,5 @@
 <?php
-require '../lib/other_func.php';
+require '../lib/book_func.php';
 require '../lib/check.php';
 
 $result = 0;
@@ -19,7 +19,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key2 = $_POST["KEYWORD2"];  //パスワード
 
     //DB問い合わせ
-    $obj=new otherModel();
+    $obj=new BookModel();
     $result = $obj->GETTopLogin($ActType, $Key1, $Key2, $dspUserInfo, $dspBookNewList);
     $Key3 = $dspUserInfo[1];
     $Key0 = $dspUserInfo[0];

@@ -1,5 +1,6 @@
 <?php
 require '../lib/book_func.php';
+
 require '../lib/check.php';
 
 $result=0;
@@ -39,10 +40,10 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             $result = $obj->GETStock($ActType, $Key0, $Key40);
             if($result==0){
                     //DB問い合わせ
-    $obj=new otherModel();
-    $result = $obj->GETTopLogin($ActType, $Key1, $Key2, $dspUserInfo, $dspBookNewList);
-    $Key3 = $dspUserInfo[1];
-    $Key0 = $dspUserInfo[0];
+
+                $result = $obj->GETTopLogin($ActType, $Key1, $Key2, $dspUserInfo, $dspBookNewList);
+                $Key3 = $dspUserInfo[1];
+                $Key0 = $dspUserInfo[0];
 
               include('../top/top.html'); 
             }else{
