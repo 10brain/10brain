@@ -36,9 +36,6 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
 
-      $genre = $_POST["GENRE"];    
-      $isbn = $_POST["isbn"];  
-      $asin = $_POST["asin"];
 
 
     // 内部文字コード
@@ -146,15 +143,18 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
-                            $vali = new Validation();
-                            
-                        if($io->get_param_html("isbn")){
+                        $vali = new Validation();
+   
+
+                         
+                        $isbn = $io->get_param_html("isbn");
+                        if($isbn){
                         $Key24 = $io->get_param_html("isbn");
                         }else{
                         $Key24 = $io->get_param_html("asin");    
                         }
                         $Key25 = $io->get_param_html("title");
-                        $Key26 = $genre;
+                        $Key26 = $select01->get_selected_text();
                         $Key27 = $io->get_param_html("pub");
                         $Key28 = $io->get_param_html("writer");
                         $Key29 = $io->get_param_html("into");
@@ -188,6 +188,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     }else if($io->get_param("step_from") == "input"){
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
+
                     $vali = new Validation();
                     // ISBNとASIN
                     $isbn = $io->get_param_html("isbn");
@@ -208,8 +209,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                         }
 
                     }
-
-
+                    
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
                     if(!$vali->isString($io->get_param("title"), TRUE, 255, 0, "UTF-8")){
@@ -267,7 +267,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
             }else{
                     // リファラ制限画面
-                    include(TEMP_BLOCK);
+                    include(TEMP_CONFIRM);
             }
 
     }else if($io->get_param("step_from") == "agree"){

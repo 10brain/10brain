@@ -426,7 +426,6 @@ class Validation
         }
 
 
-
 }
 
 function calculateDateString($date, $add = "")

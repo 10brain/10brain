@@ -141,9 +141,16 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                         $vali = new Validation();
+                         
+                        $isbn = $io->get_param_html("isbn");
+                        if($isbn){
                         $Key24 = $io->get_param_html("isbn");
+                        }else{
+                        $Key24 = $io->get_param_html("asin");    
+                        }
+
                         $Key25 = $io->get_param_html("title");
-                        $Key26 = $genre;
+                        $Key26 = $select01->get_selected_text();
                         $Key27 = $io->get_param_html("pub");
                         $Key28 = $io->get_param_html("writer");
                         $Key29 = $io->get_param_html("into");
@@ -178,11 +185,26 @@ define("HTML_CODE", "UTF-8");
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
-                    // ISBN.
-                    $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
-                    if(!is_Book($io->get_param("isbn"), 14, 1, 0)){
-                            $io->set_error("isbn_error", "未入力、または内容に誤りが有ります");
+                    // ISBNとASIN
+                    $isbn = $io->get_param_html("isbn");
+                    $asin = $io->get_param_html("asin");
+                    if($isbn==null and $asin){
+                        $io->set_parameter("asin", mb_convert_kana($io->get_param("asin"), "KV", INNER_CODE));
+                        if(!preg_match("/^[A-Z0-9]{10}$/", $io->get_param("asin"))){
+                            $io->set_error("asin_error", "ASINコード内容に誤りが有ります");
+                        }
+                    }elseif($isbn and $asin){
+                        $io->set_error("bookcode_error", "ISBNコードまたはASINコードどちらかを入力してください");
+                    }elseif($isbn==null and $asin==null){
+                        $io->set_error("bookcode_error", "ISBNコードまたはASINコードどちらかを入力してください");
+                    }else{
+                        $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
+                        if(!$vali->isISBN($io->get_param("isbn"), true, 15, 0, "UTF-8")){
+                            $io->set_error("isbn_error", "ISBNコード内容に誤りが有ります");
+                        }
+
                     }
+
 
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
@@ -274,8 +296,11 @@ define("HTML_CODE", "UTF-8");
 
                         }
 
-
-                    $io->set_parameter("isbn", $Key21);
+                    if(preg_match("/^\d{3}\-\d{10}$/", $Key21)){
+                        $io->set_parameter("isbn", $Key21);
+                    }else{
+                        $io->set_parameter("asin", $Key21);
+                    }
                     $io->set_parameter("title", $Key22);
                     if($Key23=='NW'){
                         $select01->value = "1";

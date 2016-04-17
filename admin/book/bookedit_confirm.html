@@ -54,7 +54,8 @@ $(function() {
         <?=$io->get_all_params();?>
 
 
-            <div class="confirm">ISBN(またはASIN)：<?=$io->get_param_html_br("isbn");?></div>
+            <div class="confirm">ISBN：<?=$io->get_param_html_br("isbn");?></div>
+            <div class="confirm">ASIN：<?=$io->get_param_html_br("asin");?></div><br>
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>
             <div class="confirm">ジャンル：<?=$select01->get_selected_text();?></div>
             <div class="confirm">出版社：<?=$io->get_param_html_br("pub");?></div>
@@ -71,7 +72,7 @@ $(function() {
           <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
           <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
           <input type="hidden" name="KEYWORD20" value="<?=$Key20;?>">
-          <input type="hidden" name="GENRE" value="<?=$select01->get_selected_text();?>">
+
           
             <div class="submit">
               <input type="submit" value="書籍情報編集">
