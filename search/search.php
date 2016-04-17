@@ -31,6 +31,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 //画面表示
 if ($result == 0){
+
     include("search.html");
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){

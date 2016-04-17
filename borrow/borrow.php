@@ -9,8 +9,7 @@ $Key1 ="";
 $Key2 ="";
 $Key3 ="";
 
-$header = file_get_contents("../header/header.html");
-$footer = file_get_contents("../footer/footer.html");
+
 
 //IDとパスワードチェック
 if (!isID($_POST["KEYWORD1"],40,1)){

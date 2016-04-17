@@ -19,7 +19,7 @@ and open the template in the editor.
       </style>
     </head>
     <body>
-        <?php include('../header/header.html');?>
+        <?include('../header/header.html');?>
 
         <div id="content">
           <br>
@@ -138,10 +138,10 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$dspBookList[$i][5].".jpg";
 }else{
- $book = '/admin/book_add/tmp_cover/noimage.png';
+ $book = '../admin/book_add/tmp_cover/noimage.png';
 }?>
       <form method="post" action="../book/book.php">
         <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -151,7 +151,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][5];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -659,7 +659,7 @@ $('.slider-next').click(function(){
 </script>
 </div>
 <!--フッター-->
-          <?php include('../footer/footer.html');?>
+          <?include('../footer/footer.html');?>
         </div>
     </body>
 </html>
