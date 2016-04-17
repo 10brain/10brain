@@ -10,14 +10,17 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/borrow_bn.css">
+        <link rel="stylesheet" type="text/css" href="../css/header.css">
+        <link rel="stylesheet" type="text/css" href="../css/footer.css">
+        <link rel="stylesheet" type="text/css" href="../css/csshake.css">
         <script src="../js/jquery.js"></script>
         <script src="../js/fade.js"></script>
     </head>
     <body>
 
-          <?=include('../header/header.html');?>
+          <?=$header;?>
 
-          <div id="content">
+         <div id="content">
       		<div class="container">
       			<div class="bb-custom-wrapper">
 
@@ -31,7 +34,7 @@ and open the template in the editor.
                       <span class="error"><?=$booknum_error;?></span>
                       <form action="<?=$borrow_bn_conf;?>" method="post" >
                         <div class="form">
-                          <input name="KEYWORD40" size="10" maxlength="10" type="text" placeholder="書籍番号入力" />
+                          <input name="KEYWORD40" size="10" maxlength="10" type="text" placeholder="書籍番号入力"/>
 
                           <input type="hidden" name="ActionType" value="TgRSPInf">
                           <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
@@ -49,7 +52,7 @@ and open the template in the editor.
               </div>
             </div>
           </div>
-          <?=include('../footer/footer.html');?>
-          </div>
-
+          <?=$footer;?>
+        </div>
+    <body>
 </html>

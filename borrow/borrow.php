@@ -9,6 +9,8 @@ $Key1 ="";
 $Key2 ="";
 $Key3 ="";
 
+$header = file_get_contents("../header/header.html");
+$footer = file_get_contents("../footer/footer.html");
 
 //IDとパスワードチェック
 if (!isID($_POST["KEYWORD1"],40,1)){
@@ -39,11 +41,11 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     }
 
     $null = count($null);
-
-
+}
 
 //画面表示
 if ($result == 0){
+    
     if($null >= 3){
         include("borrow_not.html");
     }elseif(!is_null($return)){
@@ -55,7 +57,7 @@ if ($result == 0){
 }else{
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
-    }elseif ($result == 1){
+    }elseif($result == 1){
 	$error = "入力内容に誤りがあります。再度入力してください。";
     }else{
 	$error = "ただいまサーバーが込み合っております。";
@@ -64,6 +66,6 @@ if ($result == 0){
 include("../login/login.html");
 }
 
-}
+
 
 ?>
