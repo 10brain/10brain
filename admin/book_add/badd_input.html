@@ -51,6 +51,12 @@ and open the template in the editor.
             <span>ASINコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
             <input name="asin" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('asin');?>" /><br>
             <div class="error"><?=$io->get_error("bookcode_error"); ?></div><br><br>
+            <!--<span>ISBNコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("isbn_error"); ?></div><br>
+            <input name="isbn" size="10" maxlength="15" type="text"/><br>
+            
+            <span>ASINコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
+            <input name="asin" size="10" maxlength="10" type="text"/><br>
+            <div class="error"><?=$io->get_error("bookcode_error"); ?></div><br><br>-->
 
             <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
             <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>

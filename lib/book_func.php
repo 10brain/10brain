@@ -804,7 +804,7 @@ class BookModel{
         }else{
             $strSQL = $strSQL. " Where Num = :Key0 ";
         }
-        $strSQL = $strSQL. " Order By BNum DESC";
+        $strSQL = $strSQL. " Order By BDate DESC";
 
 
         //SQL実行

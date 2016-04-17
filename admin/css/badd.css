@@ -46,7 +46,7 @@ input:-webkit-autofill {
 }
 
 .title ul{
-  /zoom:1;
+  zoom:1;
   padding: 0;
   text-align: center;
 }

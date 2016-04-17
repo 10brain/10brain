@@ -37,8 +37,8 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key3 = $_POST["KEYWORD3"];  //パスワード
 
       $genre = $_POST["GENRE"];    
- 
-
+      $isbn = $_POST["isbn"];  
+      $asin = $_POST["asin"];
 
 
     // 内部文字コード
@@ -50,7 +50,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     define("TEMP_INPUT",   "badd_input.html");
     define("TEMP_ERROR",   "badd_input.html");
     define("TEMP_CONFIRM", "badd_confirm.html");
-    define("TEMP_BLOCK",   "../../login/login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./badd_suc.html");
@@ -147,6 +147,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                             $vali = new Validation();
+                            
                         if($io->get_param_html("isbn")){
                         $Key24 = $io->get_param_html("isbn");
                         }else{
@@ -189,23 +190,25 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
                     // ISBNとASIN
-                    if(!is_null($io->get_param("isbn")) and is_null($io->get_param("asin"))){
+                    $isbn = $io->get_param_html("isbn");
+                    $asin = $io->get_param_html("asin");
+                    if($isbn==null and $asin){
+                        $io->set_parameter("asin", mb_convert_kana($io->get_param("asin"), "KV", INNER_CODE));
+                        if(!preg_match("/^[A-Z0-9]{10}$/", $io->get_param("asin"))){
+                            $io->set_error("asin_error", "ASINコード内容に誤りが有ります");
+                        }
+                    }elseif($isbn and $asin){
+                        $io->set_error("bookcode_error", "ISBNコードまたはASINコードどちらかを入力してください");
+                    }elseif($isbn==null and $asin==null){
+                        $io->set_error("bookcode_error", "ISBNコードまたはASINコードどちらかを入力してください");
+                    }else{
                         $io->set_parameter("isbn", mb_convert_kana($io->get_param("isbn"), "KV", INNER_CODE));
                         if(!$vali->isISBN($io->get_param("isbn"), true, 15, 0, "UTF-8")){
                             $io->set_error("isbn_error", "ISBNコード内容に誤りが有ります");
-                        }                       
-                    }elseif(is_null($io->get_param("isbn")) and !is_null($io->get_param("asin"))){
-                        $io->set_parameter("asin", mb_convert_kana($io->get_param("asin"), "KV", INNER_CODE));
-                        if(!$vali->isASIN($io->get_param("asin"), true, 10, 0, "UTF-8")){
-                            $io->set_error("asin_error", "ASINコード内容に誤りが有ります");
                         }
-                    }elseif(is_null($io->get_param("isbn")) and is_null($io->get_param("asin"))){
-                        $io->set_error("bookcode_error", "ISBNコード、ASINコードのどちらかを入力してください");
-                    }elseif(!is_null($io->get_param("isbn")) and !is_null($io->get_param("asin"))){
-                        $io->set_error("bookcode_error", "入力内容に誤りが有ります");
 
                     }
-                    
+
 
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
