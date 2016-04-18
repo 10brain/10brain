@@ -84,6 +84,10 @@ body,h1,input,p{
   outline: 0;
 }
 
+#baddp p{
+  padding-top: 0;
+}
+
 /*suc*/
 .suc input[type="submit"]{
   height: 40px;

@@ -218,7 +218,3 @@ input:-webkit-autofill {
   line-height: 20px;
   width: 100%;
 }
-
-#inline_content p {
-  padding-top: 0;
-}
