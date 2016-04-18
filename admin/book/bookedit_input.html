@@ -11,6 +11,8 @@ and open the template in the editor.
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../css/jquery.minimalect.css" media="screen" />
       <link rel="stylesheet" type="text/css" href="../css/badd.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
       <script src="../../js/jquery.js"></script>
       <script src="../../js/jquery.minimalect.js"></script>
       <script src="../../js/fade.js"></script>
@@ -42,14 +44,15 @@ and open the template in the editor.
           <?=$io->get_all_params();?>
           <form name="input" action="<?=URL_ACTION;?>" method="post">
           <input type="hidden" name="step_from" value="input">
-          <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。<br>ISBNコードまたはASINコードはどちらか入力してください。半角数字、「-」のみ使用可能です。</span><br><br>
+          <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。</span><br><br>
             <?=$db_error;?>
-            <span>ISBNコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("isbn_error"); ?></div><br>
+            <span class="caution">※ ISBNコードまたはASINコードを入力してください。半角数字、「-」のみ使用可能です。</span><br>
+
+            <span>ISBNコード</span><div class="error"><?=$io->get_error("bookcode_error"); ?><?=$io->get_error("isbn_error"); ?></div><br>
             <input name="isbn" size="10" maxlength="15" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
-            
-            <span>ASINコード</span><span class="caution">※</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
+
+            <span>ASINコード</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
             <input name="asin" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('asin');?>" /><br>
-            <div class="error"><?=$io->get_error("bookcode_error"); ?></div><br><br>
 
             <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
             <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>

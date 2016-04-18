@@ -68,7 +68,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     // 入出力インスタンスの生成
     $io = new IO(HTML_CODE, HTML_CODE, INNER_CODE, "step_from,x,y", KEY);
     $io->set_parameters($_POST);
-   
+
     $select01 = new Select("select01", LIST_SELECT01, $io);
 
 
@@ -144,14 +144,14 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                         $vali = new Validation();
-   
 
-                         
+
+
                         $isbn = $io->get_param_html("isbn");
                         if($isbn){
                         $Key24 = $io->get_param_html("isbn");
                         }else{
-                        $Key24 = $io->get_param_html("asin");    
+                        $Key24 = $io->get_param_html("asin");
                         }
                         $Key25 = $io->get_param_html("title");
                         $Key26 = $select01->get_selected_text();
@@ -209,7 +209,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                         }
 
                     }
-                    
+
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
                     if(!$vali->isString($io->get_param("title"), TRUE, 255, 0, "UTF-8")){

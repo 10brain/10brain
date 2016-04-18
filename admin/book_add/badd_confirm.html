@@ -11,6 +11,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="../css/badd.css">
+        <link rel="stylesheet" type="text/css" href="../css/header.css">
+        <link rel="stylesheet" type="text/css" href="../css/footer.css">
         <meta http-equiv="Content-Script-Type" content="text/javascript" />
          <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
          <script src="../../js/jquery.js"></script>
@@ -43,7 +45,7 @@ and open the template in the editor.
         <?=$io->get_all_params();?>
 
             <div class="confirm">ISBN：<?=$io->get_param_html_br("isbn");?></div>
-            <div class="confirm">ASIN：<?=$io->get_param_html_br("asin");?></div><br>
+            <div class="confirm">ASIN：<?=$io->get_param_html_br("asin");?></div>
 
             <div class="confirm">タイトル：<?=$io->get_param_html_br("title");?></div>
             <div class="confirm">ジャンル：<?=$select01->get_selected_text();?></div>
