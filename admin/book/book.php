@@ -23,9 +23,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key20 = $_POST["KEYWORD20"];//書籍番号
     $Key21 = $_POST["KEYWORD21"];//ISBN
     $cover = $_POST['COVER'];
-    //echo $Key1;
-    //echo $Key2;
-    //echo $Key20;
+
     $cover = '/admin/book_add/tmp_cover/'.$cover;
     //DB問い合わせ
     $obj=new BookModel();

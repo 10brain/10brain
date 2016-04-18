@@ -47,10 +47,11 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     define("TEMP_INPUT",   "badd_input.html");
     define("TEMP_ERROR",   "badd_input.html");
     define("TEMP_CONFIRM", "badd_confirm.html");
-    define("TEMP_BLOCK",   "/login/login.html");
+    define("TEMP_BLOCK",   "../../login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./badd_suc.html");
+    define("HTML_SUCCESS_2", "./badd_suc_2.html");
     define("HTML_FAILURE", "./badd_fal.html");
 
     // url系情報の指定
@@ -167,7 +168,29 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                         $result = $obj->GETBookAdd($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32);
 
                             if($result == 0){
-                                    include(HTML_SUCCESS);
+                                  //coverテーブルに同じISBNが登録されているか確認する
+                                  $obj = new BookModel();
+                                  $result = $obj->GETCoverIsbn($ActType, $Key0, $Key24);
+
+                                  if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
+                                      include(HTML_SUCCESS_2);
+                                  }elseif($result==1){
+                                      //登録されていなければISBN登録し、選択画面へ
+                                      $obj = new BookModel();
+                                      $result = $obj->GETCoverIsbnAdd($ActType, $Key24, $dspCoverIsbn);
+
+                                      if($result == 0){
+                                        //ISBN登録完了すればsuc画面へ移動し、画像登録へ
+                                        include(HTML_SUCCESS);
+                                      }else{
+                                        include(HTML_FAILURE);
+                                      }
+                                  }else{
+                                    $db_error ='システムエラーです。開発者に連絡してください。';
+                                    include(TEMP_INPUT);
+
+                                  }
+
                             }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
@@ -175,9 +198,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
 
                     }else{
-    //				pg_query($conID, "rollback");
                             // 失敗画面
-                            //処理どうし→登録に失敗
                             include(HTML_FAILURE);
                     }
             }else{

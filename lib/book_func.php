@@ -130,7 +130,7 @@ class BookModel{
     }
 
 
-    
+
     /*********新着書籍一覧SQL*******************************************************/
     function GETBookNewList($ActType, &$dspBookNewList){
         //初期値設定
@@ -197,8 +197,8 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-                //$strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
-           $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book";
+           //$strSQL = "Select * From Book";
         }
 
 
@@ -286,7 +286,7 @@ class BookModel{
     }
 
     /*********管理者書籍検索SQL*************************************************/
-    function GETAdminBook($ActType, $Key21, &$dspAdminBook){
+    function GETAdminBook($ActType, $Key21, $Key22, &$dspAdminBook){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -295,23 +295,58 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
-        }
-        //echo 'アクションタイプ確認ok';
+          $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+         //$strSQL = "Select * From Book";
+      }
 
-        //書籍番号確認
-        if($Key21){
-            $strSQL = $strSQL. ' WHERE title Like :Key21';
-        }
-        $Key21 = "%$Key21%";
-        //echo $Key21;
-        //echo $result;
-        //SQL実行
+
+
+      if(strlen($Key21)>0){
+          $strSQL2= " WHERE ";
+          //andor判定
+          if($Key22 == 1){
+              $con = " AND ";
+          }else{
+              $con = " OR ";
+          }
+          /*echo $Key22;*/
+            //受け取ったキーワードの全角スペースを半角スペースに変換する
+            $keyword = str_replace("　", " ", $Key21);
+
+            //キーワードを空白で分割する
+            $array = explode(" ",$keyword);
+                        print_r($array);
+            //分割された個々のキーワードをSQLの条件where句に反映する
+            $count = count($array);
+
+
+            for($i = 0; $i <$count;$i++){
+
+                                if($Key22 ==1){
+                                    if($i!=0){
+                $strSQL3 .= $con;
+                                    }
+               $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+
+                                }else{
+                                    if($i!=0){
+                $strSQL3 .= $con;
+                                    }
+
+                                  $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+                                }
+
+            }
+          }
+
+      $strSQL = $strSQL.$strSQL2.$strSQL3;
         try {
            //クラス呼び出し
            $class=new DBModel();
            $stmh = $class->pdo->prepare($strSQL);
            $stmh->bindParam(':Key21', $Key21, PDO::PARAM_STR);
+           $stmh->bindParam(':Key22', $Key22, PDO::PARAM_INT);
+
 
 
            $stmh->execute();//実行
@@ -319,9 +354,6 @@ class BookModel{
                //システムエラー
                $result=2;
            }
-          //echo $strSQL;
-           //echo 'DB接続ok';
-           //echo $result;
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
@@ -1101,6 +1133,106 @@ class BookModel{
 
         return $result;
     }
+
+
+    /*********表紙ISBN検索SQL*************************************************/
+    function GETCoverIsbn($ActType, $Key24, &$dspCoverIsbn){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From cover";
+        }
+        //echo 'アクションタイプ確認ok';
+
+        //ISBN確認
+        if($Key24){
+            $strSQL = $strSQL. ' WHERE ISBN=:Key24';
+        }
+        //echo $Key21;
+        //echo $result;
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
+
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 1;
+               //echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   //表示データ収集
+                   $dspCoverIsbn[0] = $array['ISBN'];//ISBN
+                   $dspCoverIsbn[1] = $array['coverName'];//名前
+               }
+
+           }
+
+
+        } catch (Exception $Exception) {}
+        //return $dspUserInfo;
+        return $result;
+    }
+    /**************表紙ISBNSQL*************************************************/
+    function GETCoverIsbnAdd($ActType, $Key0, $Key24){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }
+        //貸出登録
+        if(!is_null($Key40)){
+            $strSQL = "INSERT INTO cover(ISBN)";
+            $strSQL = $strSQL. " VALUES(:Key24)";
+        }
+
+        //echo 'アクションタイプ確認ok';
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key24', $Key24, PDO::PARAM_STR);
+
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+
+
+        } catch (Exception $Exception) {
+            $result=4;
+        }
+
+        //return $dspUserInfo;
+        return $result;
+    }
+
 
 
 }
