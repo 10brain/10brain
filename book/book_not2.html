@@ -10,7 +10,9 @@ and open the template in the editor.
       <title>貸出 | 10brain</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../css/suc_fal.css">
-      <link rel="stylesheet" href="../css/colorbox.css" />
+      <link rel="stylesheet" href="../css/colorbox.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   		<script src="../js/jquery.colorbox.js"></script>
       <script src="../js/fade.js"></script>
@@ -64,7 +66,7 @@ $return = '../return/return.php';
     		<div style='display:none'>
     			<div id='inline_content' style='padding:10px; background:#fff;'　class="not">
             <img src="../img/fal.png">
-    			     <p>返却期限が過ぎている本があります。<br>返却してから本を借りてください。</p>
+    			     <p>返却期限を過ぎている本があります。<br>返却してから本を借りてください。</p>
                <div class="not">
                  <form name="input" action="<?=$return;?>" method="post" >
                  <input type="hidden" name="ActionType" value="TgRSPInf">
