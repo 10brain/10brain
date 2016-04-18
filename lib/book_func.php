@@ -77,11 +77,11 @@ class BookModel{
                }
 
            }
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+            $strSQL = "Select * From Book";
 
             //echo $Key21;
 
-            $strSQL = $strSQL." ORDER BY Book.date DESC LIMIT 30";
+            $strSQL = $strSQL." ORDER BY date DESC LIMIT 30";
 
 
            //クラス呼び出し
@@ -274,7 +274,7 @@ class BookModel{
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
                    $dspBookList[$i][4] = $array['stock'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
-                   $dspBookList[$i][6] = $array['coverName'];
+
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
