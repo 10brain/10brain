@@ -22,9 +22,9 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key3 = $_POST["KEYWORD3"];  //名前
     $Key20 = $_POST["KEYWORD20"];//書籍番号
     $Key21 = $_POST["KEYWORD21"];//ISBN
-    $cover = $_POST['COVER'];
+    
 
-    $cover = '/admin/book_add/tmp_cover/'.$cover;
+    $cover = '/admin/book_add/tmp_cover/'.$Key21.".jpg";
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);

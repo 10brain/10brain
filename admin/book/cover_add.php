@@ -1,5 +1,6 @@
 <?php
 if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+    $result=0;
     //ログイン情報確認
     if(!preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $_POST["KEYWORD1"])){
         $result = 1;
@@ -40,7 +41,7 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
 
             // MIMEタイプをチェック
             $type = @exif_imagetype($_FILES['upfile']['tmp_name']);
-            if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
+            if (!in_array($type, [IMAGETYPE_JPEG], true)) {
                 $result = 2;
                 $msg ='画像形式が未対応です';
             }else{
@@ -73,6 +74,7 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
 
 
 /**DB登録処理***/
+if($result==0){
 try {
 
     // データベースに接続
@@ -121,6 +123,6 @@ if($result == 0){
   include 'bookedit_fal.html';
 }
 
-
+}
 
 ?>

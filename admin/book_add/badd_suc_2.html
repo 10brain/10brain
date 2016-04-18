@@ -67,7 +67,7 @@ $badd = './badd.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
-    			<div id='baddp inline_content' style='padding:10px; background:#fff;'>
+    			<div id='inline_content' style='padding:10px; background:#fff;'>
     			     <center>登録が完了しました。</center>
                <center>登録した本の表紙は既に登録されています。</center>
                <center>表紙を変更しますか？</center>
@@ -78,7 +78,7 @@ $badd = './badd.php';
                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
-                   <input type="hidden" name="KEYWORD20" value="<?=$Key24;?>">
+                   <input type="hidden" name="KEYWORD20" value="<?=$dspCoverIsbn[0];?>">
                    <input type="hidden" name="KEYWORD22" value="<?=$dspCoverIsbn[1];?>">
                    <div class="baddcheck">
                      <input type="submit" value="はい、変更します。">

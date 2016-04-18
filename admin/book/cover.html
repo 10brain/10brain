@@ -7,7 +7,11 @@ $Key0 = $_POST['KEYWORD0'];
 $Key1 = $_POST['KEYWORD1'];
 $Key2 = $_POST['KEYWORD2'];
 $Key3 = $_POST['KEYWORD3'];
+if(preg_match("/^\d{3}\-\d{10}$/", $_POST['KEYWORD20'])){
 $isbn = $_POST['KEYWORD20'];
+}else{
+$asin = $_POST['KEYWORD20'];
+}
 $bnum = $_POST['KEYWORD21'];
 $cover = $_POST['KEYWORD22'];
 
@@ -53,7 +57,10 @@ $cover_add = 'cover_add.php';
           <form method="post" action="<?=$cover_add;?>" enctype="multipart/form-data">
               <? if(isset($isbn)){?>
               <p>ISBN：<?=$isbn;?></p>
+              <?}else{?>
+              <p>ASIN：<?=$asin;?></p>
               <?}?>
+
               <?if(isset($bnum)){?>
               <p>書籍番号：<?=$bnum;?></p>
               <?}?>

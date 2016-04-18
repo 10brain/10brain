@@ -141,7 +141,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
+            $strSQL = "Select * From Book";
         }
         //echo $Key21;
 
@@ -176,7 +176,7 @@ class BookModel{
                 while($array = $stmh->fetch(PDO::FETCH_ASSOC)){
                    $dspBookNewList[$i][0] = $array['BookNum'];//書籍番号
                    $dspBookNewList[$i][1] = $array['ISBN'];//ISBN
-                   $dspBookNewList[$i][2] = $array['coverName'];//ISBN
+                   //$dspBookNewList[$i][2] = $array['coverName'];//ISBN
                 $i=$i+1;
                 }
                 //print_r($dspBookList);
@@ -1193,7 +1193,7 @@ class BookModel{
         return $result;
     }
     /**************表紙ISBNSQL*************************************************/
-    function GETCoverIsbnAdd($ActType, $Key0, $Key24){
+    function GETCoverIsbnAdd($ActType, $Key24){
         //初期値設定
         $result = 0;
         /**SQL発行**/
@@ -1202,8 +1202,8 @@ class BookModel{
             $result = 2;
             return $result;
         }
-        //貸出登録
-        if(!is_null($Key40)){
+        
+        if(!is_null($Key24)){
             $strSQL = "INSERT INTO cover(ISBN)";
             $strSQL = $strSQL. " VALUES(:Key24)";
         }
