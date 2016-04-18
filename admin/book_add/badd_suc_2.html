@@ -11,6 +11,8 @@ and open the template in the editor.
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../../css/suc_fal.css">
       <link rel="stylesheet" href="../../css/colorbox.css" />
+              <link rel="stylesheet" type="text/css" href="../css/header.css">
+        <link rel="stylesheet" type="text/css" href="../css/footer.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   		<script src="../../js/jquery.colorbox.js"></script>
       <script src="../../js/fade.js"></script>
@@ -67,7 +69,7 @@ $badd = './badd.php';
     		<div style='display:none'>
     			<div id='inline_content' style='padding:10px; background:#fff;'>
     			     <p>登録が完了しました。</p>
-                             <center>既に同じISBNの表紙が登録されています。</center>
+                             <p>既に同じISBNの表紙が登録されています。</p>
                <div class="sucbadd">
                  <form name="input" action="<?=$cover;?>" method="post" >
                    <input type="hidden" name="ActionType" value="TgRSPInf">
@@ -89,7 +91,7 @@ $badd = './badd.php';
                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
                    <input type="hidden" name="KEYWORD20" value="<?=$Key24;?>">
                    <div class="baddcheck">
-                     <input type="submit" value="今は表紙登録しない">
+                     <input type="submit" value="">
                    </div>
                 </form>
               </div>
