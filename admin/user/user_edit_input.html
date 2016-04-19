@@ -46,7 +46,7 @@ and open the template in the editor.
             <span>ユーザー名</span><span class="caution">　スペースは空けずにフルネームで入力してください。</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
             <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
             <span>ユーザーID</span><span class="caution">　10バトンでのアドレスを入力してください。</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
-            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" />@10baton.com<br>
+            <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" style="ime-mode: disabled"/>@10baton.com<br>
             <span>パスワード</span><span class="caution">　パスワードを初期化する場合は、チェックを入れてください。</span><div class="error"><?=$io->get_error("pass");?></div><br>
             <?=$pass->get_all_checks("?", true)?>
 

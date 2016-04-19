@@ -25,7 +25,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $cover = $_POST['COVER'];
     
     if(!is_null($cover)){
-    $cover = '../admin/book_add/tmp_cover/'.$cover.'.jpg';
+    $cover = '../admin/book_add/tmp_cover/'.$cover;
     }else{
      $cover = '../admin/book_add/tmp_cover/noimage.png';
     }

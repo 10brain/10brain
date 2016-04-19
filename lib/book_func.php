@@ -81,7 +81,7 @@ class BookModel{
 
             //echo $Key21;
 
-            $strSQL = $strSQL." ORDER BY date ASC LIMIT 30";
+            $strSQL = $strSQL." ORDER BY date DESC LIMIT 30";
 
 
            //クラス呼び出し

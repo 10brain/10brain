@@ -186,7 +186,7 @@ define("HTML_CODE", "UTF-8");
             // 確認処理 ================================================================
             if(CHECK_REFERER == "" or $_SERVER["HTTP_REFERER"] == URL_ACTION){
                     $vali = new Validation();
-
+                        $id =$io->get_param("ID");
                         // 名前
                         $io->set_parameter("Name", mb_convert_kana($io->get_param("Name"), "KV", INNER_CODE));
                         if(!$vali->isDW_Kanji($io->get_param("Name"), true, 30, 0, "UTF-8")){
@@ -195,7 +195,7 @@ define("HTML_CODE", "UTF-8");
 
                         //ID
                         $io->set_parameter("ID", mb_convert_kana($io->get_param("ID"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("ID"), true, 10, 0, "UTF-8")){
+                        if(!preg_match("/^[a-zA-Z0-9_\.\-]+$/", $id)){
                                 $io->set_error("ID_error", "未入力、または内容に誤りが有ります");
                         }
                         if($pass->is_regularly(1, 1)){

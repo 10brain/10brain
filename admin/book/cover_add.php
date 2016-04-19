@@ -74,7 +74,7 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
 
 
 /**DB登録処理***/
-
+if($result==0){
 try {
 
     // データベースに接続
@@ -116,7 +116,7 @@ try {
   http_response_code($e instanceof PDOException ? 500 : $e->getCode());
   $result = 2;
 }
-
+}
 if($result == 0){
   include 'cover_suc.html';
 }else{
