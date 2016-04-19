@@ -57,9 +57,9 @@ and open the template in the editor.
             <div class="section">
 <?
 if(!is_null($dspBookNewList[$i][2])){
- $book = '../admin/book_add/tmp_cover/'.$dspBookNewList[$i][1];
+ $book = '/admin/book_add/tmp_cover/'.$dspBookNewList[$i][2];
  }else{
- $book = '../admin/book_add/tmp_cover/noimage.png';
+ $book = '/admin/book_add/tmp_cover/noimage.png';
  }
 ?>
               <form method="post" action="../book/book.php">

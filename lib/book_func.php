@@ -77,11 +77,11 @@ class BookModel{
                }
 
            }
-            $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
 
             //echo $Key21;
 
-            $strSQL = $strSQL." ORDER BY date DESC LIMIT 30";
+            $strSQL = $strSQL." ORDER BY date ASC LIMIT 30";
 
 
            //クラス呼び出し
@@ -141,7 +141,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
         }
         //echo $Key21;
 
@@ -197,7 +197,7 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book";
+            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
            //$strSQL = "Select * From Book";
         }
 
@@ -454,7 +454,7 @@ class BookModel{
                    $dspBookDet[9] = $array['stock'];
                    $dspBookDet[10] = $array['BookNum'];
                }
-
+               echo $dspBookDet[10];
            }
 
         } catch (Exception $Exception) {}
@@ -1229,6 +1229,60 @@ class BookModel{
             $result=4;
         }
 
+        //return $dspUserInfo;
+        return $result;
+    }
+    
+    /*********最新書籍番号取得SQL*********************************************/
+    function GETNewBooknum($ActType, &$dspNewBooknum){
+        //初期値設定
+        $result = 0;
+        /**SQL発行**/
+        //アクションタイプ確認
+        if($ActType != 'TgRSPInf'){
+            $result = 2;
+            return $result;
+        }else{
+            $strSQL = "Select * From Book ORDER BY BookNum DESC LIMIT 1";
+        }
+
+
+
+        //SQL実行
+        try {
+           //クラス呼び出し
+           $class=new DBModel();
+           $stmh = $class->pdo->prepare($strSQL);
+           $stmh->bindParam(':Key0', $Key0, PDO::PARAM_STR);
+
+           $stmh->execute();//実行
+           if(!$stmh){
+               //システムエラー
+               $result=2;
+           }
+           //echo 'DB接続ok';
+           //echo $result;
+
+           $count=$stmh->rowCount();//実行結果の行数をカウント
+           if($count == 0){
+               //データなし
+               $result = 1;
+               //echo $count;
+           }else{
+               //データ取得
+               $array = $stmh->fetch(PDO::FETCH_ASSOC);
+               if($array == false){
+                   //システムエラー
+                   $result = 2;
+               }else{
+                   //表示データ収集
+                   $dspNewBooknum[0] = $array['BookNum'];//書籍番号
+               }
+           }
+
+        } catch (Exception $Exception) {
+            $result=4;
+        }
         //return $dspUserInfo;
         return $result;
     }

@@ -165,7 +165,7 @@ class otherModel{
             return $result;
         }
         $strSQL = $strSQL." WHERE (app=1 and pur=1) OR (app=2 and pur=0)";
-
+        $strSQL = $strSQL." ORDER BY ReqDate";
         //echo 'アクションタイプ確認ok';
 
 

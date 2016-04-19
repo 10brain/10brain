@@ -1,6 +1,7 @@
 <?php
+ $result=0;
 if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
-    $result=0;
+   
     //ログイン情報確認
     if(!preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $_POST["KEYWORD1"])){
         $result = 1;
@@ -19,31 +20,28 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
         $Key24 = $_POST['KEYWORD24'];
     }
 
-    //ファイル名が格納されているか確認
-    if(!$_FILES['upfile']['name']){
-        $uploadfile = 'noimage.png';
-        $type = 'image/ping';
-
-    }else{
 
         try {
             // $_FILES['upfile']['error'] の値を確認
             switch ($_FILES['upfile']['error']) {
                 case UPLOAD_ERR_OK: // OK
                     break;
-
-                case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
+                case UPLOAD_ERR_NO_FILE:   // ファイル未選択
+                    $msg ='ファイルが選択されていません';
                     $result = 2;
+                case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
+                case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過
                     $msg ='ファイルサイズが大きすぎます';
+                    $result = 2;
                 default:
-                    throw new RuntimeException('その他のエラーが発生しました');
+                    $msg ='その他のエラーが発生しました';
+                    $result = 2;
             }
-
             // MIMEタイプをチェック
             $type = @exif_imagetype($_FILES['upfile']['tmp_name']);
-            if (!in_array($type, [IMAGETYPE_JPEG], true)) {
-                $result = 2;
-                $msg ='画像形式が未対応です';
+            if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
+                $msg ='画像形式が未対応です。';
+                
             }else{
                 //MIMEタイプがpngかjpegなら対応
                 // ファイルデータからSHA-1ハッシュを取ってファイル名を決定し、ファイルを保存する
@@ -62,19 +60,21 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
 
             }else{
                 $result = 2;
-                $msg ='ファイル保存時にエラーが発生しました';
+                $msg ='ファイル保存時にエラーが発生しました。';
             }
-
+            if($result != 0){
+                include 'cover_fal.html';
+            }
 
           } catch (RuntimeException $e) {
              $result = 2;
           }
     }
-}
+
 
 
 /**DB登録処理***/
-if($result==0){
+
 try {
 
     // データベースに接続
@@ -118,11 +118,11 @@ try {
 }
 
 if($result == 0){
-  include 'bookedit_suc.html';
+  include 'cover_suc.html';
 }else{
-  include 'bookedit_fal.html';
+  include 'cover_fal.html';
 }
 
-}
+
 
 ?>

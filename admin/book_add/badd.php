@@ -173,13 +173,22 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                                   $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
 
                                   if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
-                                      include(HTML_SUCCESS_2);
+                                    $obj = new BookModel();
+                                    $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
+                                     if($result == 0){
+                                         $Key21 = $dspNewBooknum[0];
+                                         include(HTML_SUCCESS_2);
+                                     }
+                                      
                                   }elseif($result==1){
                                       //登録されていなければISBN登録し、選択画面へ
                                       $obj = new BookModel();
                                       $result = $obj->GETCoverIsbnAdd($ActType, $Key24);
 
                                       if($result == 0){
+                                          $obj = new BookModel();
+                                          $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
+                                          
                                         //ISBN登録完了すればsuc画面へ移動し、画像登録へ
                                         include(HTML_SUCCESS);
                                       }else{
