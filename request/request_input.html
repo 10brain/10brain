@@ -44,7 +44,8 @@ and open the template in the editor.
                   <span>本のタイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
                   <input name="title" id="title" size="10" maxlength="80" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
-                  <span>amazonリンク</span><span class="caution">※　amazonで検索→該当ページの「シェアする」→固定リンクからコピー</span><div class="error"><?=$io->get_error("link_error"); ?></div><br>
+                  <span>amazonリンク</span><span class="caution">※　amazonで検索→該当ページの「シェアする」→固定リンクからコピー</span>
+                  <div class="error"><?=$io->get_error("link_error"); ?></div>
                   <input name="link" id="link" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('link');?>" placeholder="http://www.amazon.co.jp/"/><br>
 
                   <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>

@@ -84,9 +84,7 @@ body,h1,input,p{
   outline: 0;
 }
 
-#baddp p{
-  padding-top: 0;
-}
+
 
 /*suc*/
 .suc input[type="submit"]{
@@ -106,6 +104,13 @@ body,h1,input,p{
   text-align: center;
   font-size: 12px;
   padding-top: 5px;
+  letter-spacing: 2px;
+}
+
+#inline_content p{
+  text-align: center;
+  font-size: 12px;
+  padding-top: 30px;
   letter-spacing: 2px;
 }
 
