@@ -155,6 +155,7 @@ body,h1,input,span{
 }
 
 button {
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
   font-size: 15px;
   letter-spacing: 2px;
 	display: block;
