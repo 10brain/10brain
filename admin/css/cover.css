@@ -114,3 +114,12 @@ body,input,textarea{
   display: inline-block;
   list-style: none;
 }
+
+.caution{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
+}
