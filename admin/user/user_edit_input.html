@@ -41,7 +41,7 @@ and open the template in the editor.
         <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
-           <?=$db_error;?>
+
          <span class="caution">変更したいユーザー情報を入力してください。</span><br>
          <span class="caution">ユーザーIDの文字数は20文字までです。</span><br><br>
 
@@ -52,7 +52,7 @@ and open the template in the editor.
             <span>パスワード</span><span class="caution">　パスワードを初期化する場合は、チェックを入れてください。</span><div class="error"><?=$io->get_error("pass");?></div><br>
             <?=$pass->get_all_checks("?", true)?>
 
-
+            <div class="error"><?=$db_error;?></div>
             <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

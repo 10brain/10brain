@@ -52,7 +52,7 @@ $useradd='useradd.php';
             <span>ユーザーID</span><span class="caution">※　10バトンでのアドレスを入力してください。</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
             <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" style="ime-mode: disabled"/>@10baton.com<br>
 
-
+            <div class="error"><?=$dbid_error;?><?=$db_error;?></div>
             <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
@@ -62,8 +62,6 @@ $useradd='useradd.php';
               <input type="submit" value="確認">
             </div>
           </form>
-            <?=$dbid_error;?><br>
-            <?=$db_error;?>
 
       </div>
 
