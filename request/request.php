@@ -33,7 +33,11 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key2 = $_POST["KEYWORD2"];  //パスワード
     $Key3 = $_POST["KEYWORD3"];  //パスワード
     $decision = $_POST["decision"];  //パスワード
-
+}
+    if($result==1){
+        include '../login/login.html';
+    }else{
+        
 
 
     // 内部文字コード

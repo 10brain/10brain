@@ -53,7 +53,7 @@ if ($result == 0){
     
     if ($_POST["ActionType"] != "TgRSPInf"){
         $error = "";
-        include("../../login/login.html");
+        include("/login/login.html");
     }elseif ($result == 1){
 	$error = "入力内容に誤りがあります。再度入力してください。";
     }else{

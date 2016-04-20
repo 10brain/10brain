@@ -30,7 +30,7 @@ if ($result == 0){
     //管理者か一般ユーザーか判定
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top/top.html");
-    }else{        
+    }else{
         include("../top/top.html");
     }
 }else{
@@ -42,7 +42,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../login/login.html");
+include("/login/login.html");
 }
 
 

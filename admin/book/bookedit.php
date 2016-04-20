@@ -26,6 +26,8 @@ $Key3 ="";
 //IDとパスワードチェック
 if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
+      include'/login/login.html';
+
 }elseif (!isPW($_POST["KEYWORD2"],10,1)){
     $result = 1;
 }else{
@@ -36,17 +38,22 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key20 = $_POST["KEYWORD20"];
     $Key21 = $_POST["KEYWORD21"];
     $genre = $_POST["GENRE"];
+}
+
+    if($result==1){
+        include'../../login/login.html';
+    }else{
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
-define("HTML_CODE", "UTF-8");
+    define("HTML_CODE", "UTF-8");
 
     // テンプレート系ファイルの指定
     define("TEMP_AGREE",   "bookedit_input.html");
     define("TEMP_INPUT",   "bookedit_input.html");
     define("TEMP_ERROR",   "bookedit_input.html");
     define("TEMP_CONFIRM", "bookedit_confirm.html");
-    define("TEMP_BLOCK",   "../../login/login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "bookedit_suc.html");
@@ -142,12 +149,12 @@ define("HTML_CODE", "UTF-8");
                     // 完了画面 --------------------------------------------------------------
                     if($decision){
                         $vali = new Validation();
-                         
+
                         $isbn = $io->get_param_html("isbn");
                         if($isbn){
                         $Key24 = $io->get_param_html("isbn");
                         }else{
-                        $Key24 = $io->get_param_html("asin");    
+                        $Key24 = $io->get_param_html("asin");
                         }
 
                         $Key25 = $io->get_param_html("title");
@@ -158,7 +165,7 @@ define("HTML_CODE", "UTF-8");
                         $Key30 = $io->get_param_html("year");
                         $Key31 = $io->get_param_html("amazon");
                         $Key32 = $io->get_param_html("remarks");
-             
+
                          //データベース更新
                         $obj = new BookModel();
                         $result = $obj->GETBookEDIT($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key20);
@@ -168,15 +175,15 @@ define("HTML_CODE", "UTF-8");
                                   $obj = new BookModel();
                                   $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
                                     $Key22 = '/admin/book_add/tmp_cover/'.$dspCoverIsbn[1];
-                                    
+
                                   if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
                                     $obj = new BookModel();
                                     $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
                                      if($result == 0){
-                                         
+
                                          include(HTML_SUCCESS_2);
                                      }
-                                      
+
                                   }elseif($result==1){
                                       //登録されていなければISBN登録し、選択画面へ
                                       $obj = new BookModel();
@@ -185,7 +192,7 @@ define("HTML_CODE", "UTF-8");
                                       if($result == 0){
                                           $obj = new BookModel();
                                           $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
-                                          
+
                                         //ISBN登録完了すればsuc画面へ移動し、画像登録へ
                                         include(HTML_SUCCESS);
                                       }else{

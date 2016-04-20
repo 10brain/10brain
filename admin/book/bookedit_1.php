@@ -46,7 +46,7 @@ define("HTML_CODE", "UTF-8");
     define("TEMP_INPUT",   "bookedit_input.html");
     define("TEMP_ERROR",   "bookedit_input.html");
     define("TEMP_CONFIRM", "bookedit_confirm.html");
-    define("TEMP_BLOCK",   "../../login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./bookedit_suc.html");

@@ -32,6 +32,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
+}
 //画面表示
 if ($result == 0){
     $book = './book_conf.php';
@@ -46,7 +47,7 @@ if ($result == 0){
     }
 
 include("../login/login.html");
-}
+
 }
 
 

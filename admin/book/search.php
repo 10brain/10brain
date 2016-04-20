@@ -43,12 +43,9 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("/10brain/login/login.html");
+include("../../login/login.html");
 }
 
 }
 
 ?>
-
-INSERT INTO 'Book'(`ISBN`,`BookNum`,`title`,`amazon`,`remarks`,`pub`,`writer`,`intro`,`year`,`genre`,`date`, `stock`) VALUES
-()

@@ -27,7 +27,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $obj=new BookModel();
     //入力された情報の確認
     $result = $obj->GETBorrowUList($ActType, $Key0, $dspBorrowUList);
-
+}
 
 //画面表示
 if ($result == 0){
@@ -47,6 +47,6 @@ if ($result == 0){
 include("../login/login.html");
 }
 
-}
+
 
 ?>

@@ -197,14 +197,14 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-            $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
-           //$strSQL = "Select * From Book";
+            $strSQL = "select * from Book";
+           
         }
 
 
 
         if(strlen($Key21)>0){
-            $strSQL2= " WHERE ";
+            $strSQL2= " where ";
             //andor判定
             if($Key22 == 1){
                 $con = " AND ";
@@ -217,7 +217,6 @@ class BookModel{
 
 		//キーワードを空白で分割する
 		$array = explode(" ",$keyword);
-                print_r($array);
 		//分割された個々のキーワードをSQLの条件where句に反映する
 		$count = count($array);
 
@@ -228,20 +227,21 @@ class BookModel{
                             if($i!=0){
 				$strSQL3 .= $con;
                             }
-			 $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+			 $strSQL3 .= "concat(BookNum,title,genre,pub,ifnull(writer,''),ifnull(intro,'')) like '%$array[$i]%'";
 
                         }else{
                             if($i!=0){
 				$strSQL3 .= $con;
                             }
 
-                          $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+                          $strSQL3 .= "concat(BookNum,title,genre,pub,ifnull(writer,''),ifnull(intro,'')) LIKE '%$array[$i]%'";
                         }
 
 		}
 	}
 
         $strSQL = $strSQL.$strSQL2.$strSQL3;
+
         //SQL実行
         try {
            //クラス呼び出し
@@ -274,12 +274,13 @@ class BookModel{
                    $dspBookList[$i][3] = $array['genre'];//ジャンル
                    $dspBookList[$i][4] = $array['stock'];//在庫数
                    $dspBookList[$i][5] = $array['ISBN'];//ISBN
+                   //$dspBookList[$i][6] = $array['coverName'];//ISBN
 
                 $i=$i+1;
                 }
-                //print_r($dspBookList);
-           }
 
+           }
+           
         } catch (Exception $Exception) {}
         //return $dspUserInfo;
         return $result;
@@ -295,8 +296,8 @@ class BookModel{
             $result = 2;
             return $result;
         }else{
-          $strSQL = "Select * From Book INNER JOIN cover ON cover.ISBN = Book.ISBN";
-         //$strSQL = "Select * From Book";
+          $strSQL = "Select * From Book";
+
       }
 
 
@@ -315,7 +316,7 @@ class BookModel{
 
             //キーワードを空白で分割する
             $array = explode(" ",$keyword);
-                        print_r($array);
+          
             //分割された個々のキーワードをSQLの条件where句に反映する
             $count = count($array);
 
@@ -326,15 +327,15 @@ class BookModel{
                                     if($i!=0){
                 $strSQL3 .= $con;
                                     }
-               $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
+			 $strSQL3 .= "concat(BookNum,title,genre,pub,ifnull(writer,''),ifnull(intro,'')) like '%$array[$i]%'";
 
-                                }else{
-                                    if($i!=0){
-                $strSQL3 .= $con;
-                                    }
+                        }else{
+                            if($i!=0){
+				$strSQL3 .= $con;
+                            }
 
-                                  $strSQL3 .= "(concat(title,' ',genre,' ',pub,' ',writer,' ',intro,' ') LIKE '%$array[$i]%')";
-                                }
+                          $strSQL3 .= "concat(BookNum,title,genre,pub,ifnull(writer,''),ifnull(intro,'')) LIKE '%$array[$i]%'";
+                        }
 
             }
           }
@@ -354,7 +355,7 @@ class BookModel{
                //システムエラー
                $result=2;
            }
-
+            echo $strSQL;
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
@@ -386,10 +387,7 @@ class BookModel{
     function GETBookDetail($ActType, $Key20, $Key21, &$dspBookDet){
         //初期値設定
         $result = 0;
-        //echo $Key20;
-        //echo $Key21;
-        /**SQL発行**/
-        //アクションタイプ確認
+
         if($ActType != 'TgRSPInf'){
             $result = 2;
             return $result;
@@ -454,7 +452,7 @@ class BookModel{
                    $dspBookDet[9] = $array['stock'];
                    $dspBookDet[10] = $array['BookNum'];
                }
-               echo $dspBookDet[10];
+              
            }
 
         } catch (Exception $Exception) {}
@@ -500,9 +498,6 @@ class BookModel{
            $stmh->bindParam(':Key32', $Key32, PDO::PARAM_STR);
            $stmh->bindParam(':stock', $stock, PDO::PARAM_INT);
 
-
-            //echo $Key2.'確認';
-            //echo $strSQL;
 
            $stmh->execute();//実行
            if(!$stmh){
@@ -615,8 +610,7 @@ class BookModel{
                //システムエラー
                $result=2;
            }
-           //echo 'DB接続ok';
-           //echo $result;
+
            $count=$stmh->rowCount();//実行結果の行数をカウント
 
            if($count == 0){
@@ -1189,7 +1183,7 @@ class BookModel{
 
 
         } catch (Exception $Exception) {}
-        //return $dspUserInfo;
+        
         return $result;
     }
     /**************表紙ISBNSQL*************************************************/
@@ -1208,7 +1202,7 @@ class BookModel{
             $strSQL = $strSQL. " VALUES(:Key24)";
         }
 
-        //echo 'アクションタイプ確認ok';
+  
 
         //SQL実行
         try {
@@ -1260,14 +1254,12 @@ class BookModel{
                //システムエラー
                $result=2;
            }
-           //echo 'DB接続ok';
-           //echo $result;
+
 
            $count=$stmh->rowCount();//実行結果の行数をカウント
            if($count == 0){
                //データなし
                $result = 1;
-               //echo $count;
            }else{
                //データ取得
                $array = $stmh->fetch(PDO::FETCH_ASSOC);

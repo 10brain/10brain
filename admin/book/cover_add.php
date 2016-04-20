@@ -1,7 +1,7 @@
 <?php
  $result=0;
 if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
-   
+
     //ログイン情報確認
     if(!preg_match('/^[a-zA-Z0-9_\.\-]+?@[A-Za-z0-9_\.\-]+$/', $_POST["KEYWORD1"])){
         $result = 1;
@@ -41,7 +41,7 @@ if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
             $type = @exif_imagetype($_FILES['upfile']['tmp_name']);
             if (!in_array($type, [IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
                 $msg ='画像形式が未対応です。';
-                
+
             }else{
                 //MIMEタイプがpngかjpegなら対応
                 // ファイルデータからSHA-1ハッシュを取ってファイル名を決定し、ファイルを保存する
@@ -119,6 +119,8 @@ try {
 }
 if($result == 0){
   include 'cover_suc.html';
+}elseif($result == 1){
+    include '../../login/login.html';
 }else{
   include 'cover_fal.html';
 }

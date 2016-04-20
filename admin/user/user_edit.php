@@ -39,7 +39,10 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key14 = $_POST["KEYWORD14"];//名前
     $Key15 = $_POST["KEYWORD15"];
 
-
+}
+    if($result==1){
+        include '../../login/login.html';
+    }else{
 
 
     // 内部文字コード
@@ -51,7 +54,7 @@ define("HTML_CODE", "UTF-8");
     define("TEMP_INPUT",   "user_edit_input.html");
     define("TEMP_ERROR",   "user_edit_input.html");
     define("TEMP_CONFIRM", "user_edit_confirm.html");
-    define("TEMP_BLOCK",   "../../login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./user_edit_suc.html");

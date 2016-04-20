@@ -51,7 +51,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             $error = "ただいまサーバーが込み合っております。";
         }
 
-        include("../login/login.html");
+        include("/login/login.html");
     }
 }
 

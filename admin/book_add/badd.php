@@ -27,6 +27,7 @@ $Key3 ="";
 //IDとパスワードチェック
 if (!isID($_POST["KEYWORD1"],40,1)){
     $result = 1;
+
 }elseif (!isPW($_POST["KEYWORD2"],10,1)){
     $result = 1;
 }else{
@@ -35,8 +36,11 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     $Key1 = $_POST["KEYWORD1"];  //ID
     $Key2 = $_POST["KEYWORD2"];
     $Key3 = $_POST["KEYWORD3"];  //パスワード
+}
 
-
+    if($result==1){
+        include'../../login/login.html';
+    }else{
 
     // 内部文字コード
     define("INNER_CODE", "UTF-8");
@@ -47,7 +51,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     define("TEMP_INPUT",   "badd_input.html");
     define("TEMP_ERROR",   "badd_input.html");
     define("TEMP_CONFIRM", "badd_confirm.html");
-    define("TEMP_BLOCK",   "../../login/login.html");
+    define("TEMP_BLOCK",   "/login/login.html");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "./badd_suc.html");
@@ -172,15 +176,14 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                                   $obj = new BookModel();
                                   $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
                                     $Key22 = '/admin/book_add/tmp_cover/'.$dspCoverIsbn[1];
-                                    
+
                                   if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
                                     $obj = new BookModel();
                                     $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
                                      if($result == 0){
-                                         
                                          include(HTML_SUCCESS_2);
                                      }
-                                      
+
                                   }elseif($result==1){
                                       //登録されていなければISBN登録し、選択画面へ
                                       $obj = new BookModel();
@@ -189,7 +192,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                                       if($result == 0){
                                           $obj = new BookModel();
                                           $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
-                                          
+
                                         //ISBN登録完了すればsuc画面へ移動し、画像登録へ
                                         include(HTML_SUCCESS);
                                       }else{
@@ -323,6 +326,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                     include(TEMP_BLOCK);
             }
     }
-}
 
+
+}
 ?>

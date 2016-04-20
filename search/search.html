@@ -79,7 +79,8 @@ and open the template in the editor.
 <table border="1" width="80%">
   <tr class="tr">
       <td width="10%"></td>
-      <td width="60%">タイトル</td>
+      <td width="10%">書籍番号</td>
+      <td width="50%">タイトル</td>
       <td width="10%">出版社</td>
       <td width="10%">ジャンル</td>
       <td width="10%">貸出状況</td></tr>
@@ -99,11 +100,11 @@ and open the template in the editor.
           <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
           <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
           <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-          <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="submit" value="詳細" />
           </form>
       </td>
-
+      <td><?=$dspBookList[$i][0];?></td><!--書籍番号-->
       <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
       <td><?=$dspBookList[$i][2];?></td><!--出版社-->
       <td><?=$dspBookList[$i][3];?></td><!--カテゴリ-->
@@ -143,7 +144,7 @@ break;
 ?>
     <div class="section">
 <?if(!is_null($dspBookList[$i][5])){
-$book = '../admin/book_add/tmp_cover/'.$dspBookList[$i][5].".jpg";
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '../admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -155,7 +156,7 @@ $book = '../admin/book_add/tmp_cover/'.$dspBookList[$i][5].".jpg";
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -189,8 +190,8 @@ break;
 ?>
 
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '/admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -202,7 +203,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -239,8 +240,8 @@ break;
 ?>
 
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -252,7 +253,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -288,8 +289,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -301,7 +302,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -337,8 +338,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -350,7 +351,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -386,8 +387,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -399,7 +400,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -435,8 +436,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -448,7 +449,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -484,8 +485,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -497,7 +498,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -533,8 +534,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -546,7 +547,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">
@@ -582,8 +583,8 @@ break;
 }else{
 ?>
     <div class="section">
-<?if(!is_null($dspBookList[$i][6])){
-$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$cover[$i];
 }else{
  $book = '/admin/book_add/tmp_cover/noimage.png';
 }?>
@@ -595,7 +596,7 @@ $book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
         <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
         <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
         <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
-        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+        <input type="hidden" name="COVER" value="<?=$cover[$i];?>">
           <input type="image" src="<?=$book;?>" />
           <?if($dspBookList[$i][4]==0){?>
             <div class="balloon red">

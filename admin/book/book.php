@@ -34,11 +34,12 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         if($dspCoverIsbn[1]){
             $cover = '/admin/book_add/tmp_cover/'.$dspCoverIsbn[1];
         }else{
-           $cover = '/admin/book_add/tmp_cover/noimage.png'; 
+           $cover = '/admin/book_add/tmp_cover/noimage.png';
         }
 
     }
 
+}
 if ($result == 0){
     $book_edit = 'bookedit.php';
     $cover_edit = 'cover.html';
@@ -54,7 +55,7 @@ if ($result == 0){
 
 include("../../login/login.html");
 }
-}
+
 
 
 ?>

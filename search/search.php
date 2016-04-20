@@ -27,8 +27,23 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     //DB問い合わせ
     $obj=new BookModel();
     $result = $obj->GETBookList($ActType, $Key21, $Key22, $dspBookList);
+    if($result==0){
+        $i=0;
+        while(!is_null($dspBookList[$i][5])){
+            $Key24 = $dspBookList[$i][5];
+            $obj=new BookModel();
+            $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
+            if($result==0){
+                 $cover[$i] = $dspCoverIsbn[1];
+            }else{
+                 include("search.html");
+            }
+            $i=$i+1;
+        }
+        
+    }
 
-
+}
 //画面表示
 if ($result == 0){
 
@@ -45,6 +60,6 @@ if ($result == 0){
 include("../login/login.html");
 }
 
-}
+
 
 ?>

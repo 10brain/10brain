@@ -93,7 +93,7 @@ if($result==4){
         $error = "ただいまサーバーが込み合っております。";
     }
 
-    include("../login/login.html");
+    include("/login/login.html");
 }
 
 }

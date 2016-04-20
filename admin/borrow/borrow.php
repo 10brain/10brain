@@ -25,7 +25,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     //入力された情報の確認
     $result = $obj->GETBorrowList($ActType, $Key1, $dspBorrowList);
 
-
+}
 //画面表示
 if ($result == 0){
 
@@ -41,9 +41,9 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("../../login.html");
+include("../../login/login.html");
 }
 
-}
+
 
 ?>
