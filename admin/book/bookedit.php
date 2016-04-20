@@ -50,6 +50,7 @@ define("HTML_CODE", "UTF-8");
 
     //登録後のページ遷移指定
     define("HTML_SUCCESS", "bookedit_suc.html");
+    define("HTML_SUCCESS_2", "bookedit_suc_2.html");
     define("HTML_FAILURE", "bookedit_fal.html");
 
     // url系情報の指定
@@ -163,11 +164,44 @@ define("HTML_CODE", "UTF-8");
                         $result = $obj->GETBookEDIT($ActType, $Key1, $Key24, $Key25, $Key26, $Key27, $Key28, $Key29, $Key30, $Key31, $Key32, $Key20);
 
                             if($result == 0){
-                                include(HTML_SUCCESS);
-                            }else{
+                                  //coverテーブルに同じISBNが登録されているか確認する
+                                  $obj = new BookModel();
+                                  $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
+                                    $Key22 = '/admin/book_add/tmp_cover/'.$dspCoverIsbn[1];
+                                    
+                                  if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
+                                    $obj = new BookModel();
+                                    $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
+                                     if($result == 0){
+                                         
+                                         include(HTML_SUCCESS_2);
+                                     }
+                                      
+                                  }elseif($result==1){
+                                      //登録されていなければISBN登録し、選択画面へ
+                                      $obj = new BookModel();
+                                      $result = $obj->GETCoverIsbnAdd($ActType, $Key24);
+
+                                      if($result == 0){
+                                          $obj = new BookModel();
+                                          $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
+                                          
+                                        //ISBN登録完了すればsuc画面へ移動し、画像登録へ
+                                        include(HTML_SUCCESS);
+                                      }else{
+                                        include(HTML_FAILURE);
+                                      }
+                                  }else{
+                                    $db_error ='システムエラーです。開発者に連絡してください。';
+                                    include(TEMP_INPUT);
+
+                                  }
+
+                              }else{
                                 $db_error ='システムエラーです。開発者に連絡してください。';
                                 include(TEMP_INPUT);
-                            }
+
+                              }
 
 
                     }else{

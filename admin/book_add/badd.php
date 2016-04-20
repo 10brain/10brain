@@ -172,7 +172,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                                   $obj = new BookModel();
                                   $result = $obj->GETCoverIsbn($ActType, $Key24, $dspCoverIsbn);
                                     $Key22 = '/admin/book_add/tmp_cover/'.$dspCoverIsbn[1];
-                                    //$ $dspCoverIsbn[1]
+                                    
                                   if($result==0){//登録されていればすでに登録されています。表紙を変更する場合は編集がめんいってね
                                     $obj = new BookModel();
                                     $result = $obj->GETNewBooknum($ActType, $dspNewBooknum);
