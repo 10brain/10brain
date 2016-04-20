@@ -41,17 +41,18 @@ and open the template in the editor.
         <?=$io->get_all_params();?>
         <form name="input" action="<?=URL_ACTION;?>" method="post" >
         <input type="hidden" name="step_from" value="input" />
-           <?=$db_error;?>
-         <span class="caution">ユーザー情報を入力してください。</span><br><br>
+
+         <span class="caution">変更したいユーザー情報を入力してください。</span><br>
+         <span class="caution">ユーザーIDの文字数は20文字までです。</span><br><br>
 
             <span>ユーザー名</span><span class="caution">　スペースは空けずにフルネームで入力してください。</span><div class="error"><?=$io->get_error("Name_error"); ?></div><br>
-            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" /><br>
+            <input name="Name" id="Name" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('Name');?>" style="ime-mode: disabled"/><br>
             <span>ユーザーID</span><span class="caution">　10バトンでのアドレスを入力してください。</span><div class="error"><?=$io->get_error("ID_error"); ?></div><br>
             <input name="ID" id="ID" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('ID');?>" style="ime-mode: disabled"/>@10baton.com<br>
             <span>パスワード</span><span class="caution">　パスワードを初期化する場合は、チェックを入れてください。</span><div class="error"><?=$io->get_error("pass");?></div><br>
             <?=$pass->get_all_checks("?", true)?>
 
-
+            <div class="error"><?=$db_error;?></div>
             <input type="hidden" name="ActionType" value="TgRSPInf">
             <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

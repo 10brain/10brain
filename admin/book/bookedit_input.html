@@ -47,7 +47,7 @@ and open the template in the editor.
           <form name="input" action="<?=URL_ACTION;?>" method="post">
           <input type="hidden" name="step_from" value="input">
           <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。</span><br><br>
-            <?=$db_error;?>
+
             <span class="caution">※ ISBNコードまたはASINコードを入力してください。半角数字、「-」のみ使用可能です。</span><br>
 
             <span>ISBNコード</span><div class="error"><?=$io->get_error("bookcode_error"); ?><?=$io->get_error("isbn_error"); ?></div><br>
@@ -79,6 +79,8 @@ and open the template in the editor.
 
             <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
             <textarea rows="2" cols="60" wrap="SOFT" name="remarks"/><?=$io->get_param_html("remarks"); ?></textarea><br>
+
+          <div class="error"><?=$db_error;?></div>
 
           <input type="hidden" name="ActionType" value="TgRSPInf">
           <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
