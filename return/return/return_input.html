@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>貸出履歴 | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/return.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
+    </head>
+    <body>
+        <?include('../header/header.html');?>
+
+        <div id="content">
+          <!--<div class="contents">-->
+
+          <div class="title">
+            <ul>
+              <li class="image">
+                <img src="../img/4.png">
+              </li>
+              <li>
+                <h1>貸出履歴</h1>
+              </li>
+              <li class="image">
+                <img src="../img/4.png">
+              </li>
+            </ul>
+          </div>
+
+<p>返却予定日から１週間過ぎている書籍は赤文字で表示されます。</p>
+
+<?$return='return_conf.php';?>
+<?if(is_null($dspBorrowUList[0])){?>
+    <p>該当する本がありません。</p>
+<?
+}else{
+?>
+
+          <table border="1" width="80%">
+            <tr>
+              <td width="55%">タイトル</td>
+              <td width="15%">貸出日</td>
+              <td width="15%">返却予定日</td>
+              <td width="15%">返却日</td>
+            </tr>
+<?
+    $i = 0;
+    while(!is_null($dspBorrowUList[$i][0])){
+?>
+            <tr>
+                <td><?=$dspBorrowUList[$i][6];?></td><!--書籍タイトル-->
+                <td><?=$dspBorrowUList[$i][1];?></td><!--貸出日-->
+
+<?if(is_null($dspBorrowUList[$i][3])){
+  if($dspBorrowUList[$i][2] < date('Y-m-d', strtotime('-1 week'))){?>
+                <td><span class="red"><?=$dspBorrowUList[$i][2];?></span></td><!--返却日予定日-->
+  <?}else{?>
+                <td><?=$dspBorrowUList[$i][2];?></td><!--返却日予定日-->
+  <?}
+}else{?>
+                <td><?=$dspBorrowUList[$i][2];?></td><!--返却日予定日-->
+<?}?>
+
+                <?if(is_null($dspBorrowUList[$i][3])){?>
+                <td>
+                    <form action="<?=$return;?>" method="post">
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                    <!--貸出番号-->
+                    <input type="hidden" name="KEYWORD40" value="<?=$dspBorrowUList[$i][0];?>">
+                    <input type="submit" value="返却" /></td><!--返却日-->
+                    </form>
+                <?}else{?>
+                <td><?=$dspBorrowUList[$i][3];?></td><!--返却日-->
+                <?}?>
+            </tr>
+<?
+    $i=$i+1;
+    }
+?>
+          </table>
+<?
+}
+?>
+
+        <!--</div>-->
+        <?php include('../footer/footer.html');?>
+        </div>
+    </body>
+</html>

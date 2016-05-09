@@ -60,7 +60,7 @@
 $cover = '../book/cover.html';
 ?>
 <?
-$badd = './badd.php';
+$book = './search.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
@@ -82,7 +82,7 @@ $badd = './badd.php';
                      <input type="submit" value="はい、変更します。">
                    </div>
                 </form>
-                 <form name="input" action="<?=$badd;?>" method="post" >
+                 <form name="input" action="<?=$book;?>" method="post" >
                    <input type="hidden" name="ActionType" value="TgRSPInf">
                    <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>パスワード変更 | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/user.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
+    </head>
+    <body>
+<?
+$pass='user_pass_edit.php';
+?>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>パスワード変更</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <!--<div class="contents">-->
+
+
+        <div class="password">
+            <form action="<?=$pass;?>" method="post">
+
+            <span class="caution">パスワードに設定できる文字は半角英数字と「:」「-」「@」「_」「.」の記号のみです。<br>4文字以上10文字以下で入力してください。</span><br><br>
+
+            <span>現在のパスワード</span><div class="error"><?=$nowPass_error;?></div><br>
+            <input type="password" name="pass" maxlength="80"><br>
+
+            <span>新しいパスワード</span><div class="error"><?=$newPass_error;?></div><br>
+            <input type="password" name="newpass" maxlength="80"><br>
+
+            <span>パスワードの確認</span><div class="error"><?=$newPassc_error;?></div><br>
+            <input type="password" name="newpass_conf" maxlength="80"><br>
+
+            <input type="hidden" name="ActionType" value="TgRSPInf">
+            <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+            <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+            <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+            <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+
+            <div class="submit">
+              <input type="submit" value="変更">
+            </div>
+          </form>
+          <form>
+            <div class="submit">
+              <input type="button" onClick='history.back();' value="戻る">
+            </div>
+          </form>
+
+        </div>
+      <!--</div>-->
+      <?php include('../footer/footer.html');?>
+      </div>
+</html>

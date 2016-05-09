@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>ユーザー情報編集画面</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../../css/suc_fal.css">
+      <link rel="stylesheet" href="../../css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  		<script src="../../js/jquery.colorbox.js"></script>
+      <script src="../../js/fade.js"></script>
+  		<script>
+  			$(document).ready(function(){
+  				//Examples of how to assign the Colorbox event to elements
+  				$(".inline").colorbox({inline:true, width:"50%"});
+  				$(".callbacks").colorbox({
+  					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+  					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+  					onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+  					onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+  					onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+  				});
+
+  				//Example of preserving a JavaScript event for inline calls.
+  				$("#click").click(function(){
+  					$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+  					return false;
+  				});
+  			});
+  		</script>
+    </head>
+    <body>
+
+      <?include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの編集</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+
+        <div style="display:none">
+            <p><a class='inline' href="#inline_content"></a></p>
+        </div>
+<?
+$user = '../user_search/user_search.php';
+?>
+        <!-- This contains the hidden content for inline calls -->
+    		<div style='display:none'>
+    			<div id='inline_content' style='padding:10px; background:#fff;'>
+              <img src="../../img/fal.png">
+    			     <p>登録できませんでした。</p>
+               <div class="fal">
+                 <form name="input" action="<?=$user;?>" method="post" >
+                 <input type="hidden" name="ActionType" value="TgRSPInf">
+                 <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                 <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                 <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                 <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                 <div class="check">
+                   <input type="submit" value="戻る">
+                 </div>
+               </form>
+              </div>
+    			</div>
+    		</div>
+
+      <?php include('../footer/footer.html');?>
+      </div>
+    </body>
+</html>

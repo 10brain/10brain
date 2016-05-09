@@ -1064,15 +1064,15 @@ class BookModel{
             return $result;
         }
 
-        if($Key1 != 'admin@10baton.com'){
+        if($Key1!='admin@10baton.com'){
             $result = 2;
             return $result;
 
         }
-        echo $Key24;
+       
 
             $strSQL = "UPDATE Book SET ISBN=:Key24";
-
+            
             $strSQL = $strSQL.", title=:Key25";
 
             $strSQL = $strSQL.", genre=:Key26";

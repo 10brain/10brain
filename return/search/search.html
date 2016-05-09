@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>検索 | 10brain</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/search.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../js/jquery-2.1.3.min.js"></script>
+      <script src="../js/fade.js"></script>
+      <style type="text/css">
+        div#slider { display: block; }
+        div#table { display: none; }
+      </style>
+    </head>
+    <body>
+        <?include('../header/header.html');?>
+
+        <div id="content">
+          <br>
+          <form action="search.php" method="post">
+            <div class="search">
+              <img src="../img/d.png">
+              <!--入力フォーム-->
+              <input type="text" name="KEYWORD21" maxlength="80">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+              <input type="submit" value="SEARCH">
+            </div>
+<!--sampleとsample1のnameはそれぞれ違う名前にすること-->
+          <ul>
+            <li>
+              <div class="sample">
+                <div class="either">
+                  <input type="radio" name="KEYWORD22" id="AND" value="1" checked="checked" />
+                  <label for="AND">AND</label>
+                  <input type="radio" name="KEYWORD22" id="OR" value="0" />
+                  <label for="OR">OR</label>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="sample1">
+                <div class="either1">
+                  <input type="radio" name="KEYWORD23" id="img" value="1" checked="checked" onclick="document.getElementById('slider').style.display = 'block'; document.getElementById('table').style.display = 'none'"/>
+                  <label for="img"><img src="../img/picture.png"></label>
+                  <input type="radio" name="KEYWORD23" id="list" value="0"  onclick="document.getElementById('table').style.display = 'block'; document.getElementById('slider').style.display = 'none'"/>
+                  <label for="list"><img src="../img/list.png"></label>
+                </div>
+              </div>
+            </li>
+          </ul>
+          </form>
+
+          <p>検索結果は画像表示、リスト表示に切り替えられます。<br>画像をクリックすると詳細ページに遷移します。</p>
+
+            <!--DB内容表示-->
+            <!--contents START -->
+<!--表-->
+<div class="table" id="table">
+<?if(is_null($dspBookList[0])){?>
+<p>該当する本がありません。</p>
+<?
+}else{
+?>
+
+<table border="1" width="80%">
+  <tr class="tr">
+      <td width="10%"></td>
+      <td width="60%">タイトル</td>
+      <td width="10%">出版社</td>
+      <td width="10%">ジャンル</td>
+      <td width="10%">貸出状況</td></tr>
+
+<?
+    $i = 0;
+    while(!is_null($dspBookList[$i][0])){
+?>
+
+		<tr>
+      <td>
+          <form method="post" action="../book/book.php">
+          <input type="hidden" name="ActionType" value="TgRSPInf">
+          <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+          <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+          <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+          <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+          <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+          <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+          <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="submit" value="詳細" />
+          </form>
+      </td>
+
+      <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
+      <td><?=$dspBookList[$i][2];?></td><!--出版社-->
+      <td><?=$dspBookList[$i][3];?></td><!--カテゴリ-->
+      <?if($dspBookList[$i][4]==0){?>
+          <td>貸出中</td>
+      <?}else{?>
+          <td>在庫有</td>
+      <?}?>
+    </tr>
+<?
+$i=$i+1;
+}
+?>
+</table>
+<?
+}
+?>
+</div>
+
+
+
+
+
+<!--画像-->
+<div id="slider">
+<div class="slider">
+ <div class="slideSet">
+
+  <div class="slide">
+
+<?
+$i = 0;
+while(!is_null($dspBookList[$i][0])){
+if($i>9){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][5])){
+$book = '../admin/book_add/tmp_cover/'.$dspBookList[$i][5].".jpg";
+}else{
+ $book = '../admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][5];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+
+
+<?
+if($dspBookList[$i][0]>9){
+?>
+  <div class="slide">
+<?
+$i = 10;
+while(!is_null($dspBookList[$i][0])){
+if($i>19){
+break;
+}else{
+?>
+
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+
+<?
+$i=$i+1;
+}
+}
+?>
+</div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>19){
+?>
+  <div class="slide">
+<?
+$i = 20;
+while(!is_null($dspBookList[$i][0])){
+if($i>29){
+break;
+}else{
+?>
+
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>29){
+?>
+  <div class="slide">
+
+<?
+$i = 30;
+while(!is_null($dspBookList[$i][0])){
+if($i>39){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>39){
+?>
+  <div class="slide">
+
+<?
+$i = 40;
+while(!is_null($dspBookList[$i][0])){
+if($i>49){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>49){
+?>
+  <div class="slide">
+
+<?
+$i = 50;
+while(!is_null($dspBookList[$i][0])){
+if($i>59){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>59){
+?>
+  <div class="slide">
+
+<?
+$i = 60;
+while(!is_null($dspBookList[$i][0])){
+if($i>69){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>69){
+?>
+  <div class="slide">
+
+<?
+$i = 70;
+while(!is_null($dspBookList[$i][0])){
+if($i>79){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>79){
+?>
+  <div class="slide">
+
+<?
+$i = 80;
+while(!is_null($dspBookList[$i][0])){
+if($i>89){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+<?
+if($dspBookList[$i][0]>89){
+?>
+  <div class="slide">
+
+<?
+$i = 90;
+while(!is_null($dspBookList[$i][0])){
+if($i>99){
+break;
+}else{
+?>
+    <div class="section">
+<?if(!is_null($dspBookList[$i][6])){
+$book = '/admin/book_add/tmp_cover/'.$dspBookList[$i][6];
+}else{
+ $book = '/admin/book_add/tmp_cover/noimage.png';
+}?>
+      <form method="post" action="../book/book.php">
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+          <input type="image" src="<?=$book;?>" />
+          <?if($dspBookList[$i][4]==0){?>
+            <div class="balloon red">
+              <span>貸出中</span>
+            </div>
+          <?}else{?>
+            <div class="balloon blue">
+              <span>在庫有</span>
+            </div>
+          <?}?>
+      </form>
+    </div>
+<?
+$i=$i+1;
+}
+}
+?>
+  </div>
+<?
+}
+?>
+
+</div>
+<button class="slider-prev"><img src="../images/prev.png" ></button>
+<button class="slider-next"><img src="../images/next.png" ></button>
+</div>
+
+<script>
+(function(){
+var slideWidth = $('.slide').outerWidth(); // .slideの幅を取得して代入
+var slideNum = $('.slide').length; // .slideの数を取得して代入
+var slideSetWidth = slideWidth * slideNum; //.slideの幅×数で求めた値を代入
+$('.slideSet').css('width', slideSetWidth); //.slideSetのスタイルシートにwidth: slideSerWidthを指定
+
+var slideCurrent = 0;
+
+//アニメーションを実行する独自関数
+var sliding = function(){
+  //slideCurrentが0以下だったら
+  if( slideCurrent < 0 ){
+    slideCurrent = slideNum -1;
+
+  //slideCurrentがslideNumを超えたら
+  }else if( slideCurrent > slideNum -1){ //slideCurrent >=
+     slideCurrent = 0;
+  }
+
+  $('.slideSet').stop().animate({
+    left: slideCurrent * -slideWidth
+  });
+}
+
+//前へボタンが押されたとき
+$('.slider-prev').click(function(){
+  slideCurrent--;
+  sliding();
+});
+
+//次へボタンが押されたとき
+$('.slider-next').click(function(){
+  slideCurrent++;
+  sliding();
+});
+}());
+</script>
+</div>
+<!--フッター-->
+          <?include('../footer/footer.html');?>
+        </div>
+    </body>
+</html>

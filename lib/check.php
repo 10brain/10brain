@@ -212,7 +212,6 @@ function inpDate(&$date){
     $ret = false;
     //全角英数→半角英数変換
     $date = mb_convert_kana($date,"n","UTF8");
- 
 
       if(preg_match('/^\d{4}\/\d{1,2}\/\d{1,2}$/', $date)){
         $ret = true;
@@ -220,7 +219,35 @@ function inpDate(&$date){
     return $ret;
     
 }
+/////////////////////////////////////////////////
+//日付入力確認2週間以内
+/////////////////////////////////////////////////
+function futureDate(&$date){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($date,"n","UTF8");
+    
+    if(date($date) >= date("Y/m/d",strtotime("+15 day"))){
+        $ret = true;
+     }
+    return $ret;
+    
+}
+/////////////////////////////////////////////////
+//日付過去入力確認
+/////////////////////////////////////////////////
+function pastDate(&$date){
+    $ret = false;
+    //全角英数→半角英数変換
+    $date = mb_convert_kana($date,"n","UTF8");
 
+    
+    if(date($date) < date('Y/m/d')){
+        $ret = true;
+     }
+    return $ret;
+    
+}
 /////////////////////////////////////////////////
 //IDチェック
 /////////////////////////////////////////////////

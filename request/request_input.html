@@ -43,14 +43,14 @@ and open the template in the editor.
                   <input type="hidden" name="step_from" value="input">
                   <span class="caution">管理者にリクエストしたい本の情報を入力してください。※は必須項目です。</span><br><br>
 
-                  <span>本のタイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
-                  <input name="title" id="title" size="10" maxlength="80" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+                  <span>本のタイトル</span><span class="caution">※100文字以内で入力してください</span><div class="error"><br><?=$io->get_error("title_error"); ?></div><br>
+                  <input name="title" id="title" size="10" maxlength="100" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
-                  <span>amazonリンク</span><span class="caution">※　amazonで検索→該当ページの「シェアする」→固定リンクからコピー</span><br>
-                  <div class="error"><?=$io->get_error("link_error"); ?></div><br>
-                  <input name="link" id="link" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('link');?>" placeholder="http://www.amazon.co.jp/"/><br>
+                  <span>amazonリンク</span><span class="caution">※50文字以内で入力してください　amazonで検索→該当ページの「シェアする」→固定リンクからコピー</span><br>
+                    <div class="error"><?=$io->get_error("link_error"); ?></div><br>
+                  <input name="link" id="link" size="10" maxlength="50" type="text" value="<?=$io->get_param_html('link');?>" placeholder="http://www.amazon.co.jp/"/><br>
 
-                  <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
+                  <span>備考</span><span class="caution">125文字以内で入力してください</span><br><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
                   <textarea rows="1" cols="10" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea>
 
                     <input type="hidden" name="ActionType" value="TgRSPInf">

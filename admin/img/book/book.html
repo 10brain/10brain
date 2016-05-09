@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>書籍情報 | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/book.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>本の詳細</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+
+
+        <div class="form1">
+            <span>ISBN：<?=$dspBookDet[8];?></span>
+            <br>
+            <span>タイトル：<?=$dspBookDet[0];?></span>
+            <br>
+            <span>ジャンル：<?=$dspBookDet[1];?></span>
+            <br>
+            <span>出版社：<?=$dspBookDet[2];?></span>
+            <br>
+            <span>著者：<?=$dspBookDet[3];?></span>
+            <br>
+            <span>紹介文：<?=$dspBookDet[4];?></span>
+            <br>
+            <span>出版年：<?=$dspBookDet[5];?></span>
+            <br>
+            <span>amazonリンク：<?=$dspBookDet[6];?></span>
+            <br>
+            <span>備考：<?=$dspBookDet[7];?></span>
+            <br>
+            <span>画像ファイル：<img src="<?=$cover;?>" /></span>
+            <br>
+            <ul>
+              <li>
+                <form method="post" action="<?=$book_edit;?>">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[10];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[8];?>">
+                  <div class="submit">
+                    <input type="submit" value="書籍情報編集">
+                  </div>
+                </form>
+              </li>
+              <li>
+                <form method="post" action="<?=$cover_edit;?>">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="hidden" name="KEYWORD20" value="<?=$dspBookDet[8];?>">
+                  <input type="hidden" name="KEYWORD21" value="<?=$dspBookDet[10];?>">
+                  <input type="hidden" name="KEYWORD22" value="<?=$cover;?>">
+                  <div class="submit">
+                    <input type="submit" value="表紙編集">
+                  </div>
+                </form>
+              </li>
+            </ul>
+
+            <form>
+              <div class="submit">
+                <input type="button" onClick='history.back();' value="戻る">
+              </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+        <?include('../footer/footer.html');?>
+        </div>
+    </body>
+</html>

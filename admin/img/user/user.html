@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>ユーザー情報</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/user.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの詳細</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+          <div class="form1">
+            <span>ユーザー番号：<?=$dspUserDet[0];?></span>
+            <br>
+            <span>ユーザーID：<?=$dspUserDet[1];?></span>
+            <br>
+            <span>ユーザー名：<?=$dspUserDet[3];?></span>
+
+            <form method="post" action="<?=$user_edit;?>">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+              <input type="hidden" name="KEYWORD12" value="<?=$Key12;?>">
+              <input type="hidden" name="KEYWORD13" value="<?=$Key13;?>">
+              <input type="hidden" name="KEYWORD14" value="<?=$Key14;?>">
+              <input type="hidden" name="KEYWORD15" value="<?=$dspUserDet[2];?>">
+              <div class="submit">
+                <input type="submit" value="ユーザー情報編集">
+              </div>
+            </form>
+            <form>
+              <div class="submit">
+                <input type="button" onClick='history.back();' value="戻る">
+              </div>
+            </form>
+          </div>
+      </div>
+
+    <?include('../footer/footer.html');?>
+    </div>
+
+    </body>
+</html>

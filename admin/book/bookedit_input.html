@@ -51,28 +51,28 @@
             <span>ASINコード</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
             <input name="asin" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('asin');?>" /><br>
 
-            <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
-            <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+            <span>タイトル</span><span class="caution">※100文字以内で入力してください</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
+            <input name="title" size="10" maxlength="100" type="text" value="<?=$io->get_param_html('title');?>" /><br>
 
             <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?><?=$io->get_error("select01"); ?></div><br>
             <select name="select01" id="select01"><?=$select01->get_all_options();?></select><br>
 
-            <span>出版社</span><span class="caution">※</span><div class="error"><?=$io->get_error("pub_error"); ?></div><br>
+            <span>出版社</span><span class="caution">※20文字以内で入力してください</span><div class="error"><?=$io->get_error("pub_error"); ?></div><br>
             <input name="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><br>
 
-            <span>著者</span><div class="error"><?=$io->get_error("writer_error"); ?></div><br>
+            <span>著者</span><span class="caution">20文字以内で入力してください</span><div class="error"><?=$io->get_error("writer_error"); ?></div><br>
             <input name="writer" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('writer');?>" /><br>
 
-            <span>紹介文</span><div class="error"><?=$io->get_error("intro_error"); ?></div><br>
+            <span>紹介文</span><span class="caution">200文字以内で入力してください</span><div class="error"><?=$io->get_error("intro_error"); ?></div><br>
             <textarea rows="2" cols="60" wrap="SOFT" name="intro"/><?=$io->get_param_html("intro"); ?></textarea><br>
 
-            <span>出版年</span><div class="error"><?=$io->get_error("year_error"); ?></div><br>
+            <span>出版年</span><span class="caution">4桁で入力してください</span><div class="error"><?=$io->get_error("year_error"); ?></div><br>
             <input name="year"  size="10" maxlength="4" type="text" value="<?=$io->get_param_html('year');?>" /><br>
 
-            <span>amazonリンク</span><div class="error"><?=$io->get_error("amazon_error"); ?></div><br>
-            <input name="amazon"  size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" /><br>
+            <span>amazonリンク</span><span class="caution">50文字以内で入力してください</span><div class="error"><?=$io->get_error("amazon_error"); ?></div><br>
+            <input name="amazon"  size="10" maxlength="50" type="text" value="<?=$io->get_param_html('amazon');?>" placeholder="http://www.amazon.co.jp/"/><br>
 
-            <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
+            <span>備考</span><span class="caution">125文字以内で入力してください</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
             <textarea rows="2" cols="60" wrap="SOFT" name="remarks"/><?=$io->get_param_html("remarks"); ?></textarea><br>
 
           <div class="error"><?=$db_error;?></div>

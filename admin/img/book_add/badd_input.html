@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>書籍追加</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/jquery.minimalect.css" media="screen" />
+      <link rel="stylesheet" type="text/css" href="../css/badd.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/jquery.minimalect.js"></script>
+      <script src="../../js/fade.js"></script>
+      <script>
+        $(document).ready(function(){
+            $("#select01").minimalect();
+        });
+      </script>
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>本の追加</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+
+        <div class="form">
+
+        <form name="input" action="<?=URL_ACTION;?>" method="post" >
+        <?=$io->get_all_params();?>
+        <input type="hidden" name="step_from" value="input" />
+          <span class="caution">システムに登録したい本の情報を入力してください。※は必須項目です。</span><br><br>
+            <?=$db_error;?>
+            <span class="caution">※ ISBNコードまたはASINコードを入力してください。半角数字、「-」のみ使用可能です。</span><br>
+
+            <span>ISBNコード</span><div class="error"><?=$io->get_error("bookcode_error"); ?><?=$io->get_error("isbn_error"); ?></div><br>
+            <input name="isbn" size="10" maxlength="15" type="text" value="<?=$io->get_param_html('isbn');?>" /><br>
+
+            <span>ASINコード</span><div class="error"><?=$io->get_error("asin_error"); ?></div><br>
+            <input name="asin" size="10" maxlength="10" type="text" value="<?=$io->get_param_html('asin');?>" /><br><br>
+
+            <span>タイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
+            <input name="title" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+
+            <span>ジャンル</span><span class="caution">※</span><div class="error"><?=$io->get_error("genre_error"); ?><?=$io->get_error("select01"); ?></div><br>
+            <select name="select01" id="select01"><?=$select01->get_all_options();?></select><br>
+
+            <span>出版社</span><span class="caution">※</span><div class="error"><?=$io->get_error("pub_error"); ?></div><br>
+            <input name="pub" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('pub');?>" /><br>
+
+            <span>著者</span><div class="error"><?=$io->get_error("writer_error"); ?></div><br>
+            <input name="writer" size="10" maxlength="20" type="text" value="<?=$io->get_param_html('writer');?>" /><br>
+
+            <span>紹介文</span><div class="error"><?=$io->get_error("intro_error"); ?></div><br>
+            <textarea rows="2" cols="60" wrap="SOFT" name="intro"/><?=$io->get_param_html("intro"); ?></textarea><br>
+
+            <span>出版年</span><div class="error"><?=$io->get_error("year_error"); ?></div><br>
+            <input name="year"  size="10" maxlength="4" type="text" value="<?=$io->get_param_html('year');?>" /><br>
+
+            <span>amazonリンク</span><div class="error"><?=$io->get_error("amazon_error"); ?></div><br>
+            <input name="amazon"  size="10" maxlength="240" type="text" value="<?=$io->get_param_html('amazon');?>" placeholder="http://www.amazon.co.jp/"/><br>
+
+            <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
+            <textarea rows="2" cols="60" wrap="SOFT" name="remarks"/><?=$io->get_param_html("remarks"); ?></textarea><br>
+
+          <input type="hidden" name="ActionType" value="TgRSPInf">
+          <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+          <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+          <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+          <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+          <div class="check">
+            <input type="submit" value="確認">
+          </div>
+
+        </form>
+      </div>
+
+
+<<<<<<< HEAD
+      <?include('../footer/footer.html');?>
+=======
+      <?php include('../footer/footer.html');?>
+>>>>>>> afurukawa
+      </div>
+    </body>
+</html>

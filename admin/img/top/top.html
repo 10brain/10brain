@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>管理者トップ | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/admintop.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
+    </head>
+    <body>
+<?
+  $home='../../top/top.php';
+  $bookadd='../admin/book_add/badd.php';
+  $bookedit='../admin/book/search.php';//
+  $booklist='../admin/borrow/borrow.php';
+  $request='../admin/request/request.php';
+  $useradd='../admin/useradd/useradd.php';
+  $useredit='../admin/user_search/user_search.php';
+?>
+<div class="header">
+  <img src="../img/header.png">
+</div>
+<div class="brain">
+  <img src="../img/icon2.png">
+</div>
+
+
+      <div id="content">
+      <!--<div class="contents">-->
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>管理画面</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+
+        <div class="link">
+        <ul class="ul1">
+          <li>
+            <form action="<?=$bookadd;?>" method="post" name="return">
+              <button type='submit' name='action' value='本の追加'　alt='本の追加'>本の追加</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+          <li>
+            <form action="<?=$bookedit;?>" method="post" name="return">
+              <button type='submit' name='action' value='本の編集'　alt='本の編集'>本の編集</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+          <li>
+            <form action="<?=$booklist;?>" method="post" name="return">
+              <button type='submit' name='action' value='貸出履歴'　alt='貸出履歴'>貸出履歴</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+        </ul>
+        <ul class="ul2">
+          <li>
+            <form action="<?=$request;?>" method="post" name="return">
+              <button type='submit' name='action' value='リクエスト一覧'　alt='リクエスト一覧'>リクエスト一覧</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+          <li>
+            <form action="<?=$useradd;?>" method="post" name="return">
+              <button type='submit' name='action' value='ユーザーの追加'　alt='ユーザーの追加'>ユーザーの追加</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+          <li>
+            <form action="<?=$useredit;?>" method="post" name="pass" >
+              <button type='submit' name='action' value='ユーザーの編集' alt='ユーザーの編集'>ユーザーの編集</button>
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+            </form>
+          </li>
+        </ul>
+        </div>
+
+      <!--</div>-->
+      <?php include('../admin/footer/footer.html');?>
+      </div>
+    </body>
+</html>

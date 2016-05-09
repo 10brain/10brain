@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>リクエスト | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/request.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
+    </head>
+    <body>
+        <?include('../header/header.html');?>
+      <div id="content">
+
+
+              <div class="title">
+                <ul>
+                  <li class="image">
+                    <img src="../img/4.png">
+                  </li>
+                  <li>
+                    <h1>本のリクエスト</h1>
+                  </li>
+                  <li class="image">
+                    <img src="../img/4.png">
+                  </li>
+                </ul>
+              </div>
+        <!--<div class="contents">-->
+
+              <div class="form">
+                <?=$io->get_all_params();?>
+                <form name="input" action="<?=URL_ACTION;?>" method="post" >
+                  <input type="hidden" name="step_from" value="input">
+                  <span class="caution">管理者にリクエストしたい本の情報を入力してください。※は必須項目です。</span><br><br>
+
+                  <span>本のタイトル</span><span class="caution">※</span><div class="error"><?=$io->get_error("title_error"); ?></div><br>
+                  <input name="title" id="title" size="10" maxlength="80" type="text" value="<?=$io->get_param_html('title');?>" /><br>
+
+                  <span>amazonリンク</span><span class="caution">※　amazonで検索→該当ページの「シェアする」→固定リンクからコピー</span><div class="error"><?=$io->get_error("link_error"); ?></div><br>
+                  <input name="link" id="link" size="10" maxlength="255" type="text" value="<?=$io->get_param_html('link');?>" placeholder="http://www.amazon.co.jp/"/><br>
+
+                  <span>備考</span><div class="error"><?=$io->get_error("remarks_error"); ?></div><br>
+                  <textarea rows="1" cols="10" wrap="SOFT" name="remarks" /><?=$io->get_param_html("remarks") ?></textarea>
+
+                    <input type="hidden" name="ActionType" value="TgRSPInf">
+                    <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                    <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                    <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                    <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                    <div class="check">
+                      <input type="submit" value="確認">
+                    </div>
+                </form>
+              </div>
+
+        <!--</div>-->
+        <?php include('../footer/footer.html');?>
+      </div>
+    </body>
+</html>

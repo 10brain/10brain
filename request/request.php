@@ -177,20 +177,25 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
                         // 書籍タイトル
                         $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("title"), true, 80, 0, "UTF-8")){
+                        if(preg_match('/[a-zA-Z0-9]/', $io->get_param("title"))){
+                            if(!$vali->isString($io->get_param("title"), true, 100, 0, "UTF-8")){
                                 $io->set_error("title_error", "未入力、または内容に誤りが有ります");
+                            }
+                        }else{
+                            if(!$vali->isString($io->get_param("title"), true, 300, 0, "UTF-8")){
+                                    $io->set_error("title_error", "未入力、または内容に誤りが有ります");
+                            }
                         }
-
                         //リンク
                         $io->set_parameter("link", mb_convert_kana($io->get_param("link"), "KV", INNER_CODE));
-                        if(!$vali->isString($io->get_param("link"), true, 255, 0, "UTF-8")){
-                                $io->set_error("link_error", "未入力、または内容に誤りが有ります");
+                        if(!$vali->isURL($io->get_param("link"), true, 50, 0, "UTF-8")){
+                            $io->set_error("link_error", "未入力、または内容に誤りが有ります");
                         }
 
                         //備考
 			$io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
-			if(!$vali->isString($io->get_param("remarks"), false, 255, "UTF-8")){
-				$io->set_error("remarks", "内容に誤りが有ります");
+			if(!$vali->isString($io->get_param("remarks"), false, 375, "UTF-8")){
+				$io->set_error("remarks_error", "125文字以内で入力してください");
 			}
                     if(!$io->is_error()){
                             //$io->unset_parameter("agree_0");

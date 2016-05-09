@@ -1,0 +1,179 @@
+body,h1,input{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 14px;
+}
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  min-width: 70%;
+  min-height: 84%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 35px;
+  background-size: cover;
+}
+
+.contents{
+  width: 60%;
+  height: 500px;
+  min-height: 90%;
+	position: relative;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 30px;
+	border: 1px solid black;
+}
+
+table{
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  font-size: 10px;
+}
+
+table tr{
+  height: 35px;
+}
+
+table td{
+  text-align: center;
+  padding: 2px;
+  letter-spacing: 2px;
+}
+
+form{
+  margin: 0;
+}
+
+table input[type="submit"]{
+  height: 25px;
+  width: 70px;
+  padding: 3px 3px;
+  font-size: 1.1em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 3px;
+  margin: 2px 5px;
+  outline: 0;
+}
+
+.title{
+  height: 51px;
+  width: 100%;
+  margin: 15px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 12px auto;
+}
+
+.title ul{
+  /zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.image{
+  display: inline-block;
+  list-style: none;
+  width: 22%;
+  min-width: 10px;
+  padding: 5px 5px;
+}
+
+.image img{
+  width: 100%;
+  max-width: 200px;
+}
+
+
+/*confirm*/
+
+.confirm{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.confirm ul{
+  /zoom:1;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.confirm li{
+  display: inline-block;
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.confirm form{
+  text-align: center;
+  width: 100%;
+  margin: 15px auto;
+}
+
+.confirm input[type="submit"]{
+  height: 40px;
+  width: 175px;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  outline: 0;
+}
+
+.submit input[type="button"]{
+  height: 40px;
+  width: 125px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid #808080;
+  letter-spacing: 2px;
+  outline: 0;
+}
+
+.submit input[type="submit"]{
+  height: 40px;
+  width: 125px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  outline: 0;
+}
+
+.submit{
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+table img{
+  width: 30px;
+  margin-top: 1px;
+}

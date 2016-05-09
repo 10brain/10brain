@@ -164,7 +164,6 @@ body,h1,input,span,textarea,p{
 .error{
   color: red;
   display: inline;
-  padding-left: 20px;
 }
 
 .confirm{

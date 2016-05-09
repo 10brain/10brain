@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>リクエスト | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+      <link rel="stylesheet" type="text/css" href="../css/request.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../js/jquery.js"></script>
+      <script src="../js/fade.js"></script>
+
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+<div id="content">
+
+
+
+  <div class="title">
+    <ul>
+      <li class="image">
+        <img src="../img/4.png">
+      </li>
+      <li>
+        <h1>本のリクエスト</h1>
+      </li>
+      <li class="image">
+        <img src="../img/4.png">
+      </li>
+    </ul>
+  </div>
+  <div class="contents">
+
+  <div class="form1">
+    <form name="input" action="<?=URL_ACTION;?>" method="post">
+      <?=$io->get_all_params();?>
+      <?=$decision;?>
+
+      <input type="hidden" name="step_from" value="input">
+
+      <span>タイトル：</span><div class="confirm"><?=$io->get_param_html_br("title");?></div>
+
+      <span>リンク：</span><div class="confirm"><?=$io->get_param_html_br("link");?></div>
+
+      <span>備考：</span><div class="confirm"><?=$io->get_param_html_br("remarks");?></div>
+
+        <input type="hidden" name="ActionType" value="TgRSPInf">
+        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+        <div class="submit">
+          <input type="submit" value="リクエストする">
+        </div>
+    </form>
+    <form>
+      <div class="submit">
+        <input type="button" onClick='history.back();' value="戻る">
+      </div>
+    </form>
+  </div>
+
+</div>
+<?php include('../footer/footer.html');?>
+</div>
+
+    </body>
+</html>

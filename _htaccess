@@ -1,0 +1,3 @@
+Options +IncludesNOEXEC
+XBitHack on
+AddType application/x-httpd-php .htm .html

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>書籍一覧 | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../../css/search.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
+    </head>
+    <body>
+        <?include('../header/header.html');?>
+
+        <div id="content">
+          <br>
+          <form action="search.php" method="post">
+            <div class="search">
+              <img src="../../img/d.png">
+              <!--入力フォーム-->
+              <input type="text" name="KEYWORD21" maxlength="80">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+              <input type="submit" value="SEARCH">
+            </div>
+            <ul>
+              <li>
+                <div class="sample">
+                  <div class="either">
+                    <input type="radio" name="KEYWORD22" id="AND" value="1" checked="checked" />
+                    <label for="AND">AND</label>
+                    <input type="radio" name="KEYWORD22" id="OR" value="0" />
+                    <label for="OR">OR</label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </form>
+      <div class="table">
+<?
+$book_det = './book.php';
+?>
+            <!--DB内容表示-->
+            <!--contents START -->
+<?if(is_null($dspBookList[0])){?>
+<p>該当する本がありません。</p>
+<?
+}else{
+?>
+
+<table border="1" width="80%">
+  <tr class="tr">
+      <td width="10%"></td>
+      <td width="60%">タイトル</td>
+      <td width="10%">出版社</td>
+      <td width="10%">ジャンル</td>
+      <td width="10%">貸出状況</td></tr>
+
+
+
+<?
+    $i = 0;
+    while(!is_null($dspBookList[$i][0])){
+?>
+
+		<tr>
+                    <td>
+                        <form method="post" action="../book/book.php">
+                        <input type="hidden" name="ActionType" value="TgRSPInf">
+                        <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                        <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                        <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                        <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                        <input type="hidden" name="KEYWORD20" value="<?=$dspBookList[$i][0];?>">
+                        <input type="hidden" name="KEYWORD21" value="<?=$dspBookList[$i][5];?>">
+                        <input type="hidden" name="COVER" value="<?=$dspBookList[$i][6];?>">
+                        <input type="submit" value="詳細" />
+                        </form>
+                    </td>
+
+                    <td><?=$dspBookList[$i][1];?></td><!--書籍タイトル-->
+                    <td><?=$dspBookList[$i][2];?></td><!--出版社-->
+                    <td><?=$dspBookList[$i][3];?></td><!--カテゴリ-->
+                    <?if($dspBookList[$i][4]==0){?>
+                        <td>貸出中</td>
+                    <?}else{?>
+                        <td>在庫有</td>
+                    <?}?>
+                </tr>
+<?
+    $i=$i+1;
+    }
+?>
+</table>
+<?
+}
+?>
+        </div>
+
+        <?php include('../footer/footer.html');?>
+      </div>
+
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<?
+require '../../lib/book_func.php';
+require '../../lib/check.php';
+
+$ActType = $_POST['ActionType'];
+$Key0 = $_POST['KEYWORD0'];
+$Key1 = $_POST['KEYWORD1'];
+$Key2 = $_POST['KEYWORD2'];
+$Key3 = $_POST['KEYWORD3'];
+$isbn = $_POST['KEYWORD20'];
+$bnum = $_POST['KEYWORD21'];
+$cover = $_POST['KEYWORD22'];
+
+$obj=new BookModel();
+$result = $obj->GETBookDetail($ActType, $Key20, $Key21, $dspBookDet);
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>書籍編集 | 10brain</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../css/cover.css">
+      <link rel="stylesheet" type="text/css" href="../css/header.css">
+      <link rel="stylesheet" type="text/css" href="../css/footer.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="../../js/jquery.js"></script>
+      <script src="../../js/fade.js"></script>
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>表紙画像</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+<?php
+$cover_add = 'cover_add.php';
+?>
+        <div class="form">
+          <form method="post" action="<?=$cover_add;?>" enctype="multipart/form-data">
+              <? if(isset($isbn)){?>
+              <p>ISBN：<?=$isbn;?></p>
+              <?}?>
+              <?if(isset($bnum)){?>
+              <p>書籍番号：<?=$bnum;?></p>
+              <?}?>
+              <ul>
+                <li>
+                  <?if(isset($cover)){?>
+                  <p>現在の表紙：<img src="<?=$cover;?>" /></p>
+                  <?}?>
+                </li>
+                <li>
+                  <div class="imgInput">
+                    <input type="file" name="upfile" id="upfile"　size="30"　accept="image">
+                  </div>
+                </li>
+              </ul>
+
+             <input type="hidden" name="ActionType" value="TgRSPInf">
+             <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+             <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+             <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+             <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+             <input type="hidden" name="KEYWORD20" value="<?=$isbn;?>">
+             <input type="hidden" name="KEYWORD21" value="<?=$bnum;?>">
+             <input type="hidden" name="KEYWORD22" value="<?=$cover;?>">
+
+            <div class="submit">
+              <input type="submit" value="アップロード">
+            </div>
+
+          </form>
+        </div>
+
+
+        </div>
+        <?include('../footer/footer.html');?>
+      </div>
+    </body>
+</html>
+
+
+<script>
+$(function(){
+    var setFileInput = $('.imgInput');
+
+    setFileInput.each(function(){
+        var selfFile = $(this),
+        selfInput = $(this).find('input[type=file]');
+
+        selfInput.change(function(){
+            var file = $(this).prop('files')[0],
+            fileRdr = new FileReader(),
+            selfImg = selfFile.find('.imgView');
+
+            if(!this.files.length){
+                if(0 < selfImg.size()){
+                    selfImg.remove();
+                    return;
+                }
+            } else {
+                if(file.type.match('image.*')){
+                    if(!(0 < selfImg.size())){
+                        selfFile.append('<img alt="" class="imgView">');
+                    }
+                    var prevElm = selfFile.find('.imgView');
+                    fileRdr.onload = function() {
+                        prevElm.attr('src', fileRdr.result);
+                    }
+                    fileRdr.readAsDataURL(file);
+                } else {
+                    if(0 < selfImg.size()){
+                        selfImg.remove();
+                        return;
+                    }
+                }
+            }
+        });
+    });
+});
+</script>

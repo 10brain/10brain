@@ -62,13 +62,13 @@ and open the template in the editor.
             <p><a class='inline' href="#inline_content"></a></p>
         </div>
 <?
-$search = 'search.php';
+$search = '/search/search.php';
 ?>
         <!-- This contains the hidden content for inline calls -->
     		<div style='display:none'>
     			<div id='inline_content' style='padding:10px; background:#fff;'>
               <img src="../img/fal.png">
-    			     <p>登録できませんでした。</p><?=$error;?>
+              <p>登録できませんでした。<br><?=$error;?></p>
                <div class="fal">
                  <form name="input" action="<?=$search;?>" method="post" >
                  <input type="hidden" name="ActionType" value="TgRSPInf">

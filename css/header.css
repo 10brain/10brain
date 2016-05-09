@@ -66,7 +66,7 @@ body{
 .center{
   height:70px;
   min-height: 60px;
-  width: 550px;
+  width: 700px;
   margin: 0 auto;
 }
 
@@ -88,7 +88,7 @@ body{
   margin: 0;
   height:35px;
   min-height: 35px;
-  width: 550px;
+  width: 700px;
   min-width: 550px;
   text-align: center;
   overflow: hidden;

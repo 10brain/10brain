@@ -47,7 +47,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
         }else{
          $cover = '/admin/book_add/tmp_cover/noimage.png';
         }
-
+        
         if($borrow_st == 1){
             $borrow_conf = 'borrow_conf.php';
             include("borrow_day_input.html");
@@ -72,7 +72,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
             $error = "ただいまサーバーが込み合っております。";
         }
 
-        include("/10brain/login/login.html");
+        include("../login/login.html");
     }
 
 

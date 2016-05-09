@@ -1,0 +1,170 @@
+<?php
+        $home = '/admin/top/top.php';
+        $bookadd = '/admin/book_add/badd.php';
+        $bookedit = '/admin/book/search.php';
+        $booklist = '/admin/borrow/borrow.php';
+        $request = '/admin/request/request.php';
+        $useradd = '/adimin/useradd/useradd.php';
+        $useredit = '/admin/user_search/user_search.php';
+?>
+
+      <div id="menu">
+        <div class="header">
+          <img src="../../img/header.png">
+        </div>
+
+        <div class="menu">
+
+
+          <div class="left shake shake-crazy">
+            <form action="<?=$home;?>" method="post">
+              <input type="hidden" name="ActionType" value="TgRSPInf">
+              <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+              <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+              <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+              <input type="image" src="../img/icon.png" alt="ホーム" />
+            </form>
+          </div>
+
+
+          <div class="center">
+            <ul>
+              <li class="headerimage"><form action="<?=$home;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/a.png" alt="ホーム" />
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$home;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="ホーム" />
+                  </form>
+              </li>
+              <li class="headerimage"><form action="<?=$bookadd;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/b.png" alt="書籍追加" />
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$bookadd;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="本の追加" />
+                  </form>
+              </li>
+              <li class="headerimage"><form action="<?=$bookedit;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/c.png" alt="書籍編集" />
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$bookedit;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="本の編集" />
+                  </form>
+              </li>
+              <li class="headerimage"><form action="<?=$booklist;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/d.png" alt="貸出履歴" />
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$booklist;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="貸出履歴" />
+                  </form>
+              </li>
+              <li class="hito headerimage"><form action="<?=$request;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/e.png" alt="リクエスト">
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$request;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="リクエスト" />
+                  </form>
+              </li>
+              <li class="hito headerimage"><form action="<?=$useradd;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/f.png" alt="ユーザー追加">
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$useradd;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="ユーザーの追加" />
+                  </form>
+              </li>
+              <li class="hito headerimage"><form action="<?=$useredit;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="image" src="../img/g.png" alt="ユーザー編集">
+                  </form>
+              </li>
+              <li class="headertext"><form action="<?=$useredit;?>" method="post">
+                  <input type="hidden" name="ActionType" value="TgRSPInf">
+                  <input type="hidden" name="KEYWORD0" value="<?=$Key0;?>">
+                  <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+                  <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+                  <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+                  <input type="submit" value="ユーザーの編集" />
+                  </form>
+              </li>
+            </ul>
+          </div>
+
+          <div class="right">
+            <ul>
+              <li>ようこそ、<?=$Key3;?>さん。</li>
+              <li><a href="../../login/logout.php" class="logout">ログアウト</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>

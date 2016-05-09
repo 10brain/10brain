@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ユーザー情報追加</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/useradd.css">
+        <link rel="stylesheet" type="text/css" href="../css/header.css">
+        <link rel="stylesheet" type="text/css" href="../css/footer.css">
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/fade.js"></script>
+    </head>
+    <body>
+      <?include('../header/header.html');?>
+
+      <div id="content">
+
+        <div class="title">
+          <ul>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+            <li>
+              <h1>ユーザーの追加</h1>
+            </li>
+            <li class="image">
+              <img src="../img/4.png">
+            </li>
+          </ul>
+        </div>
+        <div class="contents">
+
+        <div class="form1">
+
+        <form name="input" action="<?=URL_ACTION;?>" method="post">
+         <?=$io->get_all_params();?>
+<!--<?=$decision;?>-->
+
+          <div class="confirm">ユーザー名：<?=$io->get_param_html("Name");?></div>
+          <div class="confirm">ユーザーID：<?=$io->get_param_html("ID");?>@10baton.com</div>
+          <div class="confirm">PW：9999</div>
+
+
+          <input type="hidden" name="ActionType" value="TgRSPInf">
+          <input type="hidden" name="KEYWORD1" value="<?=$Key1;?>">
+          <input type="hidden" name="KEYWORD2" value="<?=$Key2;?>">
+          <input type="hidden" name="KEYWORD3" value="<?=$Key3;?>">
+          <div class="submit">
+            <input type="submit" value="ユーザー情報追加">
+          </div>
+        </form>
+        <form>
+          <div class="submit">
+            <input type="button" onClick='history.back();' value="戻る">
+          </div>
+        </form>
+      </div>
+    </div>
+
+          <?include('../footer/footer.html');?>
+          </div>
+    </body>
+</html>

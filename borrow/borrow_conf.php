@@ -37,11 +37,30 @@ if (!isID($_POST["KEYWORD1"],40,1)){
     if(!inpDate($Key42)){
         $day_error = "日付が正しくありません。";
         $result = 4;
+    }else{
+        switch (Key42) {
+            case pastDate($Key42):
+                $day_error = "過去の日付は入力できません。"; 
+                $result = 4;
+                break;
+            case futureDate($Key42):
+                $day_error = "2週間以内の日付を入力してください。"; 
+                $result = 4;
+                break; 
+            default:
+            	$result = 0;
+                break;
+        }
     }
+
     
     if($result==0){
         $borrow_dec = './borrow_dec.php';
         include './borrow_confirm.html';
+    }elseif($result==4){
+             $borrow_bn_conf = 'borrow_bn_conf.php';
+             $booknum_error = $day_error;
+             include("borrow_bn_input.html");
     }else{
         if ($_POST["ActionType"] != "TgRSPInf"){
             $error = "";

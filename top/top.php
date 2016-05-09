@@ -30,6 +30,16 @@ if ($result == 0){
     //管理者か一般ユーザーか判定
     if($dspUserInfo[1]=='管理者'){
         include("../admin/top/top.html");
+        /**メンテ用
+        $ActType = null;
+        $Key1 = null;  //ID
+        $Key2 = null;  //パスワード
+
+        include("../login/ment.html");
+         * 
+         */
+    }elseif($dspUserInfo[1]=='開発用'){
+         include("../admin/top/top.html");
     }else{
         include("../top/top.html");
     }
@@ -42,7 +52,7 @@ if ($result == 0){
 	$error = "ただいまサーバーが込み合っております。";
     }
 
-include("/login/login.html");
+include("../login/login.html");
 }
 
 

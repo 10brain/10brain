@@ -1,0 +1,220 @@
+body,input,textarea{
+  margin:0;
+  font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  font-size: 12px;
+}
+
+input:-webkit-autofill {
+	box-shadow: 0 0 0 1000px white inset;
+}
+
+#content{
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  min-width: 70%;
+  min-height: 84%;
+  margin: 0 auto;
+  background-color: #FBF4E6;
+  padding-bottom: 35px;
+  background-size: cover;
+}
+
+.contents{
+  width: 60%;
+  height: 100%;
+  min-height: 480px;
+	position: relative;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 45px;
+	border: 1px solid black;
+}
+
+.title{
+  height: 51px;
+  width: 100%;
+  margin: 15px auto;
+}
+
+.title h1{
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 12px auto;
+}
+
+.title ul{
+  zoom:1;
+  padding: 0;
+  text-align: center;
+}
+
+.title li{
+  display: inline-block;
+  list-style: none;
+}
+
+.image{
+  display: inline-block;
+  list-style: none;
+  width: 22%;
+  min-width: 10px;
+  padding: 5px 5px;
+}
+
+.image img{
+  width: 100%;
+  max-width: 200px;
+}
+
+.form{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.form form{
+  width: 100%;
+}
+
+.form1{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.form1 form{
+  width: 100%;
+}
+
+.form input[type="text"]{
+  height: 20px;
+  width: 375px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin: 0;
+  margin-bottom: 15px;
+  outline: 0;
+}
+
+.minict_wrapper{
+  height: 34px;
+  width: 393px;
+  margin: 0;
+}
+
+.minict_wrapper:after{
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
+}
+
+.minict_wrapper span{
+  height: 32px;
+  padding-top: 4px;
+  font-size: 16px;
+  padding-left: 8px;
+  letter-spacing: 0px;
+}
+
+.minict_wrapper ul{
+  top: 32px;
+}
+
+.minict_wrapper ul li{
+  height: 32px;
+  padding-top: 3px;
+  font-size: 14px;
+  letter-spacing: 0px;
+}
+
+.form textarea{
+  height: 100px;
+  width: 425px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin: 0;
+  margin-bottom: 5px;
+  outline: 0;
+}
+
+.check{
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.check input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  outline: 0;
+}
+
+.error{
+  color: red;
+  display: inline;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+.submit input[type="submit"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  outline: 0;
+}
+
+.submit input[type="button"]{
+  height: 40px;
+  width: 200px;
+  padding: 6px 8px;
+  font-size: 1.0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  letter-spacing: 2px;
+  outline: 0;
+  margin-bottom: 10px;
+}
+
+.submit{
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.confirm{
+  margin: 5px auto 10px auto;
+  font-size: 14px;
+}
+
+.caution{
+  color: #acb7a5;
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 20px;
+  width: 100%;
+}

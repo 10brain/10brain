@@ -205,7 +205,7 @@ if (!isID($_POST["KEYWORD1"],40,1)){
                                   }
 
                             }else{
-                                $db_error ='システムエラーです。開発者に連絡してください。';
+                                $db_error ='システムエラーです。ページを更新して再入力するか開発者に連絡してください。';
                                 include(TEMP_INPUT);
                             }
 
@@ -246,45 +246,66 @@ if (!isID($_POST["KEYWORD1"],40,1)){
 
                     //title
                     $io->set_parameter("title", mb_convert_kana($io->get_param("title"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("title"), TRUE, 255, 0, "UTF-8")){
-                    $io->set_error("title_error", "未入力、または内容に誤りが有ります");
+                    if(preg_match('/[a-zA-Z0-9]/', $io->get_param("title"))){
+                        if(!$vali->isString($io->get_param("title"), true, 100, 0, "UTF-8")){
+                            $io->set_error("title_error", "未入力、または内容に誤りが有ります");
+                        }
+                    }else{
+                        if(!$vali->isString($io->get_param("title"), true, 300, 0, "UTF-8")){
+                                $io->set_error("title_error", "未入力、または内容に誤りが有ります");
+                        }
                     }
 
                     //genre
-			if(!$select01->is_regularly(false)){
-				$io->set_error("genre", "内容に誤りが有ります");
-			}
+                    if(!$select01->is_regularly(false)){
+                            $io->set_error("genre", "内容に誤りが有ります");
+                    }
                     //pub
                     $io->set_parameter("pub", mb_convert_kana($io->get_param("pub"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("pub"), TRUE, 30, "UTF-8")){
-                    $io->set_error("pub_error", "未入力、または内容に誤りが有ります");
+                    if(preg_match('/[a-zA-Z0-9]/', $io->get_param("pub"))){
+                        if(!$vali->isString($io->get_param("pub"), TRUE, 20, "UTF-8")){
+                        $io->set_error("pub_error", "未入力、または内容に誤りが有ります");
+                        }     
+                    }else{
+                        if(!$vali->isString($io->get_param("pub"), TRUE, 60, "UTF-8")){
+                        $io->set_error("pub_error", "未入力、または内容に誤りが有ります");
+                        }
                     }
                     //writer
                     $io->set_parameter("writer", mb_convert_kana($io->get_param("writer"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("writer"), FALSE, 40, "UTF-8")){
-                    $io->set_error("writer_error", "未入力、または内容に誤りが有ります");
+                    if(preg_match('/[a-zA-Z0-9]/', $io->get_param("writer"))){
+                        if(!$vali->isString($io->get_param("writer"), FALSE, 20, "UTF-8")){
+                            $io->set_error("writer_error", "内容に誤りが有ります");
+                        }  
+                    }else{
+                        if(!$vali->isString($io->get_param("writer"), FALSE, 60, "UTF-8")){
+                        $io->set_error("writer_error", "内容に誤りが有ります");
+                        }
                     }
+                    
                     //intro
                     $io->set_parameter("intro", mb_convert_kana($io->get_param("intro"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("intro"), FALSE, 255, "UTF-8")){
-                    $io->set_error("intro_error", "未入力、または内容に誤りが有ります");
-                    }
+                        if(!$vali->isString($io->get_param("intro"), FALSE, 600, "UTF-8")){
+                        $io->set_error("intro_error", "内容に誤りが有ります");
+                        }
+                    
                     //year
                     $io->set_parameter("year", mb_convert_kana($io->get_param("year"), "KV", INNER_CODE));
                     if(!$vali->isString($io->get_param("year"), FALSE, 4, "UTF-8")){
-                    $io->set_error("year_error", "未入力、または内容に誤りが有ります");
+                    $io->set_error("year_error", "内容に誤りが有ります");
                     }
                     //amazon
-                    $io->set_parameter("amazon", mb_convert_kana($io->get_param("amazon"), "KV", INNER_CODE));
-                    if(!$vali->isURL($io->get_param("amazon"), FALSE, 255, 0, "UTF-8")){
-                    $io->set_error("amazon_error", "未入力、または内容に誤りが有ります");
+                    $io->set_parameter("link", mb_convert_kana($io->get_param("link"), "KV", INNER_CODE));
+                    if(!$vali->isURL($io->get_param("link"), FALSE, 50, "UTF-8")){
+                        $io->set_error("link_error", "未入力、または内容に誤りが有ります");
                     }
+
                     //remarks
                     $io->set_parameter("remarks", mb_convert_kana($io->get_param("remarks"), "KV", INNER_CODE));
-                    if(!$vali->isString($io->get_param("remarks"), FALSE, 400, "UTF-8"))
-                    {
-                    $io->set_error("remarks_error", "内容に誤りが有ります");
-                    }
+                        if(!$vali->isString($io->get_param("remarks"), false, 375, "UTF-8")){
+                                $io->set_error("remarks_error", "125文字以内で入力してください");
+                        }
+                    
 
 
 
